@@ -85,6 +85,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>YB_UserPersistor.obj;YB_User.obj;YB_Repository.obj;YB_RepositoryError.obj;YB_PersistorBasis.obj;YB_DataBasis.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

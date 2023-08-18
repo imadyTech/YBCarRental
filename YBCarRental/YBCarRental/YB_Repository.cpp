@@ -9,15 +9,26 @@ namespace YBCarRental
 	{
 
 	}
-
 	YB_Repository::YB_Repository(string url)
 	{
+		ifstream input(url);
+		if (!input.is_open())
+		{
+			cout << "The file is not opened!" << endl;
+			//throw std::runtime_error("The file is not opened!");
+		}
+		string line;
+		while (getline(input, line)) {
+			cout << line << endl;
+		}
+		input.close();
+
+
 	}
 
 	YB_Repository::~YB_Repository()
 	{
-		input.close();
-		output.close();
+		//output.close();
 	}
 
 	map<int, string> YB_Repository::ReadAllLines()

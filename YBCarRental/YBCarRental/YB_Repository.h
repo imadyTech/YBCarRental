@@ -1,3 +1,7 @@
+﻿#ifndef YB_Repository_H
+#define YB_Repository_H
+
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -24,9 +28,16 @@ namespace YBCarRental
 		void DeleteLine(string line);
 		void UpdateLine(string line);
 		void ClearAll();
+
+
 	private:
-		string repositoryURL;
-		ifstream input;
-		ofstream output;
+		string repositoryURL="";
+		//ifstream input;//C2280 error: ifstream defined but not instantiated result to C2280
+		//ofstream output;
 	};
+
+
+
 }
+
+#endif YB_Repository_H

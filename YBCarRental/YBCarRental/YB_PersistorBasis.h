@@ -25,7 +25,7 @@ namespace YBCarRental
 		YB_PersistorBasis(void);
 		YB_PersistorBasis(string url);
 
-		string repositoryURL;
+		string repositoryURL="";
 
 	protected:
 
@@ -68,7 +68,7 @@ namespace YBCarRental
 		/// </summary>
 		YB_Repository repository;
 
-		vector<TData> dataSet;
+		vector<TData> dataSet ;
 
 
 
@@ -90,6 +90,8 @@ namespace YBCarRental
 	YB_PersistorBasis<TData>::YB_PersistorBasis<TData>(string url)
 	{
 		repositoryURL = url;
+		repository = YB_Repository(repositoryURL);
+		
 	};
 
 	template<class TData>

@@ -37,6 +37,9 @@
     <Filter Include="Header Files\YB_Views">
       <UniqueIdentifier>{485d19e4-e863-4505-b7ba-961bd540c050}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\YB_Errors">
+      <UniqueIdentifier>{bc308215-840b-427c-801a-ec2757947bc6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -84,6 +87,9 @@
     <ClCompile Include="YB_Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="YB_RepositoryError.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="YB_PersistorBasis.h">
@@ -126,6 +132,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="YB_Window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_Errors.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -135,6 +135,7 @@
     <ClCompile Include="YB_DataBasis.cpp" />
     <ClCompile Include="YB_Rent.cpp" />
     <ClCompile Include="YB_RentManager.cpp" />
+    <ClCompile Include="YB_RepositoryError.cpp" />
     <ClCompile Include="YB_User.cpp" />
     <ClCompile Include="YB_UserManager.cpp" />
     <ClCompile Include="main.cpp" />
@@ -154,6 +155,7 @@
     <ClInclude Include="YB_PersistorBasis.h" />
     <ClInclude Include="YB_Rent.h" />
     <ClInclude Include="YB_RentManager.h" />
+    <ClInclude Include="YB_Errors.h" />
     <ClInclude Include="YB_User.h" />
     <ClInclude Include="YB_UserManager.h" />
     <ClInclude Include="YB_RentPersistor.h" />

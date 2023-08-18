@@ -10,6 +10,8 @@ namespace YBCarRental
 	public:
 		YB_CarPersistor();
 		YB_CarPersistor(string repository);
+		//YB_CarPersistor() : YB_PersistorBasis<YB_Car>() {};
+		//YB_CarPersistor(string repository) : YB_PersistorBasis<YB_Car>(repository) {};
 
 		void ReadAll();
 		void Add(YB_Car car);

@@ -1,3 +1,8 @@
+#ifndef YB_DataBasis_H
+#define YB_DataBasis_H
+
+
+
 #include <string>
 #pragma once
 
@@ -12,6 +17,9 @@ namespace YBCarRental
 	struct YB_DataBasis
 	{
 	public:
+		YB_DataBasis();
+
+
 		/// <summary>
 		/// Serielize the object to a line of string (for data persistence)
 		/// </summary>
@@ -29,3 +37,5 @@ namespace YBCarRental
 		virtual ~YB_DataBasis() {}
 	};
 }
+
+#endif YB_DataBasis_H

@@ -1,4 +1,7 @@
-#pragma once
+#ifndef YB_User_H
+#define YB_User_H
+
+
 #include <string>
 #include "YB_DataBasis.h"
 
@@ -27,3 +30,5 @@ namespace YBCarRental
 		void Deserialize(string line);
 	};
 }
+
+#endif YB_User_H

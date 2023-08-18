@@ -1,6 +1,7 @@
 #pragma once
 #include "YB_User.h"
 #include "YB_UserPersistor.h"
+#include "YB_PersistorBasis.h"
 
 using namespace std;
 
@@ -49,7 +50,7 @@ namespace YBCarRental
 	private:
 		YB_User currentUser;
 		vector<YB_User> allUsers;
-		YB_UserPersistor userPersistor;
+		//YB_UserPersistor userPersistor;
 	};
 
 }

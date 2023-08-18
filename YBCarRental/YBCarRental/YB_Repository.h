@@ -17,6 +17,7 @@ namespace YBCarRental
 	public:
 		YB_Repository();
 		YB_Repository(string url);
+		~YB_Repository();
 
 		map<int, string> ReadAllLines();
 		void AddLine(string line);
@@ -25,5 +26,7 @@ namespace YBCarRental
 		void ClearAll();
 	private:
 		string repositoryURL;
+		ifstream input;
+		ofstream output;
 	};
 }

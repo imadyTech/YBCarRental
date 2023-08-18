@@ -1,14 +1,15 @@
 #include "YB_PersistorBasis.h"
+#include "YB_User.h"
 
 namespace YBCarRental
 {
-	template<class TData> // TData = YBDataBasis
-	inline YB_PersistorBasis<TData>::YB_PersistorBasis()
-	{
-	}
+	//template<class YB_User> // TData = YBDataBasis
+	//inline YB_PersistorBasis<YB_User>::YB_PersistorBasis<YB_User>()
+	//{
+	//};
 
-	template<class TData> // TData = YBDataBasis
-	YB_PersistorBasis<TData>::YB_PersistorBasis(string url)
-	{
-	}
+	//template<class YB_User> // TData = YBDataBasis
+	//inline YB_PersistorBasis<YB_User>::YB_PersistorBasis<YB_User>(string url)
+	//{
+	//};
 }

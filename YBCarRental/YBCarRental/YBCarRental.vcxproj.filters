@@ -78,6 +78,12 @@
     <ClCompile Include="YB_User.cpp">
       <Filter>Source Files\YB_DataModels</Filter>
     </ClCompile>
+    <ClCompile Include="YB_ViewItemBasis.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_Window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="YB_PersistorBasis.h">
@@ -115,6 +121,12 @@
     </ClInclude>
     <ClInclude Include="YB_User.h">
       <Filter>Header Files\YB_DataModels</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_ViewItemBasis.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_Window.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

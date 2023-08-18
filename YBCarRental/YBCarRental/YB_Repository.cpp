@@ -14,4 +14,32 @@ namespace YBCarRental
 	{
 	}
 
+	YB_Repository::~YB_Repository()
+	{
+		input.close();
+		output.close();
+	}
+
+	map<int, string> YB_Repository::ReadAllLines()
+	{
+		return map<int, string>();
+	}
+
+	void YB_Repository::AddLine(string line)
+	{
+
+	}
+
+	void YB_Repository::DeleteLine(string line)
+	{
+	}
+
+	void YB_Repository::UpdateLine(string line)
+	{
+	}
+
+	void YB_Repository::ClearAll()
+	{
+	}
+
 }

@@ -12,4 +12,8 @@ namespace YBCarRental
 	{
 	}
 
+	YB_DataBasis::YB_DataBasis()
+	{
+	}
+
 }

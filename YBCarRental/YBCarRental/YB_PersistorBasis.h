@@ -1,8 +1,13 @@
+#ifndef YB_PersistorBasis_H
+#define YB_PersistorBasis_H
+
+// Your header file contents here
+
 #include <string>
 #include <vector>
 #include "YB_DataBasis.h"
 #include "YB_Repository.h"
-#pragma once
+#include "YB_User.h"
 
 using namespace std;
 
@@ -17,12 +22,12 @@ namespace YBCarRental
 	class YB_PersistorBasis
 	{
 	public:
-
-	protected:
-		YB_PersistorBasis();
+		YB_PersistorBasis(void);
 		YB_PersistorBasis(string url);
 
-		vector<TData> dataSet;
+		string repositoryURL;
+
+	protected:
 
 		/// <summary>
 		/// Read all records (objects) into memory
@@ -40,7 +45,7 @@ namespace YBCarRental
 		/// </summary>
 		/// <param name="id"></param>
 		/// <returns></returns>
-		virtual TData Get(int id);
+		virtual void Get(int id, TData& objResult);
 
 		/// <summary>
 		/// Delete an object from memory (will persisted later by Save() command.
@@ -62,6 +67,11 @@ namespace YBCarRental
 		/// The file repository to store data records.
 		/// </summary>
 		YB_Repository repository;
+
+		vector<TData> dataSet;
+
+
+
 		void ReadAllLines();
 		string ReadLine(int id);
 		void AddLine(string record);
@@ -70,5 +80,72 @@ namespace YBCarRental
 		void Open(string path);
 		void Save();
 	};
+
+	template<class TData> // TData = YBDataBasis
+	YB_PersistorBasis<TData>::YB_PersistorBasis<TData>()
+	{
+	};
+
+	template<class TData> // TData = YBDataBasis
+	YB_PersistorBasis<TData>::YB_PersistorBasis<TData>(string url)
+	{
+		repositoryURL = url;
+	};
+
+	template<class TData>
+	void YB_PersistorBasis<TData>::ReadAll()
+	{
+	}
+	template<class TData>
+	void YB_PersistorBasis<TData>::Add(TData data)
+	{
+	}
+	template<class TData>
+	void YB_PersistorBasis<TData>::Get(int id, TData& objResult)
+	{
+	}
+	template<class TData>
+	bool YB_PersistorBasis<TData>::Delete(int id)
+	{
+		return false;
+	}
+	template<class TData>
+	bool YB_PersistorBasis<TData>::Update(TData data)
+	{
+		return false;
+	}
+
+
+	//----------------Private Implementation------------------//
+	template<class TData>
+	inline void YB_PersistorBasis<TData>::ReadAllLines()
+	{
+	}
+	template<class TData>
+	inline string YB_PersistorBasis<TData>::ReadLine(int id)
+	{
+		return string();
+	}
+	template<class TData>
+	inline void YB_PersistorBasis<TData>::AddLine(string record)
+	{
+	}
+	template<class TData>
+	inline void YB_PersistorBasis<TData>::UpdatLine(string record)
+	{
+	}
+	template<class TData>
+	inline void YB_PersistorBasis<TData>::Clear()
+	{
+	}
+	template<class TData>
+	inline void YB_PersistorBasis<TData>::Open(string path)
+	{
+	}
+	template<class TData>
+	inline void YB_PersistorBasis<TData>::Save()
+	{
+	}
 }
 
+#endif YB_PersistorBasis_H

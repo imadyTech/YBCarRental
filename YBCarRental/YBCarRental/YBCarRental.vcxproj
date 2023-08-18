@@ -143,6 +143,8 @@
     <ClCompile Include="YB_RentPersistor.cpp" />
     <ClCompile Include="YB_Repository.cpp" />
     <ClCompile Include="YB_UserPersistor.cpp" />
+    <ClCompile Include="YB_ViewItemBasis.cpp" />
+    <ClCompile Include="YB_Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="YB_Car.h" />
@@ -157,6 +159,8 @@
     <ClInclude Include="YB_RentPersistor.h" />
     <ClInclude Include="YB_Repository.h" />
     <ClInclude Include="YB_UserPersistor.h" />
+    <ClInclude Include="YB_ViewItemBasis.h" />
+    <ClInclude Include="YB_Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

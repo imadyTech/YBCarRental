@@ -8,6 +8,8 @@
 #define PCH_H
 
 #include "../YBCarRental/YB_UserPersistor.h"
+#include "../YBCarRental/YB_User.h"
+
 
 
 // add headers that you want to pre-compile here

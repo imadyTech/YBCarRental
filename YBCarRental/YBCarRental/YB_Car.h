@@ -1,4 +1,6 @@
-#pragma once
+#ifndef YB_Car_H
+#define YB_Car_H
+
 #include <string>
 #include "YB_DataBasis.h"
 using namespace std;
@@ -39,6 +41,7 @@ namespace YBCarRental
 			MaxRentPeriod = maxRent;
 			DayRentPrice = dayPrice;
 		}
+		~YB_Car() override;
 
 		int Id;
 		string Make;
@@ -50,7 +53,9 @@ namespace YBCarRental
 		int MaxRentPeriod;					//day
 		double DayRentPrice;				//rental price per day;
 
-		string Serialize() ;
-		void Deserialize(string line);
+		void Serialize(ofstream* output) override;
+		void Deserialize(string line) override;
 	};
 }
+
+#endif

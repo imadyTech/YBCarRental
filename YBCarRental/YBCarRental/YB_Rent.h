@@ -1,3 +1,6 @@
+#ifndef YB_Rent_H
+#define YB_Rent_H
+
 #include <string>
 #include "YB_DataBasis.h"
 #include "YB_User.h"
@@ -12,14 +15,15 @@ namespace YBCarRental
 	/// <summary>
 	/// The record of a rental order;
 	/// </summary>
-	class YB_Rent 
+	class YB_Rent : public YB_DataBasis
 	{
 	public:
 		YB_Rent();
 		YB_Rent(YB_User user, YB_Car car, tm start, int days);
 		YB_Rent(int userId, int carId, tm start, int days);
+		~YB_Rent() override;
 
-		int ID;					//order id;
+		int Id;					//order id;
 		int UserId;
 		int CarId;
 		tm RentStart;			//rental start date
@@ -27,8 +31,11 @@ namespace YBCarRental
 		YB_RentalStatus Status;	//
 
 
-		 std::string Serialize() ;
-		virtual void Deserialize(std::string line) ;
+		void Serialize(ofstream* output) override;
+		void Deserialize(string line) override;
+
 	};
 
 }
+
+#endif

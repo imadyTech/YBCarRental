@@ -40,6 +40,9 @@
     <Filter Include="Source Files\YB_Errors">
       <UniqueIdentifier>{bc308215-840b-427c-801a-ec2757947bc6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\YB_Errors">
+      <UniqueIdentifier>{8e3de0bc-2f88-459f-a385-ef3b8abeeb6e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -82,13 +85,13 @@
       <Filter>Source Files\YB_DataModels</Filter>
     </ClCompile>
     <ClCompile Include="YB_ViewItemBasis.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\YB_Views</Filter>
     </ClCompile>
     <ClCompile Include="YB_Window.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\YB_Views</Filter>
     </ClCompile>
-    <ClCompile Include="YB_RepositoryError.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="YB_Errors.cpp">
+      <Filter>Source Files\YB_Errors</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -129,13 +132,21 @@
       <Filter>Header Files\YB_DataModels</Filter>
     </ClInclude>
     <ClInclude Include="YB_ViewItemBasis.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\YB_Views</Filter>
     </ClInclude>
     <ClInclude Include="YB_Window.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\YB_Views</Filter>
     </ClInclude>
     <ClInclude Include="YB_Errors.h">
+      <Filter>Header Files\YB_Errors</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="UserRepo.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

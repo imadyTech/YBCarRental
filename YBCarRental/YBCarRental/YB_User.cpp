@@ -1,9 +1,12 @@
 #include "YB_User.h"
 #include <string>
+#include <iostream>
+#include <fstream>
+#include <stdio.h>
 using namespace std;
 
 
-namespace YBCarRental 
+namespace YBCarRental
 {
 	YB_User::YB_User()
 	{
@@ -18,13 +21,30 @@ namespace YBCarRental
 		UserName = username;
 		Password = password;
 	}
-	string YB_User::Serialize()
+
+	YB_User::~YB_User()
 	{
-		return string();
+	}
+
+	void YB_User::Serialize(ofstream* output)
+	{
+		*output << Id			<<";";
+		*output << UserName <<";";
+		*output << LoginStatus 	<<";";
+		*output << FirstName <<";";
+		*output << FamilyName <<";";
+		*output << Password 	<<";";
+		*output << Balance 		<<";";
+		*output << UserRoles <<";";
 	}
 	void YB_User::Deserialize(string line)
 	{
+		//Id = to_integer(line);
 	};
+
+
 }
+
+
 
 

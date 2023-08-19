@@ -28,7 +28,48 @@ int main()
 	//cout << userPersistor.repositoryURL << endl;
 
 
-	YBCarRental::YB_UserPersistor userPersistor = YBCarRental::YB_UserPersistor("E:\\YB800ProSE\\YBCarRental\\YBCarRental\\x64\\Debug\\UserDatabase.txt"); //OK
-	cout << userPersistor.repositoryURL << endl;
+	//YBCarRental::YB_UserPersistor userPersistor = YBCarRental::YB_UserPersistor("E:\\YB800ProSE\\YBCarRental\\YBCarRental\\x64\\Debug\\UserDatabase.txt"); //OK
+	//cout << userPersistor.repositoryURL << endl;
+
+	//OK
+	YB_User user = YB_User();
+	user.FirstName = "Frank";
+	user.FamilyName = "Shen";
+	user.Id = 15;
+	user.Password = "666666";
+	user.UserName = "fshen";
+	user.LoginStatus = false;
+	user.UserRoles = "user:admin";
+	user.Balance = 10000;
+	//OK
+
+
+	ofstream outputfile("UserRepo.txt");
+	if (!outputfile.is_open())
+	{
+		cerr << "The file is not opened!" << endl;
+	}
+	user.Serialize(&outputfile);
+	
+
+
+	//initialization
+	//managers
+		//persistors
+	//load viewitems info
+		//viewitem instantiation
+		//YB_Windows
+	//
+
+
+	//welcome screen
+	//try/catch wrapping
+		//get key inputs
+		//YB_Windows update / response to key input
+		//viewitem update viewmodel
+		//Managers logic updates driven by viewmodel
+		//Persistence
+	//Loop
+
 
 }

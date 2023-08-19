@@ -135,7 +135,7 @@
     <ClCompile Include="YB_DataBasis.cpp" />
     <ClCompile Include="YB_Rent.cpp" />
     <ClCompile Include="YB_RentManager.cpp" />
-    <ClCompile Include="YB_RepositoryError.cpp" />
+    <ClCompile Include="YB_Errors.cpp" />
     <ClCompile Include="YB_User.cpp" />
     <ClCompile Include="YB_UserManager.cpp" />
     <ClCompile Include="main.cpp" />
@@ -148,6 +148,7 @@
     <ClCompile Include="YB_Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="YB_Car.h" />
     <ClInclude Include="YB_CarManager.h" />
     <ClInclude Include="YB_CarPersistor.h" />
@@ -163,6 +164,9 @@
     <ClInclude Include="YB_UserPersistor.h" />
     <ClInclude Include="YB_ViewItemBasis.h" />
     <ClInclude Include="YB_Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="UserRepo.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

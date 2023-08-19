@@ -100,8 +100,8 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <AdditionalLibraryDirectories>E:\YB800ProSE\YBCarRental\YBCarRental\x64\Debug;$(VCInstallDir)UnitTest\lib;E:\YB800ProSE\YBCarRental\YBCarRental\YBCarRental\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>YB_Repository;YB_RepositoryError;YB_PersistorBasis;YB_UserPersistor;YB_User;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:\YB800ProSE\YBCarRental\YBCarRental\YBCarRental\x64\Debug;$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>YB_Repository;YB_Errors;YB_PersistorBasis;YB_UserPersistor;YB_User;YB_DataBasis;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

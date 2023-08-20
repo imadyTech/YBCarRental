@@ -8,6 +8,7 @@
 #include "YB_DataBasis.h"
 #include "YB_Repository.h"
 #include "YB_User.h"
+#include "YB_Errors.h"
 
 using namespace std;
 
@@ -17,7 +18,7 @@ namespace YBCarRental
 	/// <summary>
 	/// Object orientated layer of data persistence.
 	/// </summary>
-	/// <typeparam name="TData"></typeparam>
+	/// <typeparam name="TData">The type parameter must be derived from YB_DataBasis</typeparam>
 	template <class TData = YB_DataBasis>
 	class YB_PersistorBasis
 	{
@@ -25,14 +26,13 @@ namespace YBCarRental
 		YB_PersistorBasis(void);
 		YB_PersistorBasis(string url);
 
-		string repositoryURL="";
+		string repositoryURL = "";
 
-	protected:
 
 		/// <summary>
 		/// Read all records (objects) into memory
 		/// </summary>
-		virtual void ReadAll();
+		virtual void GetAll();
 
 		/// <summary>
 		/// Add a data record to the persistent repository
@@ -45,7 +45,8 @@ namespace YBCarRental
 		/// </summary>
 		/// <param name="id"></param>
 		/// <returns></returns>
-		virtual void Get(int id, TData& objResult);
+		void Get(int id, TData* objResult);
+
 
 		/// <summary>
 		/// Delete an object from memory (will persisted later by Save() command.
@@ -68,7 +69,7 @@ namespace YBCarRental
 		/// </summary>
 		YB_Repository repository;
 
-		vector<TData> dataSet ;
+		vector<TData> dataSet;
 
 
 
@@ -84,6 +85,7 @@ namespace YBCarRental
 	template<class TData> // TData = YBDataBasis
 	YB_PersistorBasis<TData>::YB_PersistorBasis<TData>()
 	{
+		repository = YB_Repository();
 	};
 
 	template<class TData> // TData = YBDataBasis
@@ -91,21 +93,39 @@ namespace YBCarRental
 	{
 		repositoryURL = url;
 		repository = YB_Repository(repositoryURL);
-		
+
 	};
 
+
+
 	template<class TData>
-	void YB_PersistorBasis<TData>::ReadAll()
+	void YB_PersistorBasis<TData>::GetAll() //cache to dataSet
 	{
 	}
+
+	template<class TData>
+	void YB_PersistorBasis<TData>::Get(int id, TData* objResult)
+	{
+		string* line = repository.GetLine(id);
+		if (objResult != nullptr) {
+			TData obj = *objResult;
+			obj.Deserialize(*line);
+		}
+	}
+
 	template<class TData>
 	void YB_PersistorBasis<TData>::Add(TData data)
 	{
+		string* line = data.Serialize();
+		try {
+			repository.AddLine(*line);
+		}
+		catch (exception e)
+		{
+			throw YB_RepositoryError();
+		}
 	}
-	template<class TData>
-	void YB_PersistorBasis<TData>::Get(int id, TData& objResult)
-	{
-	}
+
 	template<class TData>
 	bool YB_PersistorBasis<TData>::Delete(int id)
 	{
@@ -117,37 +137,6 @@ namespace YBCarRental
 		return false;
 	}
 
-
-	//----------------Private Implementation------------------//
-	template<class TData>
-	inline void YB_PersistorBasis<TData>::ReadAllLines()
-	{
-	}
-	template<class TData>
-	inline string YB_PersistorBasis<TData>::ReadLine(int id)
-	{
-		return string();
-	}
-	template<class TData>
-	inline void YB_PersistorBasis<TData>::AddLine(string record)
-	{
-	}
-	template<class TData>
-	inline void YB_PersistorBasis<TData>::UpdatLine(string record)
-	{
-	}
-	template<class TData>
-	inline void YB_PersistorBasis<TData>::Clear()
-	{
-	}
-	template<class TData>
-	inline void YB_PersistorBasis<TData>::Open(string path)
-	{
-	}
-	template<class TData>
-	inline void YB_PersistorBasis<TData>::Save()
-	{
-	}
 }
 
 #endif YB_PersistorBasis_H

@@ -107,6 +107,8 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -133,6 +135,7 @@
     <ClCompile Include="YB_Car.cpp" />
     <ClCompile Include="YB_CarManager.cpp" />
     <ClCompile Include="YB_DataBasis.cpp" />
+    <ClCompile Include="YB_ManagerBasis.cpp" />
     <ClCompile Include="YB_Rent.cpp" />
     <ClCompile Include="YB_RentManager.cpp" />
     <ClCompile Include="YB_Errors.cpp" />
@@ -153,6 +156,7 @@
     <ClInclude Include="YB_CarManager.h" />
     <ClInclude Include="YB_CarPersistor.h" />
     <ClInclude Include="YB_DataBasis.h" />
+    <ClInclude Include="YB_ManagerBasis.h" />
     <ClInclude Include="YB_PersistorBasis.h" />
     <ClInclude Include="YB_Rent.h" />
     <ClInclude Include="YB_RentManager.h" />

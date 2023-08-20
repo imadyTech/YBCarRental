@@ -9,6 +9,11 @@ namespace YBCarRental
 	{
 	}
 
+	string* YB_DataBasis::Serialize()
+	{
+		return nullptr;
+	}
+
 	void YB_DataBasis::Serialize(ofstream* output)
 	{
 	}

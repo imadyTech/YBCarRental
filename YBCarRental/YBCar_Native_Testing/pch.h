@@ -7,6 +7,7 @@
 #ifndef PCH_H
 #define PCH_H
 
+#include "../YBCarRental/YB_UserManager.h"
 #include "../YBCarRental/YB_UserPersistor.h"
 #include "../YBCarRental/YB_User.h"
 

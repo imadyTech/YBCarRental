@@ -53,6 +53,7 @@ namespace YBCarRental
 		int MaxRentPeriod;					//day
 		double DayRentPrice;				//rental price per day;
 
+		string* Serialize() override;
 		void Serialize(ofstream* output) override;
 		void Deserialize(string line) override;
 	};

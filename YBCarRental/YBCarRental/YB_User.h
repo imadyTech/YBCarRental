@@ -25,10 +25,11 @@ namespace YBCarRental
 		string FirstName;
 		string FamilyName;
 		string Password;		//max 6 digits alphabet/numerics;
-		string UserRoles;		//multiple roles are allowed, separated by ":"
+		string UserRoles;		//multiple roles are allowed, separated by "|"
 		bool LoginStatus;		//true: logged in; false: logged out;
 		double Balance;		//Account Balance allows user to hire a car (fail to rent if no sufficient balance).
 
+		string* Serialize() override;
 		void Serialize(ofstream* output) override;
 		void Deserialize(string line) override;
 	};

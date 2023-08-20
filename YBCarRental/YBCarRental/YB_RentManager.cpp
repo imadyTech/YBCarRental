@@ -3,9 +3,9 @@
 
 namespace YBCarRental
 {
-	YB_RentManager::YB_RentManager()
-	{
-	}
+	//YB_RentManager::YB_RentManager()
+	//{
+	//}
 	bool YB_RentManager::PlaceOrder(YB_User userId, int carId, tm startDate, int days)
 	{
 		return false;

@@ -11,18 +11,7 @@ namespace YBCarRental
 	}
 	YB_Repository::YB_Repository(string url)
 	{
-		ifstream input(url);
-		if (!input.is_open())
-		{
-			cout << "The file is not opened!" << endl;
-			//throw std::runtime_error("The file is not opened!");
-		}
-		string line;
-		while (getline(input, line)) {
-			cout << line << endl;
-		}
-		input.close();
-
+		repositoryURL = url;
 
 	}
 
@@ -31,9 +20,41 @@ namespace YBCarRental
 		//output.close();
 	}
 
-	map<int, string> YB_Repository::ReadAllLines()
+	void YB_Repository::ReadAllLines()
 	{
-		return map<int, string>();
+		//clear the cache
+		if (!allRecordLines.empty()) allRecordLines.clear();
+
+		ifstream input(repositoryURL);
+		if (!input.is_open())
+		{
+			cout << "The file is not opened!" << endl;
+			//throw std::runtime_error("The file is not opened!");
+		}
+		string line;
+		while (std::getline(input, line)) {
+			int index; // Variable to hold the extracted index
+			std::istringstream stringStream(line);
+			// Extract the index from the line
+			if (stringStream >> index) {
+				// Add the line to the map using the index as the key
+				allRecordLines[index] = line;
+			}
+		}
+
+
+		input.close();
+	}
+
+	string* YB_Repository::GetLine(int index)
+	{
+		auto ptr = allRecordLines.find(index);
+
+		if (ptr != allRecordLines.end()) {
+			return &(ptr->second);
+		}
+		else
+			return nullptr;
 	}
 
 	void YB_Repository::AddLine(string line)

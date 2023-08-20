@@ -13,10 +13,10 @@ namespace YBCarRental
 		YB_UserPersistor() : YB_PersistorBasis<YB_User>() { int a = 0; };
 		YB_UserPersistor(string repository) :YB_PersistorBasis<YB_User>(repository) {};
 
-		void ReadAll() ;
-		void Add(YB_User user);
-		void Get(int id, YB_User& objResult);// : YB_PersistorBasis <YB_User>::Get(id, *objResult);
-		bool Update(YB_User obj);
-		bool Delete(int id);
+		//void ReadAll() ;
+		//void Add(YB_User user);
+		//void Get(int id, YB_User* objResult) override;// : YB_PersistorBasis <YB_User>::Get(id, *objResult);
+		//bool Update(YB_User obj);
+		//bool Delete(int id);
 	};
 }

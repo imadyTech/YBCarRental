@@ -2,13 +2,14 @@
 
 namespace YBCarRental
 {
-	//YB_CarPersistor::YB_CarPersistor()
-	//{
+	YB_CarPersistor::YB_CarPersistor()
+	{
+	}
 
-	//}
-	//YB_CarPersistor::YB_CarPersistor(string repository)
-	//{
-	//}
+	YB_CarPersistor::YB_CarPersistor(string repository)
+	{
+	}
+
 	void YB_CarPersistor::ReadAll()
 	{
 	}

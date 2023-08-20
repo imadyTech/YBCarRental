@@ -93,6 +93,9 @@
     <ClCompile Include="YB_Errors.cpp">
       <Filter>Source Files\YB_Errors</Filter>
     </ClCompile>
+    <ClCompile Include="YB_ManagerBasis.cpp">
+      <Filter>Source Files\YB_Managers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="YB_PersistorBasis.h">
@@ -142,6 +145,9 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_ManagerBasis.h">
+      <Filter>Header Files\YB_Managers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

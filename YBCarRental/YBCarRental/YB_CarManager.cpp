@@ -4,10 +4,10 @@
 
 namespace YBCarRental
 {
-	YB_CarManager::YB_CarManager()
-	{
+	//YB_CarManager::YB_CarManager()
+	//{
 
-	}
+	//}
 	bool YB_CarManager::AddCar(YB_Car car)
 	{
 		return false;

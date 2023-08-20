@@ -3,15 +3,23 @@
 
 namespace YBCarRental
 {
-	YB_UserManager::YB_UserManager()
+	//YB_UserManager::YB_UserManager()
+	//{
+	//}
+	//YB_UserManager::YB_UserManager(string userRepo)
+	//{
+	//}
+	//;
+	bool YB_UserManager::UserRegister(YB_User& user)
 	{
-	}
-	YB_UserManager::YB_UserManager(string userRepo)
-	{
-	}
-	;
-	void YB_UserManager::UserRegister(YB_User& user)
-	{
+		auto existingUser = this->Get(user.Id);
+		if (existingUser != nullptr)
+		{
+			return false; //user already exist
+		}
+		bool result = this->Add(user);
+		
+		return result;
 	}
 	bool YB_UserManager::UserLogin(string username, string password)
 	{

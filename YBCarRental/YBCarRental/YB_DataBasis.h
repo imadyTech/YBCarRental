@@ -19,6 +19,9 @@ namespace YBCarRental
 	public:
 		YB_DataBasis();
 
+		virtual string* Serialize();
+
+
 		/// <summary>
 		/// Serielize the object to a line of string (for data persistence)
 		/// </summary>

@@ -28,9 +28,9 @@ namespace YBCarRental
 		int CarId;
 		tm RentStart;			//rental start date
 		int RentDays;			//total days of rental
-		YB_RentalStatus Status;	//
+		string Status;	//
 
-
+		string* Serialize() override;
 		void Serialize(ofstream* output) override;
 		void Deserialize(string line) override;
 

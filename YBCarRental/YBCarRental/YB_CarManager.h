@@ -1,12 +1,18 @@
+#ifndef YB_CarManager_H
+#define YB_CarManager_H
+
+
 #include "YB_CarPersistor.h"
+#include "YB_ManagerBasis.h"
 
 using namespace std;
 
 namespace YBCarRental
 {
-	class YB_CarManager
+	class YB_CarManager: YB_ManagerBasis<YB_Car>
 	{
-		YB_CarManager();
+		YB_CarManager() : YB_ManagerBasis<YB_Car>() {};
+		YB_CarManager(string url): YB_ManagerBasis<YB_Car>(url) {};
 
 		static bool AddCar(YB_Car car);
 		static bool DeleteCar(YB_Car car);
@@ -14,3 +20,5 @@ namespace YBCarRental
 		static bool UpdateCar(YB_Car car);
 	};
 }
+
+#endif YB_CarManager_H

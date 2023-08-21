@@ -49,7 +49,6 @@ namespace YBCarRental
 		bool IsAdmin();
 
 	private:
-		vector<YB_User> allUsers = {};
 		YB_User currentUser;
 	};
 

@@ -4,7 +4,7 @@
 // Your header file contents here
 
 #include <string>
-#include <vector>
+#include <map>
 #include "YB_DataBasis.h"
 #include "YB_Repository.h"
 #include "YB_User.h"
@@ -28,6 +28,10 @@ namespace YBCarRental
 
 		string repositoryURL = "";
 
+		//Note: for simplicity reason, this dataSet was designed to be exposed as public.
+		//otherwise it should be hidden from direct external access.
+		map<int, TData> dataSet = {};
+
 
 		/// <summary>
 		/// Read all records (objects) into memory
@@ -46,6 +50,7 @@ namespace YBCarRental
 		/// <param name="id"></param>
 		/// <returns></returns>
 		void Get(int id, TData* objResult);
+		TData* Get(int id);
 
 
 		/// <summary>
@@ -69,8 +74,6 @@ namespace YBCarRental
 		/// </summary>
 		YB_Repository repository;
 
-		vector<TData> dataSet;
-
 
 
 		void ReadAllLines();
@@ -93,7 +96,7 @@ namespace YBCarRental
 	{
 		repositoryURL = url;
 		repository = YB_Repository(repositoryURL);
-
+		GetAll();
 	};
 
 
@@ -101,17 +104,56 @@ namespace YBCarRental
 	template<class TData>
 	void YB_PersistorBasis<TData>::GetAll() //cache to dataSet
 	{
+		if (!dataSet.empty())
+			dataSet.clear();			//GetAll is invoked in the constructor so there's potential of repeated invocation.
+
+		//repository.ReadAllLines();
+		for (const auto& iter : repository.allRecordLines)
+		{
+			TData data;
+			data.Deserialize(iter.second);
+			//dataSet.push_back(data);
+			dataSet.insert(std::make_pair(data.Id, data));
+		}
 	}
 
 	template<class TData>
 	void YB_PersistorBasis<TData>::Get(int id, TData* objResult)
 	{
-		string* line = repository.GetLine(id);
-		if (objResult != nullptr) {
-			TData obj = *objResult;
-			obj.Deserialize(*line);
+		auto iterator = dataSet.find(id);
+
+		if (iterator != dataSet.end()) {
+			*objResult = iterator->second;
 		}
+		else
+			objResult = nullptr;
+
+		// Outdated: 
+		// unnecessary to get the object from repository. Persistor had the objects in constructor.
+		//string* line = repository.GetLine(id);
+		//if (objResult != nullptr) {
+		//	//TData obj = *objResult;
+		//	objResult->Deserialize(*line);
+		//}
 	}
+
+	template<class TData>
+	TData* YB_PersistorBasis<TData>::Get(int id)
+	{
+		auto iterator = dataSet.find(id);
+		//auto iterator = std::find_if(dataSet.begin(), dataSet.end(),
+		//	[id](const TData& data) {
+		//		return data.Id == id;
+		//	});
+
+		if (iterator != dataSet.end()) {
+			return &(iterator->second);
+		}
+		else
+			return nullptr;
+
+	}
+
 
 	template<class TData>
 	void YB_PersistorBasis<TData>::Add(TData data)
@@ -124,16 +166,41 @@ namespace YBCarRental
 		{
 			throw YB_RepositoryError();
 		}
+		dataSet.insert(std::make_pair(data.Id, data));
 	}
 
 	template<class TData>
 	bool YB_PersistorBasis<TData>::Delete(int id)
 	{
+		auto item = dataSet.find(id);
+		if (item != dataSet.end()) {
+			try {
+				repository.DeleteLine(id);
+			}
+			catch (exception e) {
+				return false;
+			}
+			dataSet.erase(item);
+			return true;
+		}
 		return false;
 	}
+
 	template<class TData>
 	bool YB_PersistorBasis<TData>::Update(TData data)
 	{
+		string* line = data.Serialize();
+		auto item = dataSet.find(data.Id);
+		if (item != dataSet.end()) {
+			try {
+				repository.UpdateLine(*line);
+			}
+			catch (exception e) {
+				return false;
+			}
+			item->second = data;
+			return true;
+		}
 		return false;
 	}
 

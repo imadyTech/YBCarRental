@@ -18,13 +18,27 @@ namespace YBCarRental
 		const char* message;
 	};
 
-	//------------------------Inherited custom error types------------------------
+	//------------------------Repository custom error types------------------------
 	struct YB_RepositoryError : YB_ErrorBasis
 	{
 	public:
 		YB_RepositoryError() : YB_ErrorBasis("YB_RepositoryError") {}
 	};	
 	
+	struct YB_RepoRecordExistedError : YB_ErrorBasis
+	{
+	public:
+		YB_RepoRecordExistedError() : YB_ErrorBasis("YB_Repo:Record Already Existed.") {}
+	};	
+	
+	struct YB_RepoRecordNotExistedError : YB_ErrorBasis
+	{
+	public:
+		YB_RepoRecordNotExistedError() : YB_ErrorBasis("YB_Repo:Record Does Not Existed.") {}
+	};	
+	
+
+	//------------------------Datamodels custom error types------------------------
 	struct YB_SerializeError : YB_ErrorBasis
 	{
 	public:

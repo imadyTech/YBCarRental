@@ -20,7 +20,6 @@ namespace YBCarRental
 		YB_User(string username, int password);
 		~YB_User() override;
 
-		int	Id;					//The unique id of user;
 		string UserName;		//max 12 alphabets;
 		string FirstName;
 		string FamilyName;

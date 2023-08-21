@@ -23,7 +23,6 @@ namespace YBCarRental
 		YB_Rent(int userId, int carId, tm start, int days);
 		~YB_Rent() override;
 
-		int Id;					//order id;
 		int UserId;
 		int CarId;
 		tm RentStart;			//rental start date

@@ -31,27 +31,39 @@ int main()
 	//YBCarRental::YB_UserPersistor userPersistor = YBCarRental::YB_UserPersistor("E:\\YB800ProSE\\YBCarRental\\YBCarRental\\x64\\Debug\\UserDatabase.txt"); //OK
 	//cout << userPersistor.repositoryURL << endl;
 
-	//OK
+	////OK
+	//YB_User user = YB_User();
+	//user.FirstName = "Frank";
+	//user.FamilyName = "Shen";
+	//user.Id = 15;
+	//user.Password = "666666";
+	//user.UserName = "fshen";
+	//user.LoginStatus = false;
+	//user.UserRoles = "user:admin";
+	//user.Balance = 10000;
+	////OK
+
+
+	//ofstream outputfile("UserRepo.txt");
+	//if (!outputfile.is_open())
+	//{
+	//	cerr << "The file is not opened!" << endl;
+	//}
+	//user.Serialize(&outputfile);
+
+
+	//YB_Repository repo = YB_Repository("UserRepo.txt");
+	//cout << repo.isReady;
+
+	//YB_PersistorBasis<YB_User> persistor = YB_PersistorBasis<YB_User>("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/UserRepo.txt");
+	//persistor.GetAll();
+	//cout << "END";
+
+	YB_PersistorBasis<YB_User> persistor = YB_PersistorBasis<YB_User>("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/UserRepo.txt");
 	YB_User user = YB_User();
-	user.FirstName = "Frank";
-	user.FamilyName = "Shen";
-	user.Id = 15;
-	user.Password = "666666";
-	user.UserName = "fshen";
-	user.LoginStatus = false;
-	user.UserRoles = "user:admin";
-	user.Balance = 10000;
-	//OK
+	persistor.Get(15, &user);
 
-
-	ofstream outputfile("UserRepo.txt");
-	if (!outputfile.is_open())
-	{
-		cerr << "The file is not opened!" << endl;
-	}
-	user.Serialize(&outputfile);
-	
-
+	cout << "End";
 
 	//initialization
 	//managers
@@ -70,6 +82,5 @@ int main()
 		//Managers logic updates driven by viewmodel
 		//Persistence
 	//Loop
-
 
 }

@@ -19,6 +19,8 @@ namespace YBCarRental
 	public:
 		YB_DataBasis();
 
+		int Id;
+
 		virtual string* Serialize();
 
 

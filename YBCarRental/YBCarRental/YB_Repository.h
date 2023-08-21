@@ -24,25 +24,27 @@ namespace YBCarRental
 		YB_Repository(string url);
 		~YB_Repository();
 
+		bool isReady = false;
+
 		void ReadAllLines();
 		string* GetLine(int index);
 		void AddLine(string line);
-		void DeleteLine(string line);
+		void DeleteLine(int index);
 		void UpdateLine(string line);
 		void ClearAll();
+
+		/// <summary>
+		/// a TData record is serielized to a string and here caches all the records strings.
+		/// Note: for simplicity reason, this data cache was designed to be exposed as public.
+		/// </summary>
+		map<int, string> allRecordLines = {};
 
 
 	private:
 		string repositoryURL="";
 
-		/// <summary>
-		/// a TData record is serielized to a string and here caches all the records strings.
-		/// </summary>
-		map<int, string> allRecordLines = {};
-
-
-		//ifstream input;//C2280 error: ifstream defined but not instantiated result to C2280
-		//ofstream output;
+		int extractIndex(string line);
+		void SaveAll();
 	};
 }
 

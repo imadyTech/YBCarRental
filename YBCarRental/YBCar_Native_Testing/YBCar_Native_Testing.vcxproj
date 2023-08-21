@@ -167,6 +167,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="YBCar_PersistorTesting.cpp" />
     <ClCompile Include="YBCar_UserTesting.cpp" />
     <ClCompile Include="YBCar_RepoTesting.cpp" />
   </ItemGroup>

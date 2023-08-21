@@ -43,7 +43,6 @@ namespace YBCarRental
 		}
 		~YB_Car() override;
 
-		int Id;
 		string Make;
 		string Model;
 		int Year;

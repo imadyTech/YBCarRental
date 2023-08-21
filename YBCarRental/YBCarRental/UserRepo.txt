@@ -1,1 +1,3 @@
-15;fshen;0;Frank;Shen;666666;10000;user;admin;
+15;fshen;0;Frank;Shen;666666;10000;user;
+16;admin;0;Noman;AI;666666;0;user|admin;
+17;superman;0;Super;Man;666666;999;user;

@@ -11,7 +11,14 @@
 #include "../YBCarRental/YB_UserPersistor.h"
 #include "../YBCarRental/YB_User.h"
 
+using namespace YBCarRental;
 
+namespace YBCarTesting
+{
+
+	YB_User CreateSimulativeNormalUser();
+	YB_User CreateSimulativeAdminUser();
+}
 
 // add headers that you want to pre-compile here
 

@@ -20,6 +20,8 @@ namespace YBCarTesting
 			//mgr.UserLogout();
 
 		}
+
+		[_CRT_OBSOLETE]
 		TEST_METHOD(YB_UserManagerTest)
 		{
 			YB_UserManager mgr = YB_UserManager("This is where the user data stored.");

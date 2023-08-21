@@ -10,7 +10,6 @@ namespace YBCarRental
 	template <class TData = YB_DataBasis>
 	class YB_ManagerBasis
 	{
-
 	public:
 		YB_ManagerBasis(void);
 		YB_ManagerBasis(string url);
@@ -28,6 +27,8 @@ namespace YBCarRental
 		/// <param name="id"></param>
 		/// <returns></returns>
 		TData* Get(int id);
+		//overload of Get(int)
+		TData* Get(string username);
 
 		/// <summary>
 		/// Delete an object from memory (will persisted later by Save() command.
@@ -51,7 +52,7 @@ namespace YBCarRental
 		YB_PersistorBasis<TData> persistor;
 
 		///dictionary of id:object pair
-		map<int, TData> dataSet;
+		//map<int, TData> dataSet;
 	};
 
 #pragma region Constructors definition
@@ -74,40 +75,49 @@ namespace YBCarRental
 	template<class TData>
 	inline TData* YB_ManagerBasis<TData>::Get(int id)
 	{
-		TData* ptr = nullptr;
-		//if TData already existed in the cache, then return the cached object
-		if (dataSet.find(id) != dataSet.end())
-			ptr = &dataSet[id];
-		//otherwise will take from persistance
-		else
-		{
-			ptr = new TData();
-			persistor.Get(id, ptr);
-		}
-		return ptr;
+		return persistor.Get(id);
 	}
+	template<class TData>
+	inline TData* YB_ManagerBasis<TData>::Get(string username)
+	{
+		return persistor.Get(username);
+	}
+
+
+
 	template<class TData>
 	inline bool YB_ManagerBasis<TData>::Add(TData data)
 	{
 		try {
 			persistor.Add(data);
+			return true;
 		}
 		catch (exception e)
 		{
 			throw YB_PersistorError();
 		}
-		return false;
 	}
 	template<class TData>
 	inline bool YB_ManagerBasis<TData>::Delete(int id)
 	{
-		return false;
+		try {
+			return persistor.Delete(id);
+		}
+		catch (exception e)
+		{
+			throw YB_PersistorError();
+		}
 	}
 	template<class TData>
 	inline bool YB_ManagerBasis<TData>::Update(TData data)
 	{
-		return false;
+		try {
+			return persistor.Update(data);
+		}
+		catch (exception e)
+		{
+			throw YB_PersistorError();
+		}
 	}
-
 }
 #endif YB_ManagerBasis_H

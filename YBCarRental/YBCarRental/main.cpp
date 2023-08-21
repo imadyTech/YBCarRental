@@ -60,10 +60,9 @@ int main()
 	//cout << "END";
 
 	YB_PersistorBasis<YB_User> persistor = YB_PersistorBasis<YB_User>("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/UserRepo.txt");
-	YB_User user = YB_User();
-	persistor.Get(15, &user);
+	YB_User* userPtr = persistor.Get("fshen");
 
-	cout << "End";
+	cout << userPtr->FirstName << " " << userPtr->FamilyName;
 
 	//initialization
 	//managers

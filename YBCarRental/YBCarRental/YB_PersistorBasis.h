@@ -50,8 +50,9 @@ namespace YBCarRental
 		/// <param name="id"></param>
 		/// <returns></returns>
 		void Get(int id, TData* objResult);
+		//overloaded forms of Get()
 		TData* Get(int id);
-
+		TData* Get(string username);
 
 		/// <summary>
 		/// Delete an object from memory (will persisted later by Save() command.
@@ -151,7 +152,22 @@ namespace YBCarRental
 		}
 		else
 			return nullptr;
+	}
 
+	template<class TData>
+	TData* YB_PersistorBasis<TData>::Get(string username)
+	{
+		int id=-1;
+		for (const auto& entry : dataSet) {
+			//data = entry.second;
+			if (entry.second.UserName == username) {
+				//as the entry was created in the for loop, so it will be destructed after for loop breaks.
+				//int value will be copied so it won't loss.
+				id = entry.second.Id;		
+				break;
+			}
+		}
+		return this->Get(id);
 	}
 
 

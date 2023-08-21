@@ -3,13 +3,6 @@
 
 namespace YBCarRental
 {
-	//YB_UserManager::YB_UserManager()
-	//{
-	//}
-	//YB_UserManager::YB_UserManager(string userRepo)
-	//{
-	//}
-	//;
 	bool YB_UserManager::UserRegister(YB_User& user)
 	{
 		auto existingUser = this->Get(user.Id);
@@ -17,21 +10,38 @@ namespace YBCarRental
 		{
 			return false; //user already exist
 		}
-		bool result = this->Add(user);
-		
-		return result;
+		return this->Add(user);
 	}
+
+
 	bool YB_UserManager::UserLogin(string username, string password)
 	{
-		return false;
+		YB_User* userPtr = this->Get(username);
+		if (userPtr->Password == password)
+		{
+			userPtr->LoginStatus = true;
+			this->Update(*userPtr);
+			currentUser = userPtr;
+			return true;
+		}
+		else
+			return false;
 	}
+
+
 	bool YB_UserManager::UserLogout()
 	{
-		return false;
+		currentUser->LoginStatus = false;
+
+		if (this->Update(*currentUser))
+			return true;
+		else
+			return false;
 	}
+
+
 	bool YB_UserManager::IsAdmin()
 	{
-		return false;
-	}
-	;
+		return currentUser->UserRoles.find("admin") != std::string::npos;
+	};
 }

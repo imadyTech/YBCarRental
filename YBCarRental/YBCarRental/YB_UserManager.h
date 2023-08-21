@@ -49,7 +49,7 @@ namespace YBCarRental
 		bool IsAdmin();
 
 	private:
-		YB_User currentUser;
+		YB_User* currentUser;
 	};
 
 }

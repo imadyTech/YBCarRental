@@ -31,12 +31,6 @@
     <Filter Include="Source Files\YB_Persistors">
       <UniqueIdentifier>{e9209735-53d2-4e76-878f-cadb210d042b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\YB_Views">
-      <UniqueIdentifier>{2d511158-9479-4f6e-929e-eec97c452220}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\YB_Views">
-      <UniqueIdentifier>{485d19e4-e863-4505-b7ba-961bd540c050}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\YB_Errors">
       <UniqueIdentifier>{bc308215-840b-427c-801a-ec2757947bc6}</UniqueIdentifier>
     </Filter>
@@ -84,12 +78,6 @@
     <ClCompile Include="YB_User.cpp">
       <Filter>Source Files\YB_DataModels</Filter>
     </ClCompile>
-    <ClCompile Include="YB_ViewItemBasis.cpp">
-      <Filter>Source Files\YB_Views</Filter>
-    </ClCompile>
-    <ClCompile Include="YB_Window.cpp">
-      <Filter>Source Files\YB_Views</Filter>
-    </ClCompile>
     <ClCompile Include="YB_Errors.cpp">
       <Filter>Source Files\YB_Errors</Filter>
     </ClCompile>
@@ -133,12 +121,6 @@
     </ClInclude>
     <ClInclude Include="YB_User.h">
       <Filter>Header Files\YB_DataModels</Filter>
-    </ClInclude>
-    <ClInclude Include="YB_ViewItemBasis.h">
-      <Filter>Header Files\YB_Views</Filter>
-    </ClInclude>
-    <ClInclude Include="YB_Window.h">
-      <Filter>Header Files\YB_Views</Filter>
     </ClInclude>
     <ClInclude Include="YB_Errors.h">
       <Filter>Header Files\YB_Errors</Filter>

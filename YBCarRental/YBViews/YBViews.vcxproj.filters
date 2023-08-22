@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\YB_Views">
+      <UniqueIdentifier>{add3fcaa-75a2-4610-bffc-aa8bf6e37090}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\YB_ViewItems">
+      <UniqueIdentifier>{e5c89f92-4dd7-4c84-8ca9-08ba1306f971}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\YB_Views">
+      <UniqueIdentifier>{4d495886-7cc0-4ba5-8fad-58cb2326013a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\YB_ViewItems">
+      <UniqueIdentifier>{e9ad102b-e64d-4501-8c62-c71a42bbcb02}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_ViewBasis.cpp">
+      <Filter>Source Files\YB_Views</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_ViewItemBasis.cpp">
+      <Filter>Source Files\YB_ViewItems</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_Window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="YB_Window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_ViewBasis.h">
+      <Filter>Header Files\YB_Views</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_ViewItemBasis.h">
+      <Filter>Header Files\YB_ViewItems</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

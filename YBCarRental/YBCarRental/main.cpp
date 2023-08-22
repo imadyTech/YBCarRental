@@ -5,7 +5,10 @@
 #include "YB_User.h"
 #include "YB_UserPersistor.h"
 #include "YB_Errors.h"
+#include "YB_Window.h"
+
 using namespace YBCarRental;
+using namespace YBConsoleViews;
 
 int main()
 {
@@ -70,6 +73,8 @@ int main()
 	//load viewitems info
 		//viewitem instantiation
 		//YB_Windows
+	YB_Window window = YB_Window();
+
 	//
 
 

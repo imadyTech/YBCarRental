@@ -117,7 +117,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>E:\YB800ProSE\YBCarRental\YBCarRental\YBViews\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>YB_Window;YB_ViewItemBasis;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>YB_Window;YB_ViewBasis;YB_ViewItemBasis;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -144,6 +144,7 @@
     <ClCompile Include="YB_Rent.cpp" />
     <ClCompile Include="YB_RentManager.cpp" />
     <ClCompile Include="YB_Errors.cpp" />
+    <ClCompile Include="YB_LoginView.cpp" />
     <ClCompile Include="YB_User.cpp" />
     <ClCompile Include="YB_UserManager.cpp" />
     <ClCompile Include="main.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="YB_Rent.h" />
     <ClInclude Include="YB_RentManager.h" />
     <ClInclude Include="YB_Errors.h" />
+    <ClInclude Include="YB_LoginView.h" />
     <ClInclude Include="YB_User.h" />
     <ClInclude Include="YB_UserManager.h" />
     <ClInclude Include="YB_RentPersistor.h" />

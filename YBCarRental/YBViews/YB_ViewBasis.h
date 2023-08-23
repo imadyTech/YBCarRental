@@ -18,6 +18,10 @@ namespace YBConsoleViews
 
 		YB_ViewBasis(int* width, int* height);
 
+		void AddViewItem(YB_ViewItemBasis item);
+		void AddViewItems(vector<YB_ViewItemBasis> items);
+		void AddViewItems(vector<string> itemsDef);
+
 	protected:
 		virtual vector<char*>* Render();			// multiple lines text
 		virtual void OnSelect();

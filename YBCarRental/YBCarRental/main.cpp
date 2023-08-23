@@ -70,15 +70,11 @@ int main()
 	//initialization
 	//managers
 		//persistors
+	//YB_Window window = YB_Window();
 	//load viewitems info
-		//viewitem instantiation
 		//YB_Windows
-	YB_Window window = YB_Window();
-
-	//
-
-
-	//welcome screen
+		//view/viewitem instantiation, load all view definition from persistence
+		//Activate 1st view: welcome screen
 	//try/catch wrapping
 		//get key inputs
 		//YB_Windows update / response to key input

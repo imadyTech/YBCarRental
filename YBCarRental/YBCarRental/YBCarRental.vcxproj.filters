@@ -37,6 +37,15 @@
     <Filter Include="Header Files\YB_Errors">
       <UniqueIdentifier>{8e3de0bc-2f88-459f-a385-ef3b8abeeb6e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\YB_Views">
+      <UniqueIdentifier>{d032e413-7b0f-4ade-9da5-09c175e3a4b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\YB_Views">
+      <UniqueIdentifier>{f01030e2-7272-4b79-af04-d4924d9cd5d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ApplicationData">
+      <UniqueIdentifier>{6b1f093f-974e-4d9c-ba26-c5d9869624b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -83,6 +92,9 @@
     </ClCompile>
     <ClCompile Include="YB_ManagerBasis.cpp">
       <Filter>Source Files\YB_Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_LoginView.cpp">
+      <Filter>Source Files\YB_Views</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -131,10 +143,13 @@
     <ClInclude Include="YB_ManagerBasis.h">
       <Filter>Header Files\YB_Managers</Filter>
     </ClInclude>
+    <ClInclude Include="YB_LoginView.h">
+      <Filter>Header Files\YB_Views</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="UserRepo.txt">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\ApplicationData</Filter>
     </Text>
   </ItemGroup>
 </Project>

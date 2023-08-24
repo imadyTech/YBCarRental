@@ -153,6 +153,7 @@
     <ClCompile Include="YB_RentPersistor.cpp" />
     <ClCompile Include="YB_Repository.cpp" />
     <ClCompile Include="YB_UserPersistor.cpp" />
+    <ClCompile Include="YB_ViewManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -171,9 +172,15 @@
     <ClInclude Include="YB_RentPersistor.h" />
     <ClInclude Include="YB_Repository.h" />
     <ClInclude Include="YB_UserPersistor.h" />
+    <ClInclude Include="YB_ViewItemManager.h" />
+    <ClInclude Include="YB_ViewManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="CarRepo.txt" />
+    <Text Include="RentRepo.txt" />
     <Text Include="UserRepo.txt" />
+    <Text Include="ViewItemRepo.txt" />
+    <Text Include="ViewRepo.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\YBViews\YBViews.vcxproj">

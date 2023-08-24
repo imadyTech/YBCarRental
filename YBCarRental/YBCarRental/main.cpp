@@ -6,6 +6,7 @@
 #include "YB_UserPersistor.h"
 #include "YB_Errors.h"
 #include "YB_Window.h"
+#include "YB_ViewManager.h"
 
 using namespace YBCarRental;
 using namespace YBConsoleViews;
@@ -14,6 +15,26 @@ int main()
 {
 	//If you see this message then congratulation! Likely the build is passed.
 	std::cout << "Hello Yoobee-Car-Rental!\n";
+
+	//initialization
+	//managers
+	YB_ViewManager viewManager = YB_ViewManager("ViewRepo.txt");
+		//persistors loading
+	viewManager.LoadAllViews();
+
+
+	YB_Window window = YB_Window();
+	//load viewitems info
+		//YB_Windows
+		//view/viewitem instantiation, load all view definition from persistence
+		//Activate 1st view: welcome screen
+	//try/catch wrapping
+		//get key inputs
+		//YB_Windows update / response to key input
+		//viewitem update viewmodel
+		//Managers logic updates driven by viewmodel
+		//Persistence
+	//Loop
 
 	////Testing the custom YB Errors
 	//try {
@@ -30,7 +51,6 @@ int main()
 	//YBCarRental::YB_UserPersistor userPersistor = YBCarRental::YB_UserPersistor("This is where the user data stored."); //OK
 	//cout << userPersistor.repositoryURL << endl;
 
-
 	//YBCarRental::YB_UserPersistor userPersistor = YBCarRental::YB_UserPersistor("E:\\YB800ProSE\\YBCarRental\\YBCarRental\\x64\\Debug\\UserDatabase.txt"); //OK
 	//cout << userPersistor.repositoryURL << endl;
 
@@ -46,14 +66,12 @@ int main()
 	//user.Balance = 10000;
 	////OK
 
-
 	//ofstream outputfile("UserRepo.txt");
 	//if (!outputfile.is_open())
 	//{
 	//	cerr << "The file is not opened!" << endl;
 	//}
 	//user.Serialize(&outputfile);
-
 
 	//YB_Repository repo = YB_Repository("UserRepo.txt");
 	//cout << repo.isReady;
@@ -62,25 +80,8 @@ int main()
 	//persistor.GetAll();
 	//cout << "END";
 
-	YB_PersistorBasis<YB_User> persistor = YB_PersistorBasis<YB_User>("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/UserRepo.txt");
-	YB_User* userPtr = persistor.Get("fshen");
-
-	cout << userPtr->FirstName << " " << userPtr->FamilyName;
-
-	//initialization
-	//managers
-		//persistors
-	//YB_Window window = YB_Window();
-	//load viewitems info
-		//YB_Windows
-		//view/viewitem instantiation, load all view definition from persistence
-		//Activate 1st view: welcome screen
-	//try/catch wrapping
-		//get key inputs
-		//YB_Windows update / response to key input
-		//viewitem update viewmodel
-		//Managers logic updates driven by viewmodel
-		//Persistence
-	//Loop
+	//YB_PersistorBasis<YB_User> persistor = YB_PersistorBasis<YB_User>("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/UserRepo.txt");
+	//YB_User* userPtr = persistor.Get("fshen");
+	//cout << userPtr->FirstName << " " << userPtr->FamilyName;
 
 }

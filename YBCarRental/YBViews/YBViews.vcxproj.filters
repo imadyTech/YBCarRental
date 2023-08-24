@@ -25,6 +25,12 @@
     <Filter Include="Source Files\YB_ViewItems">
       <UniqueIdentifier>{e9ad102b-e64d-4501-8c62-c71a42bbcb02}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\YB_ViewMessages">
+      <UniqueIdentifier>{f9be7f69-cfdd-4dfa-9f53-113b81962a2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\YB_ViewMessages">
+      <UniqueIdentifier>{1b3b17a0-b30a-4821-b0d1-b76280fcb8e1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -39,6 +45,15 @@
     <ClCompile Include="YB_Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="YB_TextViewItem.cpp">
+      <Filter>Source Files\YB_ViewItems</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonViewItem.cpp">
+      <Filter>Source Files\YB_ViewItems</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_ViewMessage.cpp">
+      <Filter>Source Files\YB_ViewMessages</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="YB_Window.h">
@@ -49,6 +64,15 @@
     </ClInclude>
     <ClInclude Include="YB_ViewItemBasis.h">
       <Filter>Header Files\YB_ViewItems</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonViewItem.h">
+      <Filter>Header Files\YB_ViewItems</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_TextViewItem.h">
+      <Filter>Header Files\YB_ViewItems</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_ViewMessage.h">
+      <Filter>Header Files\YB_ViewMessages</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

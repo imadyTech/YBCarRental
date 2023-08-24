@@ -16,6 +16,11 @@ namespace YBCarRental
 
 	protected:
 		/// <summary>
+		/// Load and instantiate all view definitions from persistence.
+		/// </summary>
+		void LoadAll();
+
+		/// <summary>
 		/// Add a data record to the persistent repository
 		/// </summary>
 		/// <param name="data"></param>
@@ -69,8 +74,11 @@ namespace YBCarRental
 
 #pragma endregion
 
-
-
+	template<class TData>
+	inline void YB_ManagerBasis<TData>::LoadAll()
+	{
+		persistor.GetAll();
+	}
 
 	template<class TData>
 	inline TData* YB_ManagerBasis<TData>::Get(int id)

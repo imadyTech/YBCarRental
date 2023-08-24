@@ -5,6 +5,7 @@
 #include <map>
 #include <vector>
 #include "YB_ViewItemBasis.h"
+#include "YB_ViewMessage.h"
 
 using namespace std;
 
@@ -16,6 +17,7 @@ namespace YBConsoleViews
 		char* viewId[6];
 		int* w, * h;								//view size, same as window size but need be passed in.
 
+		YB_ViewBasis();
 		YB_ViewBasis(int* width, int* height);
 
 		void AddViewItem(YB_ViewItemBasis item);
@@ -24,11 +26,12 @@ namespace YBConsoleViews
 
 	protected:
 		virtual vector<char*>* Render();			// multiple lines text
-		virtual void OnSelect();
-		virtual void OnReturn();
+		virtual void OnKeyInput(char* keycode);
+		virtual void OnItemReturned(YB_ViewMessageBasis msg);
 
 	private:
-		map<int, YB_ViewItemBasis> viewItems;
+		map<int, YB_ViewItemBasis> viewItems = {};
+		vector<char*>* viewContent;
 	};
 }
-#endif YB_ViewBasis_H
+#endif //YB_ViewBasis_H

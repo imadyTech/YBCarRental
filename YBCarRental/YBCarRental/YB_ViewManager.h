@@ -11,20 +11,20 @@ using namespace YBConsoleViews;
 
 namespace YBCarRental 
 {
-	class YB_ViewManager : YB_ManagerBasis<YB_ViewBasis>
+	class YB_ViewManager : protected YB_ManagerBasis<YB_ViewBasis>
 	{
 	public:
 		YB_ViewManager() : YB_ManagerBasis<YB_ViewBasis>() {};
 		/// <summary>
 		/// Constructor and initialization;
 		/// </summary>
-		/// <param name="userRepo">The file path of User Repository.</param>
+		/// <param name="userRepo">The file path of View Repository (view definitions similar function to HTML).</param>
 		YB_ViewManager(string url): YB_ManagerBasis<YB_ViewBasis>(url) { };
 
-
+		void LoadAllViews();			
 
 	private:
-		YB_ViewBasis* currentUser;
+		//YB_ViewBasis* currentView;
 	};
 
 }

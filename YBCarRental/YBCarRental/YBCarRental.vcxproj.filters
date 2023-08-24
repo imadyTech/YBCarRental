@@ -96,6 +96,9 @@
     <ClCompile Include="YB_LoginView.cpp">
       <Filter>Source Files\YB_Views</Filter>
     </ClCompile>
+    <ClCompile Include="YB_ViewManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="YB_PersistorBasis.h">
@@ -146,9 +149,27 @@
     <ClInclude Include="YB_LoginView.h">
       <Filter>Header Files\YB_Views</Filter>
     </ClInclude>
+    <ClInclude Include="YB_ViewItemManager.h">
+      <Filter>Header Files\YB_Views</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_ViewManager.h">
+      <Filter>Header Files\YB_Views</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="UserRepo.txt">
+      <Filter>Source Files\ApplicationData</Filter>
+    </Text>
+    <Text Include="ViewRepo.txt">
+      <Filter>Source Files\ApplicationData</Filter>
+    </Text>
+    <Text Include="ViewItemRepo.txt">
+      <Filter>Source Files\ApplicationData</Filter>
+    </Text>
+    <Text Include="CarRepo.txt">
+      <Filter>Source Files\ApplicationData</Filter>
+    </Text>
+    <Text Include="RentRepo.txt">
       <Filter>Source Files\ApplicationData</Filter>
     </Text>
   </ItemGroup>

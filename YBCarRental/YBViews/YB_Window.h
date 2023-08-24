@@ -14,6 +14,8 @@ namespace YBConsoleViews
 	class YB_Window
 	{
 	public:
+		YB_Window();
+
 		vector<char*>* background;
 
 		void GetKeyInput();
@@ -22,12 +24,12 @@ namespace YBConsoleViews
 		void Goto(char* viewId);						//Activate a view
 		void Prev();
 		void Next();
-
-		void AddView(YB_ViewBasis view);	
+		void AddView(YB_ViewBasis view);
 	private:
 		YB_ViewBasis currentView;
 		map<char*, YB_ViewBasis> viewCollection;
 		stack<YB_ViewBasis> viewStack;
 	};
+
 }
-#endif
+#endif // YB_Window_H

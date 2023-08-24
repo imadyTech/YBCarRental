@@ -7,13 +7,13 @@
 #include <map>
 #include "YB_DataBasis.h"
 #include "YB_Repository.h"
-#include "YB_User.h"
+//#include "YB_User.h"
 #include "YB_Errors.h"
 
 using namespace std;
 
 
-namespace YBCarRental
+namespace YBPersistence
 {
 	/// <summary>
 	/// Object orientated layer of data persistence.

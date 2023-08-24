@@ -2,7 +2,7 @@
 #include "YB_DataBasis.h"
 
 
-namespace YBCarRental
+namespace YBPersistence
 {
 
 	YB_DataBasis::YB_DataBasis()

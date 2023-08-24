@@ -34,10 +34,12 @@ namespace YBConsoleViews
 			}
 			delete[] viewContent;
 		}
+
+
 		int* viewId;						//
 		int* x, * y;						//relative coordinate inside the view
-		int* w;
-		const int h = 1;					//For simplicity, the viewItem won't have height parameter but only 1 line.
+		int* w;								//Width of the viewItem.
+		int* h;								//Height of the viewItem.
 		bool* isFocused;
 		bool* isSelected;
 		bool* isHidden;				//if an item is hidden, then the View will ignore it during rendering.

@@ -60,9 +60,6 @@
     <ClCompile Include="YB_RentManager.cpp">
       <Filter>Source Files\YB_Managers</Filter>
     </ClCompile>
-    <ClCompile Include="YB_PersistorBasis.cpp">
-      <Filter>Source Files\YB_Persistors</Filter>
-    </ClCompile>
     <ClCompile Include="YB_UserPersistor.cpp">
       <Filter>Source Files\YB_Persistors</Filter>
     </ClCompile>
@@ -71,12 +68,6 @@
     </ClCompile>
     <ClCompile Include="YB_RentPersistor.cpp">
       <Filter>Source Files\YB_Persistors</Filter>
-    </ClCompile>
-    <ClCompile Include="YB_Repository.cpp">
-      <Filter>Source Files\YB_Persistors</Filter>
-    </ClCompile>
-    <ClCompile Include="YB_DataBasis.cpp">
-      <Filter>Source Files\YB_DataModels</Filter>
     </ClCompile>
     <ClCompile Include="YB_Car.cpp">
       <Filter>Source Files\YB_DataModels</Filter>
@@ -87,9 +78,6 @@
     <ClCompile Include="YB_User.cpp">
       <Filter>Source Files\YB_DataModels</Filter>
     </ClCompile>
-    <ClCompile Include="YB_Errors.cpp">
-      <Filter>Source Files\YB_Errors</Filter>
-    </ClCompile>
     <ClCompile Include="YB_ManagerBasis.cpp">
       <Filter>Source Files\YB_Managers</Filter>
     </ClCompile>
@@ -97,13 +85,10 @@
       <Filter>Source Files\YB_Views</Filter>
     </ClCompile>
     <ClCompile Include="YB_ViewManager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\YB_Views</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="YB_PersistorBasis.h">
-      <Filter>Header Files\YB_Persistors</Filter>
-    </ClInclude>
     <ClInclude Include="YB_UserManager.h">
       <Filter>Header Files\YB_Managers</Filter>
     </ClInclude>
@@ -116,17 +101,11 @@
     <ClInclude Include="YB_RentPersistor.h">
       <Filter>Header Files\YB_Persistors</Filter>
     </ClInclude>
-    <ClInclude Include="YB_Repository.h">
-      <Filter>Header Files\YB_Persistors</Filter>
-    </ClInclude>
     <ClInclude Include="YB_CarManager.h">
       <Filter>Header Files\YB_Managers</Filter>
     </ClInclude>
     <ClInclude Include="YB_RentManager.h">
       <Filter>Header Files\YB_Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="YB_DataBasis.h">
-      <Filter>Header Files\YB_DataModels</Filter>
     </ClInclude>
     <ClInclude Include="YB_Car.h">
       <Filter>Header Files\YB_DataModels</Filter>
@@ -136,9 +115,6 @@
     </ClInclude>
     <ClInclude Include="YB_User.h">
       <Filter>Header Files\YB_DataModels</Filter>
-    </ClInclude>
-    <ClInclude Include="YB_Errors.h">
-      <Filter>Header Files\YB_Errors</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>

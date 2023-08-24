@@ -179,6 +179,9 @@
     <ProjectReference Include="..\YBCarRental\YBCarRental.vcxproj">
       <Project>{3b7bd2c2-dc53-4b40-91d7-fb5d57f584a4}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\YBPersistence\YBPersistence.vcxproj">
+      <Project>{cf34afe6-b793-4469-b562-169a924f9a5b}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Text Include="UserRepo.txt" />

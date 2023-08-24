@@ -1,7 +1,7 @@
 #pragma once
 #include <stdexcept>
 
-namespace YBCarRental
+namespace YBPersistence
 {
 	/// <summary>
 	/// define a base struct of custom erros -- to make life easier

@@ -6,6 +6,7 @@
 #include "YB_DataBasis.h"
 
 using namespace std;
+using namespace YBPersistence;
 
 
 namespace YBCarRental

@@ -1,7 +1,7 @@
 #include "YB_Repository.h"
 #include "YB_Errors.h"
 
-namespace YBCarRental
+namespace YBPersistence
 {
 	/// <summary>
 	/// Text stream orientated layer of data persistence.

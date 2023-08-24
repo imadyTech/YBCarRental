@@ -21,7 +21,7 @@ namespace YBConsoleViews
 		void GetKeyInput();
 		//void ResponseInput();
 		void RenderView();
-		void Goto(char* viewId);						//Activate a view
+		void Goto(int viewId);						//Activate a view
 		void Prev();
 		void Next();
 		void AddView(YB_ViewBasis view);

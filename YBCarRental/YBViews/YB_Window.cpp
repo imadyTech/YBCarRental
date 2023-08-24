@@ -9,6 +9,11 @@ namespace YBConsoleViews
 	}
 
 
+	void YB_Window::Goto(int viewId)
+	{
+
+	}
+
 	void YB_Window::GetKeyInput()
 	{
 	}

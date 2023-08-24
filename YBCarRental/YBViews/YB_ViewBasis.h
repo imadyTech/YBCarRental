@@ -6,15 +6,18 @@
 #include <vector>
 #include "YB_ViewItemBasis.h"
 #include "YB_ViewMessage.h"
+#include "YB_DataBasis.h"
 
 using namespace std;
+using namespace YBPersistence;
 
 namespace YBConsoleViews
 {
-	class YB_ViewBasis
+	class YB_ViewBasis : public YBPersistence::YB_DataBasis
 	{
 	public:
-		char* viewId[6];
+		int* viewId;
+		char* Title[32];
 		int* w, * h;								//view size, same as window size but need be passed in.
 
 		YB_ViewBasis();

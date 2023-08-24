@@ -4,6 +4,7 @@
 #include "YB_DataBasis.h"
 #include "YB_PersistorBasis.h"
 #include "YB_Errors.h"
+using namespace YBPersistence;
 
 namespace YBCarRental
 {

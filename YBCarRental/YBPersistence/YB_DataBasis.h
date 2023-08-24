@@ -9,7 +9,7 @@
 using namespace std;
 
 
-namespace YBCarRental
+namespace YBPersistence
 {
 	enum YB_RentalStatus { pending = 0, approved = 1, rejected = 2, completed = 3 };
 	enum YB_UserRole { User = 0, Admin = 1 };

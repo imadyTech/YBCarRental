@@ -20,14 +20,15 @@ int main()
 	//managers
 	YB_ViewManager viewManager = YB_ViewManager("ViewRepo.txt");
 		//persistors loading
+		//load viewitems info
+			//view/viewitem instantiation, load all view definition from persistence
 	viewManager.LoadAllViews();
 
 
 	YB_Window window = YB_Window();
-	//load viewitems info
-		//YB_Windows
-		//view/viewitem instantiation, load all view definition from persistence
-		//Activate 1st view: welcome screen
+	//Activate 1st view: welcome screen
+	window.Goto(0);	//0 indicate the entry view (WelcomeView)
+
 	//try/catch wrapping
 		//get key inputs
 		//YB_Windows update / response to key input
@@ -35,6 +36,11 @@ int main()
 		//Managers logic updates driven by viewmodel
 		//Persistence
 	//Loop
+	while (true)
+	{
+		window.GetKeyInput();
+		window.RenderView();
+	}
 
 	////Testing the custom YB Errors
 	//try {

@@ -8,6 +8,7 @@
 #pragma once
 
 using namespace std;
+using namespace YBPersistence;
 
 
 namespace YBCarRental

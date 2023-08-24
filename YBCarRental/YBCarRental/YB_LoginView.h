@@ -5,10 +5,11 @@
 #include "YB_ViewBasis.h"
 
 using namespace YBConsoleViews;
+using namespace YBPersistence;
 
 namespace YBCarRental
 {
-	class YB_LoginView : public YBCarRental::YB_DataBasis, protected YBConsoleViews::YB_ViewBasis
+	class YB_LoginView : public YBPersistence::YB_DataBasis, protected YBConsoleViews::YB_ViewBasis
 		//YB_DataBasis: allows the view to access persistence layer.
 		//YB_ViewBasis: allows the view to inherit view layer properties and methods.
 	{

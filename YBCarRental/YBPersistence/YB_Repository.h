@@ -12,7 +12,7 @@
 using namespace std;
 
 
-namespace YBCarRental
+namespace YBPersistence
 {
 	/// <summary>
 	/// Text stream orientated layer of data persistence.

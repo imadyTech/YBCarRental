@@ -78,7 +78,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>E:\YB800ProSE\YBCarRental\YBCarRental\YBCarRental;$(IncludePath)</IncludePath>
+    <IncludePath>E:\YB800ProSE\YBCarRental\YBCarRental\YBViews;E:\YB800ProSE\YBCarRental\YBCarRental\YBPersistence;E:\YB800ProSE\YBCarRental\YBCarRental\YBCarRental;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
@@ -103,8 +103,8 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <AdditionalLibraryDirectories>E:\YB800ProSE\YBCarRental\YBCarRental\YBCarRental\x64\Debug;$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>YB_Repository;YB_Errors;YB_PersistorBasis;YB_UserPersistor;YB_User;YB_Car;YB_CarPersistor;YB_Rent;YB_RentPersistor;YB_DataBasis;YB_ManagerBasis;YB_UserManager;YB_CarManager;YB_RentManager;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:\YB800ProSE\YBCarRental\YBCarRental\YBViews\x64\Debug;E:\YB800ProSE\YBCarRental\YBCarRental\YBPersistence\x64\Debug;E:\YB800ProSE\YBCarRental\YBCarRental\YBCarRental\x64\Debug;$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>YB_Repository;YB_Errors;YB_PersistorBasis;YB_UserPersistor;YB_User;YB_Car;YB_CarPersistor;YB_Rent;YB_RentPersistor;YB_DataBasis;YB_ManagerBasis;YB_UserManager;YB_CarManager;YB_RentManager;YB_ViewManager;YB_ViewBasis;YB_ViewItemBasis;YB_ViewMessage;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

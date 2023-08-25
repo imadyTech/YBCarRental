@@ -17,7 +17,7 @@ namespace YBConsoleViews
 	{
 	public:
 		int* viewId;
-		char* Title[32];
+		char* Title[64];							//max limit to 64 characters
 		int* w, * h;								//view size, same as window size but need be passed in.
 
 		YB_ViewBasis();
@@ -26,6 +26,10 @@ namespace YBConsoleViews
 		void AddViewItem(YB_ViewItemBasis item);
 		void AddViewItems(vector<YB_ViewItemBasis> items);
 		void AddViewItems(vector<string> itemsDef);
+
+		virtual string* Serialize() override;
+		virtual void Deserialize(string line) override;
+		//void Serialize(ofstream* output) override;
 
 	protected:
 		virtual vector<char*>* Render();			// multiple lines text

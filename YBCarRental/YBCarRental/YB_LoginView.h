@@ -14,8 +14,9 @@ namespace YBCarRental
 		//YB_ViewBasis: allows the view to inherit view layer properties and methods.
 	{
 	public:
-		string* Serialize();
-		void Serialize(ofstream* output);
+		string* Serialize() override;
+		void Serialize(ofstream* output) override;
+		void Deserialize(string line) override;
 
 
 	};

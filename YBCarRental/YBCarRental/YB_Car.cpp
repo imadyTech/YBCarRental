@@ -30,38 +30,34 @@ namespace YBCarRental
 		return serializedString;
 	}
 
-	void YB_Car::Serialize(ofstream* output)
+	//void YB_Car::Serialize(ofstream* output)
+	//{
+	//	*output << Id << ";"
+	//		<< Make << ";"
+	//		<< Model << ";"
+	//		<< Year << ";"
+	//		<< Mileage << ";"
+	//		<< IsAvailable << ";"
+	//		<< MinRentPeriod << ";"
+	//		<< MaxRentPeriod << ";"
+	//		<< DayRentPrice << ";";
+	//}
+
+	void YB_Car::Deserialize(string line, const char* separator)
 	{
-		*output << Id << ";"
-			<< Make << ";"
-			<< Model << ";"
-			<< Year << ";"
-			<< Mileage << ";"
-			<< IsAvailable << ";"
-			<< MinRentPeriod << ";"
-			<< MaxRentPeriod << ";"
-			<< DayRentPrice << ";";
-	}
+		//std::vector<std::string>* words = YB_DataBasis::SplitLine(&line);	//Obsoleted
 
-	void YB_Car::Deserialize(string line)
-	{
-		std::vector<std::string> words;
+		YB_DataBasis::Deserialize(line, &persistentSeparator);
 
-		std::istringstream strStream(line);
-		std::string word;
-
-		while (std::getline(strStream, word, ';')) {
-			words.push_back(word);
-		}
-		Id = std::stoi(words[0]);
-		Make = words[1];
-		Model = words[2];
-		Year = std::stoi(words[3]);
-		Mileage = std::stoi(words[4]);
-		IsAvailable = (words[5]=="1");
-		MinRentPeriod = std::stoi(words[6]);
-		MaxRentPeriod = std::stoi(words[7]);
-		DayRentPrice = std::stod(words[8]);
+		//Id = std::stoi((*words)[0]);										//Obsoleted
+		Make = *YB_DataBasis::FindValue("Make");
+		Model = *YB_DataBasis::FindValue("Model");
+		Year = std::stoi(*YB_DataBasis::FindValue("Year"));
+		Mileage = std::stoi(*YB_DataBasis::FindValue("Mileage"));
+		IsAvailable = *YB_DataBasis::FindValue("IsAvailable")=="1";
+		MinRentPeriod = std::stoi(*YB_DataBasis::FindValue("MinRentPeriod"));
+		MaxRentPeriod = std::stoi(*YB_DataBasis::FindValue("MaxRentPeriod"));
+		DayRentPrice = std::stod(*YB_DataBasis::FindValue("DayRentPrice"));
 	};
 
 }

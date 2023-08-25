@@ -31,8 +31,11 @@ namespace YBCarRental
 		string Status;	//
 
 		string* Serialize() override;
-		void Serialize(ofstream* output) override;
-		void Deserialize(string line) override;
+		//void Serialize(ofstream* output) override;
+		void Deserialize(string line, const char* separator) override;
+
+	private:
+		const char persistentSeparator = ';';//indicate how the persistence string was separated (for specific class, usually 1st level).
 
 	};
 

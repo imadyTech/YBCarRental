@@ -44,7 +44,7 @@ namespace YBCarRental
 	}
 
 	//batch serialization to filestream
-	void YB_User::Serialize(ofstream* output)
+	/*void YB_User::Serialize(ofstream* output)
 	{
 		*output << Id			<<";"
 			<< UserName <<";"
@@ -54,26 +54,23 @@ namespace YBCarRental
 			<< Password 	<<";"
 			<< Balance 		<<";"
 			<< UserRoles <<";";
-	}
+	}*/
 
-	void YB_User::Deserialize(string line)
+	void YB_User::Deserialize(string line, const char* separator)
 	{
-		std::vector<std::string> words;
+		//std::vector<std::string>* words = YB_DataBasis::SplitLine(&line);	//Obsoleted
+		//YB_DataBasis::SplitLine(&line,  &persistentSeparator				//Obsoleted, line splited in base method
 
-		std::istringstream strStream(line);
-		std::string word;
+		//Id = std::stoi(*YB_DataBasis::FindValue("Id"));					//Obsoleted
+		YB_DataBasis::Deserialize(line, &persistentSeparator);
 
-		while (std::getline(strStream, word, ';')) {
-			words.push_back(word);
-		}
-		Id = std::stoi( words[0]);
-		UserName = words[1];
-		LoginStatus = (words[2]=="1");
-		FirstName = words[3];
-		FamilyName = words[4];
-		Password = words[5];
-		Balance =std::stod(words[6]);
-		UserRoles = words[7];
+		UserName = *YB_DataBasis::FindValue("UserName");
+		LoginStatus = *YB_DataBasis::FindValue("LoginStatus") =="1";
+		FirstName = *YB_DataBasis::FindValue("FirstName");
+		FamilyName = *YB_DataBasis::FindValue("FamilyName");
+		Password = *YB_DataBasis::FindValue("Password");
+		Balance =std::stod(*YB_DataBasis::FindValue("Balance"));
+		UserRoles = *YB_DataBasis::FindValue("UserRoles");
 	};
 
 

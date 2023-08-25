@@ -43,35 +43,30 @@ namespace YBCarRental
 		return serializedString;
 	}
 
-	void YB_Rent::Serialize(ofstream* output)
+	//void YB_Rent::Serialize(ofstream* output)
+	//{
+	//	char buffer[10];
+
+	//	*output << Id << ";"
+	//		<< UserId << ";"
+	//		<< CarId << ";"
+	//		<< strftime(buffer, sizeof(buffer), "%Y-%m-%d", &RentStart) << ";"
+	//		<< RentDays << ";"
+	//		<< Status << ";";
+	//}
+
+
+	void YB_Rent::Deserialize(string line, const char* separator)
 	{
-		char buffer[10];
+		//std::vector<std::string>* words = YB_DataBasis::SplitLine(&line);	//Obsoleted
+		YB_DataBasis::Deserialize(line, &persistentSeparator);
 
-		*output << Id << ";"
-			<< UserId << ";"
-			<< CarId << ";"
-			<< strftime(buffer, sizeof(buffer), "%Y-%m-%d", &RentStart) << ";"
-			<< RentDays << ";"
-			<< Status << ";";
-	}
-
-
-	void YB_Rent::Deserialize(string line)
-	{
-		std::vector<std::string> words;
-
-		std::istringstream strStream(line);
-		std::string word;
-
-		while (std::getline(strStream, word, ';')) {
-			words.push_back(word);
-		}
-		Id = std::stoi(words[0]);
-		UserId = std::stoi(words[1]);
-		CarId = std::stoi(words[2]);
+		//Id = std::stoi((*words)[0]);										//Obsoleted
+		UserId = std::stoi(*YB_DataBasis::FindValue("UserId"));
+		CarId = std::stoi(*YB_DataBasis::FindValue("CarId"));
 		//sscanf(words[3].c_str(), "%Y-%m-%d", &RentStart.tm_year, &RentStart.tm_mon, &RentStart.tm_mday);
 		int year, month, day;
-		if (sscanf_s(words[3].c_str(), "%d-%d-%d", &year, &month, &day) == 3) {
+		if (sscanf_s((*YB_DataBasis::FindValue("")).c_str(), "%d-%d-%d", &year, &month, &day) == 3) {
 			RentStart.tm_year = year - 1900; // Adjust year by 1900
 			RentStart.tm_mon = month - 1;    // Adjust month by 1
 			RentStart.tm_mday = day;
@@ -79,8 +74,8 @@ namespace YBCarRental
 		else {
 			throw YB_DeSerializeError();
 		}
-		RentDays = std::stoi(words[4]);
-		Status = words[5];
+		RentDays = std::stoi(*YB_DataBasis::FindValue("RentDays"));
+		Status = *YB_DataBasis::FindValue("Status");
 	};
 
 }

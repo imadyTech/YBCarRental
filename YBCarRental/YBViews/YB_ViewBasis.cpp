@@ -19,6 +19,15 @@ namespace YBConsoleViews {
 		viewItems.insert(std::make_pair(currentSize + 1, item));
 	}
 
+	string* YB_ViewBasis::Serialize()
+	{
+		return nullptr;
+	}
+
+	void YB_ViewBasis::Deserialize(string line)
+	{
+	}
+
 	vector<char*>* YBConsoleViews::YB_ViewBasis::Render()
 	{
 		for (const auto& item : viewItems)

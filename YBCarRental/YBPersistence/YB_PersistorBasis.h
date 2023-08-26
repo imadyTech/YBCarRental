@@ -106,14 +106,14 @@ namespace YBPersistence
 	void YB_PersistorBasis<TData>::GetAll() //cache to dataSet
 	{
 		if (!dataSet.empty())
-			dataSet.clear();			//GetAll is invoked in the constructor so there's potential of repeated invocation.
+			//GetAll is invoked in the constructor so there's potential of repeated invocation.
+			dataSet.clear();
 
 		//repository.ReadAllLines();
 		for (const auto& iter : repository.allRecordLines)
 		{
 			TData data;
 			data.Deserialize(iter.second);
-			//dataSet.push_back(data);
 			dataSet.insert(std::make_pair(data.Id, data));
 		}
 	}
@@ -157,13 +157,13 @@ namespace YBPersistence
 	template<class TData>
 	TData* YB_PersistorBasis<TData>::Get(string username)
 	{
-		int id=-1;
+		int id = -1;
 		for (const auto& entry : dataSet) {
 			//data = entry.second;
 			if (entry.second.UserName == username) {
 				//as the entry was created in the for loop, so it will be destructed after for loop breaks.
 				//int value will be copied so it won't loss.
-				id = entry.second.Id;		
+				id = entry.second.Id;
 				break;
 			}
 		}
@@ -207,19 +207,20 @@ namespace YBPersistence
 	{
 		string* line = data.Serialize();
 		auto item = dataSet.find(data.Id);
-		if (item != dataSet.end()) {
-			try {
-				repository.UpdateLine(*line);
-			}
-			catch (exception e) {
-				return false;
-			}
-			item->second = data;
-			return true;
+		if (item == dataSet.end())					//Fail to find the item to update.
+			return false;
+
+		try {
+			repository.UpdateLine(*line);
 		}
-		return false;
+		catch (exception e) {
+			return false;							//Persisting failed.
+		}
+
+		item->second = std::move(data);
+		return true;								//Succeed.
 	}
 
 }
 
-#endif YB_PersistorBasis_H
+#endif // YB_PersistorBasis_H

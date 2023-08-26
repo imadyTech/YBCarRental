@@ -54,8 +54,27 @@ namespace YBCarRental
 		double DayRentPrice;				//rental price per day;
 
 		string* Serialize() override;
+		void Serialize(std::stringstream& strStream) override;
 		//void Serialize(ofstream* output) override;
+		void Deserialize(string line);
 		void Deserialize(string line, const char* separator) override;
+
+		//copy assignment operator
+		YB_Car& operator = (const YB_Car& other) {
+			if (this != &other) {
+				Make = other.Make;
+				Model = other.Model;
+				Year = other.Year;
+				Mileage = other.Mileage;
+				IsAvailable = other.IsAvailable;
+				MinRentPeriod = other.MinRentPeriod;
+				MaxRentPeriod = other.MaxRentPeriod;
+				DayRentPrice = other.DayRentPrice;
+				// Call parent class copy assignment operator
+				YB_DataBasis::operator=(other);
+			}
+			return *this;
+		}
 
 	private:
 		const char persistentSeparator = ';';//indicate how the persistence string was separated (for specific class, usually 1st level).

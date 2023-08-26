@@ -28,12 +28,27 @@ namespace YBCarRental
 		int CarId;
 		tm RentStart;			//rental start date
 		int RentDays;			//total days of rental
-		string Status;	//
+		string Status;			//
 
 		string* Serialize() override;
+		void Serialize(std::stringstream& strStream) override;
 		//void Serialize(ofstream* output) override;
+		void Deserialize(string line);
 		void Deserialize(string line, const char* separator) override;
 
+		//copy assignment operator 
+		YB_Rent& operator=(const YB_Rent& other) {
+			if (this != &other) {
+				UserId = other.UserId;
+				CarId = other.CarId;
+				RentStart = other.RentStart;
+				RentDays = other.RentDays;
+				Status = other.Status;
+				// Call parent class copy assignment operator
+				YB_DataBasis::operator=(other);
+			}
+			return *this;
+		}
 	private:
 		const char persistentSeparator = ';';//indicate how the persistence string was separated (for specific class, usually 1st level).
 

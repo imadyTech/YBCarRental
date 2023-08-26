@@ -7,7 +7,7 @@ char* YBConsoleViews::ButtonViewItem::Render()
 
 void YBConsoleViews::ButtonViewItem::OnSelect()
 {
-    *isFocused = true;
+    isFocused = true;
 }
 
 void YBConsoleViews::ButtonViewItem::OnReturn()

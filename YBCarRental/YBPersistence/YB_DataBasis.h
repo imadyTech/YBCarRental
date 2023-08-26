@@ -18,14 +18,25 @@ namespace YBPersistence
 		YB_DataBasis();
 		virtual ~YB_DataBasis() {};
 
-		int Id;
+		/// <summary>
+		/// Be cautious: Property 'Id' is not globally unique!
+		/// There is no Id conflict detection mechanism in this application, and Id for different type object might be overlapped.
+		/// </summary>
+		int Id=-1;
 
 
 		/// <summary>
 		/// Serielize the object to a line of string (implemented by derived classes)
 		/// </summary>
 		/// <returns></returns>
+		[[deprecated("Deprecated, use Serialize(std::stringstream& strStream) instead.")]]
 		virtual string* Serialize();
+		
+		/// <summary>
+		/// Serielize the object to a stream so derived classed will be able to add up more properties
+		/// </summary>
+		/// <param name="strStream">Topmost level child class need create an instance of string stream and passed to parent class method</param>
+		virtual void Serialize(std::stringstream& strStream);
 
 		/// <summary>
 		/// Serielize the object to a line of string (for data persistence)
@@ -39,6 +50,16 @@ namespace YBPersistence
 		/// <param name="line"></param>
 		/// <returns></returns>
 		virtual void Deserialize(std::string line, const char* separator);
+
+
+		YB_DataBasis& operator = (const YB_DataBasis& other) {
+			if (this != &other) {
+				Id = other.Id;
+
+				YB_DataBasis::operator=(other);
+			}
+			return *this;
+		}
 
 	protected:
 		/// <summary>
@@ -60,6 +81,7 @@ namespace YBPersistence
 			return &stringPairsMap;
 		};
 
+
 		pair<string, string>* SplitToPair(std::string* line) {
 
 			size_t colonPos = (*line).find(':');
@@ -72,6 +94,7 @@ namespace YBPersistence
 			else
 				return nullptr;
 		}
+
 
 		std::string* FindValue(std::string key)
 		{

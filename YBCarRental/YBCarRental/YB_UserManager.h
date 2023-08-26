@@ -54,4 +54,4 @@ namespace YBCarRental
 
 }
 
-#endif YB_UserManager_H
+#endif //YB_UserManager_H

@@ -27,6 +27,24 @@ namespace YBCarRental
 		//YB_ViewBasis* currentView;
 	};
 
+
+
+	/// <summary>
+	/// this is a sample of Factory Design Pattern
+	/// </summary>
+	class ProductFactory {
+	public:
+		std::unique_ptr<YB_ViewBasis> createProduct(char productType) {
+			switch (productType) {
+			case 'A':
+				return std::make_unique<YB_ViewBasis>();
+			case 'B':
+				return std::make_unique<YB_ViewBasis>();
+			default:
+				return nullptr;
+			}
+		}
+	};
 }
 
 #endif // YB_ViewManager_H

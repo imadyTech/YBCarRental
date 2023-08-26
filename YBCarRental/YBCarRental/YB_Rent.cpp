@@ -15,15 +15,15 @@ using namespace std;
 
 namespace YBCarRental
 {
-    YB_Rent::YB_Rent()
-    {
-    }
-    YB_Rent::YB_Rent(YB_User user, YB_Car car, tm start, int days)
-    {
-    }
-    YB_Rent::YB_Rent(int userId, int carId, tm start, int days)
-    {
-    }
+	YB_Rent::YB_Rent()
+	{
+	}
+	YB_Rent::YB_Rent(YB_User user, YB_Car car, tm start, int days)
+	{
+	}
+	YB_Rent::YB_Rent(int userId, int carId, tm start, int days)
+	{
+	}
 
 	YB_Rent::~YB_Rent()
 	{
@@ -32,15 +32,22 @@ namespace YBCarRental
 	string* YB_Rent::Serialize()
 	{
 		std::stringstream ss;
-		char buffer[32];
-		ss << Id << ";"
-			<< UserId << ";"
-			<< CarId << ";"
-			<< strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", &RentStart) << ";"
-			<< RentDays << ";"
-			<< Status << ";";
+		//Redirect to new function (instead of previous version overrided function)
+		YB_Rent::Serialize(ss);
+
 		std::string* serializedString = new std::string(ss.str());
 		return serializedString;
+	}
+
+	void YB_Rent::Serialize(std::stringstream& strStream)
+	{
+		char buffer[32];
+		strStream
+			<< "UserId:" << UserId << ";"
+			<< "CarId:" << CarId << ";"
+			<< "RentStart:" << strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", &RentStart) << ";"
+			<< "RentDays:" << RentDays << ";"
+			<< "Status:" << Status << ";";
 	}
 
 	//void YB_Rent::Serialize(ofstream* output)
@@ -56,10 +63,15 @@ namespace YBCarRental
 	//}
 
 
+	void YB_Rent::Deserialize(string line)
+	{
+		this->Deserialize(line, &persistentSeparator);
+	}
+
 	void YB_Rent::Deserialize(string line, const char* separator)
 	{
 		//std::vector<std::string>* words = YB_DataBasis::SplitLine(&line);	//Obsoleted
-		YB_DataBasis::Deserialize(line, &persistentSeparator);
+		YB_DataBasis::Deserialize(line, separator);
 
 		//Id = std::stoi((*words)[0]);										//Obsoleted
 		UserId = std::stoi(*YB_DataBasis::FindValue("UserId"));

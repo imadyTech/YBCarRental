@@ -20,7 +20,8 @@ namespace YBConsoleViews
 
 		void GetKeyInput();
 		//void ResponseInput();
-		void RenderView();
+		void RenderView();							//view contents
+		void Output();								//to screen
 		void Goto(int viewId);						//Activate a view
 		void Prev();
 		void Next();

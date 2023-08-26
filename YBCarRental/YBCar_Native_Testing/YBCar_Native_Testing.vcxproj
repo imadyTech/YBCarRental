@@ -171,6 +171,7 @@
     <ClCompile Include="YBCar_ManagerTesting.cpp" />
     <ClCompile Include="YBCar_UserTesting.cpp" />
     <ClCompile Include="YBCar_RepoTesting.cpp" />
+    <ClCompile Include="YB_ViewItemTesting.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

@@ -10,6 +10,8 @@
 #include "../YBCarRental/YB_UserManager.h"
 #include "../YBCarRental/YB_UserPersistor.h"
 #include "../YBCarRental/YB_User.h"
+#include "YB_ViewItemBasis.h"
+#include "YB_ViewBasis.h"
 
 using namespace YBCarRental;
 

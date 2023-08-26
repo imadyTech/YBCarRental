@@ -1,16 +1,44 @@
-﻿// YBViews.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// YBViews.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include <iostream>
 #include <locale>
-
+#include "YB_ViewBasis.h"
+using namespace YBPersistence;
+using namespace YBConsoleViews;
 int main()
 {
-    std::locale::global(std::locale(""));
+	//int w = 120, h = 30;
+	//YB_ViewBasis view = YB_ViewBasis(&w, &h);
+	//string line = "Id:1;Title:Hello Car Rental;w:120;h:30;";
+	//view.Deserialize(line);
 
-    std::cout << " ** Hello World! \u03A9 \u25A1\n";
-    std::cout << "    Hello World! \u03A9 \u25A1\n";
-    //std::wcout << L"** Unicode Characters: \u221A \u2302 \u25A1" << std::endl;
+	//cout << *view.Serialize();
+
+
+	int width = 120, height = 2;
+	YB_ViewItemBasis item = YB_ViewItemBasis(&width, &height);
+	string line = "Id:-1!x:0!y:0!w:120!h:2!isFocused:0!isSelected:0!isHidden:0!";
+	item.Deserialize(line);
+
+	cout << *item.Serialize();
+
+	//cin;
+	//std::wcout << L"** Unicode Characters: \u221A \u2302 \u25A1" << std::endl;
+
+	//char* p = new char[200];
+	//strcpy_s(p,11, "hellohello");
+	//cout <<&p<<":"<< p << ";" << endl;
+	//strcpy_s(p+2,5, "yoyo");
+	//cout <<&p<<":"<< p << ";"<< endl;
+
+	//cout << *p << endl;
+
+	//char* s = new char[60];
+	//std::fill(s, s + 20, '*');
+	//s[20]= '\0';
+
+	//cout << s << endl;
 
 }
 

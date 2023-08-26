@@ -17,6 +17,9 @@ namespace YBCarRental
 		LoginStatus = false;
 		UserName = "";
 		Password = "";
+
+		persistentSeparator = ';';
+
 	}
 	YB_User::YB_User(string username, int password) : YB_User::YB_User()
 	{

@@ -17,7 +17,7 @@ namespace YBConsoleViews
 	{
 	public:
 		//int* viewId;								//Obsoleted, replaced by Id in YB_DataBasis
-		char* Title[64];							//max limit to 64 characters
+		char* Title;							//max limit to 64 characters
 		int w, h;									//view size, same as window size but need be passed in.
 
 		YB_ViewBasis();
@@ -68,7 +68,7 @@ namespace YBConsoleViews
 
 	private:
 		map<int, YB_ViewItemBasis> viewItems = {};
-		vector<char*>* viewContent;
+		vector<char*>* viewArray;
 
 		const char persistentSeparator = ';';		//indicate how the persistence string was separated (for specific class, usually 1st level).
 	};

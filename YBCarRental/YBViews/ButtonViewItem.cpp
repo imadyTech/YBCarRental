@@ -1,16 +1,20 @@
 #include "ButtonViewItem.h"
 
-char* YBConsoleViews::ButtonViewItem::Render()
+namespace YBConsoleViews
 {
-    return *viewContent;
-}
 
-void YBConsoleViews::ButtonViewItem::OnSelect()
-{
-    isFocused = true;
-}
+    vector<char*> YBConsoleViews::ButtonViewItem::Render()
+    {
+        return YB_ViewItemBasis::Render();
+    }
 
-void YBConsoleViews::ButtonViewItem::OnReturn()
-{
-    //Jump
+    void YBConsoleViews::ButtonViewItem::OnSelect()
+    {
+        isFocused = true;
+    }
+
+    void YBConsoleViews::ButtonViewItem::OnReturn()
+    {
+        //Jump
+    }
 }

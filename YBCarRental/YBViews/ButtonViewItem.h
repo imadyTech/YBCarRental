@@ -1,5 +1,6 @@
 #pragma once
 #include "YB_ViewItemBasis.h"
+#include <vector>
 
 namespace YBConsoleViews
 {
@@ -10,7 +11,7 @@ namespace YBConsoleViews
 		YB_ViewItemBasis parentView;
 
 
-		char* Render() override;			// 1 line text
+		vector<char*> Render() override;			// 1 line text
 		void OnSelect() override;
 		void OnReturn() override;
 

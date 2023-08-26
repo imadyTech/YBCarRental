@@ -49,9 +49,6 @@ namespace YBCarRental
 			}
 			return *this;
 		}
-	private:
-		const char persistentSeparator = ';';//indicate how the persistence string was separated (for specific class, usually 1st level).
-
 	};
 
 }

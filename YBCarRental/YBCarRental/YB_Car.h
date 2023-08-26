@@ -23,6 +23,9 @@ namespace YBCarRental
 			MinRentPeriod = 1;
 			MaxRentPeriod = 30;
 			DayRentPrice = 0;
+
+			persistentSeparator = ';';
+
 		};
 		YB_Car(string make, string model, int year, int mileage) : YB_Car()
 		{
@@ -75,9 +78,6 @@ namespace YBCarRental
 			}
 			return *this;
 		}
-
-	private:
-		const char persistentSeparator = ';';//indicate how the persistence string was separated (for specific class, usually 1st level).
 	};
 }
 

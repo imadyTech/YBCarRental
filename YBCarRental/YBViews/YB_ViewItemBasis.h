@@ -2,44 +2,49 @@
 #define YB_ViewItemBasis_H
 
 #include <string>
+#include <vector>
 #include <YB_DataBasis.h>
 
 using namespace std;
+using namespace YBPersistence;
 
 namespace YBConsoleViews
 {
-
-	class YB_ViewItemBasis: public YBPersistence::YB_DataBasis
+	class YB_ViewItemBasis : public YBPersistence::YB_DataBasis
 	{
 	public:
-		YB_ViewItemBasis(int* width) 
+		YB_ViewItemBasis(int* width, int* height) : YB_DataBasis::YB_DataBasis()
 		{
 			this->w = *width;
-			viewContent = new char* [w]; 
-			for (int i = 0; i < w; ++i){
-				viewContent[i] = nullptr; 
+			this->h = *height;
+			//YB_ViewItemBasis::viewArray = new char* [h];
+			for (int i = 0; i < *height; ++i) {
+				char* newLine = new char[*width + 1];
+				std::memset(newLine, '*', *width);
+				newLine[*width] = '\0'; // Null-terminate the string
+				viewArray.push_back(newLine);
 			}
-
 			x = 0;
 			y = 0;
-			w = 120;
 			h = 1;
 			isFocused = false;
 			isSelected = false;
 			isHidden = false;				//if an item is hidden, then the View will ignore it during rendering.
 
+			persistentSeparator = '!';		//This is differ to other serializable objects.
+
 		}
 		~YB_ViewItemBasis()
 		{
-			for (int i = 0; i < w; ++i){
-				delete[] viewContent[i]; 
+			for (char* ptr : viewArray) {
+				delete[] ptr;
 			}
-			delete[] viewContent;
-		}
+			YB_ViewItemBasis::viewArray.clear();
+		};
 
 
 		//int* viewId;						//Obsoleted, replaced by Id in YB_DataBasis
-		int x,  y;						//relative coordinate inside the view
+		int x, y;						//relative coordinate inside the view
 		int w;								//Width of the viewItem.
 		int h;								//Height of the viewItem.
 		bool isFocused;
@@ -61,7 +66,7 @@ namespace YBConsoleViews
 				YB_DataBasis::operator=(other);
 			}
 			return *this;
-		}
+		};
 
 		virtual string* Serialize() override;
 		virtual void Serialize(std::stringstream& strStream) override;
@@ -69,15 +74,11 @@ namespace YBConsoleViews
 		virtual void Deserialize(string line, const char* separator) override;
 
 	protected:
-		virtual char* Render();				// 1 line text
+		virtual std::vector<char*> Render();
 		virtual void OnSelect();
 		virtual void OnReturn();
 
-		char** viewContent;					//content for a line
-
-	private:
-		const char persistentSeparator = '!';//indicate how the persistence string was separated (for 2nd level classes).
+		vector<char*> viewArray = {};
 	};
-
 }
-#endif
+#endif // YB_ViewItemBasis_H

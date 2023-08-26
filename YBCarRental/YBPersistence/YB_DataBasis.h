@@ -76,38 +76,38 @@ namespace YBPersistence
 			std::string pairedWord;
 
 			while (std::getline(strStream, pairedWord, *separator)) {
-				stringPairsMap.insert(*SplitToPair(&pairedWord));
+				std::pair<std::string, std::string> keyValue = SplitToPair(&pairedWord);
+				stringPairsMap.insert(keyValue);
 			}
 			return &stringPairsMap;
 		};
 
-
-		pair<string, string>* SplitToPair(std::string* line) {
+		pair<string, string> SplitToPair(std::string* line) {
 
 			size_t colonPos = (*line).find(':');
 			if (colonPos != std::string::npos) {
 				string key = (*line).substr(0, colonPos);
 				string value = (*line).substr(colonPos + 1);
 				std::pair<string, string> pair(key, value);
-				return &pair;
+				return pair;
+			}
+			else
+				return std::make_pair("", "");
+		}
+
+		std::string* FindValue(std::string key)
+		{
+			auto iterator = stringPairsMap.find(key);
+
+			if (iterator != stringPairsMap.end()) {
+				return &iterator->second;
 			}
 			else
 				return nullptr;
 		}
 
+		char persistentSeparator = ';';//indicate how the persistence string was separated. Default=';'.
 
-		std::string* FindValue(std::string key)
-		{
-			auto iterator = stringPairsMap.find(key);
-			std::string* value=nullptr;
-
-			if (iterator != stringPairsMap.end()) {
-				*value = iterator->second;
-			}
-			else
-				value = nullptr;
-			return value;
-		}
 	private:
 		/// <summary>
 		/// cached key/value map, pls be cautious when resusing

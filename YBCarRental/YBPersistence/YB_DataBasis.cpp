@@ -8,13 +8,14 @@ namespace YBPersistence
 
 	YB_DataBasis::YB_DataBasis()
 	{
+		stringPairsMap = map<std::string, std::string>();
 	}
 
 	[[deprecated("Deprecated, use Serialize(std::stringstream& strStream) instead.")]]
 	std::string* YB_DataBasis::Serialize()
 	{
 		std::stringstream strStream;
-		strStream <<"Id:" << Id << ";";
+		strStream <<"Id:" << Id << this->persistentSeparator;
 
 		std::string* serializedString = new std::string(strStream.str());
 		return serializedString;
@@ -22,7 +23,7 @@ namespace YBPersistence
 
 	void YB_DataBasis::Serialize(std::stringstream& strStream)
 	{
-		strStream <<"Id:" << Id << ";";
+		strStream <<"Id:" << Id << this->persistentSeparator;
 	}
 
 	//void YB_DataBasis::Serialize(ofstream* output)

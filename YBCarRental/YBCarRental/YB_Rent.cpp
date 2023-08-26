@@ -17,11 +17,13 @@ namespace YBCarRental
 {
 	YB_Rent::YB_Rent()
 	{
+		persistentSeparator = ';';
+
 	}
-	YB_Rent::YB_Rent(YB_User user, YB_Car car, tm start, int days)
+	YB_Rent::YB_Rent(YB_User user, YB_Car car, tm start, int days):YB_Rent()
 	{
 	}
-	YB_Rent::YB_Rent(int userId, int carId, tm start, int days)
+	YB_Rent::YB_Rent(int userId, int carId, tm start, int days):YB_Rent()
 	{
 	}
 

@@ -16,7 +16,7 @@ namespace YBPersistence
 
 
 	//----------------Private Implementation------------------//
-	template<class TData>
+	/*template<class TData>
 	inline void YB_PersistorBasis<TData>::ReadAllLines()
 	{
 	}
@@ -44,6 +44,6 @@ namespace YBPersistence
 	template<class TData>
 	inline void YB_PersistorBasis<TData>::Save()
 	{
-	}
+	}*/
 
 }

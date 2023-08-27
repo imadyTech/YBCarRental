@@ -13,20 +13,13 @@ namespace YBConsoleViews
 	class YB_ViewItemBasis : public YBPersistence::YB_DataBasis
 	{
 	public:
-		YB_ViewItemBasis(int* width, int* height) : YB_DataBasis::YB_DataBasis()
+		YB_ViewItemBasis(): YB_DataBasis::YB_DataBasis() {}
+		YB_ViewItemBasis(int* width, int* height) : YB_ViewItemBasis()
 		{
 			this->w = *width;
 			this->h = *height;
-			//YB_ViewItemBasis::viewArray = new char* [h];
-			for (int i = 0; i < *height; ++i) {
-				char* newLine = new char[*width + 1];
-				std::memset(newLine, '*', *width);
-				newLine[*width] = '\0'; // Null-terminate the string
-				viewArray.push_back(newLine);
-			}
 			x = 0;
 			y = 0;
-			h = 1;
 			isFocused = false;
 			isSelected = false;
 			isHidden = false;				//if an item is hidden, then the View will ignore it during rendering.
@@ -44,12 +37,12 @@ namespace YBConsoleViews
 
 
 		//int* viewId;						//Obsoleted, replaced by Id in YB_DataBasis
-		int x, y;						//relative coordinate inside the view
-		int w;								//Width of the viewItem.
-		int h;								//Height of the viewItem.
-		bool isFocused;
-		bool isSelected;
-		bool isHidden;						//if an item is hidden, then the View will ignore it during rendering.
+		int x=0, y=0;							//relative coordinate inside the view
+		int w=120;								//Width of the viewItem.
+		int h=1;							//Height of the viewItem.
+		bool isFocused = false;
+		bool isSelected = false;
+		bool isHidden = false;						//if an item is hidden, then the View will ignore it during rendering.
 		//int* z;							//for simplicity, z will not be implemented, carefully place viewitems in order among the ViewItemRepo.txt definition.
 
 		//copy assignment operator

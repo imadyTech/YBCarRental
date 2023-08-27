@@ -28,10 +28,6 @@ namespace YBPersistence
 
 		string repositoryURL = "";
 
-		//Note: for simplicity reason, this dataSet was designed to be exposed as public.
-		//otherwise it should be hidden from direct external access.
-		map<int, TData> dataSet = {};
-
 
 		/// <summary>
 		/// Read all records (objects) into memory
@@ -69,6 +65,10 @@ namespace YBPersistence
 		virtual bool Update(TData data);
 
 
+		//Note: for simplicity reason, this dataSet was designed to be exposed as public.
+		//otherwise it should be hidden from direct external access.
+		map<int, TData> dataSet = {};
+
 	private:
 		/// <summary>
 		/// The file repository to store data records.
@@ -77,13 +77,13 @@ namespace YBPersistence
 
 
 
-		void ReadAllLines();
-		string ReadLine(int id);
-		void AddLine(string record);
-		void UpdatLine(string record);
-		void Clear();
-		void Open(string path);
-		void Save();
+		//void ReadAllLines();
+		//string ReadLine(int id);
+		//void AddLine(string record);
+		//void UpdatLine(string record);
+		//void Clear();
+		//void Open(string path);
+		//void Save();
 	};
 
 	template<class TData> // TData = YBDataBasis

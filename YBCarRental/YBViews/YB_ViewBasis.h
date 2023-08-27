@@ -17,7 +17,8 @@ namespace YBConsoleViews
 	{
 	public:
 		//int* viewId;								//Obsoleted, replaced by Id in YB_DataBasis
-		char* Title;							//max limit to 64 characters
+		string ViewType;
+		string Title;								//max limit to 64 characters
 		int w, h;									//view size, same as window size but need be passed in.
 
 		YB_ViewBasis();
@@ -33,6 +34,8 @@ namespace YBConsoleViews
 		virtual void Deserialize(string line, const char* separator) override;
 		//void Serialize(ofstream* output) override;
 
+		#pragma region copy assignment operator
+		//=====================================================================================================================
 		//Suggestion given by chatGPT to solve C2280 and deleted function error:
 		// it's possible that the error is related to the copy assignment operator of your YB_User class. If the YB_User 
 		// class contains non-trivial member variables (like pointers or dynamically allocated resources), the default 
@@ -41,7 +44,8 @@ namespace YBConsoleViews
 		// of its members.
 		YB_ViewBasis& operator=(const YB_ViewBasis& other) {
 			if (this != &other) {
-				*Title = *other.Title;
+				Title = other.Title;
+				ViewType = other.ViewType;
 				w = other.w;
 				h = other.h;
 				// Deep copy of other resources, if any
@@ -59,18 +63,22 @@ namespace YBConsoleViews
 		//The best solution will be try using pointers as much as possible instead of copying value, e.g.:
 		//change the dataSet to map<int, TData*> in the persistor class;
 		//However I will not go through this direction for simplicity consideration.
+		//=====================================================================================================================
+		#pragma endregion
+
 
 
 	protected:
 		virtual vector<char*>* Render();			// multiple lines text
 		virtual void OnKeyInput(char* keycode);
 		virtual void OnItemReturned(YB_ViewMessageBasis msg);
+		void FillBackground(char background);
 
 	private:
 		map<int, YB_ViewItemBasis> viewItems = {};
-		vector<char*>* viewArray;
+		vector<char*>* viewArray = {};
 
-		const char persistentSeparator = ';';		//indicate how the persistence string was separated (for specific class, usually 1st level).
+		//const char persistentSeparator = ';';		//indicate how the persistence string was separated (for specific class, usually 1st level).
 	};
 }
 #endif //YB_ViewBasis_H

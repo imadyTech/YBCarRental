@@ -4,8 +4,10 @@
 #include <iostream>
 #include <locale>
 #include "YB_ViewBasis.h"
+#include "YB_ViewFactory.h"
 using namespace YBPersistence;
 using namespace YBConsoleViews;
+
 int main()
 {
 	//int w = 120, h = 30;
@@ -16,14 +18,30 @@ int main()
 	//cout << *view.Serialize();
 
 
-	int width = 120, height = 2;
-	YB_ViewItemBasis item = YB_ViewItemBasis(&width, &height);
-	string line = "Id:-1!x:0!y:0!w:120!h:2!isFocused:0!isSelected:0!isHidden:0!";
-	item.Deserialize(line);
+	//int width = 120, height = 2;
+	//YB_ViewItemBasis item = YB_ViewItemBasis(&width, &height);
+	//string line = "Id:-1!x:0!y:0!w:120!h:2!isFocused:0!isSelected:0!isHidden:0!";
+	//item.Deserialize(line);
 
-	cout << *item.Serialize();
+	//cout << *item.Serialize();
 
-	//cin;
+
+	YB_ViewFactory factory = YB_ViewFactory("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/ViewRepo.txt");
+	YB_ViewBasis view = *factory.GetBasisView(999);
+	cout << view.Title <<" - " << view.ViewType << endl;
+	cout << *view.Serialize() << endl;
+
+	view = *factory.GetBasisView("WelcomeView");
+	cout << view.Title <<" - " << view.ViewType << endl;
+	cout << *view.Serialize() << endl;
+	view = *factory.GetBasisView("LoginView");
+	cout << view.Title <<" - " << view.ViewType << endl;
+	cout << *view.Serialize() << endl;
+
+	int i;
+	cin>> i;
+
+
 	//std::wcout << L"** Unicode Characters: \u221A \u2302 \u25A1" << std::endl;
 
 	//char* p = new char[200];

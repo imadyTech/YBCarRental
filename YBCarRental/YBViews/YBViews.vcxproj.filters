@@ -54,6 +54,15 @@
     <ClCompile Include="YB_ViewMessage.cpp">
       <Filter>Source Files\YB_ViewMessages</Filter>
     </ClCompile>
+    <ClCompile Include="YB_LoginView.cpp">
+      <Filter>Source Files\YB_Views</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_ViewFactory.cpp">
+      <Filter>Source Files\YB_Views</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_ViewItemFactory.cpp">
+      <Filter>Source Files\YB_Views</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="YB_Window.h">
@@ -73,6 +82,15 @@
     </ClInclude>
     <ClInclude Include="YB_ViewMessage.h">
       <Filter>Header Files\YB_ViewMessages</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_ViewFactory.h">
+      <Filter>Header Files\YB_Views</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_LoginView.h">
+      <Filter>Header Files\YB_Views</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_ViewItemFactory.h">
+      <Filter>Header Files\YB_Views</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

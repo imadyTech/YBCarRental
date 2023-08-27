@@ -104,7 +104,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>E:\YB800ProSE\YBCarRental\YBCarRental\YBViews\x64\Debug;E:\YB800ProSE\YBCarRental\YBCarRental\YBPersistence\x64\Debug;E:\YB800ProSE\YBCarRental\YBCarRental\YBCarRental\x64\Debug;$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>YB_Repository;YB_Errors;YB_PersistorBasis;YB_UserPersistor;YB_User;YB_Car;YB_CarPersistor;YB_Rent;YB_RentPersistor;YB_DataBasis;YB_ManagerBasis;YB_UserManager;YB_CarManager;YB_RentManager;YB_ViewManager;YB_ViewBasis;YB_ViewItemBasis;YB_ViewMessage;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>YB_Repository;YB_Errors;YB_PersistorBasis;YB_UserPersistor;YB_User;YB_Car;YB_CarPersistor;YB_Rent;YB_RentPersistor;YB_DataBasis;YB_ManagerBasis;YB_UserManager;YB_CarManager;YB_RentManager;YB_ViewFactory;YB_ViewItemFactory;YB_ViewBasis;YB_ViewItemBasis;YB_ViewMessage;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -171,7 +171,8 @@
     <ClCompile Include="YBCar_ManagerTesting.cpp" />
     <ClCompile Include="YBCar_UserTesting.cpp" />
     <ClCompile Include="YBCar_RepoTesting.cpp" />
-    <ClCompile Include="YB_ViewItemTesting.cpp" />
+    <ClCompile Include="YB_ViewFactoryTesting.cpp" />
+    <ClCompile Include="YB_ViewTesting.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -185,7 +186,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Text Include="CarRepo.txt" />
+    <Text Include="RentRepo.txt" />
     <Text Include="UserRepo.txt" />
+    <Text Include="ViewItemRepo.txt" />
+    <Text Include="ViewRepo.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

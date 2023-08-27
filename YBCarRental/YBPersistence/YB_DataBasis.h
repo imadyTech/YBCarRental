@@ -55,8 +55,6 @@ namespace YBPersistence
 		YB_DataBasis& operator = (const YB_DataBasis& other) {
 			if (this != &other) {
 				Id = other.Id;
-
-				YB_DataBasis::operator=(other);
 			}
 			return *this;
 		}
@@ -98,9 +96,10 @@ namespace YBPersistence
 		std::string* FindValue(std::string key)
 		{
 			auto iterator = stringPairsMap.find(key);
-
+			string* result;
 			if (iterator != stringPairsMap.end()) {
-				return &iterator->second;
+				result = &iterator->second;
+				return result;
 			}
 			else
 				return nullptr;

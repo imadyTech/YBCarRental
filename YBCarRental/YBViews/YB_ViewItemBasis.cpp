@@ -17,6 +17,7 @@ void YB_ViewItemBasis::OnReturn()
 }
 
 
+
 string* YB_ViewItemBasis::Serialize()
 {
 	std::stringstream ss;

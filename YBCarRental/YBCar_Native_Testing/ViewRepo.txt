@@ -1,0 +1,2 @@
+Id:999;Title:Hello Car Rental;ViewType:WelcomeView;w:64;h:24;
+Id:111;Title:Please Login;ViewType:LoginView;w:64;h:24;

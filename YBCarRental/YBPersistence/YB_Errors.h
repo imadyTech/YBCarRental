@@ -55,6 +55,11 @@ namespace YBPersistence
 	{
 	public:
 		YB_PersistorError() : YB_ErrorBasis("YB_PersistorError") {}
+	};	
+	struct YB_FactoryError : YB_ErrorBasis
+	{
+	public:
+		YB_FactoryError() : YB_ErrorBasis("YB_FactoryError") {}
 	};
 
 	struct YB_ManagerLogicError : YB_ErrorBasis

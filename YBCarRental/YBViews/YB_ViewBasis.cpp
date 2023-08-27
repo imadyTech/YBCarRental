@@ -6,13 +6,13 @@ namespace YBConsoleViews {
 	YB_ViewBasis::YB_ViewBasis()
 	{
 		YB_DataBasis::persistentSeparator = ';';
+		FillBackground('*');
 	}
 
 	YBConsoleViews::YB_ViewBasis::YB_ViewBasis(int* width, int* height):YB_ViewBasis::YB_ViewBasis()
 	{
 		this->w = *width;
 		this->h = *height;
-		YB_ViewBasis::viewArray = new vector<char*>(h);
 	}
 
 	void YBConsoleViews::YB_ViewBasis::AddViewItem(YB_ViewItemBasis item)
@@ -36,6 +36,7 @@ namespace YBConsoleViews {
 		YB_DataBasis::Serialize(strStream);
 		strStream
 			<< "Title:" << Title << YB_DataBasis::persistentSeparator
+			<< "ViewType:" << ViewType << YB_DataBasis::persistentSeparator
 			<< "w:" << w << YB_DataBasis::persistentSeparator
 			<< "h:" << h << YB_DataBasis::persistentSeparator;
 	}
@@ -48,7 +49,8 @@ namespace YBConsoleViews {
 	void YB_ViewBasis::Deserialize(string line, const char* separator)
 	{
 		YB_DataBasis::Deserialize(line, separator);
-		Title = const_cast<char*>(YB_DataBasis::FindValue("Title")->c_str());
+		Title = *YB_DataBasis::FindValue("Title");
+		ViewType = *YB_DataBasis::FindValue("ViewType");
 		w = std::stoi(*YB_DataBasis::FindValue("w"));
 		h = std::stoi(*YB_DataBasis::FindValue("h"));
 	}
@@ -61,6 +63,17 @@ namespace YBConsoleViews {
 
 		}
 		return YB_ViewBasis::viewArray;
+	}
+
+	void YBConsoleViews::YB_ViewBasis::FillBackground(char background)
+	{
+		//fill the view background with a char
+		for (int i = 0; i < YB_ViewBasis::h; ++i) {
+			char* newLine = new char[YB_ViewBasis::w + 1];
+			std::memset(newLine, '*', YB_ViewBasis::w);
+			newLine[YB_ViewBasis::w] = '\0'; // Null-terminate the string
+			(*YB_ViewBasis::viewArray).push_back(newLine);
+		}
 	}
 
 	void YBConsoleViews::YB_ViewBasis::OnKeyInput(char* keycode)

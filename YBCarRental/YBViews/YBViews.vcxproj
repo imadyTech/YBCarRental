@@ -135,17 +135,23 @@
   <ItemGroup>
     <ClCompile Include="ButtonViewItem.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="YB_LoginView.cpp" />
     <ClCompile Include="YB_TextViewItem.cpp" />
     <ClCompile Include="YB_ViewBasis.cpp" />
+    <ClCompile Include="YB_ViewFactory.cpp" />
     <ClCompile Include="YB_ViewItemBasis.cpp" />
+    <ClCompile Include="YB_ViewItemFactory.cpp" />
     <ClCompile Include="YB_ViewMessage.cpp" />
     <ClCompile Include="YB_Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ButtonViewItem.h" />
+    <ClInclude Include="YB_LoginView.h" />
     <ClInclude Include="YB_TextViewItem.h" />
     <ClInclude Include="YB_ViewBasis.h" />
+    <ClInclude Include="YB_ViewFactory.h" />
     <ClInclude Include="YB_ViewItemBasis.h" />
+    <ClInclude Include="YB_ViewItemFactory.h" />
     <ClInclude Include="YB_ViewMessage.h" />
     <ClInclude Include="YB_Window.h" />
   </ItemGroup>

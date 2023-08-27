@@ -54,7 +54,7 @@ namespace YBPersistence
 	}
 
 	/// <summary>
-	/// Get a line from the cache (instead of from the file!!!)
+	/// Get a line from the cache (NOT from the file!!!)
 	/// </summary>
 	/// <param name="index"></param>
 	/// <returns></returns>
@@ -73,6 +73,28 @@ namespace YBPersistence
 		}
 		else
 			return nullptr;
+	}
+
+	/// <summary>
+	/// search a ine includes the target, and return the integer Id.
+	/// </summary>
+	/// <param name="target"></param>
+	/// <returns></returns>
+	int YB_Repository::FindLine(string target)
+	{
+		if (!isReady)
+			throw YB_RepositoryError();			//It is not allowed if never ReadAllLines().
+
+		if (allRecordLines.empty())
+			ReadAllLines();
+
+		for (const auto& pairValue : allRecordLines)
+		{
+			if (pairValue.second.find(target) != std::string::npos) {
+				return pairValue.first;
+			}
+		}
+		return -1;
 	}
 
 	void YB_Repository::AddLine(string line)
@@ -131,13 +153,18 @@ namespace YBPersistence
 	/// <returns></returns>
 	int YB_Repository::extractIndex(string line)
 	{
-		int index;
-		std::istringstream stringStream(line);
-		if (stringStream >> index) {
-			return index;
+		int index = -1;
+		size_t colonPos = line.find(":");
+
+		if (colonPos != std::string::npos && colonPos < line.size() - 1) {
+			std::string idStr = line.substr(colonPos + 1);
+			std::istringstream stringStream(idStr);
+
+			if (stringStream >> index) {
+				return index;
+			}
 		}
-		else
-			return -1;
+		return -1;
 	}
 
 	void YB_Repository::SaveAll()

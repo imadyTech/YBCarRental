@@ -75,12 +75,6 @@
     <ClCompile Include="YB_ManagerBasis.cpp">
       <Filter>Source Files\YB_Managers</Filter>
     </ClCompile>
-    <ClCompile Include="YB_LoginView.cpp">
-      <Filter>Source Files\YB_Views</Filter>
-    </ClCompile>
-    <ClCompile Include="YB_ViewManager.cpp">
-      <Filter>Source Files\YB_Views</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="YB_UserManager.h">
@@ -115,15 +109,6 @@
     </ClInclude>
     <ClInclude Include="YB_ManagerBasis.h">
       <Filter>Header Files\YB_Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="YB_LoginView.h">
-      <Filter>Header Files\YB_Views</Filter>
-    </ClInclude>
-    <ClInclude Include="YB_ViewItemManager.h">
-      <Filter>Header Files\YB_Views</Filter>
-    </ClInclude>
-    <ClInclude Include="YB_ViewManager.h">
-      <Filter>Header Files\YB_Views</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

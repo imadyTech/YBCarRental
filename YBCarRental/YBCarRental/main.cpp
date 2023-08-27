@@ -6,7 +6,7 @@
 #include "YB_UserPersistor.h"
 #include "YB_Errors.h"
 #include "YB_Window.h"
-#include "YB_ViewManager.h"
+#include "YB_ViewFactory.h"
 
 using namespace YBCarRental;
 using namespace YBConsoleViews;
@@ -18,7 +18,7 @@ int main()
 
 	//initialization
 	//managers
-	YB_ViewManager viewManager = YB_ViewManager("ViewRepo.txt");
+	YB_ViewFactory viewManager = YB_ViewFactory("ViewRepo.txt");
 		//persistors loading
 		//load viewitems info
 			//view/viewitem instantiation, load all view definition from persistence

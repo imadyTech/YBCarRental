@@ -50,8 +50,6 @@ namespace YBCarRental
 		/// <returns></returns>
 		bool Update(TData data);
 
-
-	private:
 		/// <summary>
 		/// The persistor to manage TData objects at lower-layer .
 		/// </summary>
@@ -69,6 +67,8 @@ namespace YBCarRental
 	template<class TData>
 	inline YB_ManagerBasis<TData>::YB_ManagerBasis(string url)
 	{
+		YB_ManagerBasis<TData>::YB_ManagerBasis();
+
 		//instantiate a persistor based on the url passed in.
 		persistor = YB_PersistorBasis<TData>(url);
 	}
@@ -129,4 +129,4 @@ namespace YBCarRental
 		}
 	}
 }
-#endif YB_ManagerBasis_H
+#endif // YB_ManagerBasis_H

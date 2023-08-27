@@ -142,14 +142,12 @@
     <ClCompile Include="YB_ManagerBasis.cpp" />
     <ClCompile Include="YB_Rent.cpp" />
     <ClCompile Include="YB_RentManager.cpp" />
-    <ClCompile Include="YB_LoginView.cpp" />
     <ClCompile Include="YB_User.cpp" />
     <ClCompile Include="YB_UserManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="YB_CarPersistor.cpp" />
     <ClCompile Include="YB_RentPersistor.cpp" />
     <ClCompile Include="YB_UserPersistor.cpp" />
-    <ClCompile Include="YB_ViewManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -159,13 +157,10 @@
     <ClInclude Include="YB_ManagerBasis.h" />
     <ClInclude Include="YB_Rent.h" />
     <ClInclude Include="YB_RentManager.h" />
-    <ClInclude Include="YB_LoginView.h" />
     <ClInclude Include="YB_User.h" />
     <ClInclude Include="YB_UserManager.h" />
     <ClInclude Include="YB_RentPersistor.h" />
     <ClInclude Include="YB_UserPersistor.h" />
-    <ClInclude Include="YB_ViewItemManager.h" />
-    <ClInclude Include="YB_ViewManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CarRepo.txt" />

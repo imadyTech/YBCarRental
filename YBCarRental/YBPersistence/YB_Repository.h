@@ -28,6 +28,7 @@ namespace YBPersistence
 
 		void ReadAllLines();
 		string* GetLine(int index);
+		int FindLine(string target);
 		void AddLine(string line);
 		void DeleteLine(int index);
 		void UpdateLine(string line);

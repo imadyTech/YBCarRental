@@ -12,8 +12,11 @@
 #include "../YBCarRental/YB_User.h"
 #include "YB_ViewItemBasis.h"
 #include "YB_ViewBasis.h"
+#include "YB_ViewFactory.h"
+#include "YB_ViewItemFactory.h"
 
 using namespace YBCarRental;
+using namespace YBConsoleViews;
 
 namespace YBCarTesting
 {

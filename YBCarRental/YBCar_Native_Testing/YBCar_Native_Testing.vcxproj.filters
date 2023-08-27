@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\ApplicationRepo">
+      <UniqueIdentifier>{c372c099-70f5-4c38-b898-5d55c055b7cc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="YBCar_UserTesting.cpp">
@@ -30,7 +33,10 @@
     <ClCompile Include="YBCar_ManagerTesting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="YB_ViewItemTesting.cpp">
+    <ClCompile Include="YB_ViewTesting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_ViewFactoryTesting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -40,8 +46,20 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <Text Include="CarRepo.txt">
+      <Filter>Source Files\ApplicationRepo</Filter>
+    </Text>
+    <Text Include="RentRepo.txt">
+      <Filter>Source Files\ApplicationRepo</Filter>
+    </Text>
+    <Text Include="ViewItemRepo.txt">
+      <Filter>Source Files\ApplicationRepo</Filter>
+    </Text>
+    <Text Include="ViewRepo.txt">
+      <Filter>Source Files\ApplicationRepo</Filter>
+    </Text>
     <Text Include="UserRepo.txt">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\ApplicationRepo</Filter>
     </Text>
   </ItemGroup>
 </Project>

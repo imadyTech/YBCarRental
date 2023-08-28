@@ -32,7 +32,7 @@ namespace YBPersistence
 
 	void YB_DataBasis::Deserialize(std::string line, const char* separator)
 	{
-		YB_DataBasis::SplitLine(&line, separator);			//fill the map
+		YB_DataBasis::SplitLine(&line, separator);			//to string:string pairs in stringPairsMap
 		Id = std::stoi(*YB_DataBasis::FindValue("Id"));
 	}
 

@@ -13,8 +13,8 @@ namespace YBCarTesting
 		TEST_METHOD(YB_ViewFactory_Init_Test)
 		{
 			YB_ViewFactory factory = YB_ViewFactory("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/ViewRepo.txt");
-			YB_ViewBasis view1 = *(factory.GetBasisView(999));
-			YB_ViewBasis view2 = *(factory.GetBasisView(111));
+			YB_ViewBasis view1 = *(factory.GetView(999));
+			YB_ViewBasis view2 = *(factory.GetView(111));
 
 			Assert::AreEqual(string("Hello Car Rental"), view1.Title);
 			Assert::AreEqual(string("Please Login"), view2.Title);
@@ -24,7 +24,7 @@ namespace YBCarTesting
 		TEST_METHOD(GetView_byType_Test)
 		{
 			YB_ViewFactory factory = YB_ViewFactory("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/ViewRepo.txt");
-			YB_ViewBasis view = *(factory.GetBasisView("WelcomeView"));
+			YB_ViewBasis view = *(factory.GetView("WelcomeView"));
 			Assert::AreEqual(string("Hello Car Rental"), view.Title);
 			Assert::AreEqual(string("WelcomeView"), view.ViewType);
 

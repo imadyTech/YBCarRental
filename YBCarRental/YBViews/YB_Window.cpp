@@ -3,23 +3,17 @@
 
 namespace YBConsoleViews
 {
-	YB_Window::YB_Window()
-	{
-
-	}
-
-
 	void YB_Window::Goto(int viewId)
 	{
 
 	}
 
-	void YB_Window::GetKeyInput()
+	void YB_Window::OnKeyIn()
 	{
 	}
 
 
-	void YB_Window::RenderView()
+	void YB_Window::Render()
 	{
 	}
 }

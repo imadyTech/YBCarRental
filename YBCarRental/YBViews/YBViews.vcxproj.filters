@@ -13,23 +13,35 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\YB_Views">
-      <UniqueIdentifier>{add3fcaa-75a2-4610-bffc-aa8bf6e37090}</UniqueIdentifier>
+    <Filter Include="Source Files\YB_ViewTemplates">
+      <UniqueIdentifier>{52a22dd6-8f7c-470d-8cb2-0657952bca69}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\YB_ViewItems">
-      <UniqueIdentifier>{e5c89f92-4dd7-4c84-8ca9-08ba1306f971}</UniqueIdentifier>
+    <Filter Include="Source Files\YB_ViewItemTemplates">
+      <UniqueIdentifier>{9374f0a7-9e15-4d79-a7d4-084a083f6217}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\YB_Views">
-      <UniqueIdentifier>{4d495886-7cc0-4ba5-8fad-58cb2326013a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\YB_ViewItems">
+    <Filter Include="Source Files\YB_ViewItem">
       <UniqueIdentifier>{e9ad102b-e64d-4501-8c62-c71a42bbcb02}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\YB_ViewMessages">
+    <Filter Include="Source Files\YB_View">
+      <UniqueIdentifier>{add3fcaa-75a2-4610-bffc-aa8bf6e37090}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\YB_ViewMessage">
       <UniqueIdentifier>{f9be7f69-cfdd-4dfa-9f53-113b81962a2c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\YB_ViewMessages">
+    <Filter Include="Header Files\YB_ViewMessage">
       <UniqueIdentifier>{1b3b17a0-b30a-4821-b0d1-b76280fcb8e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\YB_ViewTemplates">
+      <UniqueIdentifier>{40d0a971-4c86-401e-8a17-c6724f0d7c97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\YB_ViewItemTemplates">
+      <UniqueIdentifier>{85d48e91-2180-47f3-9ce0-f34d65260df5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\YB_ViewItem">
+      <UniqueIdentifier>{e5c89f92-4dd7-4c84-8ca9-08ba1306f971}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\YB_View">
+      <UniqueIdentifier>{4d495886-7cc0-4ba5-8fad-58cb2326013a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -37,31 +49,52 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="YB_ViewBasis.cpp">
-      <Filter>Source Files\YB_Views</Filter>
+      <Filter>Source Files\YB_View</Filter>
     </ClCompile>
     <ClCompile Include="YB_ViewItemBasis.cpp">
-      <Filter>Source Files\YB_ViewItems</Filter>
+      <Filter>Source Files\YB_ViewItem</Filter>
     </ClCompile>
     <ClCompile Include="YB_Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="YB_TextViewItem.cpp">
-      <Filter>Source Files\YB_ViewItems</Filter>
-    </ClCompile>
-    <ClCompile Include="ButtonViewItem.cpp">
-      <Filter>Source Files\YB_ViewItems</Filter>
-    </ClCompile>
     <ClCompile Include="YB_ViewMessage.cpp">
-      <Filter>Source Files\YB_ViewMessages</Filter>
-    </ClCompile>
-    <ClCompile Include="YB_LoginView.cpp">
-      <Filter>Source Files\YB_Views</Filter>
+      <Filter>Source Files\YB_ViewMessage</Filter>
     </ClCompile>
     <ClCompile Include="YB_ViewFactory.cpp">
-      <Filter>Source Files\YB_Views</Filter>
+      <Filter>Source Files\YB_View</Filter>
     </ClCompile>
     <ClCompile Include="YB_ViewItemFactory.cpp">
-      <Filter>Source Files\YB_Views</Filter>
+      <Filter>Source Files\YB_ViewItem</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_ListView.cpp">
+      <Filter>Source Files\YB_ViewTemplates</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_ButtonItem.cpp">
+      <Filter>Source Files\YB_ViewItemTemplates</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_TextItem.cpp">
+      <Filter>Source Files\YB_ViewItemTemplates</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_MenuView.cpp">
+      <Filter>Source Files\YB_ViewTemplates</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_WelcomeView.cpp">
+      <Filter>Source Files\YB_ViewTemplates</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_DetailsView.cpp">
+      <Filter>Source Files\YB_ViewTemplates</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_InputView.cpp">
+      <Filter>Source Files\YB_ViewTemplates</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_DialogView.cpp">
+      <Filter>Source Files\YB_ViewTemplates</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_ListItem.cpp">
+      <Filter>Source Files\YB_ViewItemTemplates</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_InputItem.cpp">
+      <Filter>Source Files\YB_ViewItemTemplates</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -69,28 +102,49 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="YB_ViewBasis.h">
-      <Filter>Header Files\YB_Views</Filter>
+      <Filter>Header Files\YB_View</Filter>
     </ClInclude>
     <ClInclude Include="YB_ViewItemBasis.h">
-      <Filter>Header Files\YB_ViewItems</Filter>
-    </ClInclude>
-    <ClInclude Include="ButtonViewItem.h">
-      <Filter>Header Files\YB_ViewItems</Filter>
-    </ClInclude>
-    <ClInclude Include="YB_TextViewItem.h">
-      <Filter>Header Files\YB_ViewItems</Filter>
+      <Filter>Header Files\YB_ViewItem</Filter>
     </ClInclude>
     <ClInclude Include="YB_ViewMessage.h">
-      <Filter>Header Files\YB_ViewMessages</Filter>
+      <Filter>Header Files\YB_ViewMessage</Filter>
     </ClInclude>
     <ClInclude Include="YB_ViewFactory.h">
-      <Filter>Header Files\YB_Views</Filter>
-    </ClInclude>
-    <ClInclude Include="YB_LoginView.h">
-      <Filter>Header Files\YB_Views</Filter>
+      <Filter>Header Files\YB_View</Filter>
     </ClInclude>
     <ClInclude Include="YB_ViewItemFactory.h">
-      <Filter>Header Files\YB_Views</Filter>
+      <Filter>Header Files\YB_ViewItem</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_ButtonItem.h">
+      <Filter>Header Files\YB_ViewItemTemplates</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_TextItem.h">
+      <Filter>Header Files\YB_ViewItemTemplates</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_ListView.h">
+      <Filter>Header Files\YB_ViewTemplates</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_MenuView.h">
+      <Filter>Header Files\YB_ViewTemplates</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_WelcomeView.h">
+      <Filter>Header Files\YB_ViewTemplates</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_DetailsView.h">
+      <Filter>Header Files\YB_ViewTemplates</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_DialogView.h">
+      <Filter>Header Files\YB_ViewTemplates</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_InputView.h">
+      <Filter>Header Files\YB_ViewTemplates</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_ListItem.h">
+      <Filter>Header Files\YB_ViewItemTemplates</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_InputItem.h">
+      <Filter>Header Files\YB_ViewItemTemplates</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

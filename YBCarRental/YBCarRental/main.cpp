@@ -38,8 +38,8 @@ int main()
 	//Loop
 	while (true)
 	{
-		window.GetKeyInput();
-		window.RenderView();
+		window.OnKeyIn();
+		window.Render();
 	}
 
 	////Testing the custom YB Errors

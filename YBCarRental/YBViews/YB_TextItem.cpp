@@ -1,21 +1,25 @@
-#include "YB_TextViewItem.h"
+#include "YB_TextItem.h"
 
 
 namespace YBConsoleViews
 {
 
-    vector<char*> YBConsoleViews::YB_TextViewItem::Render()
+    vector<char*> YBConsoleViews::YB_TextItem::Render()
     {
         //return YB_ViewItemBasis::viewArray;
         return YB_ViewItemBasis::Render();
     }
 
-    void YBConsoleViews::YB_TextViewItem::OnSelect()
+    void YB_TextItem::OnKey(char* keycode)
+    {
+    }
+
+    void YBConsoleViews::YB_TextItem::OnSelect()
     {
         //Do nothing for textViewItem.
     }
 
-    void YBConsoleViews::YB_TextViewItem::OnReturn()
+    void YBConsoleViews::YB_TextItem::OnReturn()
     {
         //Do nothing for textViewItem.
     }

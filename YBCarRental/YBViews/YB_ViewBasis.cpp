@@ -1,4 +1,5 @@
 #include "YB_ViewBasis.h"
+#include "YB_ViewItemBasis.h"  // Include the full definition here
 #include "YB_ViewMessage.h"
 
 
@@ -6,22 +7,37 @@ namespace YBConsoleViews {
 	YB_ViewBasis::YB_ViewBasis()
 	{
 		YB_DataBasis::persistentSeparator = ';';
-		FillBackground('*');
+		w = 200, h = 20;
 	}
 
-	YBConsoleViews::YB_ViewBasis::YB_ViewBasis(int* width, int* height):YB_ViewBasis::YB_ViewBasis()
+	YB_ViewBasis::YB_ViewBasis(int* width, int* height):YB_ViewBasis::YB_ViewBasis()
 	{
 		this->w = *width;
 		this->h = *height;
 	}
 
-	void YBConsoleViews::YB_ViewBasis::AddViewItem(YB_ViewItemBasis item)
+	YB_ViewBasis::~YB_ViewBasis()
 	{
-		int currentSize = YB_ViewBasis::viewItems.size();
-		YB_ViewBasis::viewItems.insert(std::make_pair(currentSize + 1, item));
-	}
+		for (char* ptr : viewArray) {
+			delete[] ptr;
+		}
+		YB_ViewBasis::viewArray.clear();
 
-	string* YB_ViewBasis::Serialize()
+		//delete[] & viewArray;
+	};
+
+
+	//void YB_ViewBasis::AddViewItem(YB_ViewItemBasis item)
+	//{
+	//	int currentSize = YB_ViewBasis::viewItems.size();
+	//	YB_ViewBasis::viewItems.insert(std::make_pair(currentSize + 1, item));
+	//}
+
+	//void YB_ViewBasis::AddViewItems(vector<YB_ViewItemBasis> items)
+	//{
+	//}
+
+	string* YB_ViewBasis::	Serialize()
 	{
 		std::stringstream ss;
 		//Redirect to new function (instead of previous version overrided function)
@@ -31,7 +47,7 @@ namespace YBConsoleViews {
 		return serializedString;
 	}
 
-	void YB_ViewBasis::Serialize(std::stringstream& strStream)
+	void YB_ViewBasis::		Serialize(std::stringstream& strStream)
 	{
 		YB_DataBasis::Serialize(strStream);
 		strStream
@@ -41,12 +57,12 @@ namespace YBConsoleViews {
 			<< "h:" << h << YB_DataBasis::persistentSeparator;
 	}
 
-	void YB_ViewBasis::Deserialize(string line)
+	void YB_ViewBasis::		Deserialize(string line)
 	{
 		this->Deserialize(line, &persistentSeparator);
 	}
-
-	void YB_ViewBasis::Deserialize(string line, const char* separator)
+	 
+	void YB_ViewBasis::		Deserialize(string line, const char* separator)
 	{
 		YB_DataBasis::Deserialize(line, separator);
 		Title = *YB_DataBasis::FindValue("Title");
@@ -56,27 +72,32 @@ namespace YBConsoleViews {
 	}
 
 
-	vector<char*>* YBConsoleViews::YB_ViewBasis::Render()
-	{
-		for (const auto& item : YB_ViewBasis::viewItems)
-		{
-
-		}
-		return YB_ViewBasis::viewArray;
-	}
-
-	void YBConsoleViews::YB_ViewBasis::FillBackground(char background)
+	void YB_ViewBasis::FillBackground(char background)
 	{
 		//fill the view background with a char
 		for (int i = 0; i < YB_ViewBasis::h; ++i) {
 			char* newLine = new char[YB_ViewBasis::w + 1];
-			std::memset(newLine, '*', YB_ViewBasis::w);
+			std::memset(newLine, background, YB_ViewBasis::w);
 			newLine[YB_ViewBasis::w] = '\0'; // Null-terminate the string
-			(*YB_ViewBasis::viewArray).push_back(newLine);
+			YB_ViewBasis::viewArray.push_back(newLine);
 		}
 	}
 
-	void YBConsoleViews::YB_ViewBasis::OnKeyInput(char* keycode)
+	/// <summary>
+	/// Scan all viewItems, and merge the grid to viewArray
+	/// </summary>
+	/// <returns></returns>
+	vector<char*> YB_ViewBasis::Render()
+	{
+		for (auto& iterator : this->viewItems)
+		{
+			std::vector<char*> grid = (*iterator.second).Render();
+			viewArray.insert(viewArray.end(), grid.begin(), grid.end());
+		}
+		return viewArray;
+	}
+
+	void YB_ViewBasis::OnKey(char* keycode)
 	{
 		//tab:	toggle active viewItem
 		//enter: click active viewItem
@@ -84,8 +105,7 @@ namespace YBConsoleViews {
 		//Esc: quit (switch to exit confirm)
 	}
 
-
-	void YBConsoleViews::YB_ViewBasis::OnItemReturned(YB_ViewMessageBasis msg)
+	void YB_ViewBasis::OnReturn(YB_ViewMessageBasis msg)
 	{
 	}
 }

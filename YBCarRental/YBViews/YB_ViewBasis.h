@@ -4,37 +4,28 @@
 #include <iostream>
 #include <map>
 #include <vector>
-#include "YB_ViewItemBasis.h"
 #include "YB_ViewMessage.h"
 #include "YB_DataBasis.h"
+//#include "YB_ViewItemBasis.h"				// Forward declaration - some c++ specific trap
 
 using namespace std;
 using namespace YBPersistence;
 
 namespace YBConsoleViews
 {
+	class YB_ViewItemBasis;					// Forward declaration - some c++ specific trap
+
 	class YB_ViewBasis : public YBPersistence::YB_DataBasis
 	{
 	public:
-		//int* viewId;								//Obsoleted, replaced by Id in YB_DataBasis
-		string ViewType;
-		string Title;								//max limit to 64 characters
-		int w, h;									//view size, same as window size but need be passed in.
+		string							ViewType;
+		string							Title;
+		int								w, h;			//view size, same as window size but need be passed in.
 
 		YB_ViewBasis();
 		YB_ViewBasis(int* width, int* height);
-
-		void AddViewItem(YB_ViewItemBasis item);
-		void AddViewItems(vector<YB_ViewItemBasis> items);
-		void AddViewItems(vector<string> itemsDef);
-
-		virtual string* Serialize() override;
-		virtual void Serialize(std::stringstream& strStream) override;
-		void Deserialize(string line);
-		virtual void Deserialize(string line, const char* separator) override;
-		//void Serialize(ofstream* output) override;
-
-		#pragma region copy assignment operator
+		~YB_ViewBasis();
+#pragma region copy assignment operator
 		//=====================================================================================================================
 		//Suggestion given by chatGPT to solve C2280 and deleted function error:
 		// it's possible that the error is related to the copy assignment operator of your YB_User class. If the YB_User 
@@ -64,21 +55,25 @@ namespace YBConsoleViews
 		//change the dataSet to map<int, TData*> in the persistor class;
 		//However I will not go through this direction for simplicity consideration.
 		//=====================================================================================================================
-		#pragma endregion
+#pragma endregion
 
-
-
-	protected:
-		virtual vector<char*>* Render();			// multiple lines text
-		virtual void OnKeyInput(char* keycode);
-		virtual void OnItemReturned(YB_ViewMessageBasis msg);
+//void AddViewItem(YB_ViewItemBasis item);
+//void AddViewItems(vector<YB_ViewItemBasis> items);
 		void FillBackground(char background);
 
-	private:
-		map<int, YB_ViewItemBasis> viewItems = {};
-		vector<char*>* viewArray = {};
+		virtual string* Serialize()									override;
+		virtual void					Serialize(std::stringstream& strStream)		override;
+		void							Deserialize(string line);
+		virtual void					Deserialize(string line, const char* separator) override;
+		//void Serialize(ofstream* output) override;
 
-		//const char persistentSeparator = ';';		//indicate how the persistence string was separated (for specific class, usually 1st level).
+		virtual void					OnKey(char* keycode);
+		virtual void					OnReturn(YB_ViewMessageBasis msg);
+		virtual vector<char*>			Render();
+	protected:
+	private:
+		map<int, YB_ViewItemBasis*>		viewItems;
+		vector<char*>					viewArray;
 	};
 }
 #endif //YB_ViewBasis_H

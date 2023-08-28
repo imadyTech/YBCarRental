@@ -1,0 +1,17 @@
+#ifndef YB_InputView_H
+#define YB_InputView_H
+
+#include "YB_ViewBasis.h"
+
+namespace YBConsoleViews
+{
+	class YB_InputView : public YBConsoleViews::YB_ViewBasis
+	{
+	public:
+		void			OnKey(char* keycode)				override;
+		void			OnReturn(YB_ViewMessageBasis msg)	override;
+		vector<char*>	Render()							override;
+	};
+}
+
+#endif // YB_InputView_H

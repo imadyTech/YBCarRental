@@ -133,26 +133,40 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ButtonViewItem.cpp" />
+    <ClCompile Include="YB_ButtonItem.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="YB_LoginView.cpp" />
-    <ClCompile Include="YB_TextViewItem.cpp" />
+    <ClCompile Include="YB_DetailsView.cpp" />
+    <ClCompile Include="YB_DialogView.cpp" />
+    <ClCompile Include="YB_InputItem.cpp" />
+    <ClCompile Include="YB_InputView.cpp" />
+    <ClCompile Include="YB_ListItem.cpp" />
+    <ClCompile Include="YB_ListView.cpp" />
+    <ClCompile Include="YB_MenuView.cpp" />
+    <ClCompile Include="YB_TextItem.cpp" />
     <ClCompile Include="YB_ViewBasis.cpp" />
     <ClCompile Include="YB_ViewFactory.cpp" />
     <ClCompile Include="YB_ViewItemBasis.cpp" />
     <ClCompile Include="YB_ViewItemFactory.cpp" />
     <ClCompile Include="YB_ViewMessage.cpp" />
+    <ClCompile Include="YB_WelcomeView.cpp" />
     <ClCompile Include="YB_Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ButtonViewItem.h" />
-    <ClInclude Include="YB_LoginView.h" />
-    <ClInclude Include="YB_TextViewItem.h" />
+    <ClInclude Include="YB_ButtonItem.h" />
+    <ClInclude Include="YB_DetailsView.h" />
+    <ClInclude Include="YB_DialogView.h" />
+    <ClInclude Include="YB_InputItem.h" />
+    <ClInclude Include="YB_InputView.h" />
+    <ClInclude Include="YB_ListItem.h" />
+    <ClInclude Include="YB_ListView.h" />
+    <ClInclude Include="YB_MenuView.h" />
+    <ClInclude Include="YB_TextItem.h" />
     <ClInclude Include="YB_ViewBasis.h" />
     <ClInclude Include="YB_ViewFactory.h" />
     <ClInclude Include="YB_ViewItemBasis.h" />
     <ClInclude Include="YB_ViewItemFactory.h" />
     <ClInclude Include="YB_ViewMessage.h" />
+    <ClInclude Include="YB_WelcomeView.h" />
     <ClInclude Include="YB_Window.h" />
   </ItemGroup>
   <ItemGroup>

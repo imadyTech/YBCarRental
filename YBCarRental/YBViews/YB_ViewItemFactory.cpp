@@ -1,15 +1,19 @@
 #include "YB_ViewItemFactory.h"
+#include "YB_ViewItemBasis.h"
 
 namespace YBConsoleViews
 {
-
-	std::unique_ptr<YB_ViewItemBasis> YB_ViewItemFactory::CreateProduct(string viewType)
+	std::unique_ptr<YB_ViewItemBasis> YB_ViewItemFactory::CreateProduct(string serializeString)
 	{
-		if (viewType == "TitleItem") return std::make_unique<YB_ViewItemBasis>();
-		if (viewType == "TextItem") return std::make_unique<YB_ViewItemBasis>();
-		if (viewType == "ButtonItem") return std::make_unique<YB_ViewItemBasis>();
-		if (viewType == "InputItem") return std::make_unique<YB_ViewItemBasis>();
-		if (viewType == "ListItem") return std::make_unique<YB_ViewItemBasis>();
+		YB_ViewItemBasis* basePtr = new YB_ViewItemBasis();
+		basePtr->Deserialize(serializeString);
+
+		string type = basePtr->ItemType;
+		if (type == "TextItem")		return std::make_unique<TextItem>();
+		if (type == "ButtonItem")	return std::make_unique<ButtonItem>();
+		if (type == "InputItem")	return std::make_unique<InputItem>();
+		if (type == "ListItem")		return std::make_unique<ListItem>();
+
 		return nullptr;
 	}
 }

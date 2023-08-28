@@ -8,6 +8,7 @@
 using namespace YBPersistence;
 using namespace YBConsoleViews;
 
+
 int main()
 {
 	//int w = 120, h = 30;
@@ -27,14 +28,17 @@ int main()
 
 
 	YB_ViewFactory factory = YB_ViewFactory("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/ViewRepo.txt");
-	YB_ViewBasis view = *factory.GetBasisView(999);
+	YB_ViewBasis view = *factory.GetView(999);
+	view.FillBackground('/');
+	view.Render();
+
 	cout << view.Title <<" - " << view.ViewType << endl;
 	cout << *view.Serialize() << endl;
 
-	view = *factory.GetBasisView("WelcomeView");
+	view = *factory.GetView("WelcomeView");
 	cout << view.Title <<" - " << view.ViewType << endl;
 	cout << *view.Serialize() << endl;
-	view = *factory.GetBasisView("LoginView");
+	view = *factory.GetView("InputView");
 	cout << view.Title <<" - " << view.ViewType << endl;
 	cout << *view.Serialize() << endl;
 

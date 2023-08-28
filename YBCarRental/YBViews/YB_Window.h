@@ -6,6 +6,8 @@
 #include <string>
 #include <iostream>
 #include "YB_ViewBasis.h"
+#include "YB_ViewFactory.h"
+#include "YB_ViewItemFactory.h"
 
 using namespace std;
 
@@ -14,22 +16,30 @@ namespace YBConsoleViews
 	class YB_Window
 	{
 	public:
-		YB_Window();
+		YB_Window() = default;
 
-		vector<char*>* background;
+		//======================Key and processor=========================
+		// F9:				Window
+		// Esc:				View
+		// Tab:				View
+		// Backspace:		ViewItem
+		// Num:				ViewItem
+		// Alphabete:		ViewItem
+		// Space:			ViewItem
+		//================================================================
+		void OnKeyIn();
 
-		void GetKeyInput();
-		//void ResponseInput();
-		void RenderView();							//view contents
-		void Output();								//to screen
+		void Render();								//view contents
 		void Goto(int viewId);						//Activate a view
 		void Prev();
 		void Next();
-		void AddView(YB_ViewBasis view);
+		void Output();								//to screen
 	private:
-		YB_ViewBasis currentView;
-		map<char*, YB_ViewBasis> viewCollection;
-		stack<YB_ViewBasis> viewStack;
+		YB_ViewFactory				viewFactory;
+		YB_ViewItemFactory			viewItemFactory;
+		YB_ViewBasis				currentView;
+		map<int, YB_ViewBasis>		viewCollection;
+		stack<YB_ViewBasis>			viewStack;
 	};
 
 }

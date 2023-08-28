@@ -18,14 +18,10 @@ namespace YBConsoleViews
 	class YB_ViewBasis : public YBPersistence::YB_DataBasis
 	{
 	public:
-		string							ViewType;
-		string							Title;
-		int								w, h;			//view size, same as window size but need be passed in.
-
 		YB_ViewBasis();
 		YB_ViewBasis(int* width, int* height);
 		~YB_ViewBasis();
-#pragma region copy assignment operator
+		#pragma region copy assignment operator
 		//=====================================================================================================================
 		//Suggestion given by chatGPT to solve C2280 and deleted function error:
 		// it's possible that the error is related to the copy assignment operator of your YB_User class. If the YB_User 
@@ -55,13 +51,17 @@ namespace YBConsoleViews
 		//change the dataSet to map<int, TData*> in the persistor class;
 		//However I will not go through this direction for simplicity consideration.
 		//=====================================================================================================================
-#pragma endregion
+		#pragma endregion
+
+		string							ViewType="";
+		string							Title="";
+		int								w=200, h=32;				//view size
+		char							Background = '.';
 
 //void AddViewItem(YB_ViewItemBasis item);
 //void AddViewItems(vector<YB_ViewItemBasis> items);
-		void FillBackground(char background);
 
-		virtual string* Serialize()									override;
+		virtual string*					Serialize()									override;
 		virtual void					Serialize(std::stringstream& strStream)		override;
 		void							Deserialize(string line);
 		virtual void					Deserialize(string line, const char* separator) override;
@@ -70,6 +70,7 @@ namespace YBConsoleViews
 		virtual void					OnKey(char* keycode);
 		virtual void					OnReturn(YB_ViewMessageBasis msg);
 		virtual vector<char*>			Render();
+		void							InitBackground(char background);
 	protected:
 	private:
 		map<int, YB_ViewItemBasis*>		viewItems;

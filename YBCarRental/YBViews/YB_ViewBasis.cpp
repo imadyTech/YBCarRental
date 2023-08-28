@@ -1,3 +1,4 @@
+#pragma once
 #include "YB_ViewBasis.h"
 #include "YB_ViewItemBasis.h"  // Include the full definition here
 #include "YB_ViewMessage.h"
@@ -21,7 +22,7 @@ namespace YBConsoleViews {
 		for (char* ptr : viewArray) {
 			delete[] ptr;
 		}
-		YB_ViewBasis::viewArray.clear();
+		this->viewArray.clear();
 
 		//delete[] & viewArray;
 	};
@@ -72,7 +73,7 @@ namespace YBConsoleViews {
 	}
 
 
-	void YB_ViewBasis::FillBackground(char background)
+	void YB_ViewBasis::InitBackground(char background)
 	{
 		//fill the view background with a char
 		for (int i = 0; i < YB_ViewBasis::h; ++i) {

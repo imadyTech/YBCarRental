@@ -5,6 +5,8 @@
 #include <locale>
 #include "YB_ViewBasis.h"
 #include "YB_ViewFactory.h"
+#include "YB_ViewItemBasis.h"
+#include "YB_ViewItemFactory.h"
 using namespace YBPersistence;
 using namespace YBConsoleViews;
 
@@ -26,41 +28,35 @@ int main()
 
 	//cout << *item.Serialize();
 
+	//YB_ViewFactory Test
+		//YB_ViewFactory viewfactory = YB_ViewFactory("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/ViewRepo.txt");
+		//YB_ViewBasis view = *viewfactory.GetView(1);
+		//view.InitBackground('/');
+		//view.Render();
+		//cout << view.Title <<" - " << view.ViewType << endl;
+		//cout << *view.Serialize() << endl;
+		//view = *viewfactory.GetView("WelcomeView");
+		//cout << view.Title <<" - " << view.ViewType << endl;
+		//cout << *view.Serialize() << endl;
+		//view = *viewfactory.GetView("InputView");
+		//cout << view.Title <<" - " << view.ViewType << endl;
+		//cout << *view.Serialize() << endl;
+		//int i;
+		//cin>> i;
+	//YB_ViewFactory Test
 
-	YB_ViewFactory factory = YB_ViewFactory("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/ViewRepo.txt");
-	YB_ViewBasis view = *factory.GetView(999);
-	view.FillBackground('/');
-	view.Render();
+	//YB_ViewItemFactory itemfactory = YB_ViewItemFactory("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/ViewItemRepo.txt");
+	YB_ViewItemFactory itemfactory = YB_ViewItemFactory();
+	itemfactory.CreateViewItem("Id:1!x:0!y:0!w:30!h:1!ItemType:ButtonItem!Content:Yes or No!Background:/!isCentral:1!isFocused:0!isSelected:0!isHidden:0!");
+	itemfactory.CreateViewItem("Id:2!x:0!y:0!w:40!h:1!ItemType:ButtonItem!Content:The Car!Background:*!isCentral:0!isFocused:1!isSelected:0!isHidden:0!");
+	itemfactory.CreateViewItem("Id:3!x:0!y:0!w:50!h:1!ItemType:ButtonItem!Content:You and me!Background:$!isCentral:1!isFocused:1!isSelected:0!isHidden:0!");
 
-	cout << view.Title <<" - " << view.ViewType << endl;
-	cout << *view.Serialize() << endl;
-
-	view = *factory.GetView("WelcomeView");
-	cout << view.Title <<" - " << view.ViewType << endl;
-	cout << *view.Serialize() << endl;
-	view = *factory.GetView("InputView");
-	cout << view.Title <<" - " << view.ViewType << endl;
-	cout << *view.Serialize() << endl;
-
-	int i;
-	cin>> i;
-
-
-	//std::wcout << L"** Unicode Characters: \u221A \u2302 \u25A1" << std::endl;
-
-	//char* p = new char[200];
-	//strcpy_s(p,11, "hellohello");
-	//cout <<&p<<":"<< p << ";" << endl;
-	//strcpy_s(p+2,5, "yoyo");
-	//cout <<&p<<":"<< p << ";"<< endl;
-
-	//cout << *p << endl;
-
-	//char* s = new char[60];
-	//std::fill(s, s + 20, '*');
-	//s[20]= '\0';
-
-	//cout << s << endl;
+	auto item1 = *itemfactory.GetViewItem(1);
+	item1.Render();
+	auto item2= *itemfactory.GetViewItem(2);
+	item2.Render();
+	auto item3= *itemfactory.GetViewItem(3);
+	item3.Render();
 
 }
 

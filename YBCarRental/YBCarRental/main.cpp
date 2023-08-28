@@ -1,7 +1,6 @@
 // YBCarRent.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 #include <iostream>
-#include "YB_PersistorBasis.h"
 #include "YB_User.h"
 #include "YB_UserPersistor.h"
 #include "YB_Errors.h"
@@ -18,11 +17,10 @@ int main()
 
 	//initialization
 	//managers
-	YB_ViewFactory viewManager = YB_ViewFactory("ViewRepo.txt");
-		//persistors loading
+	YB_ViewFactory factory = YB_ViewFactory("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/ViewRepo.txt");
+	//persistors loading
 		//load viewitems info
-			//view/viewitem instantiation, load all view definition from persistence
-	viewManager.LoadAllViews();
+		//view/viewitem instantiation, load all view definition from persistence
 
 
 	YB_Window window = YB_Window();

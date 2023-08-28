@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 #include <YB_DataBasis.h>
-#include "YB_ViewBasis.h"
+//#include "YB_ViewBasis.h"
 
 using namespace std;
 using namespace YBPersistence;
@@ -15,7 +15,7 @@ namespace YBConsoleViews
 	{
 	public:
 		YB_ViewItemBasis();
-		YB_ViewItemBasis(int* width, int* height);
+		YB_ViewItemBasis(int width, int height);
 		~YB_ViewItemBasis();
 
 		#pragma region copy assignment operator
@@ -26,6 +26,9 @@ namespace YBConsoleViews
 				w = other.w;
 				h = other.h;
 				ItemType = other.ItemType;
+				Content = other.Content;
+				Background = other.Background;
+				isCentral = other.isCentral;
 				isFocused = other.isFocused;
 				isSelected = other.isSelected;
 				isHidden = other.isHidden;
@@ -38,9 +41,12 @@ namespace YBConsoleViews
 
 #
 		int								x=0, y=0;							//relative coordinate inside the view
-		int								w=120;								//Width of the viewItem.
+		int								w=100;								//Width of the viewItem.
 		int								h=1;								//Height of the viewItem.
 		string							ItemType;
+		string							Content;
+		char							Background = ' ';
+		bool							isCentral = true;
 		bool							isFocused = false;
 		bool							isSelected = false;
 		bool							isHidden = false;					//if an item is hidden, then the View will ignore it during rendering.
@@ -54,10 +60,12 @@ namespace YBConsoleViews
 		virtual void					OnSelect();
 		virtual void					OnReturn();
 		virtual std::vector<char*>		Render();
-
+		void							InitBackground(char background);
+		void							FillBackground(char background);
+		void							ClearBackground();
 	protected:
 		vector<char*>					viewArray;
-		YB_ViewBasis					parent;
+		//YB_ViewBasis					parent;
 	};
 
 

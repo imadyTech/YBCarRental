@@ -42,7 +42,7 @@ namespace YBCarTesting
 		TEST_METHOD(YB_ViewItemBasis_Instantiate_Test)
 		{
 			int width = 100, height = 3;
-			YB_ViewItemBasis item = YB_ViewItemBasis(&width, &height);
+			YB_ViewItemBasis item = YB_ViewItemBasis(width, height);
 			item.Id = 101;
 			item.x = 20;
 			item.y = 30;
@@ -57,7 +57,7 @@ namespace YBCarTesting
 		TEST_METHOD(YB_ViewItemBasis_Deserialize_Test)
 		{
 			int width = 120, height = 2;
-			YB_ViewItemBasis item = YB_ViewItemBasis(&width, &height);
+			YB_ViewItemBasis item = YB_ViewItemBasis(width, height);
 			string line = "Id:-1!x:0!y:0!w:120!h:2!isFocused:0!isSelected:1!isHidden:0!";
 			item.Deserialize(line);
 			Assert::AreEqual(120, item.w);

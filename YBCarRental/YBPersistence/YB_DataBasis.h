@@ -52,17 +52,17 @@ namespace YBPersistence
 		/// <param name="line"></param>
 		/// <returns></returns>
 		virtual void						Deserialize(std::string line, const char* separator);
-
-	protected:
-		/// <summary>
-		/// indicate how the persistence string was separated. Default=';'
-		/// </summary>
-		char								persistentSeparator = ';';
-		/// <summary>
-		/// Reuseable code to split a string with a spliter (1st level: ';' 2nd level '!')
-		/// </summary>
-		/// <param name="line">for 2nd level sub items, you must use '!' as separator, NOT ';'.</param>
-		/// <returns></returns>
+		std::string*						FindValue(std::string key)
+		{
+			auto iterator = stringPairsMap.find(key);
+			string* result;
+			if (iterator != stringPairsMap.end()) {
+				result = &iterator->second;
+				return result;
+			}
+			else
+				return nullptr;
+		}
 		map<std::string, std::string>*		SplitLine(std::string* line, const char* separator)
 		{
 			if (!stringPairsMap.empty())	//if the map is not empty, then very likely it was resued so you need clean.
@@ -77,6 +77,11 @@ namespace YBPersistence
 			}
 			return &stringPairsMap;
 		};
+		/// <summary>
+		/// Reuseable code to split a string with a spliter (1st level: ';' 2nd level '!')
+		/// </summary>
+		/// <param name="line">for 2nd level sub items, you must use '!' as separator, NOT ';'.</param>
+		/// <returns></returns>
 		pair<string, string>				SplitToPair(std::string* line) {
 
 			size_t colonPos = (*line).find(':');
@@ -89,17 +94,12 @@ namespace YBPersistence
 			else
 				return std::make_pair("", "");
 		}
-		std::string*						FindValue(std::string key)
-		{
-			auto iterator = stringPairsMap.find(key);
-			string* result;
-			if (iterator != stringPairsMap.end()) {
-				result = &iterator->second;
-				return result;
-			}
-			else
-				return nullptr;
-		}
+		/// <summary>
+		/// indicate how the persistence string was separated. Default=';'
+		/// </summary>
+		char								persistentSeparator = ';';
+
+	protected:
 
 
 	private:

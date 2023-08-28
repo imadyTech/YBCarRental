@@ -1,0 +1,3 @@
+Id:1!x:0!y:0!w:20!h:1!ItemType:ButtonItem!Content:Yes or No!Background:.!isCentral:1!isFocused:0!isSelected:0!isHidden:0!
+Id:2!x:0!y:0!w:30!h:1!ItemType:ButtonItem!Content:The Car!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!
+Id:3!x:0!y:0!w:48!h:1!ItemType:ButtonItem!Content:You and me!Background: !isCentral:1!isFocused:0!isSelected:0!isHidden:0!

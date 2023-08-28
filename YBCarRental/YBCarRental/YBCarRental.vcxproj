@@ -117,7 +117,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>E:\YB800ProSE\YBCarRental\YBCarRental\YBPersistence\x64\Debug;E:\YB800ProSE\YBCarRental\YBCarRental\YBViews\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>YB_Window;YB_ViewBasis;YB_ViewItemBasis;YB_DataBasis;YB_PersistorBasis;YB_Repository;YB_Errors;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>YB_Window;YB_ViewBasis;YB_ViewItemBasis;YB_DataBasis;YB_PersistorBasis;YB_Repository;YB_Errors;YB_WelcomeView;YB_ListView;YB_DetailsView;YB_DialogView;YB_InputView;YB_MenuView;YB_ButtonItem;YB_InputItem;YB_ListItem;YB_TextItem;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

@@ -33,12 +33,11 @@ namespace YBConsoleViews {
 	//	int currentSize = YB_ViewBasis::viewItems.size();
 	//	YB_ViewBasis::viewItems.insert(std::make_pair(currentSize + 1, item));
 	//}
-
 	//void YB_ViewBasis::AddViewItems(vector<YB_ViewItemBasis> items)
 	//{
 	//}
 
-	string* YB_ViewBasis::Serialize()
+	string*				YB_ViewBasis::Serialize()
 	{
 		std::stringstream ss;
 		//Redirect to new function (instead of previous version overrided function)
@@ -47,8 +46,7 @@ namespace YBConsoleViews {
 		std::string* serializedString = new std::string(ss.str());
 		return serializedString;
 	}
-
-	void YB_ViewBasis::Serialize(std::stringstream& strStream)
+	void				YB_ViewBasis::Serialize(std::stringstream& strStream)
 	{
 		YB_DataBasis::Serialize(strStream);
 		strStream
@@ -57,13 +55,11 @@ namespace YBConsoleViews {
 			<< "w:"			<< w		<< YB_DataBasis::persistentSeparator
 			<< "h:"			<< h		<< YB_DataBasis::persistentSeparator;
 	}
-
-	void YB_ViewBasis::Deserialize(string line)
+	void				YB_ViewBasis::Deserialize(string line)
 	{
 		this->Deserialize(line, &persistentSeparator);
 	}
-
-	void YB_ViewBasis::Deserialize(string line, const char* separator)
+	void				YB_ViewBasis::Deserialize(string line, const char* separator)
 	{
 		YB_DataBasis::Deserialize(line, separator);
 
@@ -73,49 +69,23 @@ namespace YBConsoleViews {
 		h =				std::stoi(*YB_DataBasis::FindValue("h"));
 	}
 
-
-	void YB_ViewBasis::Init_Background(char background)
-	{
-		if (!viewArray.empty())
-			viewArray.clear();
-		//fill the view background with a char
-		for (int i = 0; i < this->h; ++i) {
-			char* newLine = new char[this->w + 1];
-			std::memset(newLine, background, this->w);
-			newLine[this->w] = '\0'; // Null-terminate the string
-			this->viewArray.push_back(newLine);
-		}
-	}
-	void YB_ViewBasis::Fill_Background(char background)
-	{
-		//fill the view background with a char
-		for (int i = 0; i < this->h; ++i) {
-			std::memset(this->viewArray[i], background, this->w);
-		}
-	}
-	void YB_ViewBasis::Clear_Background()
-	{
-		//fill the view background with a char
-		for (int i = 0; i < this->h; ++i) {
-			std::memset(this->viewArray[i], ' ', this->w);
-		}
-	}
-
 	/// <summary>
 	/// Scan all viewItems, and merge the grid to viewArray
 	/// </summary>
 	/// <returns></returns>
-	vector<char*> YB_ViewBasis::Render()
+	vector<char*>		YB_ViewBasis::Render()
 	{
 		if (viewArray.empty())
 			Init_Background(this->Background);
 
 		for (auto& iterator : this->subItemsList)
 		{
-			auto item = *iterator;
-			auto posX = item.x, posY = item.y;
-			auto SUB_RECT = item.Render();
-			size_t newContentLength = item.w;
+			auto posX = iterator->x, posY = iterator->y;
+			auto SUB_RECT = iterator->Render();
+			if (SUB_RECT.empty())
+				continue;
+
+			size_t newContentLength = iterator->w;
 			for (const auto& row : SUB_RECT)
 			{
 				std::memcpy(viewArray[posY] + posX, row, newContentLength);
@@ -129,8 +99,34 @@ namespace YBConsoleViews {
 
 		return viewArray;
 	}
+	void				YB_ViewBasis::Init_Background(char background)
+	{
+		if (!viewArray.empty())
+			viewArray.clear();
+		//fill the view background with a char
+		for (int i = 0; i < this->h; ++i) {
+			char* newLine = new char[this->w + 1];
+			std::memset(newLine, background, this->w);
+			newLine[this->w] = '\0'; // Null-terminate the string
+			this->viewArray.push_back(newLine);
+		}
+	}
+	void				YB_ViewBasis::Fill_Background(char background)
+	{
+		//fill the view background with a char
+		for (int i = 0; i < this->h; ++i) {
+			std::memset(this->viewArray[i], background, this->w);
+		}
+	}
+	void				YB_ViewBasis::Clear_Background()
+	{
+		//fill the view background with a char
+		for (int i = 0; i < this->h; ++i) {
+			std::memset(this->viewArray[i], ' ', this->w);
+		}
+	}
 
-	void YB_ViewBasis::OnKey(int* keycode)
+	void				YB_ViewBasis::OnKey(int* keycode)
 	{
 		if (*keycode == 9)						//tabKeyCode = 9; Toggle items.
 		{
@@ -161,8 +157,7 @@ namespace YBConsoleViews {
 			(*subItemsList[currentItemIndex]).OnKey(keycode);
 		}
 	}
-
-	void YB_ViewBasis::OnReturn(YB_ViewMessageBasis msg)
+	void				YB_ViewBasis::OnReturn(YB_ViewMessageBasis msg)
 	{
 	}
 }

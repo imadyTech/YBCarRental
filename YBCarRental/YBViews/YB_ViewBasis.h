@@ -21,7 +21,7 @@ namespace YBConsoleViews
 		YB_ViewBasis();
 		YB_ViewBasis(int* width, int* height);
 		~YB_ViewBasis();
-#pragma region copy assignment operator
+		#pragma region Copy assignment operator
 		//=====================================================================================================================
 		//Suggestion given by chatGPT to solve C2280 and deleted function error:
 		// it's possible that the error is related to the copy assignment operator of your YB_User class. If the YB_User 
@@ -53,7 +53,7 @@ namespace YBConsoleViews
 		//change the dataSet to map<int, TData*> in the persistor class;
 		//However I will not go through this direction for simplicity consideration.
 		//=====================================================================================================================
-#pragma endregion
+		#pragma endregion
 
 		string							ViewType = "";
 		string							Title = "";

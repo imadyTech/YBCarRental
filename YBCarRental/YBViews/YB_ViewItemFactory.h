@@ -50,7 +50,8 @@ namespace YBConsoleViews
 		/// create view in runtime upon to a Factory Design Pattern implementation
 		/// </summary>
 		std::unique_ptr<YB_ViewItemBasis>		CreateEmpty(string type);
-		std::unique_ptr<YB_ViewItemBasis>		CreateProduct(string itemDefinition);
+		//std::unique_ptr<YB_ViewItemBasis>		CreateProduct(string itemDefinition);
+		YB_ViewItemBasis* CreateProduct(const string serializeString);
 	};
 }
 

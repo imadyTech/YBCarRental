@@ -5,6 +5,13 @@ namespace YBConsoleViews
 
     vector<char*> YBConsoleViews::YB_ButtonItem::Render()
     {
+        if (!isHidden) {
+            if (isFocused)
+                this->Fill_Background(this->Background);
+            else
+                Clear_Background();
+        }
+
         return YB_ViewItemBasis::Render();
     }
 

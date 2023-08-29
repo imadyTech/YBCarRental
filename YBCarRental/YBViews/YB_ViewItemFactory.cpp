@@ -10,8 +10,8 @@ namespace YBConsoleViews
 
 		for (auto& pairValue : repository.allRecordLines)
 		{
-			std::unique_ptr<YB_ViewItemBasis> viewPtr = this->CreateProduct(pairValue.second); //Pass the view serializeString
-			YB_ViewItemBasis* view = viewPtr.get();
+			//std::unique_ptr<YB_ViewItemBasis> viewPtr = this->CreateProduct(pairValue.second); //Pass the view serializeString
+			YB_ViewItemBasis* view = this->CreateProduct(pairValue.second); //Pass the view serializeString
 			try
 			{
 				//(*view).Deserialize(pairValue.second);										//deserialize String
@@ -25,8 +25,8 @@ namespace YBConsoleViews
 	}
 
 	YB_ViewItemBasis* YB_ViewItemFactory::CreateViewItem(string itemDefinition) {
-		std::unique_ptr<YB_ViewItemBasis> product = this->CreateProduct(itemDefinition);
-		YB_ViewItemBasis* itemPtr = product.get();
+		//std::unique_ptr<YB_ViewItemBasis> product = this->CreateProduct(itemDefinition);
+		YB_ViewItemBasis* itemPtr = this->CreateProduct(itemDefinition);
 		if (itemPtr)
 		{
 			//(*item).Deserialize(itemDefinition);						//deserialize String
@@ -48,8 +48,8 @@ namespace YBConsoleViews
 				}
 			}
 		}
-		//return itemPtr;							//Caution: itemPtr's member properties will be emptied after return.
-		return this->GetViewItem((itemPtr)->Id);	//This works.
+		return itemPtr;							//Caution: itemPtr's member properties will be emptied after return.
+		//return this->GetViewItem((itemPtr)->Id);	//This works.
 	}
 
 	YB_ViewItemBasis* YB_ViewItemFactory::GetViewItem(int viewId) {
@@ -73,18 +73,31 @@ namespace YBConsoleViews
 		return nullptr;
 	};
 
-	std::unique_ptr<YB_ViewItemBasis> YB_ViewItemFactory::CreateProduct(const string serializeString)
+	//std::unique_ptr<YB_ViewItemBasis> YB_ViewItemFactory::CreateProduct(const string serializeString)
+	//{
+	//	YB_ViewItemBasis* basePtr = new YB_ViewItemBasis();
+	//	basePtr->Deserialize(serializeString);
+
+	//	string type = basePtr->ItemType;
+
+	//	if (type == "TextItem") { return std::make_unique<TextItem>(serializeString); }
+	//	if (type == "ButtonItem") { return std::make_unique<ButtonItem>(serializeString); }
+	//	if (type == "InputItem") { return std::make_unique<InputItem>(serializeString); }
+	//	if (type == "ListItem") { return std::make_unique<ListItem>(serializeString); }
+	//	return nullptr;
+	//}
+	YB_ViewItemBasis* YB_ViewItemFactory::CreateProduct(const string serializeString)
 	{
-		YB_ViewItemBasis* basePtr = new YB_ViewItemBasis();
-		basePtr->Deserialize(serializeString);
+		YB_ViewItemBasis basePtr = YB_ViewItemBasis();
+		basePtr.Deserialize(serializeString);
 
-		string type = basePtr->ItemType;
+		string type = basePtr.ItemType;
 
-		if (type == "TextItem") { return std::make_unique<TextItem>(serializeString); }
-		if (type == "ButtonItem") { return std::make_unique<ButtonItem>(serializeString); }
-		if (type == "InputItem") { return std::make_unique<InputItem>(serializeString); }
-		if (type == "ListItem") { return std::make_unique<ListItem>(serializeString); }
-		return nullptr;
+		if (type == "TextItem")		{ return new TextItem(serializeString); }
+		if (type == "ButtonItem")	{ return new ButtonItem(serializeString); }
+		if (type == "InputItem")	{ return new InputItem(serializeString); }
+		if (type == "ListItem")		{ return new ListItem(serializeString); }
+		return &basePtr;
 	}
 
 	std::unique_ptr<YB_ViewItemBasis> YB_ViewItemFactory::CreateEmpty(string type)

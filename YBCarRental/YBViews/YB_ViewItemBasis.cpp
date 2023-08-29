@@ -27,49 +27,6 @@ namespace YBConsoleViews {
 	};
 
 
-
-	vector<char*> YB_ViewItemBasis::Render()
-	{
-		if (!isHidden) {
-			if (isFocused)
-				this->Fill_Background(this->Background);
-			else
-				Clear_Background();
-
-			// Calculate the position of content
-			const char* content = Content.c_str();
-			size_t newContentLength = strlen(content);
-			size_t posX = isCentral ? w / 2 - newContentLength / 2 : 3;
-			size_t posY = h / 2;
-
-			// Calculate the remaining length of the original content
-			if (posY <= h)
-			{
-				size_t remainingLength = strlen(viewArray[posY]) - posX;
-				memcpy(viewArray[posY] + posX, content, newContentLength);
-			}
-			//Unit testing code - to visualize a single item
-			//for (const char* strPtr : viewArray) {
-			//	std::cout << strPtr << std::endl;
-			//}
-			//Unit testing code - to visualize a single item
-		}
-
-		return YB_ViewItemBasis::viewArray;
-	}
-
-	void YB_ViewItemBasis::OnKey(int* keycode)
-	{
-	}
-
-	void YB_ViewItemBasis::OnReturn()
-	{
-	}
-
-	void YB_ViewItemBasis::OnBackspace()
-	{
-	}
-
 	string* YB_ViewItemBasis::Serialize()
 	{
 		std::stringstream ss;
@@ -79,8 +36,7 @@ namespace YBConsoleViews {
 		std::string* serializedString = new std::string(ss.str());
 		return serializedString;
 	}
-
-	void YB_ViewItemBasis::Serialize(std::stringstream& strStream)
+	void						YB_ViewItemBasis::Serialize(std::stringstream& strStream)
 	{
 		YB_DataBasis::Serialize(strStream);
 		strStream
@@ -96,13 +52,11 @@ namespace YBConsoleViews {
 			<< "isSelected:" << isSelected << YB_DataBasis::persistentSeparator
 			<< "isHidden:" << isHidden << YB_DataBasis::persistentSeparator;
 	}
-
-	void YB_ViewItemBasis::Deserialize(string line)
+	void						YB_ViewItemBasis::Deserialize(string line)
 	{
 		this->Deserialize(line, &persistentSeparator);
 	}
-
-	void YB_ViewItemBasis::Deserialize(string line, const char* separator)
+	void						YB_ViewItemBasis::Deserialize(string line, const char* separator)
 	{
 		YB_DataBasis::Deserialize(line, separator);
 
@@ -119,7 +73,33 @@ namespace YBConsoleViews {
 		if (YB_DataBasis::FindValue("isHidden"))	isHidden = *YB_DataBasis::FindValue("isHidden") == "1";
 	}
 
-	void YB_ViewItemBasis::Init_Background(char background)
+	/// <summary>
+	/// CAUTION: BASE.RENDER() ALWASY RENDER CONTENT.
+	/// CONTROL isHidden/isFocused BEHAVIOUR IN DERIVED.RENDER().
+	/// </summary>
+	/// <returns></returns>
+	vector<char*>				YB_ViewItemBasis::Render()
+	{
+		// Calculate the position of content
+		const char* content = Content.c_str();
+		size_t newContentLength = strlen(content);
+		size_t posX = isCentral ? w / 2 - newContentLength / 2 : 3;
+		size_t posY = h / 2;
+
+		// Calculate the remaining length of the original content
+		if (posY <= h)
+		{
+			size_t remainingLength = strlen(viewArray[posY]) - posX;
+			memcpy(viewArray[posY] + posX, content, newContentLength);
+		}
+		////Unit testing code - to visualize a single item
+		//for (const char* strPtr : viewArray) {
+		//	std::cout << strPtr << std::endl;
+		//}
+		////Unit testing code - to visualize a single item
+		return YB_ViewItemBasis::viewArray;
+	}
+	void						YB_ViewItemBasis::Init_Background(char background)
 	{
 		//fill the view background with a char
 		for (int i = 0; i < YB_ViewItemBasis::h; ++i) {
@@ -129,18 +109,28 @@ namespace YBConsoleViews {
 			YB_ViewItemBasis::viewArray.push_back(newLine);
 		}
 	}
-	void YB_ViewItemBasis::Fill_Background(char background)
+	void						YB_ViewItemBasis::Fill_Background(char background)
 	{
 		//fill the view background with a char
 		for (int i = 0; i < YB_ViewItemBasis::h; ++i) {
 			std::memset(YB_ViewItemBasis::viewArray[i], background, YB_ViewItemBasis::w);
 		}
 	}
-	void YB_ViewItemBasis::Clear_Background()
+	void						YB_ViewItemBasis::Clear_Background()
 	{
 		//fill the view background with a char
 		for (int i = 0; i < YB_ViewItemBasis::h; ++i) {
 			std::memset(YB_ViewItemBasis::viewArray[i], ' ', YB_ViewItemBasis::w);
 		}
+	}
+
+	void						YB_ViewItemBasis::OnKey(int* keycode)
+	{
+	}
+	void						YB_ViewItemBasis::OnReturn()
+	{
+	}
+	void						YB_ViewItemBasis::OnBackspace()
+	{
 	}
 }

@@ -52,10 +52,10 @@ namespace YBConsoleViews {
 	{
 		YB_DataBasis::Serialize(strStream);
 		strStream
-			<< "Title:" << Title << YB_DataBasis::persistentSeparator
-			<< "ViewType:" << ViewType << YB_DataBasis::persistentSeparator
-			<< "w:" << w << YB_DataBasis::persistentSeparator
-			<< "h:" << h << YB_DataBasis::persistentSeparator;
+			<< "Title:"		<< Title	<< YB_DataBasis::persistentSeparator
+			<< "ViewType:"	<< ViewType << YB_DataBasis::persistentSeparator
+			<< "w:"			<< w		<< YB_DataBasis::persistentSeparator
+			<< "h:"			<< h		<< YB_DataBasis::persistentSeparator;
 	}
 
 	void YB_ViewBasis::Deserialize(string line)
@@ -66,10 +66,11 @@ namespace YBConsoleViews {
 	void YB_ViewBasis::Deserialize(string line, const char* separator)
 	{
 		YB_DataBasis::Deserialize(line, separator);
-		Title = *YB_DataBasis::FindValue("Title");
-		ViewType = *YB_DataBasis::FindValue("ViewType");
-		w = std::stoi(*YB_DataBasis::FindValue("w"));
-		h = std::stoi(*YB_DataBasis::FindValue("h"));
+
+		Title =			*YB_DataBasis::FindValue("Title");
+		ViewType =		*YB_DataBasis::FindValue("ViewType");
+		w =				std::stoi(*YB_DataBasis::FindValue("w"));
+		h =				std::stoi(*YB_DataBasis::FindValue("h"));
 	}
 
 
@@ -159,12 +160,6 @@ namespace YBConsoleViews {
 		{
 			(*subItemsList[currentItemIndex]).OnKey(keycode);
 		}
-
-
-		//tab:	toggle active viewItem
-		//enter: click active viewItem
-		//num/char:	pass to active viewItem
-		//Esc: quit (switch to exit confirm)
 	}
 
 	void YB_ViewBasis::OnReturn(YB_ViewMessageBasis msg)

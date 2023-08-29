@@ -14,7 +14,7 @@ namespace YBCarTesting
 		{
 			YB_ViewFactory factory = YB_ViewFactory("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/ViewRepo.txt");
 			YB_ViewBasis view = *factory.GetView(1);
-			view.InitBackground('/');
+			view.Init_Background('/');
 			view.Render();
 			//cout << view.Title << " - " << view.ViewType << endl;
 			//cout << *view.Serialize() << endl;
@@ -67,9 +67,9 @@ namespace YBCarTesting
 			YB_ViewFactory factory = YB_ViewFactory("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/ViewRepo.txt");
 			YB_ViewBasis view = *(factory.GetView(555));
 			//Caution: subItemsMap is a map instead of vector. Donot query some key unexisted.
-			auto item1 = view.subItemsMap[1];
-			auto item2 = view.subItemsMap[2];
-			auto item3 = view.subItemsMap[3];
+			auto item1 = view.subItemsList[1];
+			auto item2 = view.subItemsList[2];
+			auto item3 = view.subItemsList[3];
 
 			Assert::AreEqual(string("Yes or No"),	(*item1).Content);
 			Assert::AreEqual(string("The Car"),		(*item2).Content);

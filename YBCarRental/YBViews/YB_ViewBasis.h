@@ -21,7 +21,7 @@ namespace YBConsoleViews
 		YB_ViewBasis();
 		YB_ViewBasis(int* width, int* height);
 		~YB_ViewBasis();
-		#pragma region copy assignment operator
+#pragma region copy assignment operator
 		//=====================================================================================================================
 		//Suggestion given by chatGPT to solve C2280 and deleted function error:
 		// it's possible that the error is related to the copy assignment operator of your YB_User class. If the YB_User 
@@ -35,7 +35,7 @@ namespace YBConsoleViews
 				ViewType = other.ViewType;
 				w = other.w;
 				h = other.h;
-				subItemsMap = other.subItemsMap;
+				subItemsList = other.subItemsList;
 				viewArray = other.viewArray;
 				// Deep copy of other resources, if any
 				// For example, if 'myfile' is a pointer, you might need to handle it here
@@ -53,32 +53,33 @@ namespace YBConsoleViews
 		//change the dataSet to map<int, TData*> in the persistor class;
 		//However I will not go through this direction for simplicity consideration.
 		//=====================================================================================================================
-		#pragma endregion
+#pragma endregion
 
-		string							ViewType="";
-		string							Title="";
-		int								w=200, h=32;				//view size
+		string							ViewType = "";
+		string							Title = "";
+		int								w = 200, h = 32;				//view size
 		char							Background = '.';
-		map<int, YB_ViewItemBasis*>		subItemsMap;
+		vector<YB_ViewItemBasis*>		subItemsList;
 
-//void AddViewItem(YB_ViewItemBasis item);
-//void AddViewItems(vector<YB_ViewItemBasis> items);
+		//void AddViewItem(YB_ViewItemBasis item);
+		//void AddViewItems(vector<YB_ViewItemBasis> items);
 
-		virtual string*					Serialize()									override;
-		virtual void					Serialize(std::stringstream& strStream)		override;
+		virtual string*					Serialize()											override;
+		virtual void					Serialize(std::stringstream& strStream)				override;
 		void							Deserialize(string line);
-		virtual void					Deserialize(string line, const char* separator) override;
+		virtual void					Deserialize(string line, const char* separator)		override;
 		//void Serialize(ofstream* output) override;
 
-		virtual void					OnKey(char* keycode);
+		virtual void					OnKey(int* keycode);
 		virtual void					OnReturn(YB_ViewMessageBasis msg);
 		virtual vector<char*>			Render();
-		void							InitBackground(char background);
-		void							FillBackground(char background);
-		void							ClearBackground();
+		void							Init_Background(char background);
+		void							Fill_Background(char background);
+		void							Clear_Background();
 	protected:
 	private:
 		vector<char*>					viewArray;
+		int								currentItemIndex = -1;
 	};
 }
 #endif //YB_ViewBasis_H

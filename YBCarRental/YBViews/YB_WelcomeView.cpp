@@ -1,7 +1,8 @@
 #include "YB_WelcomeView.h"
 
-void YBConsoleViews::YB_WelcomeView::OnKey(char* keycode)
+void YBConsoleViews::YB_WelcomeView::OnKey(int* keycode)
 {
+
 }
 
 void YBConsoleViews::YB_WelcomeView::OnReturn(YB_ViewMessageBasis msg)

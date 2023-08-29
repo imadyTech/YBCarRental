@@ -1,6 +1,6 @@
 #include "YB_ListView.h"
 
-void YBConsoleViews::YB_ListView::OnKey(char* keycode)
+void YBConsoleViews::YB_ListView::OnKey(int* keycode)
 {
 }
 

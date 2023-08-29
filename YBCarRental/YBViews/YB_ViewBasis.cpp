@@ -73,7 +73,7 @@ namespace YBConsoleViews {
 	}
 
 
-	void YB_ViewBasis::InitBackground(char background)
+	void YB_ViewBasis::Init_Background(char background)
 	{
 		if (!viewArray.empty())
 			viewArray.clear();
@@ -85,14 +85,14 @@ namespace YBConsoleViews {
 			this->viewArray.push_back(newLine);
 		}
 	}
-	void YB_ViewBasis::FillBackground(char background)
+	void YB_ViewBasis::Fill_Background(char background)
 	{
 		//fill the view background with a char
 		for (int i = 0; i < this->h; ++i) {
 			std::memset(this->viewArray[i], background, this->w);
 		}
 	}
-	void YB_ViewBasis::ClearBackground()
+	void YB_ViewBasis::Clear_Background()
 	{
 		//fill the view background with a char
 		for (int i = 0; i < this->h; ++i) {
@@ -106,9 +106,12 @@ namespace YBConsoleViews {
 	/// <returns></returns>
 	vector<char*> YB_ViewBasis::Render()
 	{
-		for (auto& iterator : this->subItemsMap)
+		if (viewArray.empty())
+			Init_Background(this->Background);
+
+		for (auto& iterator : this->subItemsList)
 		{
-			auto item = *iterator.second;
+			auto item = *iterator;
 			auto posX = item.x, posY = item.y;
 			auto SUB_RECT = item.Render();
 			size_t newContentLength = item.w;
@@ -117,17 +120,47 @@ namespace YBConsoleViews {
 				std::memcpy(viewArray[posY] + posX, row, newContentLength);
 			}
 		}
-		//Unit testing code - to visualize a single item
-			for (const char* strPtr : viewArray) {
-				std::cout << strPtr << std::endl;
-			}
-		//Unit testing code - to visualize a single item
+		////Unit testing code - to visualize a single item
+		//	for (const char* strPtr : viewArray) {
+		//		std::cout << strPtr << std::endl;
+		//	}
+		////Unit testing code - to visualize a single item
 
-			return viewArray;
+		return viewArray;
 	}
 
-	void YB_ViewBasis::OnKey(char* keycode)
+	void YB_ViewBasis::OnKey(int* keycode)
 	{
+		if (*keycode == 9)						//tabKeyCode = 9; Toggle items.
+		{
+			if (subItemsList.empty())
+				return;
+			if (currentItemIndex < 0)
+				currentItemIndex = 0;
+			if (subItemsList.size() == 1) {
+				(*subItemsList[currentItemIndex]).isFocused = true;
+				return;
+			}
+			(*subItemsList[currentItemIndex]).isFocused = false;
+			currentItemIndex++;
+			if (currentItemIndex > subItemsList.size() - 1)
+				currentItemIndex = 0;
+			(*subItemsList[currentItemIndex]).isFocused = true;
+		}
+		if (*keycode == 10)						//Return key;
+		{
+			(*subItemsList[currentItemIndex]).OnReturn();
+		}
+		if (*keycode == 8)						//Backspace key; Previous view.
+		{
+			(*subItemsList[currentItemIndex]).OnBackspace();
+		}
+		if ((*keycode >= 65 && *keycode <= 90) || (*keycode >= 48 && *keycode <= 57) || (*keycode >= 97 && *keycode <= 122))		//Alphabet(Upper/Lower) and numbers
+		{
+			(*subItemsList[currentItemIndex]).OnKey(keycode);
+		}
+
+
 		//tab:	toggle active viewItem
 		//enter: click active viewItem
 		//num/char:	pass to active viewItem

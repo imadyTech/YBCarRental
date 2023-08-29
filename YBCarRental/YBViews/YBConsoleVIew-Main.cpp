@@ -7,26 +7,25 @@
 #include "YB_ViewFactory.h"
 #include "YB_ViewItemBasis.h"
 #include "YB_ViewItemFactory.h"
+#include "YB_Window.h"
 using namespace YBPersistence;
 using namespace YBConsoleViews;
 
 
 int main()
 {
-	//int w = 120, h = 30;
-	//YB_ViewBasis view = YB_ViewBasis(&w, &h);
-	//string line = "Id:1;Title:Hello Car Rental;w:120;h:30;";
-	//view.Deserialize(line);
-
-	//cout << *view.Serialize();
-
-
-	//int width = 120, height = 2;
-	//YB_ViewItemBasis item = YB_ViewItemBasis(&width, &height);
-	//string line = "Id:-1!x:0!y:0!w:120!h:2!isFocused:0!isSelected:0!isHidden:0!";
-	//item.Deserialize(line);
-
-	//cout << *item.Serialize();
+	//View/ViewItem serialize/deserialize unit test
+		//int w = 120, h = 30;
+		//YB_ViewBasis view = YB_ViewBasis(&w, &h);
+		//string line = "Id:1;Title:Hello Car Rental;w:120;h:30;";
+		//view.Deserialize(line);
+		//cout << *view.Serialize();
+		//int width = 120, height = 2;
+		//YB_ViewItemBasis item = YB_ViewItemBasis(&width, &height);
+		//string line = "Id:-1!x:0!y:0!w:120!h:2!isFocused:0!isSelected:0!isHidden:0!";
+		//item.Deserialize(line);
+		//cout << *item.Serialize();
+	//View/ViewItem serialize/deserialize unit test
 
 	//YB_ViewFactory Test
 		//YB_ViewFactory viewfactory = YB_ViewFactory("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/ViewRepo.txt");
@@ -65,26 +64,32 @@ int main()
 	//YB_ViewItemFactory Test
 
 	//YB_ViewFactory generate children view items test
-		YB_ViewFactory factory = YB_ViewFactory("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/ViewRepo.txt");
-		YB_ViewBasis view = *(factory.GetView(1));
+		//YB_ViewFactory factory = YB_ViewFactory("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/ViewRepo.txt");
+		//YB_ViewBasis view = *(factory.GetView(1));
 		//auto item1 = view.subItemsMap[1];
 		//auto item2 = view.subItemsMap[2];
 		//auto item3 = view.subItemsMap[3];
 		//(*item1).Render();
 		//(*item2).Render();
 		//(*item3).Render();
-		view.InitBackground(view.Background);
+		//view.Init_Background(view.Background);
 		//view.FillBackground(view.Background);
-		view.Render();
-		int i;
-		cin >>i;
-		system("cls");
-		view = *factory.GetView(555);
-		view.InitBackground(view.Background);
-		view.FillBackground(',');
-		view.Render();
-		cin >>i;
+		//view.Render();
+		//int i;
+		//cin >>i;
+		//system("cls");
+		//view = *factory.GetView(555);
+		//view.Init_Background(view.Background);
+		//view.Fill_Background(',');
+		//view.Render();
+		//cin >>i;
 	//YB_ViewFactory generate children view items test
+
+	//YB_Window integrated test
+	YB_Window window = YB_Window();
+	window.InitViewFactory("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/ViewRepo.txt");
+	window.Init();
+	window.Run();
 
 }
 

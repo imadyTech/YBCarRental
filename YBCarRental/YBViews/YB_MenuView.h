@@ -7,7 +7,7 @@ namespace YBConsoleViews
 	class YB_MenuView : public YBConsoleViews::YB_ViewBasis
 	{
 	public:
-		void			OnKey(char* keycode)				override;
+		void			OnKey(int* keycode)				override;
 		void			OnReturn(YB_ViewMessageBasis msg)	override;
 		vector<char*>	Render()							override;
 	};

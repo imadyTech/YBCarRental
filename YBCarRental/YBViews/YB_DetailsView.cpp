@@ -2,7 +2,7 @@
 
 using namespace YBConsoleViews;
 
-void YBConsoleViews::YB_DetailsView::OnKey(char* keycode)
+void YBConsoleViews::YB_DetailsView::OnKey(int* keycode)
 {
 }
 

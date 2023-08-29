@@ -11,11 +11,11 @@ namespace YBConsoleViews
 		YB_ListItem(string serializeString):YB_ListItem()
 		{
 			this->Deserialize(serializeString);
-			InitBackground(' ');
+			Init_Background(' ');
 		};
 
-		void				OnKey(char* keycode) override;
-		void				OnSelect()			 override;
+		void				OnKey(int* keycode) override;
+		void				OnBackspace()			 override;
 		void				OnReturn()			 override;
 		std::vector<char*>	Render()			 override;
 

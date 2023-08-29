@@ -34,11 +34,11 @@ int main()
 		//Managers logic updates driven by viewmodel
 		//Persistence
 	//Loop
-	while (true)
-	{
-		window.OnKeyIn();
-		window.Render();
-	}
+	//while (true)
+	//{
+	//	window.OnKeyIn();
+	//	window.Render();
+	//}
 
 	////Testing the custom YB Errors
 	//try {

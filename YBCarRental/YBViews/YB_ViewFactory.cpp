@@ -81,7 +81,7 @@ namespace YBConsoleViews
 			for (auto& itemIdPiar : itemsDef) {
 				string itemSubString = itemIdPiar.second;
 				YB_ViewItemBasis* child = this->viewItemFactory.CreateViewItem(itemSubString);
-				view->subItemsMap.insert(std::make_pair(child->Id, child));
+				view->subItemsList.push_back(child);
 			}
 		}
 	}

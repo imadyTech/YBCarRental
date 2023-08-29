@@ -10,11 +10,11 @@ namespace YBConsoleViews
         return YB_ViewItemBasis::Render();
     }
 
-    void YB_TextItem::OnKey(char* keycode)
+    void YB_TextItem::OnKey(int* keycode)
     {
     }
 
-    void YBConsoleViews::YB_TextItem::OnSelect()
+    void YBConsoleViews::YB_TextItem::OnBackspace()
     {
         //Do nothing for textViewItem.
     }

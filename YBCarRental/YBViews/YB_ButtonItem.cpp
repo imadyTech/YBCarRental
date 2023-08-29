@@ -8,11 +8,11 @@ namespace YBConsoleViews
         return YB_ViewItemBasis::Render();
     }
 
-    void YB_ButtonItem::OnKey(char* keycode)
+    void YB_ButtonItem::OnKey(int* keycode)
     {
     }
 
-    void YBConsoleViews::YB_ButtonItem::OnSelect()
+    void YBConsoleViews::YB_ButtonItem::OnBackspace()
     {
         isFocused = true;
     }

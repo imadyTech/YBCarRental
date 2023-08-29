@@ -1,6 +1,6 @@
 #include "YB_DialogView.h"
 
-void YBConsoleViews::YB_DialogView::OnKey(char* keycode)
+void YBConsoleViews::YB_DialogView::OnKey(int* keycode)
 {
 }
 

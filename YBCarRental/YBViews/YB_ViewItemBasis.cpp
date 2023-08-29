@@ -32,9 +32,9 @@ namespace YBConsoleViews {
 	{
 		if (!isHidden) {
 			if (isFocused)
-				FillBackground(this->Background);
+				this->Fill_Background(this->Background);
 			else
-				ClearBackground();
+				Clear_Background();
 
 			// Calculate the position of content
 			const char* content = Content.c_str();
@@ -54,18 +54,19 @@ namespace YBConsoleViews {
 			//}
 			//Unit testing code - to visualize a single item
 		}
+
 		return YB_ViewItemBasis::viewArray;
 	}
 
-	void YB_ViewItemBasis::OnKey(char* keycode)
-	{
-	}
-
-	void YB_ViewItemBasis::OnSelect()
+	void YB_ViewItemBasis::OnKey(int* keycode)
 	{
 	}
 
 	void YB_ViewItemBasis::OnReturn()
+	{
+	}
+
+	void YB_ViewItemBasis::OnBackspace()
 	{
 	}
 
@@ -118,7 +119,7 @@ namespace YBConsoleViews {
 		if (YB_DataBasis::FindValue("isHidden"))	isHidden = *YB_DataBasis::FindValue("isHidden") == "1";
 	}
 
-	void YB_ViewItemBasis::InitBackground(char background)
+	void YB_ViewItemBasis::Init_Background(char background)
 	{
 		//fill the view background with a char
 		for (int i = 0; i < YB_ViewItemBasis::h; ++i) {
@@ -128,14 +129,14 @@ namespace YBConsoleViews {
 			YB_ViewItemBasis::viewArray.push_back(newLine);
 		}
 	}
-	void YB_ViewItemBasis::FillBackground(char background)
+	void YB_ViewItemBasis::Fill_Background(char background)
 	{
 		//fill the view background with a char
 		for (int i = 0; i < YB_ViewItemBasis::h; ++i) {
 			std::memset(YB_ViewItemBasis::viewArray[i], background, YB_ViewItemBasis::w);
 		}
 	}
-	void YB_ViewItemBasis::ClearBackground()
+	void YB_ViewItemBasis::Clear_Background()
 	{
 		//fill the view background with a char
 		for (int i = 0; i < YB_ViewItemBasis::h; ++i) {

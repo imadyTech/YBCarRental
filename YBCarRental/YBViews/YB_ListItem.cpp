@@ -1,10 +1,10 @@
 #include "YB_ListItem.h"
 
-void YBConsoleViews::YB_ListItem::OnKey(char* keycode)
+void YBConsoleViews::YB_ListItem::OnKey(int* keycode)
 {
 }
 
-void YBConsoleViews::YB_ListItem::OnSelect()
+void YBConsoleViews::YB_ListItem::OnBackspace()
 {
 }
 

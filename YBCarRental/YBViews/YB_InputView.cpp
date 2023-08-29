@@ -1,6 +1,7 @@
 #include "YB_InputView.h"
 
-void YBConsoleViews::YB_InputView::OnKey(char* keycode)
+
+void YBConsoleViews::YB_InputView::OnKey(int* keycode)
 {
 }
 

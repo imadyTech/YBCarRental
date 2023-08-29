@@ -35,6 +35,8 @@ namespace YBConsoleViews
 				ViewType = other.ViewType;
 				w = other.w;
 				h = other.h;
+				subItemsMap = other.subItemsMap;
+				viewArray = other.viewArray;
 				// Deep copy of other resources, if any
 				// For example, if 'myfile' is a pointer, you might need to handle it here
 
@@ -57,6 +59,7 @@ namespace YBConsoleViews
 		string							Title="";
 		int								w=200, h=32;				//view size
 		char							Background = '.';
+		map<int, YB_ViewItemBasis*>		subItemsMap;
 
 //void AddViewItem(YB_ViewItemBasis item);
 //void AddViewItems(vector<YB_ViewItemBasis> items);
@@ -71,9 +74,10 @@ namespace YBConsoleViews
 		virtual void					OnReturn(YB_ViewMessageBasis msg);
 		virtual vector<char*>			Render();
 		void							InitBackground(char background);
+		void							FillBackground(char background);
+		void							ClearBackground();
 	protected:
 	private:
-		map<int, YB_ViewItemBasis*>		viewItems;
 		vector<char*>					viewArray;
 	};
 }

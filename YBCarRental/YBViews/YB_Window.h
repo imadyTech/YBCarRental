@@ -18,6 +18,8 @@ namespace YBConsoleViews
 	public:
 		YB_Window() = default;
 
+		void InitViewFactory(string viewRepo);
+
 		//======================Key and processor=========================
 		// F9:				Window
 		// Esc:				View
@@ -35,11 +37,10 @@ namespace YBConsoleViews
 		void Next();
 		void Output();								//to screen
 	private:
-		YB_ViewFactory				viewFactory;
-		YB_ViewItemFactory			viewItemFactory;
-		YB_ViewBasis				currentView;
-		map<int, YB_ViewBasis>		viewCollection;
-		stack<YB_ViewBasis>			viewStack;
+		YB_ViewFactory					viewFactory;
+		YB_ViewBasis*					currentView;
+		stack<YB_ViewBasis*>			viewStack;
+		//map<int, YB_ViewBasis>		viewCollection;
 	};
 
 }

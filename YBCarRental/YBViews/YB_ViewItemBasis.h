@@ -32,6 +32,7 @@ namespace YBConsoleViews
 				isFocused = other.isFocused;
 				isSelected = other.isSelected;
 				isHidden = other.isHidden;
+				viewArray = other.viewArray;
 
 				YB_DataBasis::operator=(other);
 			}

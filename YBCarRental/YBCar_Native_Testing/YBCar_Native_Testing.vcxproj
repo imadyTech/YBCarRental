@@ -184,6 +184,9 @@
     <ProjectReference Include="..\YBPersistence\YBPersistence.vcxproj">
       <Project>{cf34afe6-b793-4469-b562-169a924f9a5b}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\YBViews\YBViews.vcxproj">
+      <Project>{d8451b94-5959-4b97-b828-611b475fe69d}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Text Include="CarRepo.txt" />

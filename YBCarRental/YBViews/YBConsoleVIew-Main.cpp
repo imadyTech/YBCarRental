@@ -45,18 +45,46 @@ int main()
 		//cin>> i;
 	//YB_ViewFactory Test
 
-	//YB_ViewItemFactory itemfactory = YB_ViewItemFactory("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/ViewItemRepo.txt");
-	YB_ViewItemFactory itemfactory = YB_ViewItemFactory();
-	itemfactory.CreateViewItem("Id:1!x:0!y:0!w:30!h:1!ItemType:ButtonItem!Content:Yes or No!Background:/!isCentral:1!isFocused:0!isSelected:0!isHidden:0!");
-	itemfactory.CreateViewItem("Id:2!x:0!y:0!w:40!h:1!ItemType:ButtonItem!Content:The Car!Background:*!isCentral:0!isFocused:1!isSelected:0!isHidden:0!");
-	itemfactory.CreateViewItem("Id:3!x:0!y:0!w:50!h:1!ItemType:ButtonItem!Content:You and me!Background:$!isCentral:1!isFocused:1!isSelected:0!isHidden:0!");
+	//YB_ViewItemFactory Test
+		//YB_ViewItemFactory itemfactory = YB_ViewItemFactory("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/ViewItemRepo.txt");
+		//YB_ViewItemFactory itemfactory = YB_ViewItemFactory();
+		//auto item4 = itemfactory.CreateViewItem("Id:1!x:0!y:0!w:120!h:1!ItemType:ButtonItem!Content:Yes or No!Background:/!isCentral:1!isFocused:0!isSelected:0!isHidden:0!");
+		//auto item5 = itemfactory.CreateViewItem("Id:2!x:0!y:0!w:120!h:1!ItemType:TextItem!Content:The Car!Background:*!isCentral:0!isFocused:1!isSelected:0!isHidden:0!");
+		//auto item6 = itemfactory.CreateViewItem("Id:3!x:0!y:0!w:50!h:1!ItemType:InputItem!Content:You and me!Background:$!isCentral:1!isFocused:1!isSelected:0!isHidden:0!");
+		//if (item4 != nullptr && item5 != nullptr && item6 != nullptr) {
+		//	cout << ((*item4).Serialize()->c_str()) << endl;
+		//	cout << ((*item5).Serialize()->c_str()) << endl;
+		//	cout << ((*item6).Serialize()->c_str()) << endl;
+		//}
+		//auto item1 = *itemfactory.GetViewItem(1);
+		//item1.Render();
+		//auto item2= *itemfactory.GetViewItem(2);
+		//item2.Render();
+		//auto item3= *itemfactory.GetViewItem(3);
+		//item3.Render();
+	//YB_ViewItemFactory Test
 
-	auto item1 = *itemfactory.GetViewItem(1);
-	item1.Render();
-	auto item2= *itemfactory.GetViewItem(2);
-	item2.Render();
-	auto item3= *itemfactory.GetViewItem(3);
-	item3.Render();
+	//YB_ViewFactory generate children view items test
+		YB_ViewFactory factory = YB_ViewFactory("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/ViewRepo.txt");
+		YB_ViewBasis view = *(factory.GetView(1));
+		//auto item1 = view.subItemsMap[1];
+		//auto item2 = view.subItemsMap[2];
+		//auto item3 = view.subItemsMap[3];
+		//(*item1).Render();
+		//(*item2).Render();
+		//(*item3).Render();
+		view.InitBackground(view.Background);
+		//view.FillBackground(view.Background);
+		view.Render();
+		int i;
+		cin >>i;
+		system("cls");
+		view = *factory.GetView(555);
+		view.InitBackground(view.Background);
+		view.FillBackground(',');
+		view.Render();
+		cin >>i;
+	//YB_ViewFactory generate children view items test
 
 }
 

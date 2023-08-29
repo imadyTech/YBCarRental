@@ -1,6 +1,6 @@
-Id:1;Title:Hello Car Rental;ViewType:WelcomeView;w:64;h:24;
+Id:1;Title:Hello Car Rental;ViewType:WelcomeView;w:120;h:29;item1:Id:1!x:40!y:11!isCentral:0!w:40!h:1!ItemType:TextItem!Content:   #####       ###      #######!;item2:Id:2!x:40!y:12!isCentral:0!w:40!h:1!ItemType:TextItem!Content: ##          ##   ##    ##     ##!;item3:Id:3!x:40!y:13!isCentral:0!w:40!h:1!ItemType:TextItem!Content:##         ##       ##  ##      ##!;item4:Id:4!x:40!y:14!isCentral:0!w:40!h:1!ItemType:TextItem!Content:##         ##       ##  ########!;item5:Id:5!x:40!y:15!isCentral:0!w:40!h:1!ItemType:TextItem!Content:##         ###########  ##   ##!;item6:Id:6!x:40!y:16!isCentral:1!w:40!h:1!ItemType:TextItem!Content: ##        ##       ##  ##    ##!;item7:Id:7!x:40!y:17!isCentral:1!w:40!h:1!ItemType:TextItem!Content:   #####   ##       ##  ##     ##!;
 Id:111;Title:Please Login;ViewType:InputView;w:64;h:24;
 Id:222;Title:Welcome friend;ViewType:DetailsView;w:64;h:24;
 Id:333;Title:Welcome friend;ViewType:DialogView;w:64;h:24;
 Id:444;Title:Welcome friend;ViewType:ListView;w:64;h:24;
-Id:555;Title:Welcome friend;ViewType:MenuView;w:64;h:24;
+Id:555;Title:Welcome friend;ViewType:MenuView;w:120;h:30;item61:Id:601!x:10!y:2!w:30!h:1!ItemType:ButtonItem!Content:Yes or No!Background:/!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;item62:Id:602!x:10!y:10!w:40!h:1!ItemType:TextItem!Content:The Car!Background:*!isCentral:0!isFocused:1!isSelected:0!isHidden:0!;item63:Id:603!x:30!y:20!w:50!h:1!ItemType:InputItem!Content:You and me!Background:$!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;

@@ -11,7 +11,7 @@ namespace YBConsoleViews {
 		w = 200, h = 20;
 	}
 
-	YB_ViewBasis::YB_ViewBasis(int* width, int* height):YB_ViewBasis::YB_ViewBasis()
+	YB_ViewBasis::YB_ViewBasis(int* width, int* height) :YB_ViewBasis::YB_ViewBasis()
 	{
 		this->w = *width;
 		this->h = *height;
@@ -38,7 +38,7 @@ namespace YBConsoleViews {
 	//{
 	//}
 
-	string* YB_ViewBasis::	Serialize()
+	string* YB_ViewBasis::Serialize()
 	{
 		std::stringstream ss;
 		//Redirect to new function (instead of previous version overrided function)
@@ -48,7 +48,7 @@ namespace YBConsoleViews {
 		return serializedString;
 	}
 
-	void YB_ViewBasis::		Serialize(std::stringstream& strStream)
+	void YB_ViewBasis::Serialize(std::stringstream& strStream)
 	{
 		YB_DataBasis::Serialize(strStream);
 		strStream
@@ -58,12 +58,12 @@ namespace YBConsoleViews {
 			<< "h:" << h << YB_DataBasis::persistentSeparator;
 	}
 
-	void YB_ViewBasis::		Deserialize(string line)
+	void YB_ViewBasis::Deserialize(string line)
 	{
 		this->Deserialize(line, &persistentSeparator);
 	}
-	 
-	void YB_ViewBasis::		Deserialize(string line, const char* separator)
+
+	void YB_ViewBasis::Deserialize(string line, const char* separator)
 	{
 		YB_DataBasis::Deserialize(line, separator);
 		Title = *YB_DataBasis::FindValue("Title");
@@ -75,12 +75,28 @@ namespace YBConsoleViews {
 
 	void YB_ViewBasis::InitBackground(char background)
 	{
+		if (!viewArray.empty())
+			viewArray.clear();
 		//fill the view background with a char
-		for (int i = 0; i < YB_ViewBasis::h; ++i) {
-			char* newLine = new char[YB_ViewBasis::w + 1];
-			std::memset(newLine, background, YB_ViewBasis::w);
-			newLine[YB_ViewBasis::w] = '\0'; // Null-terminate the string
-			YB_ViewBasis::viewArray.push_back(newLine);
+		for (int i = 0; i < this->h; ++i) {
+			char* newLine = new char[this->w + 1];
+			std::memset(newLine, background, this->w);
+			newLine[this->w] = '\0'; // Null-terminate the string
+			this->viewArray.push_back(newLine);
+		}
+	}
+	void YB_ViewBasis::FillBackground(char background)
+	{
+		//fill the view background with a char
+		for (int i = 0; i < this->h; ++i) {
+			std::memset(this->viewArray[i], background, this->w);
+		}
+	}
+	void YB_ViewBasis::ClearBackground()
+	{
+		//fill the view background with a char
+		for (int i = 0; i < this->h; ++i) {
+			std::memset(this->viewArray[i], ' ', this->w);
 		}
 	}
 
@@ -90,12 +106,24 @@ namespace YBConsoleViews {
 	/// <returns></returns>
 	vector<char*> YB_ViewBasis::Render()
 	{
-		for (auto& iterator : this->viewItems)
+		for (auto& iterator : this->subItemsMap)
 		{
-			std::vector<char*> grid = (*iterator.second).Render();
-			viewArray.insert(viewArray.end(), grid.begin(), grid.end());
+			auto item = *iterator.second;
+			auto posX = item.x, posY = item.y;
+			auto SUB_RECT = item.Render();
+			size_t newContentLength = item.w;
+			for (const auto& row : SUB_RECT)
+			{
+				std::memcpy(viewArray[posY] + posX, row, newContentLength);
+			}
 		}
-		return viewArray;
+		//Unit testing code - to visualize a single item
+			for (const char* strPtr : viewArray) {
+				std::cout << strPtr << std::endl;
+			}
+		//Unit testing code - to visualize a single item
+
+			return viewArray;
 	}
 
 	void YB_ViewBasis::OnKey(char* keycode)

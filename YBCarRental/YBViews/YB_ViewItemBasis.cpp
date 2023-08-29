@@ -48,10 +48,11 @@ namespace YBConsoleViews {
 				size_t remainingLength = strlen(viewArray[posY]) - posX;
 				memcpy(viewArray[posY] + posX, content, newContentLength);
 			}
-
-			for (const char* strPtr : viewArray) {
-				std::cout << strPtr << std::endl;
-			}
+			//Unit testing code - to visualize a single item
+			//for (const char* strPtr : viewArray) {
+			//	std::cout << strPtr << std::endl;
+			//}
+			//Unit testing code - to visualize a single item
 		}
 		return YB_ViewItemBasis::viewArray;
 	}
@@ -104,17 +105,17 @@ namespace YBConsoleViews {
 	{
 		YB_DataBasis::Deserialize(line, separator);
 
-		x = std::stoi(*YB_DataBasis::FindValue("x"));
-		y = std::stoi(*YB_DataBasis::FindValue("y"));
-		w = std::stoi(*YB_DataBasis::FindValue("w"));
-		h = std::stoi(*YB_DataBasis::FindValue("h"));
-		ItemType = *YB_DataBasis::FindValue("ItemType");
-		Content = *YB_DataBasis::FindValue("Content");
-		Background = *YB_DataBasis::FindValue("Background")->c_str();
-		isCentral = *YB_DataBasis::FindValue("isCentral") == "1";
-		isFocused = *YB_DataBasis::FindValue("isFocused") == "1";
-		isSelected = *YB_DataBasis::FindValue("isSelected") == "1";
-		isHidden = *YB_DataBasis::FindValue("isHidden") == "1";
+		if (YB_DataBasis::FindValue("x"))			x = std::stoi(*YB_DataBasis::FindValue("x"));
+		if (YB_DataBasis::FindValue("y"))			y = std::stoi(*YB_DataBasis::FindValue("y"));
+		if (YB_DataBasis::FindValue("w"))			w = std::stoi(*YB_DataBasis::FindValue("w"));
+		if (YB_DataBasis::FindValue("h"))			h = std::stoi(*YB_DataBasis::FindValue("h"));
+		if (YB_DataBasis::FindValue("ItemType"))	ItemType = *YB_DataBasis::FindValue("ItemType");
+		if (YB_DataBasis::FindValue("Content"))		Content = *YB_DataBasis::FindValue("Content");
+		if (YB_DataBasis::FindValue("Background"))	Background = *YB_DataBasis::FindValue("Background")->c_str();
+		if (YB_DataBasis::FindValue("isCentral"))	isCentral = *YB_DataBasis::FindValue("isCentral") == "1";
+		if (YB_DataBasis::FindValue("isFocused"))	isFocused = *YB_DataBasis::FindValue("isFocused") == "1";
+		if (YB_DataBasis::FindValue("isSelected"))	isSelected = *YB_DataBasis::FindValue("isSelected") == "1";
+		if (YB_DataBasis::FindValue("isHidden"))	isHidden = *YB_DataBasis::FindValue("isHidden") == "1";
 	}
 
 	void YB_ViewItemBasis::InitBackground(char background)

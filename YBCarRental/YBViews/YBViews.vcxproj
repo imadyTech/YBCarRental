@@ -134,7 +134,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="YB_ButtonItem.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="YBConsoleVIew-Main.cpp" />
     <ClCompile Include="YB_DetailsView.cpp" />
     <ClCompile Include="YB_DialogView.cpp" />
     <ClCompile Include="YB_InputItem.cpp" />

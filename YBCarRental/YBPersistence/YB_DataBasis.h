@@ -2,6 +2,7 @@
 #define YB_DataBasis_H
 #include <string>
 #include <map>
+#include <vector>
 #include <sstream>
 
 using namespace std;
@@ -28,14 +29,14 @@ namespace YBPersistence
 		/// Be cautious: Property 'Id' is not globally unique!
 		/// There is no Id conflict detection mechanism in this application, and Id for different type object might be overlapped.
 		/// </summary>
-		int									Id=-1;
+		int									Id = -1;
 
 		/// <summary>
 		/// Serielize the object to a line of string (implemented by derived classes)
 		/// </summary>
 		/// <returns></returns>
 		[[deprecated("Deprecated, use Serialize(std::stringstream& strStream) instead.")]]
-		virtual string*						Serialize();	
+		virtual string* Serialize();
 		/// <summary>
 		/// Serielize the object to a stream so derived classed will be able to add up more properties
 		/// </summary>
@@ -62,7 +63,20 @@ namespace YBPersistence
 			}
 			else
 				return nullptr;
+		};
+
+		std::vector<pair<string, string>>	FindValues(std::string key)
+		{
+			vector<pair<string, string>> results = {};
+			for (auto& iterator : stringPairsMap) {
+				if (iterator.first.find(key) ==0 ) {
+					results.push_back(iterator);
+				}
+			}
+			return results;
 		}
+
+
 		map<std::string, std::string>*		SplitLine(std::string* line, const char* separator)
 		{
 			if (!stringPairsMap.empty())	//if the map is not empty, then very likely it was resued so you need clean.

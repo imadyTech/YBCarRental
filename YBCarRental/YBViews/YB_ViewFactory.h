@@ -10,6 +10,7 @@
 #include "YB_DetailsView.h"
 #include "YB_DialogView.h"
 #include "YB_ListView.h"
+#include "YB_ViewItemFactory.h"
 
 using namespace std;
 using namespace YBPersistence;
@@ -22,7 +23,6 @@ namespace YBConsoleViews
 	typedef YBConsoleViews::YB_DialogView		DialogView;
 	typedef YBConsoleViews::YB_ListView			ListView;
 	typedef YBConsoleViews::YB_DetailsView		DetailsView;
-
 
 	class YB_ViewFactory
 	{
@@ -40,88 +40,22 @@ namespace YBConsoleViews
 		/// <summary>
 		/// objectize all text def in repo to YB_View objects
 		/// </summary>
-		void LoadAllViews()
-		{
-			if (!this->repository.isReady)
-				throw YB_RepositoryError();			//It is not allowed if never ReadAllLines().
+		void LoadAllViews();
 
-			for (auto& pairValue : repository.allRecordLines)
-			{
-				std::unique_ptr<YB_ViewBasis> viewPtr = this->CreateProduct(pairValue.second); //Pass the view serializeString
-				YB_ViewBasis* view = viewPtr.get();
-				try
-				{
-					(*view).Deserialize(pairValue.second);										//deserialize String
-					viewPool.insert(std::make_pair(pairValue.first, *view));
-				}
-				catch (exception e)
-				{
-					throw YB_FactoryError();
-				}
-			}
-		}
-
-
-		/// <summary>
-		/// Find the view through search the Title of view (make sure view.Title has no overlap. No conflict check mechanism in this project.)
-		/// </summary>
-		/// <param name="viewTitle"></param>
-		/// <returns></returns>
-		YB_ViewBasis* GetView(int viewId) {
-			auto iterator = viewPool.find(viewId);
-			if (iterator != viewPool.end())
-			{
-				return &(iterator->second);
-			}
-			else
-				return nullptr;
-		}
-
-		YB_ViewBasis* GetView(string viewType) {
-			for (auto& iterator : viewPool)
-			{
-				if ((iterator.second).ViewType == viewType)
-				{
-					return &iterator.second;
-				}
-			}
-			return nullptr;
-		};
+		YB_ViewBasis* GetView(int viewId);
+		YB_ViewBasis* GetView(string viewType);
 
 
 	private:
 		std::map<int, YB_ViewBasis>		viewPool;
 		YBPersistence::YB_Repository	repository;
+		YB_ViewItemFactory				viewItemFactory;
 
 		/// <summary>
 		/// create view in runtime using Factory Design Pattern implementation
 		/// </summary>
-		std::unique_ptr<YB_ViewBasis>	CreateProduct(const string serializeString)
-		{
-			YB_ViewBasis* basePtr = new YB_ViewBasis();
-			basePtr->Deserialize(serializeString);
-
-			string type = basePtr->ViewType;
-			if (type == "MenuView") {
-				return std::make_unique<MenuView>();
-			}
-			if (type == "WelcomeView") {
-				return std::make_unique<WelcomeView>();
-			}
-			if (type == "InputView") {
-				return std::make_unique<InputView>();
-			}
-			if (type == "DialogView") {
-				return std::make_unique<DialogView>();
-			}
-			if (type == "ListView") {
-				return std::make_unique<ListView>();
-			}
-			if (type == "DetailsView") {
-				return std::make_unique<DetailsView>();
-			}
-			return nullptr;
-		}
+		std::unique_ptr<YB_ViewBasis>	CreateProduct(const string serializeString);
+		void							CreateViewitem(YB_ViewBasis* view, const string viewString);
 
 		//get the value based on viewType keyword
 		//std::string FindType(std::string serializeString);

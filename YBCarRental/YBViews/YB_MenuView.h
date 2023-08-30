@@ -7,6 +7,12 @@ namespace YBConsoleViews
 	class YB_MenuView : public YBConsoleViews::YB_ViewBasis
 	{
 	public:
+		YB_MenuView() :YB_ViewBasis(&w, &h) {};
+		YB_MenuView(string serializeString) :YB_MenuView()
+		{
+			this->Deserialize(serializeString);
+			Init_Background(' ');
+		};
 		void			OnKey(int* keycode)				override;
 		void			OnReturn(YB_ViewMessageBasis msg)	override;
 		vector<char*>	Render()							override;

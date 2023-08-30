@@ -19,10 +19,10 @@ namespace YBConsoleViews {
 
 	YB_ViewBasis::~YB_ViewBasis()
 	{
-		for (char* ptr : viewArray) {
-			delete[] ptr;
-		}
-		this->viewArray.clear();
+		//for (char* ptr : viewArray) {
+		//	delete[] ptr;
+		//}
+		//this->viewArray.clear();
 
 		//delete[] & viewArray;
 	};

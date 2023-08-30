@@ -43,6 +43,12 @@
     <Filter Include="Header Files\YB_View">
       <UniqueIdentifier>{4d495886-7cc0-4ba5-8fad-58cb2326013a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\YB_Logic">
+      <UniqueIdentifier>{d10dbd9d-b737-4891-a6a7-ded5a1862be1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\YB_Logic">
+      <UniqueIdentifier>{7ae1734c-e529-4869-8b3b-7b87fb39a60f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="YBConsoleVIew-Main.cpp">
@@ -96,6 +102,12 @@
     <ClCompile Include="YB_InputItem.cpp">
       <Filter>Source Files\YB_ViewItemTemplates</Filter>
     </ClCompile>
+    <ClCompile Include="YB_LogicFactory.cpp">
+      <Filter>Source Files\YB_Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_IDataSource.cpp">
+      <Filter>Source Files\YB_Logic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="YB_Window.h">
@@ -145,6 +157,12 @@
     </ClInclude>
     <ClInclude Include="YB_InputItem.h">
       <Filter>Header Files\YB_ViewItemTemplates</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_LogicFactory.h">
+      <Filter>Header Files\YB_Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_IDataSource.h">
+      <Filter>Header Files\YB_Logic</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

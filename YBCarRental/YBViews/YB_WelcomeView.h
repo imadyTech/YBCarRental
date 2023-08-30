@@ -8,6 +8,13 @@ namespace YBConsoleViews
 	class YB_WelcomeView : public YBConsoleViews::YB_ViewBasis
 	{
 	public:
+		YB_WelcomeView() :YB_ViewBasis(&w, &h) {};
+		YB_WelcomeView(string serializeString) :YB_WelcomeView()
+		{
+			this->Deserialize(serializeString);
+			Init_Background(' ');
+		};
+
 		void			OnKey(int* keycode)					override;
 		void			OnReturn(YB_ViewMessageBasis msg)	override;
 		vector<char*>	Render()							override;

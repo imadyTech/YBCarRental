@@ -8,7 +8,17 @@ namespace YBConsoleViews
 	class YB_DetailsView : public YBConsoleViews::YB_ViewBasis
 	{
 	public:
-		void			OnKey(int* keycode)				override;
+		YB_DetailsView() :YB_ViewBasis(&w, &h) {};
+		YB_DetailsView(string serializeString) :YB_DetailsView()
+		{
+			this->Deserialize(serializeString);
+			Init_Background(' ');
+		};
+
+
+
+
+		void			OnKey(int* keycode)					override;
 		void			OnReturn(YB_ViewMessageBasis msg)	override;
 		vector<char*>	Render()							override;
 	};

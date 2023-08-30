@@ -2,7 +2,7 @@
 
 namespace YBConsoleViews
 {
-	void							YB_ViewFactory::LoadAllViews()
+	void			YB_ViewFactory::LoadAllViews()
 	{
 		//It is not allowed to access repository before ReadAllLines().
 		if (!this->repository.isReady)
@@ -10,13 +10,12 @@ namespace YBConsoleViews
 
 		for (auto& pairValue : repository.allRecordLines)
 		{
-			std::unique_ptr<YB_ViewBasis> product = this->CreateProduct(pairValue.second);
-			YB_ViewBasis* viewPtr = product.get();
+			YB_ViewBasis* productPtr = this->CreateProduct(&(pairValue.second));
 			try
 			{
-				(*viewPtr).Deserialize(pairValue.second);
-				CreateViewitem(viewPtr, pairValue.second);
-				viewPool.insert(std::make_pair(pairValue.first, *viewPtr));
+				//(*productPtr).Deserialize(pairValue.second);
+				CreateSubViewitems(productPtr, pairValue.second);
+				viewPool.insert(std::make_pair(pairValue.first, *productPtr));
 			}
 			catch (exception e)
 			{
@@ -25,7 +24,7 @@ namespace YBConsoleViews
 		}
 	}
 
-	YB_ViewBasis* YB_ViewFactory::GetView(int viewId) {
+	YB_ViewBasis*	YB_ViewFactory::GetView(int viewId) {
 		auto iterator = viewPool.find(viewId);
 		if (iterator != viewPool.end())
 		{
@@ -35,7 +34,7 @@ namespace YBConsoleViews
 			return nullptr;
 	}
 
-	YB_ViewBasis* YB_ViewFactory::GetView(string viewType) {
+	YB_ViewBasis*	YB_ViewFactory::GetView(string viewType) {
 		for (auto& iterator : viewPool)
 		{
 			if ((iterator.second).ViewType == viewType)
@@ -46,34 +45,34 @@ namespace YBConsoleViews
 		return nullptr;
 	};
 
-	std::unique_ptr<YB_ViewBasis>	YB_ViewFactory::CreateProduct(const string serializeString)
+	YB_ViewBasis*	YB_ViewFactory::CreateProduct(const string* serializeString)
 	{
 		YB_ViewBasis* basePtr = new YB_ViewBasis();
-		basePtr->Deserialize(serializeString);
-
+		basePtr->Deserialize(*serializeString);
 		string type = basePtr->ViewType;
+
 		if (type == "MenuView") {
-			return std::make_unique<MenuView>();
+			return new MenuView(*serializeString);
 		}
 		if (type == "WelcomeView") {
-			return std::make_unique<WelcomeView>();
+			return new WelcomeView(*serializeString);
 		}
 		if (type == "InputView") {
-			return std::make_unique<InputView>();
+			return new InputView(*serializeString);
 		}
 		if (type == "DialogView") {
-			return std::make_unique<DialogView>();
+			return new DialogView(*serializeString);
 		}
 		if (type == "ListView") {
-			return std::make_unique<ListView>();
+			return new ListView(*serializeString);
 		}
 		if (type == "DetailsView") {
-			return std::make_unique<DetailsView>();
+			return new DetailsView(*serializeString);
 		}
 		return nullptr;
 	}
-
-	void							YB_ViewFactory::CreateViewitem(YB_ViewBasis* view, const string viewString)
+		
+	void			YB_ViewFactory::CreateSubViewitems(YB_ViewBasis* view, const string viewString)
 	{
 		auto itemsDef = (*view).FindValues("item");
 		if (!itemsDef.empty())
@@ -85,4 +84,33 @@ namespace YBConsoleViews
 			}
 		}
 	}
+
+	//std::unique_ptr<YB_ViewBasis>	YB_ViewFactory::CreateProduct(const string serializeString)
+	//{
+	//	YB_ViewBasis* basePtr = new YB_ViewBasis();
+	//	basePtr->Deserialize(serializeString);
+	//	string type = basePtr->ViewType;
+	//	if (type == "MenuView") {
+	//		return std::make_unique<MenuView>();
+	//	}
+	//	if (type == "WelcomeView") {
+	//		return std::make_unique<WelcomeView>();
+	//	}
+	//	if (type == "InputView") {
+	//		return std::make_unique<InputView>();
+	//	}
+	//	if (type == "DialogView") {
+	//		return std::make_unique<DialogView>();
+	//	}
+	//	if (type == "ListView") {
+	//		return std::make_unique<ListView>();
+	//	}
+	//	if (type == "DetailsView") {
+	//		return std::make_unique<DetailsView>();
+	//	}
+	//	return nullptr;
+	//}
+
+
+
 }

@@ -108,6 +108,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -137,10 +138,12 @@
     <ClCompile Include="YBConsoleVIew-Main.cpp" />
     <ClCompile Include="YB_DetailsView.cpp" />
     <ClCompile Include="YB_DialogView.cpp" />
+    <ClCompile Include="YB_IDataSource.cpp" />
     <ClCompile Include="YB_InputItem.cpp" />
     <ClCompile Include="YB_InputView.cpp" />
     <ClCompile Include="YB_ListItem.cpp" />
     <ClCompile Include="YB_ListView.cpp" />
+    <ClCompile Include="YB_LogicFactory.cpp" />
     <ClCompile Include="YB_MenuView.cpp" />
     <ClCompile Include="YB_TextItem.cpp" />
     <ClCompile Include="YB_ViewBasis.cpp" />
@@ -155,10 +158,12 @@
     <ClInclude Include="YB_ButtonItem.h" />
     <ClInclude Include="YB_DetailsView.h" />
     <ClInclude Include="YB_DialogView.h" />
+    <ClInclude Include="YB_IDataSource.h" />
     <ClInclude Include="YB_InputItem.h" />
     <ClInclude Include="YB_InputView.h" />
     <ClInclude Include="YB_ListItem.h" />
     <ClInclude Include="YB_ListView.h" />
+    <ClInclude Include="YB_LogicFactory.h" />
     <ClInclude Include="YB_MenuView.h" />
     <ClInclude Include="YB_TextItem.h" />
     <ClInclude Include="YB_ViewBasis.h" />

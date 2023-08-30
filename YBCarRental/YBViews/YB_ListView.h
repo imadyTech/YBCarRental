@@ -8,6 +8,12 @@ namespace YBConsoleViews
 	class YB_ListView : public YBConsoleViews::YB_ViewBasis
 	{
 	public:
+		YB_ListView() :YB_ViewBasis(&w, &h) {};
+		YB_ListView(string serializeString) :YB_ListView()
+		{
+			this->Deserialize(serializeString);
+			Init_Background(' ');
+		};
 		void			OnKey(int* keycode)					override;
 		void			OnReturn(YB_ViewMessageBasis msg)	override;
 		vector<char*>	Render()							override;

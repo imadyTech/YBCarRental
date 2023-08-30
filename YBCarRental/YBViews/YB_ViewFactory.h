@@ -40,11 +40,9 @@ namespace YBConsoleViews
 		/// <summary>
 		/// objectize all text def in repo to YB_View objects
 		/// </summary>
-		void LoadAllViews();
-
-		YB_ViewBasis* GetView(int viewId);
-		YB_ViewBasis* GetView(string viewType);
-
+		void							LoadAllViews();
+		YB_ViewBasis*					GetView(int viewId);
+		YB_ViewBasis*					GetView(string viewType);
 
 	private:
 		std::map<int, YB_ViewBasis>		viewPool;
@@ -54,8 +52,9 @@ namespace YBConsoleViews
 		/// <summary>
 		/// create view in runtime using Factory Design Pattern implementation
 		/// </summary>
-		std::unique_ptr<YB_ViewBasis>	CreateProduct(const string serializeString);
-		void							CreateViewitem(YB_ViewBasis* view, const string viewString);
+		YB_ViewBasis*					CreateProduct(const string* serializeString);
+		void							CreateSubViewitems(YB_ViewBasis* view, const string viewString);
+		//std::unique_ptr<YB_ViewBasis>	CreateProduct(const string serializeString);
 
 		//get the value based on viewType keyword
 		//std::string FindType(std::string serializeString);

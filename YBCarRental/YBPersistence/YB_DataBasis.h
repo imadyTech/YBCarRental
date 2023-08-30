@@ -112,7 +112,6 @@ namespace YBPersistence
 		/// indicate how the persistence string was separated. Default=';'
 		/// </summary>
 		char								persistentSeparator = ';';
-
 	protected:
 
 

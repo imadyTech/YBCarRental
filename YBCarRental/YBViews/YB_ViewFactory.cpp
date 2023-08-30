@@ -5,10 +5,10 @@ namespace YBConsoleViews
 	void			YB_ViewFactory::LoadAllViews()
 	{
 		//It is not allowed to access repository before ReadAllLines().
-		if (!this->repository.isReady)
+		if (!(*this->repository).isReady)
 			throw YB_RepositoryError();
 
-		for (auto& pairValue : repository.allRecordLines)
+		for (auto& pairValue : (*this->repository).allRecordLines)
 		{
 			YB_ViewBasis* productPtr = this->CreateProduct(&(pairValue.second));
 			try

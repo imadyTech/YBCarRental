@@ -25,7 +25,7 @@ namespace YBConsoleViews
 	public:
 		YB_ViewItemFactory() {};
 		YB_ViewItemFactory(string viewItemRepoUrl) : YB_ViewItemFactory() {
-			repository = YB_Repository(viewItemRepoUrl);
+			repository = new YB_Repository(viewItemRepoUrl);
 			LoadAllItems();
 		};
 
@@ -44,7 +44,7 @@ namespace YBConsoleViews
 
 	private:
 		std::map<int, YB_ViewItemBasis>			viewitemPool;
-		YBPersistence::YB_Repository			repository;
+		YBPersistence::YB_Repository*			repository;
 
 		/// <summary>
 		/// create view in runtime upon to a Factory Design Pattern implementation

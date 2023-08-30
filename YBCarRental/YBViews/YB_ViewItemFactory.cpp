@@ -5,10 +5,10 @@ namespace YBConsoleViews
 {
 	void				YB_ViewItemFactory::LoadAllItems()
 	{
-		if (!this->repository.isReady)
+		if (!(*repository).isReady)
 			throw YB_RepositoryError();			//It is not allowed if never ReadAllLines().
 
-		for (auto& pairValue : repository.allRecordLines)
+		for (auto& pairValue : (*repository).allRecordLines)
 		{
 			//std::unique_ptr<YB_ViewItemBasis> viewPtr = this->CreateProduct(pairValue.second); //Pass the view serializeString
 			YB_ViewItemBasis* view = this->CreateProduct(&pairValue.second); //Pass the view serializeString

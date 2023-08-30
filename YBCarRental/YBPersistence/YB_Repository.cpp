@@ -4,30 +4,6 @@
 namespace YBPersistence
 {
 	/// <summary>
-	/// Text stream orientated layer of data persistence.
-	/// </summary>
-	YB_Repository::YB_Repository()
-	{
-		isReady = false;								//the persistence file is not verified yet, NOT ready.
-	}
-	YB_Repository::YB_Repository(string url)
-	{
-		repositoryURL = url;
-		ReadAllLines();
-		//ifstream input(repositoryURL);					//test the persistence file
-		//if (input.is_open())
-
-		//	isReady = true;
-		//else
-		//	throw YB_RepositoryError();
-	}
-
-	YB_Repository::~YB_Repository()
-	{
-		//delete &allRecordLines;							//clear the allocated memory
-	}
-
-	/// <summary>
 	/// Cache all lines in the text file to a map<int, string> (allRecordLines)
 	/// </summary>
 	void YB_Repository::ReadAllLines()
@@ -39,14 +15,36 @@ namespace YBPersistence
 			isReady = false;
 			throw YB_RepositoryError();
 		}
-		string line;
 		//clear the cache
 		if (!allRecordLines.empty()) allRecordLines.clear();
+		string line, cachedline;								//temp variables.
 		while (std::getline(input, line)) {
-			int index = extractIndex(line);
-			if (index > 0) {
-				// Add the line to the map using the index as the key
-				allRecordLines[index] = line;
+			if (line.empty() && !cachedline.empty())			//ended with empty line
+			{
+				int index = extractIndex(cachedline);
+				if (index > 0) {
+					// Add the line to the map using the index as the key
+					allRecordLines[index] = cachedline;
+				}
+				cachedline = "";
+				continue;
+			}
+			else if (line.empty() && cachedline.empty())
+			{
+				break;
+			}
+			else {
+				if (line.back() == this->lineBreakConnector)		//check if ended with a '&'
+				{
+					line.erase(line.length() - 1);
+					cachedline = cachedline.append(line);
+					continue;
+				}
+				else
+				{
+					cachedline = cachedline.append(line);
+					continue;
+				}
 			}
 		}
 		isReady = true;

@@ -89,7 +89,7 @@ int main()
 
 	//YB_Window integrated test
 	YB_Window window = YB_Window();
-	window.ConfigLogicFactory(xxxxLogicFactory);
+	//window.ConfigLogicFactory(xxxxLogicFactory);
 	window.InitViewFactory("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/ViewRepo.txt");
 	window.Init();
 	window.Run();

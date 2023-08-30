@@ -1,4 +1,4 @@
-Id:1;Title:Hello Car Rental;ViewType:WelcomeView;w:120;h:29;&
+Id:100;Title:Hello Car Rental;ViewType:WelcomeView;w:120;h:29;DataSourceName:a;&
 item1:Id:1!x:40!y:11!isCentral:0!w:40!h:1!ItemType:TextItem!Content:   #####       ###      #######!;&
 item2:Id:2!x:40!y:12!isCentral:0!w:40!h:1!ItemType:TextItem!Content: ##          ##   ##    ##     ##!;&
 item3:Id:3!x:40!y:13!isCentral:0!w:40!h:1!ItemType:TextItem!Content:##         ##       ##  ##      ##!;&
@@ -6,32 +6,38 @@ item4:Id:4!x:40!y:14!isCentral:0!w:40!h:1!ItemType:TextItem!Content:##         #
 item5:Id:5!x:40!y:15!isCentral:0!w:40!h:1!ItemType:TextItem!Content:##         ###########  ##   ##!;&
 item6:Id:6!x:40!y:16!isCentral:0!w:40!h:1!ItemType:TextItem!Content: ##        ##       ##  ##    ##!;&
 item7:Id:7!x:40!y:17!isCentral:0!w:40!h:1!ItemType:TextItem!Content:   #####   ##       ##  ##     ##!;&
-item8:Id:8!x:0!y:22!w:120!h:1!ItemType:TextItem!Content:Copyright @Zhenqun Shen!Background:.!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
+item8:Id:8!x:0!y:22!w:120!h:1!ItemType:TextItem!Content:Copyright @Zhenqun Shen!Background: !isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+item9:Id:9!x:0!y:24!w:120!h:1!ItemType:TextItem!Content:Yoobee College of Creative Innovation!Background:.!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
 
-Id:101;Title:Please Login;ViewType:InputView;w:120;h:29;
+Id:101;Title:Main Menu;ViewType:MenuView;w:120;h:29;DataSourceName:a;&
+item101A:Id:1010!x:20!y:3!w:80!h:1!ItemType:TextItem!Content:Please choose a function!Background:-!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;&
+item101B:Id:1011!x:36!y:10!w:48!h:1!ItemType:ButtonItem!Content:Login!Background: !isCentral:0!isFocused:1!isSelected:0!isHidden:0!;&
+item101C:Id:1012!x:36!y:12!w:48!h:1!ItemType:ButtonItem!Content:Register User!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+item101D:Id:1013!x:36!y:14!w:48!h:1!ItemType:ButtonItem!Content:Copyright!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+item101E:Id:1014!x:0!y:20!w:120!h:1!ItemType:TextItem!Content:<Please toggle with TAB and select with Return key>!Background: !isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
 
-Id:102;Title:Welcome friend;ViewType:DetailsView;w:120;h:29;
+Id:102;Title:Welcome friend;ViewType:DetailsView;w:120;h:29;DataSourceName:a;
 
-Id:103;Title:Welcome friend;ViewType:DialogView;w:120;h:29;
+Id:103;Title:Welcome friend;ViewType:DialogView;w:120;h:29;DataSourceName:a;
 
-Id:104;Title:Welcome friend;ViewType:ListView;w:120;h:29;
+Id:104;Title:Welcome friend;ViewType:ListView;w:120;h:29;DataSourceName:a;
 
-Id:105;Title:Welcome friend;ViewType:ListView;w:120;h:29;
+Id:105;Title:Welcome friend;ViewType:ListView;w:120;h:29;DataSourceName:a;
 
-Id:106;Title:Welcome friend;ViewType:ListView;w:120;h:29;
+Id:106;Title:Welcome friend;ViewType:ListView;w:120;h:29;DataSourceName:a;
 
-Id:107;Title:Welcome friend;ViewType:ListView;w:120;h:29;
+Id:107;Title:Welcome friend;ViewType:ListView;w:120;h:29;DataSourceName:a;
 
-Id:108;Title:Welcome friend;ViewType:ListView;w:120;h:29;
+Id:108;Title:Welcome friend;ViewType:ListView;w:120;h:29;DataSourceName:a;
 
-Id:109;Title:Welcome friend;ViewType:ListView;w:120;h:29;
+Id:109;Title:Welcome friend;ViewType:ListView;w:120;h:29;DataSourceName:a;
 
-Id:110;Title:Welcome friend;ViewType:ListView;w:120;h:29;
+Id:110;Title:Welcome friend;ViewType:ListView;w:120;h:29;DataSourceName:a;
 
-Id:111;Title:Welcome friend;ViewType:MenuView;w:120;h:29;&
+Id:111;Title:Welcome friend;ViewType:MenuView;w:120;h:29;DataSourceName:a;&
 item61:Id:601!x:10!y:2!w:30!h:1!ItemType:ButtonItem!Content:Yes or No!Background:/!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
 item62:Id:602!x:10!y:10!w:40!h:1!ItemType:TextItem!Content:The Car!Background:*!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 item63:Id:603!x:30!y:20!w:50!h:1!ItemType:InputItem!Content:You and me!Background:$!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;
 
-Id:999;Title:End of definition;ViewType:WelcomeView;w:64;h:24;
+Id:999;Title:End of definition;ViewType:WelcomeView;w:64;h:24;DataSourceName:a;
 

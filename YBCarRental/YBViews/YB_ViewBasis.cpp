@@ -101,6 +101,9 @@ namespace YBConsoleViews {
 
 		return viewArray;
 	}
+	void				YB_ViewBasis::Init_View() {
+		//...Todo
+	}
 	void				YB_ViewBasis::Init_Background(char background)
 	{
 		if (!viewArray.empty())

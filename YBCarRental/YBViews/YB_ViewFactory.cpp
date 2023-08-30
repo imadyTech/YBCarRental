@@ -11,7 +11,8 @@ namespace YBConsoleViews
 		for (auto& pairValue : (*this->repository).allRecordLines)
 		{
 			YB_ViewBasis* viewPtr = this->CreateProduct(&(pairValue.second));
-			viewPtr->DataSource = (*this->logicFactory).FindDataSource(&viewPtr->DataSourceName);
+			//... Todo
+			//viewPtr->DataSource = (*this->logicFactory).FindDataSource(&viewPtr->DataSourceName);
 
 			try
 			{

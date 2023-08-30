@@ -50,10 +50,11 @@ namespace YBConsoleViews {
 	{
 		YB_DataBasis::Serialize(strStream);
 		strStream
-			<< "Title:"		<< Title	<< YB_DataBasis::persistentSeparator
-			<< "ViewType:"	<< ViewType << YB_DataBasis::persistentSeparator
-			<< "w:"			<< w		<< YB_DataBasis::persistentSeparator
-			<< "h:"			<< h		<< YB_DataBasis::persistentSeparator;
+			<< "Title:"				<< Title			<< YB_DataBasis::persistentSeparator
+			<< "ViewType:"			<< ViewType			<< YB_DataBasis::persistentSeparator
+			<< "w:"					<< w				<< YB_DataBasis::persistentSeparator
+			<< "h:"					<< h				<< YB_DataBasis::persistentSeparator
+			<< "DataSourceName:"	<< DataSourceName	<< YB_DataBasis::persistentSeparator;
 	}
 	void				YB_ViewBasis::Deserialize(string line)
 	{
@@ -67,6 +68,7 @@ namespace YBConsoleViews {
 		ViewType =		*YB_DataBasis::FindValue("ViewType");
 		w =				std::stoi(*YB_DataBasis::FindValue("w"));
 		h =				std::stoi(*YB_DataBasis::FindValue("h"));
+		DataSourceName = *YB_DataBasis::FindValue("DataSourceName");
 	}
 
 	/// <summary>
@@ -157,7 +159,7 @@ namespace YBConsoleViews {
 			(*subItemsList[currentItemIndex]).OnKey(keycode);
 		}
 	}
-	void				YB_ViewBasis::OnReturn(YB_ViewMessageBasis msg)
+	void				YB_ViewBasis::OnChildReturn(YB_ViewMessageBasis msg)
 	{
 	}
 }

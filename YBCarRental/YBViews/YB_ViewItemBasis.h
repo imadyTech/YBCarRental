@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 #include <YB_DataBasis.h>
-//#include "YB_ViewBasis.h"
+#include "YB_ViewBasis.h"
 
 using namespace std;
 using namespace YBPersistence;
@@ -28,11 +28,13 @@ namespace YBConsoleViews
 				ItemType = other.ItemType;
 				Content = other.Content;
 				Background = other.Background;
+				Bind = other.Bind;
 				isCentral = other.isCentral;
 				isFocused = other.isFocused;
 				isSelected = other.isSelected;
 				isHidden = other.isHidden;
 				viewArray = other.viewArray;
+				parent = other.parent;
 
 				YB_DataBasis::operator=(other);
 			}
@@ -47,6 +49,7 @@ namespace YBConsoleViews
 		string							ItemType;
 		string							Content;
 		char							Background = ' ';
+		string							Bind="";
 		bool							isCentral = true;
 		bool							isFocused = false;
 		bool							isSelected = false;
@@ -64,9 +67,10 @@ namespace YBConsoleViews
 		virtual void					OnBackspace();
 		virtual void					OnReturn();
 		virtual std::vector<char*>		Render();
+
+		YB_ViewBasis*					parent;
 	protected:
 		vector<char*>					viewArray;
-		//YB_ViewBasis					parent;
 	};
 
 

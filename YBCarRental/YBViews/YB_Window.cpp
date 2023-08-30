@@ -6,12 +6,20 @@ namespace YBConsoleViews
 
 	void YB_Window::InitViewFactory(string viewRepo)
 	{
-		viewFactory = YB_ViewFactory(viewRepo);
+		viewFactory = new YB_ViewFactory(viewRepo);
+		viewFactory->logicFactory = this->logicFactory;
+		viewFactory->LoadAllViews();
+	}
+
+	void YB_Window::ConfigLogicFactory(YB_LogicFactory* logic)
+	{
+		this->logicFactory = logic;
 	}
 
 	void YB_Window::Init()
 	{
-		currentView = viewFactory.GetView(1);					//Load and show Welcome view
+		currentView = (*viewFactory).GetView(1);					//Load and show Welcome view
+		//currentView->ViewReturnCallback = [this]() {Goto(111); }; //*******demo how to use callback
 	}
 
 	void YB_Window::Run()
@@ -45,7 +53,8 @@ namespace YBConsoleViews
 
 	void YB_Window::Goto(int viewId)
 	{
-		currentView = viewFactory.GetView(viewId);
+		currentView = (*viewFactory).GetView(viewId);
+		currentView->InitView();
 	}
 
 	void YB_Window::Prev()

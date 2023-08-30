@@ -5,11 +5,11 @@ void YBConsoleViews::YB_InputView::OnKey(int* keycode)
 {
 }
 
-void YBConsoleViews::YB_InputView::OnReturn(YB_ViewMessageBasis msg)
+void YBConsoleViews::YB_InputView::OnChildReturn(YB_ViewMessageBasis msg)
 {
 }
 
 vector<char*> YBConsoleViews::YB_InputView::Render()
 {
-	return vector<char*>();
+	return YB_ViewBasis::Render();
 }

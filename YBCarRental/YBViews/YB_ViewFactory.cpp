@@ -10,12 +10,14 @@ namespace YBConsoleViews
 
 		for (auto& pairValue : (*this->repository).allRecordLines)
 		{
-			YB_ViewBasis* productPtr = this->CreateProduct(&(pairValue.second));
+			YB_ViewBasis* viewPtr = this->CreateProduct(&(pairValue.second));
+			viewPtr->DataSource = (*this->logicFactory).FindDataSource(&viewPtr->DataSourceName);
+
 			try
 			{
 				//(*productPtr).Deserialize(pairValue.second);
-				CreateSubViewitems(productPtr, pairValue.second);
-				viewPool.insert(std::make_pair(pairValue.first, *productPtr));
+				CreateSubViewitems(viewPtr, pairValue.second);
+				viewPool.insert(std::make_pair(pairValue.first, viewPtr));
 			}
 			catch (exception e)
 			{
@@ -28,7 +30,7 @@ namespace YBConsoleViews
 		auto iterator = viewPool.find(viewId);
 		if (iterator != viewPool.end())
 		{
-			return &(iterator->second);
+			return iterator->second;
 		}
 		else
 			return nullptr;
@@ -37,9 +39,9 @@ namespace YBConsoleViews
 	YB_ViewBasis*	YB_ViewFactory::GetView(string viewType) {
 		for (auto& iterator : viewPool)
 		{
-			if ((iterator.second).ViewType == viewType)
+			if (iterator.second->ViewType == viewType)
 			{
-				return &iterator.second;
+				return iterator.second;
 			}
 		}
 		return nullptr;

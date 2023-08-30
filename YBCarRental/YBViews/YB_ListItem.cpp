@@ -14,5 +14,5 @@ void YBConsoleViews::YB_ListItem::OnReturn()
 
 std::vector<char*> YBConsoleViews::YB_ListItem::Render()
 {
-	return std::vector<char*>();
+    return YB_ViewItemBasis::Render();
 }

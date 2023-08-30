@@ -105,7 +105,7 @@
     <ClCompile Include="YB_LogicFactory.cpp">
       <Filter>Source Files\YB_Logic</Filter>
     </ClCompile>
-    <ClCompile Include="YB_IDataSource.cpp">
+    <ClCompile Include="YB_DataSource.cpp">
       <Filter>Source Files\YB_Logic</Filter>
     </ClCompile>
   </ItemGroup>
@@ -161,8 +161,11 @@
     <ClInclude Include="YB_LogicFactory.h">
       <Filter>Header Files\YB_Logic</Filter>
     </ClInclude>
-    <ClInclude Include="YB_IDataSource.h">
+    <ClInclude Include="YB_DataSource.h">
       <Filter>Header Files\YB_Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="YBConsoleVIew-Main.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

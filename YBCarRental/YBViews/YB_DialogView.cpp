@@ -4,11 +4,11 @@ void YBConsoleViews::YB_DialogView::OnKey(int* keycode)
 {
 }
 
-void YBConsoleViews::YB_DialogView::OnReturn(YB_ViewMessageBasis msg)
+void YBConsoleViews::YB_DialogView::OnChildReturn(YB_ViewMessageBasis msg)
 {
 }
 
 vector<char*> YBConsoleViews::YB_DialogView::Render()
 {
-	return vector<char*>();
+	return YB_ViewBasis::Render();
 }

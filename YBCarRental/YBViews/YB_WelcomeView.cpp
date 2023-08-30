@@ -2,14 +2,16 @@
 
 void YBConsoleViews::YB_WelcomeView::OnKey(int* keycode)
 {
-
+	if (this->ViewReturnCallback) {
+		this->ViewReturnCallback();
+	}
 }
 
-void YBConsoleViews::YB_WelcomeView::OnReturn(YB_ViewMessageBasis msg)
+void YBConsoleViews::YB_WelcomeView::OnChildReturn(YB_ViewMessageBasis msg)
 {
 }
 
 vector<char*> YBConsoleViews::YB_WelcomeView::Render()
 {
-	return vector<char*>();
+	return YB_ViewBasis::Render();
 }

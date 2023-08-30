@@ -138,7 +138,7 @@
     <ClCompile Include="YBConsoleVIew-Main.cpp" />
     <ClCompile Include="YB_DetailsView.cpp" />
     <ClCompile Include="YB_DialogView.cpp" />
-    <ClCompile Include="YB_IDataSource.cpp" />
+    <ClCompile Include="YB_DataSource.cpp" />
     <ClCompile Include="YB_InputItem.cpp" />
     <ClCompile Include="YB_InputView.cpp" />
     <ClCompile Include="YB_ListItem.cpp" />
@@ -155,10 +155,11 @@
     <ClCompile Include="YB_Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="YBConsoleVIew-Main.h" />
     <ClInclude Include="YB_ButtonItem.h" />
     <ClInclude Include="YB_DetailsView.h" />
     <ClInclude Include="YB_DialogView.h" />
-    <ClInclude Include="YB_IDataSource.h" />
+    <ClInclude Include="YB_DataSource.h" />
     <ClInclude Include="YB_InputItem.h" />
     <ClInclude Include="YB_InputView.h" />
     <ClInclude Include="YB_ListItem.h" />

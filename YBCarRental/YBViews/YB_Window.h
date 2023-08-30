@@ -1,20 +1,22 @@
 #ifndef YB_Window_H
 #define YB_Window_H
 #include <stack>
-//#include <vector>
-//#include <map>
 #include <string>
 #include <conio.h>
 //#include <iostream>
-#include "YB_ViewBasis.h"
-#include "YB_ViewFactory.h"
+//#include <cstdlib>
 #include <windows.h>
+//#include "YB_ViewBasis.h"
+#include "YB_ViewFactory.h"
+#include "YB_LogicFactory.h"
+#include <functional>
 //#include "YB_ViewItemFactory.h"
 
 using namespace std;
 
 namespace YBConsoleViews
 {
+	class YB_ViewBasis;						//Forward declaration in C++
 	class YB_Window
 	{
 	public:
@@ -33,20 +35,23 @@ namespace YBConsoleViews
 		// Delete:		ViewItem	Keycode: 46
 		//========================================================================
 
-		void Init();
-		void Run();
-		void OnKeyIn(int keycode);
-		void Goto(int viewId);						//Activate a view
-		void Prev();
-		void Next();
-		void Render();								//view contents
-		void Output();								//to screen
+		void							ConfigLogicFactory(YB_LogicFactory* logic);
+
+		void							Init();
+		void							Run();
+		void							OnKeyIn(int keycode);
+		void							Goto(int viewId);						//Activate a view
+		void							Prev();
+		void							Next();
+		void							Render();								//view contents
+		void							Output();								//to screen
+
 	private:
-		YB_ViewFactory					viewFactory;
+		YB_ViewFactory*					viewFactory = new YB_ViewFactory();
+		YB_LogicFactory*				logicFactory;
 		YB_ViewBasis*					currentView;
 		stack<YB_ViewBasis*>			viewStack;
 		vector<char*>					viewGrid;
-		//map<int, YB_ViewBasis>		viewCollection;
 	};
 
 }

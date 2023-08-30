@@ -4,11 +4,11 @@ void YBConsoleViews::YB_MenuView::OnKey(int* keycode)
 {
 }
 
-void YBConsoleViews::YB_MenuView::OnReturn(YB_ViewMessageBasis msg)
+void YBConsoleViews::YB_MenuView::OnChildReturn(YB_ViewMessageBasis msg)
 {
 }
 
 vector<char*> YBConsoleViews::YB_MenuView::Render()
 {
-	return vector<char*>();
+	return YB_ViewBasis::Render();
 }

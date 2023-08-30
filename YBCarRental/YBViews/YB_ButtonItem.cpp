@@ -24,6 +24,7 @@ namespace YBConsoleViews
         isFocused = true;
     }
 
+
     void YBConsoleViews::YB_ButtonItem::OnReturn()
     {
         //Jump

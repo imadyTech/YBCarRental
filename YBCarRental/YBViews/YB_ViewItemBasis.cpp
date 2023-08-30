@@ -40,17 +40,18 @@ namespace YBConsoleViews {
 	{
 		YB_DataBasis::Serialize(strStream);
 		strStream
-			<< "x:" << x << YB_DataBasis::persistentSeparator
-			<< "y:" << y << YB_DataBasis::persistentSeparator
-			<< "w:" << w << YB_DataBasis::persistentSeparator
-			<< "h:" << h << YB_DataBasis::persistentSeparator
-			<< "ItemType:" << ItemType << YB_DataBasis::persistentSeparator
-			<< "Content:" << Content << YB_DataBasis::persistentSeparator
-			<< "Background:" << Background << YB_DataBasis::persistentSeparator
-			<< "isCentral:" << isCentral << YB_DataBasis::persistentSeparator
-			<< "isFocused:" << isFocused << YB_DataBasis::persistentSeparator
-			<< "isSelected:" << isSelected << YB_DataBasis::persistentSeparator
-			<< "isHidden:" << isHidden << YB_DataBasis::persistentSeparator;
+			<< "x:"				<< x			<< YB_DataBasis::persistentSeparator
+			<< "y:"				<< y			<< YB_DataBasis::persistentSeparator
+			<< "w:"				<< w			<< YB_DataBasis::persistentSeparator
+			<< "h:"				<< h			<< YB_DataBasis::persistentSeparator
+			<< "ItemType:"		<< ItemType		<< YB_DataBasis::persistentSeparator
+			<< "Content:"		<< Content		<< YB_DataBasis::persistentSeparator
+			<< "Bind:"			<< Bind			<< YB_DataBasis::persistentSeparator
+			<< "Background:"	<< Background	<< YB_DataBasis::persistentSeparator
+			<< "isCentral:"		<< isCentral	<< YB_DataBasis::persistentSeparator
+			<< "isFocused:"		<< isFocused	<< YB_DataBasis::persistentSeparator
+			<< "isSelected:"	<< isSelected	<< YB_DataBasis::persistentSeparator
+			<< "isHidden:"		<< isHidden		<< YB_DataBasis::persistentSeparator;
 	}
 	void						YB_ViewItemBasis::Deserialize(string line)
 	{
@@ -64,6 +65,7 @@ namespace YBConsoleViews {
 		if (YB_DataBasis::FindValue("y"))			y = std::stoi(*YB_DataBasis::FindValue("y"));
 		if (YB_DataBasis::FindValue("w"))			w = std::stoi(*YB_DataBasis::FindValue("w"));
 		if (YB_DataBasis::FindValue("h"))			h = std::stoi(*YB_DataBasis::FindValue("h"));
+		if (YB_DataBasis::FindValue("Bind"))		h = std::stoi(*YB_DataBasis::FindValue("Bind"));
 		if (YB_DataBasis::FindValue("ItemType"))	ItemType = *YB_DataBasis::FindValue("ItemType");
 		if (YB_DataBasis::FindValue("Content"))		Content = *YB_DataBasis::FindValue("Content");
 		if (YB_DataBasis::FindValue("Background"))	Background = *YB_DataBasis::FindValue("Background")->c_str();

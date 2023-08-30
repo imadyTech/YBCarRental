@@ -6,6 +6,8 @@
 #include <vector>
 #include "YB_ViewMessage.h"
 #include "YB_DataBasis.h"
+#include <functional>
+#include "YB_DataSource.h"
 //#include "YB_ViewItemBasis.h"				// Forward declaration - some c++ specific trap
 
 using namespace std;
@@ -35,6 +37,7 @@ namespace YBConsoleViews
 				ViewType = other.ViewType;
 				w = other.w;
 				h = other.h;
+				DataSourceName = other.DataSourceName;
 				subItemsList = other.subItemsList;
 				viewArray = other.viewArray;
 				// Deep copy of other resources, if any
@@ -59,6 +62,7 @@ namespace YBConsoleViews
 		string							Title = "";
 		int								w = 200, h = 32;				//view size
 		char							Background = '.';
+		string							DataSourceName="";
 		vector<YB_ViewItemBasis*>		subItemsList;
 
 		//void AddViewItem(YB_ViewItemBasis item);
@@ -71,11 +75,15 @@ namespace YBConsoleViews
 		//void Serialize(ofstream* output) override;
 
 		virtual void					OnKey(int* keycode);
-		virtual void					OnReturn(YB_ViewMessageBasis msg);
+		virtual void					OnChildReturn(YB_ViewMessageBasis msg);
+		void							Init_View();										//datasource VM -> view 
 		virtual vector<char*>			Render();
 		void							Init_Background(char background);
 		void							Fill_Background(char background);
 		void							Clear_Background();
+
+		std::function<void()>			ViewReturnCallback;
+		YB_DataSource*					DataSource;
 	protected:
 	private:
 		vector<char*>					viewArray;

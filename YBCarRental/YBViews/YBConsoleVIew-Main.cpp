@@ -7,7 +7,9 @@
 #include "YB_ViewFactory.h"
 #include "YB_ViewItemBasis.h"
 #include "YB_ViewItemFactory.h"
+#include "YB_LogicFactory.h"
 #include "YB_Window.h"
+#include "YBConsoleVIew-Main.h"
 using namespace YBPersistence;
 using namespace YBConsoleViews;
 
@@ -87,6 +89,7 @@ int main()
 
 	//YB_Window integrated test
 	YB_Window window = YB_Window();
+	window.ConfigLogicFactory(xxxxLogicFactory);
 	window.InitViewFactory("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/ViewRepo.txt");
 	window.Init();
 	window.Run();

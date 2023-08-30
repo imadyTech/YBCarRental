@@ -15,7 +15,7 @@ namespace YBConsoleViews
 			try
 			{
 				//(*view).Deserialize(pairValue.second);										//deserialize String
-				viewitemPool.insert(std::make_pair(pairValue.first, *view));
+				viewitemPool.insert(std::make_pair(pairValue.first, view));
 			}
 			catch (exception e)
 			{
@@ -34,13 +34,13 @@ namespace YBConsoleViews
 			auto it = viewitemPool.find(itemPtr->Id);
 			if (it != viewitemPool.end())								//Already existed; Update.
 			{
-				it->second = *itemPtr;									//replace the viewitem in the pool
+				it->second = itemPtr;									//replace the viewitem in the pool
 			}
 			else
 			{
 				try
 				{
-					viewitemPool.insert(std::make_pair(itemPtr->Id, *itemPtr));
+					viewitemPool.insert(std::make_pair(itemPtr->Id, itemPtr));
 				}
 				catch (exception e)
 				{
@@ -56,7 +56,7 @@ namespace YBConsoleViews
 		auto iterator = viewitemPool.find(viewId);
 		if (iterator != viewitemPool.end())
 		{
-			return &iterator->second;
+			return iterator->second;
 		}
 		else
 			return nullptr;
@@ -65,9 +65,9 @@ namespace YBConsoleViews
 	YB_ViewItemBasis*	YB_ViewItemFactory::GetViewItem(string itemType) {
 		for (auto& iterator : viewitemPool)
 		{
-			if (iterator.second.ItemType == itemType)
+			if (iterator.second->ItemType == itemType)
 			{
-				return &iterator.second;
+				return iterator.second;
 			}
 		}
 		return nullptr;

@@ -12,7 +12,20 @@ namespace YBConsoleViews
                 Clear_Background();
         }
 
-        return YB_ViewItemBasis::Render();
+        YB_ViewItemBasis::Render();
+
+        if (isSelected) {
+            const char* content = "->";
+            size_t posY = h / 2;
+
+            if (posY <= h)
+            {
+                size_t remainingLength = strlen(viewArray[posY]);
+                memcpy(viewArray[posY], content, 2);
+            }
+        }
+        return YB_ViewItemBasis::viewArray;
+
     }
 
     void YB_ButtonItem::OnKey(int* keycode)

@@ -1,6 +1,6 @@
 #ifndef YB_ManagerBasis_H
 #define YB_ManagerBasis_H
-
+#define _HAS_STD_BYTE 0
 #include "YB_DataBasis.h"
 #include "YB_PersistorBasis.h"
 #include "YB_Errors.h"
@@ -53,7 +53,7 @@ namespace YBCarRental
 		/// <summary>
 		/// The persistor to manage TData objects at lower-layer .
 		/// </summary>
-		YB_PersistorBasis<TData> persistor;
+		YB_PersistorBasis<TData>* persistor;
 
 		///dictionary of id:object pair
 		//map<int, TData> dataSet;
@@ -70,7 +70,7 @@ namespace YBCarRental
 		YB_ManagerBasis<TData>::YB_ManagerBasis();
 
 		//instantiate a persistor based on the url passed in.
-		persistor = YB_PersistorBasis<TData>(url);
+		persistor = new YB_PersistorBasis<TData>(url);
 	}
 
 #pragma endregion
@@ -78,18 +78,18 @@ namespace YBCarRental
 	template<class TData>
 	inline void YB_ManagerBasis<TData>::LoadAll()
 	{
-		persistor.GetAll();
+		persistor->GetAll();
 	}
 
 	template<class TData>
 	inline TData* YB_ManagerBasis<TData>::Get(int id)
 	{
-		return persistor.Get(id);
+		return persistor->Get(id);
 	}
 	template<class TData>
 	inline TData* YB_ManagerBasis<TData>::Get(string username)
 	{
-		return persistor.Get(username);
+		return persistor->Get(username);
 	}
 
 
@@ -98,7 +98,7 @@ namespace YBCarRental
 	inline bool YB_ManagerBasis<TData>::Add(TData data)
 	{
 		try {
-			persistor.Add(data);
+			persistor->Add(data);
 			return true;
 		}
 		catch (exception e)
@@ -110,7 +110,7 @@ namespace YBCarRental
 	inline bool YB_ManagerBasis<TData>::Delete(int id)
 	{
 		try {
-			return persistor.Delete(id);
+			return persistor->Delete(id);
 		}
 		catch (exception e)
 		{
@@ -121,7 +121,7 @@ namespace YBCarRental
 	inline bool YB_ManagerBasis<TData>::Update(TData data)
 	{
 		try {
-			return persistor.Update(data);
+			return persistor->Update(data);
 		}
 		catch (exception e)
 		{

@@ -55,8 +55,8 @@ namespace YBPersistence
 
 
 	private:
-		const char							lineBreakConnector = '&'; //if a line in the repo file is ended with '&', then the next line will be concatenated.
-
+		const char							lineBreakConnector = '&';	//if a line in the repo file is ended with '&', then the next line will be concatenated.
+		const char							commentsSeparator = '#';	//for any line end with a '#' will be treated as comments, and won't be processed.
 		int									extractIndex(string line);
 		void								SaveAll();
 	};

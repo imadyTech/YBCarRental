@@ -1,4 +1,17 @@
-Id:100;Title:Hello Car Rental;ViewType:WelcomeView;w:120;h:29;DataSourceName:a;&
+##########################################################################################
+##                   This application builds views with YBML format                     ##
+##                     Copyright Zhenqun Shen 2023, Yoobee College                      ##
+##--------------------------------------------------------------------------------------##
+##  A comment line ends with a '#' but it's ok to have # at begin or middle of the line.##
+##  Empty line are not processed.                                                       ##
+##  For a long, long line, use '&' at end of a line to concat with next line.           ##
+##  !!! Avoid using ':' or ';' as they are special separators; Otherwise I don't know   ##
+##      what happens!                                                                   ##
+##  !!! Use identical integer Id for views and viewItems.                               ##
+##########################################################################################
+
+##The first view with greeting only.##
+Id:100;Title:Hello Car Rental;ViewType:WelcomeView;w:120;h:29;DataSource:a;&
 item1:Id:1!x:40!y:11!isCentral:0!w:40!h:1!ItemType:TextItem!Content:   #####       ###      #######!;&
 item2:Id:2!x:40!y:12!isCentral:0!w:40!h:1!ItemType:TextItem!Content: ##          ##   ##    ##     ##!;&
 item3:Id:3!x:40!y:13!isCentral:0!w:40!h:1!ItemType:TextItem!Content:##         ##       ##  ##      ##!;&
@@ -9,35 +22,67 @@ item7:Id:7!x:40!y:17!isCentral:0!w:40!h:1!ItemType:TextItem!Content:   #####   #
 item8:Id:8!x:0!y:22!w:120!h:1!ItemType:TextItem!Content:Copyright @Zhenqun Shen!Background: !isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
 item9:Id:9!x:0!y:24!w:120!h:1!ItemType:TextItem!Content:Yoobee College of Creative Innovation!Background:.!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
 
-Id:101;Title:Main Menu;ViewType:MenuView;w:120;h:29;DataSourceName:a;&
+Id:101;Title:MainMenuView;ViewType:MenuView;w:120;h:29;DataSource:a;&
 item101A:Id:1010!x:20!y:3!w:80!h:1!ItemType:TextItem!Content:Please choose a function!Background:-!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;&
 item101B:Id:1011!x:36!y:10!w:48!h:1!ItemType:ButtonItem!Content:Login!Background: !isCentral:0!isFocused:1!isSelected:0!isHidden:0!;&
 item101C:Id:1012!x:36!y:12!w:48!h:1!ItemType:ButtonItem!Content:Register User!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 item101D:Id:1013!x:36!y:14!w:48!h:1!ItemType:ButtonItem!Content:Copyright!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 item101E:Id:1014!x:0!y:20!w:120!h:1!ItemType:TextItem!Content:<Please toggle with TAB and select with Return key>!Background: !isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
 
-Id:102;Title:Welcome friend;ViewType:DetailsView;w:120;h:29;DataSourceName:a;
+Id:102;Title:LoginView;ViewType:InputView;w:120;h:29;DataSource:a;&
+item102A:Id:1020!x:40!y:12!w:20!h:1!ItemType:TextItem!Content:username!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+item102B:Id:1021!x:40!y:14!w:20!h:1!ItemType:TextItem!Content:password!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+item102C:Id:1022!x:65!y:12!w:24!h:1!ItemType:TextItem!Content:!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+item102D:Id:1023!x:65!y:14!w:24!h:1!ItemType:TextItem!Content:!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+item102E:Id:1024!x:20!y:3!w:80!h:1!ItemType:TextItem!Content:Please input login info!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
 
-Id:103;Title:Welcome friend;ViewType:DialogView;w:120;h:29;DataSourceName:a;
 
-Id:104;Title:Welcome friend;ViewType:ListView;w:120;h:29;DataSourceName:a;
+Id:103;Title:RegisterView;ViewType:InputView;w:120;h:29;DataSource:a;&
+item103A:Id:1030!x:40!y:12!w:20!h:1!ItemType:TextItem!Content:username!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+item103B:Id:1031!x:40!y:14!w:20!h:1!ItemType:TextItem!Content:password!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+item103C:Id:1032!x:65!y:12!w:24!h:1!ItemType:TextItem!Content:!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+item103D:Id:1033!x:65!y:14!w:24!h:1!ItemType:TextItem!Content:!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+item103E:Id:1034!x:20!y:3!w:80!h:1!ItemType:TextItem!Content:Create a user accout!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
 
-Id:105;Title:Welcome friend;ViewType:ListView;w:120;h:29;DataSourceName:a;
+Id:104;Title:HelpView;ViewType:WelcomeView;w:120;h:29;DataSource:a;&
+item104A:Id:1040!x:10!y:6!w:100!h:1!ItemType:TextItem!Content:Yoobee Car Rental system introduction!Background: !isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+item104B:Id:1041!x:10!y:10!w:100!h:1!ItemType:TextItem!Content:## Use Tab key to toggle inputs and buttons!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+item104C:Id:1042!x:10!y:11!w:100!h:1!ItemType:TextItem!Content:## Use Return to confirm or submit!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+item104D:Id:1043!x:10!y:12!w:100!h:1!ItemType:TextItem!Content:## Use Esc to back to previous view!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+item104E:Id:1044!x:10!y:13!w:100!h:1!ItemType:TextItem!Content:## alphabets and number to input info!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+item104F:Id:1045!x:10!y:14!w:100!h:1!ItemType:TextItem!Content:## Back arrow to modify some input!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;
 
-Id:106;Title:Welcome friend;ViewType:ListView;w:120;h:29;DataSourceName:a;
+Id:105;Title:UserMenu;ViewType:MenuView;w:120;h:29;DataSource:a;&
+item105A:Id:1050!x:25!y:5!w:70!h:1!ItemType:TextItem!Content:Please choose a function for user!Background:-!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;&
+item105B:Id:1051!x:36!y:10!w:48!h:1!ItemType:ButtonItem!Content:My Profile!Background: !isCentral:0!isFocused:1!isSelected:1!isHidden:0!;&
+item105C:Id:1052!x:36!y:12!w:48!h:1!ItemType:ButtonItem!Content:My Orders!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+item105D:Id:1053!x:36!y:14!w:48!h:1!ItemType:ButtonItem!Content:Rent a car!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+item105E:Id:1054!x:0!y:20!w:120!h:1!ItemType:TextItem!Content:<Please toggle with TAB and select with Return key>!Background: !isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+item105F:Id:1055!x:100!y:2!w:16!h:1!ItemType:TextItem!Content:??????????!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+item105G:Id:1056!x:100!y:4!w:16!h:1!ItemType:TextItem!Content:??????????!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;
 
-Id:107;Title:Welcome friend;ViewType:ListView;w:120;h:29;DataSourceName:a;
+Id:106;Title:AdminMenu;ViewType:MenuView;w:120;h:29;DataSource:a;&
+item106A:Id:1060!x:25!y:5!w:70!h:1!ItemType:TextItem!Content:Please choose a function for administrator!Background:-!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;&
+item106B:Id:1061!x:36!y:10!w:48!h:1!ItemType:ButtonItem!Content:List Cars!Background: !isCentral:0!isFocused:1!isSelected:1!isHidden:0!;&
+item106C:Id:1062!x:36!y:12!w:48!h:1!ItemType:ButtonItem!Content:Add a car!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+item106D:Id:1063!x:36!y:14!w:48!h:1!ItemType:ButtonItem!Content:Order Management!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+item106E:Id:1063!x:36!y:14!w:48!h:1!ItemType:ButtonItem!Content:User Management!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+item106F:Id:1064!x:0!y:20!w:120!h:1!ItemType:TextItem!Content:<Please toggle with TAB and select with Return key>!Background: !isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+item106G:Id:1065!x:100!y:2!w:16!h:1!ItemType:TextItem!Content:admin!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+item106H:Id:1066!x:100!y:4!w:16!h:1!ItemType:TextItem!Content:admin!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;
 
-Id:108;Title:Welcome friend;ViewType:ListView;w:120;h:29;DataSourceName:a;
+Id:107;Title:Welcome friend;ViewType:ListView;w:120;h:29;DataSource:a;
 
-Id:109;Title:Welcome friend;ViewType:ListView;w:120;h:29;DataSourceName:a;
+Id:108;Title:Welcome friend;ViewType:ListView;w:120;h:29;DataSource:a;
 
-Id:110;Title:Welcome friend;ViewType:ListView;w:120;h:29;DataSourceName:a;
+Id:109;Title:Welcome friend;ViewType:ListView;w:120;h:29;DataSource:a;
 
-Id:111;Title:Welcome friend;ViewType:MenuView;w:120;h:29;DataSourceName:a;&
+Id:110;Title:Welcome friend;ViewType:ListView;w:120;h:29;DataSource:a;
+
+Id:111;Title:Welcome friend;ViewType:MenuView;w:120;h:29;DataSource:a;&
 item61:Id:601!x:10!y:2!w:30!h:1!ItemType:ButtonItem!Content:Yes or No!Background:/!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
 item62:Id:602!x:10!y:10!w:40!h:1!ItemType:TextItem!Content:The Car!Background:*!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 item63:Id:603!x:30!y:20!w:50!h:1!ItemType:InputItem!Content:You and me!Background:$!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;
 
-Id:999;Title:End of definition;ViewType:WelcomeView;w:64;h:24;DataSourceName:a;
+Id:999;Title:End of definition;ViewType:WelcomeView;w:64;h:24;DataSource:a;
 

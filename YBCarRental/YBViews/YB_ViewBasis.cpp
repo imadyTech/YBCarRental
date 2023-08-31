@@ -50,11 +50,12 @@ namespace YBConsoleViews {
 	{
 		YB_DataBasis::Serialize(strStream);
 		strStream
-			<< "Title:"				<< Title			<< YB_DataBasis::persistentSeparator
-			<< "ViewType:"			<< ViewType			<< YB_DataBasis::persistentSeparator
-			<< "w:"					<< w				<< YB_DataBasis::persistentSeparator
-			<< "h:"					<< h				<< YB_DataBasis::persistentSeparator
-			<< "DataSourceName:"	<< DataSourceName	<< YB_DataBasis::persistentSeparator;
+			<< "Title:"								<< Title			<< YB_DataBasis::persistentSeparator
+			<< "ViewType:"							<< ViewType			<< YB_DataBasis::persistentSeparator
+			<< "w:"									<< w				<< YB_DataBasis::persistentSeparator
+			<< "h:"									<< h				<< YB_DataBasis::persistentSeparator
+			<< "Source:"							<< Source			<< YB_DataBasis::persistentSeparator
+			<< "GotoView:"							<< GotoView			<< YB_DataBasis::persistentSeparator;
 	}
 	void				YB_ViewBasis::Deserialize(string line)
 	{
@@ -64,11 +65,12 @@ namespace YBConsoleViews {
 	{
 		YB_DataBasis::Deserialize(line, separator);
 
-		Title =			*YB_DataBasis::FindValue("Title");
-		ViewType =		*YB_DataBasis::FindValue("ViewType");
-		w =				std::stoi(*YB_DataBasis::FindValue("w"));
-		h =				std::stoi(*YB_DataBasis::FindValue("h"));
-		DataSourceName = *YB_DataBasis::FindValue("DataSourceName");
+		if (YB_DataBasis::FindValue("Title"))		Title =				*YB_DataBasis::FindValue("Title");
+		if (YB_DataBasis::FindValue("ViewType"))	ViewType =			*YB_DataBasis::FindValue("ViewType");
+		if (YB_DataBasis::FindValue("w"))			w =					std::stoi(*YB_DataBasis::FindValue("w"));
+		if (YB_DataBasis::FindValue("h"))			h =					std::stoi(*YB_DataBasis::FindValue("h"));
+		if (YB_DataBasis::FindValue("Source"))		Source =			*YB_DataBasis::FindValue("Source");
+		if (YB_DataBasis::FindValue("GotoView"))	GotoView =			*YB_DataBasis::FindValue("GotoView");
 	}
 
 	/// <summary>

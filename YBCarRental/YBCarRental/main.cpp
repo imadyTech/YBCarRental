@@ -1,5 +1,11 @@
 // YBCarRent.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+
+
+// This pre-compilation code is to solve the error issue of C2872
+// See to https://developercommunity.visualstudio.com/t/error-c2872-byte-ambiguous-symbol/93889
+#define _HAS_STD_BYTE 0
+// --------------------------------------------------------------
+
 #include <iostream>
 #include "YB_User.h"
 #include "YB_UserPersistor.h"
@@ -25,7 +31,7 @@ int main()
 
 	YB_Window window = YB_Window();
 	//Activate 1st view: welcome screen
-	window.Goto(0);	//0 indicate the entry view (WelcomeView)
+	window.Goto(100);	//0 indicate the entry view (WelcomeView)
 
 	//try/catch wrapping
 		//get key inputs

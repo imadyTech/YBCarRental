@@ -17,35 +17,66 @@ namespace YBPersistence
 		}
 		//clear the cache
 		if (!allRecordLines.empty()) allRecordLines.clear();
-		string line, cachedline;								//temp variables.
+
+
+		string line, cachedline;												//temp variables.
 		while (std::getline(input, line)) {
-			if (line.empty() && !cachedline.empty())			//ended with empty line
+			if (line.empty() || line.back() == this->commentsSeparator)			//check if ended with a '#' or empty line
+				continue;
+			if (line.back() == this->lineBreakConnector)						//check if ended with a '&'
 			{
-				int index = extractIndex(cachedline);
-				if (index > 0) {
-					// Add the line to the map using the index as the key
-					allRecordLines[index] = cachedline;
-				}
-				cachedline = "";
+				line.erase(line.length() - 1);
+				cachedline = cachedline.append(line);
 				continue;
 			}
-			else if (line.empty() && cachedline.empty())
+			else
 			{
-				break;
-			}
-			else {
-				if (line.back() == this->lineBreakConnector)		//check if ended with a '&'
+				cachedline = cachedline.append(line);
+				//Last
+				try											//99.99% certainty will be the end of a def
 				{
-					line.erase(line.length() - 1);
-					cachedline = cachedline.append(line);
+					int index = extractIndex(cachedline);
+					if (index > 0) {
+						// Add the line to the map using the index as the key
+						allRecordLines[index] = cachedline;
+					}
+					cachedline = "";												//clear cache for next def
 					continue;
 				}
-				else
-				{
-					cachedline = cachedline.append(line);
-					continue;
+				catch (exception e) {
+					throw YB_DeSerializeError();
 				}
+
 			}
+			//if (line.empty() && !cachedline.empty())			//view definition ended with empty line
+			//{
+			//	int index = extractIndex(cachedline);
+			//	if (index > 0) {
+			//		// Add the line to the map using the index as the key
+			//		allRecordLines[index] = cachedline;
+			//	}
+			//	cachedline = "";
+			//	continue;
+			//}
+			//else if (line.empty() && cachedline.empty())
+			//{
+			//	break;
+			//}
+			//else {
+			//	if (line.back() == this->commentsSeparator)			//check if ended with a '#'
+			//		continue;
+			//	if (line.back() == this->lineBreakConnector)		//check if ended with a '&'
+			//	{
+			//		line.erase(line.length() - 1);
+			//		cachedline = cachedline.append(line);
+			//		continue;
+			//	}
+			//	else
+			//	{
+			//		cachedline = cachedline.append(line);
+			//		continue;
+			//	}
+			//}
 		}
 		isReady = true;
 		input.close();

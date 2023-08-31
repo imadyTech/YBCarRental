@@ -37,9 +37,13 @@ namespace YBConsoleViews
 				ViewType = other.ViewType;
 				w = other.w;
 				h = other.h;
-				DataSourceName = other.DataSourceName;
+				Source = other.Source;
+				GotoView = other.GotoView;
 				subItemsList = other.subItemsList;
 				viewArray = other.viewArray;
+				DataSource = other.DataSource;
+
+
 				// Deep copy of other resources, if any
 				// For example, if 'myfile' is a pointer, you might need to handle it here
 
@@ -62,7 +66,8 @@ namespace YBConsoleViews
 		string							Title = "";
 		int								w = 200, h = 32;				//view size
 		char							Background = '.';
-		string							DataSourceName="";
+		string							Source="";
+		string							GotoView="";
 		vector<YB_ViewItemBasis*>		subItemsList;
 
 		//void AddViewItem(YB_ViewItemBasis item);

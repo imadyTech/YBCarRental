@@ -54,12 +54,13 @@ namespace YBCarTesting
 			Assert::AreEqual(string("TextItem"),				(*item2).ItemType);
 			Assert::AreEqual(string("InputItem"),				(*item3).ItemType);
 		}
-		TEST_METHOD(GetView_byType_Test)
+		
+		TEST_METHOD(GetSingleView_Test)
 		{
-			YB_ViewFactory factory = YB_ViewFactory("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/ViewRepo.txt");
-			YB_ViewBasis view = *(factory.GetView("WelcomeView"));
-			Assert::AreEqual(string("Hello Car Rental"), view.Title);
-			Assert::AreEqual(string("WelcomeView"), view.ViewType);
+			YB_ViewFactory factory = YB_ViewFactory("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/ViewItemRepo.txt");
+			YB_ViewBasis view = *(factory.GetView("LoginView"));
+			Assert::AreEqual(string("LoginView"), view.Title);
+			Assert::AreEqual(string("InputView"), view.ViewType);
 		}
 
 		TEST_METHOD(GetView_withChildren_Test)

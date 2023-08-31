@@ -23,8 +23,17 @@ namespace YBPersistence
 	class YB_PersistorBasis
 	{
 	public:
-		YB_PersistorBasis(void);
-		YB_PersistorBasis(string url);
+		YB_PersistorBasis(void) {
+			repository = new YB_Repository();
+		};
+		YB_PersistorBasis(string url) : YB_PersistorBasis() {
+			repositoryURL = url;
+			repository = new YB_Repository(repositoryURL);
+			GetAll();
+		};
+		~YB_PersistorBasis() {
+			delete repository;
+		};
 
 		string repositoryURL = "";
 
@@ -73,7 +82,7 @@ namespace YBPersistence
 		/// <summary>
 		/// The file repository to store data records.
 		/// </summary>
-		YB_Repository repository;
+		YB_Repository* repository;
 
 
 
@@ -86,21 +95,6 @@ namespace YBPersistence
 		//void Save();
 	};
 
-	template<class TData> // TData = YBDataBasis
-	YB_PersistorBasis<TData>::YB_PersistorBasis<TData>()
-	{
-		repository = YB_Repository();
-	};
-
-	template<class TData> // TData = YBDataBasis
-	YB_PersistorBasis<TData>::YB_PersistorBasis<TData>(string url)
-	{
-		repositoryURL = url;
-		repository = YB_Repository(repositoryURL);
-		GetAll();
-	};
-
-
 
 	template<class TData>
 	void YB_PersistorBasis<TData>::GetAll() //cache to dataSet
@@ -110,7 +104,7 @@ namespace YBPersistence
 			dataSet.clear();
 
 		//repository.ReadAllLines();
-		for (const auto& iter : repository.allRecordLines)
+		for (const auto& iter : repository->allRecordLines)
 		{
 			TData data;
 			data.Deserialize(iter.second);
@@ -176,7 +170,7 @@ namespace YBPersistence
 	{
 		string* line = data.Serialize();
 		try {
-			repository.AddLine(*line);
+			repository->AddLine(*line);
 		}
 		catch (exception e)
 		{
@@ -191,7 +185,7 @@ namespace YBPersistence
 		auto item = dataSet.find(id);
 		if (item != dataSet.end()) {
 			try {
-				repository.DeleteLine(id);
+				repository->DeleteLine(id);
 			}
 			catch (exception e) {
 				return false;
@@ -211,7 +205,7 @@ namespace YBPersistence
 			return false;
 
 		try {
-			repository.UpdateLine(*line);
+			repository->UpdateLine(*line);
 		}
 		catch (exception e) {
 			return false;							//Persisting failed.

@@ -13,10 +13,12 @@ namespace YBConsoleViews
 	class YB_DataSource_Interface
 	{
 	public:
-		virtual string*								Get_PropertyValue(int id) = 0;						
-		virtual string*								Get_PropertyValue(string* bindName) = 0;
+		YB_DataSource_Interface() {};
+
+		virtual string*								Get_PropertyValue(string* bindNamePtr) = 0;
 		virtual map<string, string>*				Get_PropertyValues() = 0;										
-		virtual void								Set_PropertyValues(string* bindName, string* value) = 0;
+		virtual void								Set_PropertyValue(string* bindNamePtr, string* valuePtr) = 0;
+		virtual void								Set_PropertyValues(map<string, string>* valuesPtr) = 0;
 	};
 
 }

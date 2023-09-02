@@ -9,7 +9,7 @@ using namespace std;
 
 namespace YBCarRental 
 {
-	class YB_UserManager: YB_ManagerBasis<YB_User>
+	class YB_UserManager: public YB_ManagerBasis<YB_User>
 	{
 	public:
 		YB_UserManager() : YB_ManagerBasis<YB_User>() {};

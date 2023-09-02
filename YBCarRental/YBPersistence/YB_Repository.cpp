@@ -6,7 +6,7 @@ namespace YBPersistence
 	/// <summary>
 	/// Cache all lines in the text file to a map<int, string> (allRecordLines)
 	/// </summary>
-	void YB_Repository::ReadAllLines()
+	void		YB_Repository::ReadAllLines()
 	{
 		ifstream input(repositoryURL);
 		if (!input.is_open())
@@ -87,7 +87,7 @@ namespace YBPersistence
 	/// </summary>
 	/// <param name="index"></param>
 	/// <returns></returns>
-	string* YB_Repository::GetLine(int index)
+	string*		YB_Repository::GetLine(int index)
 	{
 		if (!isReady)
 			throw YB_RepositoryError();			//It is not allowed if never ReadAllLines().
@@ -109,7 +109,7 @@ namespace YBPersistence
 	/// </summary>
 	/// <param name="target"></param>
 	/// <returns></returns>
-	int YB_Repository::FindLine(string target)
+	int			YB_Repository::FindLine(string target)
 	{
 		if (!isReady)
 			throw YB_RepositoryError();			//It is not allowed if never ReadAllLines().
@@ -126,7 +126,7 @@ namespace YBPersistence
 		return -1;
 	}
 
-	void YB_Repository::AddLine(string line)
+	void		YB_Repository::AddLine(string line)
 	{
 		int index = extractIndex(line);
 		string* ptr = this->GetLine(index);
@@ -137,7 +137,7 @@ namespace YBPersistence
 		this->SaveAll();									//persist to file
 	}
 
-	void YB_Repository::DeleteLine(int index)
+	void		YB_Repository::DeleteLine(int index)
 	{
 		string* ptr = this->GetLine(index);
 		if (ptr == nullptr)
@@ -150,9 +150,9 @@ namespace YBPersistence
 		}
 	}
 
-	void YB_Repository::UpdateLine(string line)
+	void		YB_Repository::UpdateLine(string line)
 	{
-		int index = extractIndex(line);
+		int index	= extractIndex(line);
 		string* ptr = this->GetLine(index);
 		if (ptr == nullptr)
 			throw YB_RepoRecordNotExistedError();			//no such record to update
@@ -164,7 +164,7 @@ namespace YBPersistence
 		}
 	}
 
-	void YB_Repository::ClearAll()
+	void		YB_Repository::ClearAll()
 	{
 		if (!isReady)
 			throw YB_RepositoryError();
@@ -173,14 +173,14 @@ namespace YBPersistence
 		this->SaveAll();
 	}
 
-	//----------utility code//----------
 
+	//----------utility functions//----------
 	/// <summary>
 	/// Extract the index from the line (1st word)
 	/// </summary>
 	/// <param name="line"></param>
 	/// <returns></returns>
-	int YB_Repository::extractIndex(string line)
+	int			YB_Repository::extractIndex(string line)
 	{
 		int index = -1;
 		size_t colonPos = line.find(":");
@@ -196,7 +196,7 @@ namespace YBPersistence
 		return -1;
 	}
 
-	void YB_Repository::SaveAll()
+	void		YB_Repository::SaveAll()
 	{
 		ofstream output(repositoryURL);
 		if (!output.is_open()) {
@@ -210,4 +210,5 @@ namespace YBPersistence
 			output.close();
 		}
 	}
+	//----------utility functions//----------
 }

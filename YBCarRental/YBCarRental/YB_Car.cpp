@@ -14,17 +14,17 @@ namespace YBCarRental
 	{
 	}
 
-	string* YB_Car::Serialize()
+	string*		YB_Car::Serialize()
 	{
 		std::stringstream ss;
 		//Redirect to new function (instead of previous version overrided function)
 		YB_Car::Serialize(ss);
 
-		std::string* serializedString = new std::string(ss.str());
+		serializedString = new std::string(ss.str());
 		return serializedString;
 	}
 
-	void YB_Car::Serialize(std::stringstream& strStream)
+	void		YB_Car::Serialize(std::stringstream& strStream)
 	{
 		strStream
 			<< "Make:" << Make << ";"
@@ -50,12 +50,12 @@ namespace YBCarRental
 	//		<< DayRentPrice << ";";
 	//}
 
-	void YB_Car::Deserialize(string line)
+	void		YB_Car::Deserialize(string line)
 	{
 		this->Deserialize(line, &persistentSeparator);
 	}
 
-	void YB_Car::Deserialize(string line, const char* separator)
+	void		YB_Car::Deserialize(string line, const char* separator)
 	{
 		//std::vector<std::string>* words = YB_DataBasis::SplitLine(&line);	//Obsoleted
 

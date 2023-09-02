@@ -37,13 +37,13 @@ namespace YBConsoleViews {
 	//{
 	//}
 
-	string* YB_ViewBasis::Serialize()
+	string*				YB_ViewBasis::Serialize()
 	{
 		std::stringstream ss;
 		//Redirect to new function (instead of previous version overrided function)
 		this->Serialize(ss);
 
-		std::string* serializedString = new std::string(ss.str());
+		serializedString = new std::string(ss.str());
 		return serializedString;
 	}
 	void				YB_ViewBasis::Serialize(std::stringstream& strStream)
@@ -105,6 +105,18 @@ namespace YBConsoleViews {
 	}
 
 	void				YB_ViewBasis::ReverseBind() {
+		//scan children viewItems and update the 'Content' variable
+		for (auto& item : this->subItemsList)
+		{
+			try {
+				this->dataSource->Set_PropertyValue(&item->Bind, &item->Content);
+			}
+			catch (exception e) {
+				YB_ReverseBindingError error;
+				error(const_cast<char*>(("error in reverse binding values to item:"+ item->Bind).c_str()));
+				throw error;
+			}
+		}
 
 	}
 

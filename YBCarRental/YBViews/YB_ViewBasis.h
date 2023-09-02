@@ -96,7 +96,7 @@ namespace YBConsoleViews
 
 	private:
 		bool							isUpdated = true;
-		YB_DataSource_Interface*					dataSource;
+		YB_DataSource_Interface*		dataSource;
 		vector<char*>					viewArray;
 		int								currentItemIndex = -1;
 	};

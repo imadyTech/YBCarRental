@@ -1,13 +1,13 @@
 #pragma once
 #include "YB_LogicFactory.h"
-#include <YB_DataSource_Interface.h>
-
+#include "YB_DataSource_Interface.h"
+#include "YB_CarRentViewModels.h"
 using namespace std;
 using namespace YBConsoleViews;
 
 namespace YBCarRental {
 
-	class YB_CarRental_LogicFactory : protected YBConsoleViews::YB_LogicFactory
+	class YB_CarRental_LogicFactory : public YBConsoleViews::YB_LogicFactory
 	{
 	public:
 		YB_CarRental_LogicFactory() : YB_LogicFactory::YB_LogicFactory()
@@ -19,7 +19,7 @@ namespace YBCarRental {
 		/// </summary>
 		/// <param name="sourceName"></param>
 		/// <param name="service"></param>
-		bool RegisterDataSource(string* sourceName, YB_DataSource_Interface* service) override;
+		bool RegisterDataSource(const string* sourceName, YB_DataSource_Interface* service) override;
 
 		/// <summary>
 		/// return the service instance found in the service pool

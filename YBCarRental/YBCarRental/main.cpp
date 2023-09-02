@@ -7,31 +7,38 @@
 // --------------------------------------------------------------
 
 #include <iostream>
-#include "YB_User.h"
-#include "YB_UserPersistor.h"
+#include <filesystem>
+#include "YB_UserManager.h"
+#include "YB_CarManager.h"
+#include "YB_RentManager.h"
 #include "YB_Errors.h"
 #include "YB_Window.h"
-#include "YB_ViewFactory.h"
+#include "YB_CarRental_LogicFactory.h"
 
 using namespace YBCarRental;
 using namespace YBConsoleViews;
 
 int main()
 {
-	//If you see this message then congratulation! Likely the build is passed.
-	std::cout << "Hello Yoobee-Car-Rental!\n";
+	std::filesystem::path currentDir = std::filesystem::current_path();
 
-	//initialization
-	//managers
-	YB_ViewFactory factory = YB_ViewFactory("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/ViewRepo.txt");
-	//persistors loading
-		//load viewitems info
-		//view/viewitem instantiation, load all view definition from persistence
+	YB_UserManager* userMgr		= new YB_UserManager(currentDir.string() + "\\UserRepo.txt");
+	YB_CarManager*	carMgr		= new YB_CarManager	(currentDir.string() + "\\CarRepo.txt");
+	YB_RentManager* rentMgr		= new YB_RentManager(currentDir.string() + "\\RentRepo.txt");
 
+	YB_CarRental_LogicFactory* logicFactory = new YB_CarRental_LogicFactory();
+	YB_UserVM* userVM = new YB_UserVM(userMgr);
+	const string userVMMark = "userVM";
+	logicFactory->RegisterDataSource(&userVMMark, userVM);
+	
 
 	YB_Window window = YB_Window();
-	//Activate 1st view: welcome screen
-	window.Goto(100);	//0 indicate the entry view (WelcomeView)
+	window.ConfigLogicFactory(logicFactory);
+
+	window.InitViewFactory(currentDir.string() + "\\ViewRepo.txt");
+	window.Init();
+	window.Run();
+
 
 	//try/catch wrapping
 		//get key inputs

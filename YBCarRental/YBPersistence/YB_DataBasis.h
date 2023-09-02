@@ -36,7 +36,7 @@ namespace YBPersistence
 		/// </summary>
 		/// <returns></returns>
 		[[deprecated("Deprecated, use Serialize(std::stringstream& strStream) instead.")]]
-		virtual string* Serialize();
+		virtual string*						Serialize();
 		/// <summary>
 		/// Serielize the object to a stream so derived classed will be able to add up more properties
 		/// </summary>
@@ -77,6 +77,10 @@ namespace YBPersistence
 			return results;
 		}
 
+		std::map<string, string>*			GetAllValues() {
+			return &this->stringPairsMap;
+		}
+
 		map<std::string, std::string>*		SplitLine(std::string* line, const char* separator)
 		{
 			if (!stringPairsMap.empty())	//if the map is not empty, then very likely it was resued so you need clean.
@@ -113,8 +117,7 @@ namespace YBPersistence
 		/// </summary>
 		char								persistentSeparator = ';';
 	protected:
-
-
+		std::string*						serializedString;
 	private:
 		/// <summary>
 		/// cached key/value map, pls be cautious when resusing

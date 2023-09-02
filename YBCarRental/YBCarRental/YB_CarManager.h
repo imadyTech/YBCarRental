@@ -10,8 +10,9 @@ using namespace YBPersistence;
 
 namespace YBCarRental
 {
-	class YB_CarManager: YB_ManagerBasis<YB_Car>
+	class YB_CarManager: public YB_ManagerBasis<YB_Car>
 	{
+	public:
 		YB_CarManager() : YB_ManagerBasis<YB_Car>() {};
 		YB_CarManager(string url): YB_ManagerBasis<YB_Car>(url) {};
 

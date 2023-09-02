@@ -26,22 +26,21 @@ namespace YBCarRental
 	YB_Rent::YB_Rent(int userId, int carId, tm start, int days):YB_Rent()
 	{
 	}
-
 	YB_Rent::~YB_Rent()
 	{
 	}
 
-	string* YB_Rent::Serialize()
+	string*			YB_Rent::Serialize()
 	{
 		std::stringstream ss;
 		//Redirect to new function (instead of previous version overrided function)
 		YB_Rent::Serialize(ss);
 
-		std::string* serializedString = new std::string(ss.str());
+		serializedString = new std::string(ss.str());
 		return serializedString;
 	}
 
-	void YB_Rent::Serialize(std::stringstream& strStream)
+	void			YB_Rent::Serialize(std::stringstream& strStream)
 	{
 		char buffer[32];
 		strStream
@@ -65,12 +64,12 @@ namespace YBCarRental
 	//}
 
 
-	void YB_Rent::Deserialize(string line)
+	void			YB_Rent::Deserialize(string line)
 	{
 		this->Deserialize(line, &persistentSeparator);
 	}
 
-	void YB_Rent::Deserialize(string line, const char* separator)
+	void			YB_Rent::Deserialize(string line, const char* separator)
 	{
 		//std::vector<std::string>* words = YB_DataBasis::SplitLine(&line);	//Obsoleted
 		YB_DataBasis::Deserialize(line, separator);

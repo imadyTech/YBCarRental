@@ -11,8 +11,9 @@ using namespace std;
 
 namespace YBCarRental
 {
-	class YB_RentManager : YB_ManagerBasis<YB_Rent>
+	class YB_RentManager : public YB_ManagerBasis<YB_Rent>
 	{
+	public:
 		YB_RentManager() : YB_ManagerBasis<YB_Rent>() {};
 		YB_RentManager(string url) : YB_ManagerBasis<YB_Rent>(url) {};
 

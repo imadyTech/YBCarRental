@@ -26,22 +26,21 @@ namespace YBCarRental
 		UserName = username;
 		Password = password;
 	}
-
 	YB_User::~YB_User()
 	{
 	}
 
-	string* YB_User::Serialize()
+	string*		YB_User::Serialize()
 	{
 		std::stringstream ss;
 		//Redirect to new function (instead of previous version overrided function)
 		YB_User::Serialize(ss);
 
-		std::string* serializedString = new std::string(ss.str());
+		serializedString = new std::string(ss.str());
 		return serializedString;
 	}
 
-	void YB_User::Serialize(std::stringstream& strStream)
+	void		YB_User::Serialize(std::stringstream& strStream)
 	{
 		//invoke the base function first to get the serialization of properties in the parent class(es).
 		YB_DataBasis::Serialize(strStream);
@@ -69,12 +68,12 @@ namespace YBCarRental
 	}*/
 
 
-	void YB_User::Deserialize(string line)
+	void		YB_User::Deserialize(string line)
 	{
 		this->Deserialize(line, &persistentSeparator);
 	}
 
-	void YB_User::Deserialize(string line, const char* separator)
+	void		YB_User::Deserialize(string line, const char* separator)
 	{
 		//std::vector<std::string>* words = YB_DataBasis::SplitLine(&line);	//Obsoleted
 		//YB_DataBasis::SplitLine(&line,  &persistentSeparator				//Obsoleted, line splited in base method

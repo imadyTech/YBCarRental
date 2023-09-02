@@ -41,63 +41,52 @@ namespace YBPersistence
 		/// <summary>
 		/// Read all records (objects) into memory
 		/// </summary>
-		virtual void GetAll();
+		virtual void				GetAll();
 
 		/// <summary>
 		/// Add a data record to the persistent repository
 		/// </summary>
 		/// <param name="data"></param>
-		virtual void Add(TData data);
+		virtual void				Add(TData data);
 
 		/// <summary>
 		/// Return an object from memory
 		/// </summary>
 		/// <param name="id"></param>
 		/// <returns></returns>
-		void Get(int id, TData* objResult);
-		//overloaded forms of Get()
-		TData* Get(int id);
-		TData* Get(string username);
+		void						Get(int id, TData* objResult);
+
+		TData*						Get(int id);
+
+		TData*						Get(string username);
 
 		/// <summary>
 		/// Delete an object from memory (will persisted later by Save() command.
 		/// </summary>
 		/// <param name="id"></param>
 		/// <returns></returns>
-		virtual bool Delete(int id);
+		virtual bool				Delete(int id);
 
 		/// <summary>
 		/// Update an object from memory (will persisted later by Save() command.
 		/// </summary>
 		/// <param name="data"></param>
 		/// <returns></returns>
-		virtual bool Update(TData data);
-
+		virtual bool				Update(TData data);
 
 		//Note: for simplicity reason, this dataSet was designed to be exposed as public.
 		//otherwise it should be hidden from direct external access.
-		map<int, TData> dataSet = {};
+		map<int, TData>				dataSet = {};
 
 	private:
 		/// <summary>
 		/// The file repository to store data records.
 		/// </summary>
-		YB_Repository* repository;
-
-
-
-		//void ReadAllLines();
-		//string ReadLine(int id);
-		//void AddLine(string record);
-		//void UpdatLine(string record);
-		//void Clear();
-		//void Open(string path);
-		//void Save();
+		YB_Repository*				repository;
 	};
 
-
 	template<class TData>
-	void YB_PersistorBasis<TData>::GetAll() //cache to dataSet
+	void							YB_PersistorBasis<TData>::GetAll() //cache to dataSet
 	{
 		if (!dataSet.empty())
 			//GetAll is invoked in the constructor so there's potential of repeated invocation.
@@ -113,7 +102,7 @@ namespace YBPersistence
 	}
 
 	template<class TData>
-	void YB_PersistorBasis<TData>::Get(int id, TData* objResult)
+	void							YB_PersistorBasis<TData>::Get(int id, TData* objResult)
 	{
 		auto iterator = dataSet.find(id);
 
@@ -133,7 +122,7 @@ namespace YBPersistence
 	}
 
 	template<class TData>
-	TData* YB_PersistorBasis<TData>::Get(int id)
+	TData*							YB_PersistorBasis<TData>::Get(int id)
 	{
 		auto iterator = dataSet.find(id);
 		//auto iterator = std::find_if(dataSet.begin(), dataSet.end(),
@@ -149,7 +138,7 @@ namespace YBPersistence
 	}
 
 	template<class TData>
-	TData* YB_PersistorBasis<TData>::Get(string username)
+	TData*							YB_PersistorBasis<TData>::Get(string username)
 	{
 		int id = -1;
 		for (const auto& entry : dataSet) {
@@ -166,7 +155,7 @@ namespace YBPersistence
 
 
 	template<class TData>
-	void YB_PersistorBasis<TData>::Add(TData data)
+	void							YB_PersistorBasis<TData>::Add(TData data)
 	{
 		string* line = data.Serialize();
 		try {
@@ -180,7 +169,7 @@ namespace YBPersistence
 	}
 
 	template<class TData>
-	bool YB_PersistorBasis<TData>::Delete(int id)
+	bool							YB_PersistorBasis<TData>::Delete(int id)
 	{
 		auto item = dataSet.find(id);
 		if (item != dataSet.end()) {
@@ -197,10 +186,10 @@ namespace YBPersistence
 	}
 
 	template<class TData>
-	bool YB_PersistorBasis<TData>::Update(TData data)
+	bool							YB_PersistorBasis<TData>::Update(TData data)
 	{
-		string* line = data.Serialize();
-		auto item = dataSet.find(data.Id);
+		string* line	= data.Serialize();
+		auto item		= dataSet.find(data.Id);
 		if (item == dataSet.end())					//Fail to find the item to update.
 			return false;
 

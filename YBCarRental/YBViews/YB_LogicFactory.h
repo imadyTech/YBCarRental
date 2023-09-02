@@ -18,14 +18,14 @@ namespace YBConsoleViews {
 		/// </summary>
 		/// <param name="sourceName"></param>
 		/// <param name="service"></param>
-		virtual bool RegisterDataSource(string* sourceName, YB_DataSource_Interface* service);
+		virtual bool RegisterDataSource(const string* sourceName, YB_DataSource_Interface* service) = 0;
 
 		/// <summary>
 		/// return the service instance found in the service pool
 		/// </summary>
 		/// <param name="sourceName"></param>
 		/// <returns></returns>
-		virtual YB_DataSource_Interface* FindDataSource(string* sourceName);					
+		virtual YB_DataSource_Interface* FindDataSource(string* sourceName) = 0;					
 
 
 		#pragma region Example code of using service function map instead of service class map

@@ -27,13 +27,13 @@ namespace YBConsoleViews {
 	};
 
 
-	string* YB_ViewItemBasis::Serialize()
+	string*						YB_ViewItemBasis::Serialize()
 	{
 		std::stringstream ss;
 		//Redirect to new function (instead of previous version overrided function)
 		this->Serialize(ss);
 
-		std::string* serializedString = new std::string(ss.str());
+		serializedString = new std::string(ss.str());
 		return serializedString;
 	}
 	void						YB_ViewItemBasis::Serialize(std::stringstream& strStream)

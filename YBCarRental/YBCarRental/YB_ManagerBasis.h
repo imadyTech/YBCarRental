@@ -12,20 +12,27 @@ namespace YBCarRental
 	class YB_ManagerBasis
 	{
 	public:
-		YB_ManagerBasis(void);
-		YB_ManagerBasis(string url);
+		YB_ManagerBasis(void)
+		{
+		}
+		YB_ManagerBasis(string url) :YB_ManagerBasis()
+		{
+
+			//instantiate a persistor based on the url passed in.
+			persistor = new YB_PersistorBasis<TData>(url);
+		}
 
 	protected:
 		/// <summary>
 		/// Load and instantiate all view definitions from persistence.
 		/// </summary>
-		void LoadAll();
+		void									LoadAll();
 
 		/// <summary>
 		/// Add a data record to the persistent repository
 		/// </summary>
 		/// <param name="data"></param>
-		bool Add(TData data);
+		bool									Add(TData data);
 
 		/// <summary>
 		/// Return an object from memory
@@ -41,14 +48,14 @@ namespace YBCarRental
 		/// </summary>
 		/// <param name="id"></param>
 		/// <returns></returns>
-		bool Delete(int id);
+		bool									Delete(int id);
 
 		/// <summary>
 		/// Update an object from memory (will persisted later by Save() command.
 		/// </summary>
 		/// <param name="data"></param>
 		/// <returns></returns>
-		bool Update(TData data);
+		bool									Update(TData data);
 
 		/// <summary>
 		/// The persistor to manage TData objects at lower-layer .
@@ -59,35 +66,20 @@ namespace YBCarRental
 		//map<int, TData> dataSet;
 	};
 
-#pragma region Constructors definition
 	template<class TData>
-	inline YB_ManagerBasis<TData>::YB_ManagerBasis(void)
-	{
-	}
-	template<class TData>
-	inline YB_ManagerBasis<TData>::YB_ManagerBasis(string url)
-	{
-		YB_ManagerBasis<TData>::YB_ManagerBasis();
-
-		//instantiate a persistor based on the url passed in.
-		persistor = new YB_PersistorBasis<TData>(url);
-	}
-
-#pragma endregion
-
-	template<class TData>
-	inline void YB_ManagerBasis<TData>::LoadAll()
+	inline void									YB_ManagerBasis<TData>::LoadAll()
 	{
 		persistor->GetAll();
 	}
 
 	template<class TData>
-	inline TData* YB_ManagerBasis<TData>::Get(int id)
+	inline TData*								YB_ManagerBasis<TData>::Get(int id)
 	{
 		return persistor->Get(id);
 	}
+
 	template<class TData>
-	inline TData* YB_ManagerBasis<TData>::Get(string username)
+	inline TData*								YB_ManagerBasis<TData>::Get(string username)
 	{
 		return persistor->Get(username);
 	}
@@ -95,7 +87,7 @@ namespace YBCarRental
 
 
 	template<class TData>
-	inline bool YB_ManagerBasis<TData>::Add(TData data)
+	inline bool									YB_ManagerBasis<TData>::Add(TData data)
 	{
 		try {
 			persistor->Add(data);
@@ -106,8 +98,9 @@ namespace YBCarRental
 			throw YB_PersistorError();
 		}
 	}
+
 	template<class TData>
-	inline bool YB_ManagerBasis<TData>::Delete(int id)
+	inline bool									YB_ManagerBasis<TData>::Delete(int id)
 	{
 		try {
 			return persistor->Delete(id);
@@ -117,8 +110,9 @@ namespace YBCarRental
 			throw YB_PersistorError();
 		}
 	}
+
 	template<class TData>
-	inline bool YB_ManagerBasis<TData>::Update(TData data)
+	inline bool									YB_ManagerBasis<TData>::Update(TData data)
 	{
 		try {
 			return persistor->Update(data);

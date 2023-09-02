@@ -150,6 +150,7 @@
     <ClCompile Include="YB_CarPersistor.cpp" />
     <ClCompile Include="YB_RentPersistor.cpp" />
     <ClCompile Include="YB_UserPersistor.cpp" />
+    <ClCompile Include="YB_ViewModelBasis.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -165,6 +166,7 @@
     <ClInclude Include="YB_UserManager.h" />
     <ClInclude Include="YB_RentPersistor.h" />
     <ClInclude Include="YB_UserPersistor.h" />
+    <ClInclude Include="YB_ViewModelBasis.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CarRepo.txt" />

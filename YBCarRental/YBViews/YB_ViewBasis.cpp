@@ -3,7 +3,8 @@
 #include "YB_ViewItemBasis.h"  // Include the full definition here
 #include "YB_ViewMessage.h"
 #include "YB_Errors.h"
-
+#include <Windows.h>
+#include <string>
 namespace YBConsoleViews {
 	YB_ViewBasis::YB_ViewBasis()
 	{
@@ -178,13 +179,15 @@ namespace YBConsoleViews {
 
 	void				YB_ViewBasis::OnKey(int* keycode)
 	{
+		string message = std::string( "ViewBasis: ") + std::to_string(*keycode);
+		OutputDebugStringA(message.c_str());
 		if (subItemsList.empty())
 			return;
 		if (focusableItems.empty())									//No item to be operated
 			return;
 		if (currentItemIndex < 0)
 			currentItemIndex = 0;
-		if (*keycode == 9)										//Tab; Toggle items.
+		if (*keycode == 9)											//Tab; Toggle items.
 		{
 			if (focusableItems.size() == 1) {
 				(*focusableItems[currentItemIndex]).isFocused = true;
@@ -196,19 +199,19 @@ namespace YBConsoleViews {
 				currentItemIndex = 0;
 			(*focusableItems[currentItemIndex]).isFocused = true;
 		}
-		if (*keycode == 10)										//Return key;
+		if (*keycode == 13)											//Return key;
 		{
 			(*focusableItems[currentItemIndex]).OnReturn();
 		}
-		if (*keycode == 8)										//Backspace key; Previous view.
+		if (*keycode == 8)											//Backspace key; Previous view.
 		{
 			(*focusableItems[currentItemIndex]).OnBackspace();
 		}
-		if (*keycode >= 37 && *keycode <= 40) {					//Lft/Up/Rht/Dw arrow : Intercpted by derived
+		if (*keycode >= 328 && *keycode <= 336) {					//Lft/Up/Rht/Dw arrow : Intercpted by derived, shall not arrive here
 		}
-		if ((*keycode >= 65 && *keycode <= 90)					//Alphabet(Upper/Lower) and numbers
+		if ((*keycode >= 65 && *keycode <= 90)						//Alphabet(Upper/Lower) and numbers
 			|| (*keycode >= 48 && *keycode <= 57)
-			|| (*keycode >= 96 && *keycode <= 105))
+			|| (*keycode >= 97 && *keycode <= 122))
 		{
 			(*focusableItems[currentItemIndex]).OnKey(keycode);		//Pass to active item
 		}

@@ -24,17 +24,6 @@ namespace YBConsoleViews
 
 		void InitViewFactory(string viewRepo);
 
-		//==========================Key and processor=============================
-		// F9:			Window		Keycode: 120	GetAsyncKeyState(VK_F9) & 0x8000
-		// Esc:			View		Keycode: 27
-		// Tab:			View		Keycode: 9
-		// Backspace:	ViewItem	Keycode: 8
-		// Num:			ViewItem	Keycode: 48-57
-		// Alphabete:	ViewItem	Keycode: 65-90, 97-122
-		// Spacce:		ViewItem	Keycode: 32		GetAsyncKeyState(VK_SPACE) & 0x8000
-		// Delete:		ViewItem	Keycode: 46
-		//========================================================================
-
 		void							ConfigLogicFactory(YB_LogicFactory* logic);
 
 		void							Init();

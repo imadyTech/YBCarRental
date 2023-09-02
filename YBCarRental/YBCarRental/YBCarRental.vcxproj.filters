@@ -81,6 +81,9 @@
     <ClCompile Include="YB_CarRental_LogicFactory.cpp">
       <Filter>Source Files\YB_ViewModels</Filter>
     </ClCompile>
+    <ClCompile Include="YB_ViewModelBasis.cpp">
+      <Filter>Source Files\YB_ViewModels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="YB_UserManager.h">
@@ -120,6 +123,9 @@
       <Filter>Header Files\YB_ViewModels</Filter>
     </ClInclude>
     <ClInclude Include="YB_CarRental_LogicFactory.h">
+      <Filter>Header Files\YB_ViewModels</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_ViewModelBasis.h">
       <Filter>Header Files\YB_ViewModels</Filter>
     </ClInclude>
   </ItemGroup>

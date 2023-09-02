@@ -22,11 +22,11 @@ namespace YBCarRental
 			persistor = new YB_PersistorBasis<TData>(url);
 		}
 
-	protected:
 		/// <summary>
 		/// Load and instantiate all view definitions from persistence.
 		/// </summary>
 		void									LoadAll();
+	protected:
 
 		/// <summary>
 		/// Add a data record to the persistent repository

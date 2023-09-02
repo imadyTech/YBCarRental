@@ -27,9 +27,8 @@ int main()
 	YB_RentManager* rentMgr		= new YB_RentManager(currentDir.string() + "\\RentRepo.txt");
 
 	YB_CarRental_LogicFactory* logicFactory = new YB_CarRental_LogicFactory();
-	YB_UserVM* userVM = new YB_UserVM(userMgr);
-	const string userVMMark = "userVM";
-	logicFactory->RegisterDataSource(&userVMMark, userVM);
+	logicFactory->RegisterDataSource("LoginVM", new YB_UserLoginVM(userMgr));
+	//logicFactory->RegisterDataSource("RegisterVM", new YB_UserRegisterVM(userMgr));
 	
 
 	YB_Window window = YB_Window();
@@ -39,7 +38,7 @@ int main()
 	window.Init();
 	window.Run();
 
-
+	cout << "The application quit." << endl;
 	//try/catch wrapping
 		//get key inputs
 		//YB_Windows update / response to key input

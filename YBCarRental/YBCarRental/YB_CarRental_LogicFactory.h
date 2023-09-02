@@ -19,7 +19,7 @@ namespace YBCarRental {
 		/// </summary>
 		/// <param name="sourceName"></param>
 		/// <param name="service"></param>
-		bool RegisterDataSource(const string* sourceName, YB_DataSource_Interface* service) override;
+		bool RegisterDataSource(const char* sourceName, YB_DataSource_Interface* service) override;
 
 		/// <summary>
 		/// return the service instance found in the service pool

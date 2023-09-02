@@ -12,13 +12,13 @@
 
 ##The first view with greeting only.##
 Id:100;Title:Hello Car Rental;ViewType:WelcomeView;w:120;h:29;DataSource:a;&
-item1:Id:1!x:40!y:11!isCentral:0!w:40!h:1!ItemType:TextItem!Content:   #####       ###      #######!;&
-item2:Id:2!x:40!y:12!isCentral:0!w:40!h:1!ItemType:TextItem!Content: ##          ##   ##    ##     ##!;&
-item3:Id:3!x:40!y:13!isCentral:0!w:40!h:1!ItemType:TextItem!Content:##         ##       ##  ##      ##!;&
-item4:Id:4!x:40!y:14!isCentral:0!w:40!h:1!ItemType:TextItem!Content:##         ##       ##  ########!;&
-item5:Id:5!x:40!y:15!isCentral:0!w:40!h:1!ItemType:TextItem!Content:##         ###########  ##   ##!;&
-item6:Id:6!x:40!y:16!isCentral:0!w:40!h:1!ItemType:TextItem!Content: ##        ##       ##  ##    ##!;&
-item7:Id:7!x:40!y:17!isCentral:0!w:40!h:1!ItemType:TextItem!Content:   #####   ##       ##  ##     ##!;&
+item1:Id:1!x:40!y:11!isCentral:0!w:40!h:1!ItemType:TextItem!Content:   #####      ###      #######!;&
+item2:Id:2!x:40!y:12!isCentral:0!w:40!h:1!ItemType:TextItem!Content: ##         ##   ##    ##     ##!;&
+item3:Id:3!x:40!y:13!isCentral:0!w:40!h:1!ItemType:TextItem!Content:##        ##       ##  ##     ##!;&
+item4:Id:4!x:40!y:14!isCentral:0!w:40!h:1!ItemType:TextItem!Content:##        ##       ##  ########!;&
+item5:Id:5!x:40!y:15!isCentral:0!w:40!h:1!ItemType:TextItem!Content:##        ###########  ##   ##!;&
+item6:Id:6!x:40!y:16!isCentral:0!w:40!h:1!ItemType:TextItem!Content: ##       ##       ##  ##    ##!;&
+item7:Id:7!x:40!y:17!isCentral:0!w:40!h:1!ItemType:TextItem!Content:   #####  ##       ##  ##     ##!;&
 item8:Id:8!x:0!y:22!w:120!h:1!ItemType:TextItem!Content:Copyright @Zhenqun Shen!Background: !isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
 item9:Id:9!x:0!y:24!w:120!h:1!ItemType:TextItem!Content:Yoobee College of Creative Innovation!Background:.!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
 
@@ -31,7 +31,7 @@ item101D:Id:1013!x:36!y:14!w:48!h:1!ItemType:ButtonItem!Content:Copyright!Backgr
 item101E:Id:1014!x:0!y:20!w:120!h:1!ItemType:TextItem!Content:<Please toggle with TAB and select with Return key>!Background: !isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
 
 ## 102 - login ##
-Id:102;Title:LoginView;ViewType:InputView;w:120;h:29;DataSource:userVM;&
+Id:102;Title:LoginView;ViewType:InputView;w:120;h:29;DataSource:LoginVM;&
 item102A:Id:1020!x:40!y:12!w:20!h:1!ItemType:TextItem!Content:username!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 item102B:Id:1021!x:40!y:14!w:20!h:1!ItemType:TextItem!Content:password!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 item102C:Id:1022!x:65!y:12!w:24!h:1!ItemType:InputItem!Content:!Background:.!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;&

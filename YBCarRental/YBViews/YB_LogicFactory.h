@@ -18,7 +18,7 @@ namespace YBConsoleViews {
 		/// </summary>
 		/// <param name="sourceName"></param>
 		/// <param name="service"></param>
-		virtual bool RegisterDataSource(const string* sourceName, YB_DataSource_Interface* service) = 0;
+		virtual bool RegisterDataSource(const char* sourceName, YB_DataSource_Interface* service) = 0;
 
 		/// <summary>
 		/// return the service instance found in the service pool

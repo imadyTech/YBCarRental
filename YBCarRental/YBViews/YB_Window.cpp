@@ -23,22 +23,47 @@ namespace YBConsoleViews
 		//currentView = (*viewFactory).GetView(???);						//Byebye view
 		//currentView->ViewReturnCallback = [this]() { Todo _someCode_exit; };	//quit
 
-		currentView->Init();											
+		currentView->Init();
 	}
 
 	void YB_Window::Run()
 	{
-		int keycode;
+		//==========================Key and processor=============================
+		// Ctrl+Q:		Window		Keycode: 17					Quit
+		// Esc:			Window		Keycode: 27					View rewind
+		// Tab:			View		Keycode: 9					Toggle items
+		// Enter:		View		Keycode: 13					Focused item click (select)
+		// Backspace:	ViewItem	Keycode: 8					Modify input
+		// Num:			ViewItem	Keycode: 48-57				input
+		// Alphabete:	ViewItem	Keycode: 65-90, 97-122		input
+		// Spacce:		ViewItem	Keycode: 32					input
+		// F9:			Window		Keycode: 0+67				NA
+		// Delete:		ViewItem	Keycode: 224+83				NA
+		// LeftArrow				Keycode: 224+75				NA
+		// UpArrow					Keycode: 224+72				NA
+		// RightArrow				Keycode: 224+77				NA
+		// DownArrow				Keycode: 224+80				NA
+		//========================================================================
+		int keycode, keycode1;
 		while (true) {
 			if (_kbhit()) {
 				keycode = _getch();
-				if (keycode == 224 || keycode == 0)							//For arrow and Functions keys, must read twice and take the latter value
-					keycode = _getch();		
-				if (keycode == 120) {										//F9, escape the application.
-					break;
+				keycode1 = -1;
+				//For Arrows and Functions keys, must read twice and take the latter
+				if (keycode == 0) {
+					keycode1 = _getch();
+					continue;											//Functions, Not response
 				}
-				else
-					OnKeyIn(keycode);
+				if (keycode == 224) {
+					keycode = _getch() + 256;							//Arrows
+				}
+				if (keycode1 == -1 && keycode == 17) {					//Ctrl+Q, escape the application.
+					Goto("ByeByeView");
+					continue;
+				}
+				if (keycode1 == -1 && keycode == 27) continue;			//Esc, rewind view.	
+
+				OnKeyIn(keycode);
 			}
 			Render();
 			Output();
@@ -52,15 +77,12 @@ namespace YBConsoleViews
 	/// <param name="key"></param>
 	void YB_Window::OnKeyIn(int key)
 	{
-		if (key  == 120){													//F9, Todo
-			Goto("ByeByeView");
-		}
 		//All keys pass to derived view -> modify derived.Onkey() to implement features.
-		if (key == 9 || key == 10 || key == 8	||							//tab/return/backspace
-			(key >= 48 && key <= 57)			||							//numbers
-			(key >= 65 && key <= 90)			||							//Alphabet(Upper) 
-			(key >= 97 && key <= 122)			||							//Alphabet(Lower) 
-			(key >= 37 && key <= 40) )										//Lft/Up/Rht/Dw arrow 
+		if (key == 9 || key == 13 || key == 8 ||							//tab/return/backspace
+			(key >= 48 && key <= 57) ||										//numbers
+			(key >= 65 && key <= 90) ||										//Alphabet(Upper) 
+			(key >= 97 && key <= 122) ||									//Alphabet(Lower) 
+			(key >= 328 && key <= 336))										//Lft/Up/Rht/Dw arrow 
 		{
 			currentView->OnKey(&key);
 		}

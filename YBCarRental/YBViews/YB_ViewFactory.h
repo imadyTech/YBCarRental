@@ -43,7 +43,7 @@ namespace YBConsoleViews
 		/// </summary>
 		void							LoadAllViews();
 		YB_ViewBasis*					GetView(int viewId);
-		YB_ViewBasis*					GetView(string viewType);
+		YB_ViewBasis*					GetView(string viewTitle);
 
 		YB_LogicFactory*				logicFactory;
 	private:

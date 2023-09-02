@@ -7,7 +7,7 @@
 #include "YB_ViewMessage.h"
 #include "YB_DataBasis.h"
 #include <functional>
-#include "YB_DataSource.h"
+#include "YB_DataSource_Interface.h"
 //#include "YB_ViewItemBasis.h"				// Forward declaration - some c++ specific trap
 
 using namespace std;
@@ -41,7 +41,7 @@ namespace YBConsoleViews
 				GotoView = other.GotoView;
 				subItemsList = other.subItemsList;
 				viewArray = other.viewArray;
-				DataSource = other.DataSource;
+				dataSource = other.dataSource;
 
 
 				// Deep copy of other resources, if any
@@ -64,7 +64,7 @@ namespace YBConsoleViews
 
 		string							ViewType = "";
 		string							Title = "";
-		int								w = 200, h = 32;				//view size
+		int								w = 200, h = 32;									//view size
 		char							Background = '.';
 		string							Source="";
 		string							GotoView="";
@@ -79,18 +79,24 @@ namespace YBConsoleViews
 		virtual void					Deserialize(string line, const char* separator)		override;
 		//void Serialize(ofstream* output) override;
 
+		void							Init();												
+		virtual	string*					Bind(string* bindName);								//datasource VM -> view: Bind a value to a viewItem.
+		virtual void					BindValues();										//datasource VM -> view: Bind values to viewItems from dataSource.
+		virtual void					ReverseBind();										//view -> datasource VM: Reverse binding to VM (and upate/save)
 		virtual void					OnKey(int* keycode);
 		virtual void					OnChildReturn(YB_ViewMessageBasis msg);
-		void							Init_View();										//datasource VM -> view 
 		virtual vector<char*>			Render();
 		void							Init_Background(char background);
 		void							Fill_Background(char background);
 		void							Clear_Background();
 
 		std::function<void()>			ViewReturnCallback;
-		YB_DataSource*					DataSource;
 	protected:
+		vector<YB_ViewItemBasis*>		focusableItems;					//Todo: move this code to basis or Init()
+
 	private:
+		bool							isUpdated = true;
+		YB_DataSource_Interface*					dataSource;
 		vector<char*>					viewArray;
 		int								currentItemIndex = -1;
 	};

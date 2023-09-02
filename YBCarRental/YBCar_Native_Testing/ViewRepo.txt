@@ -22,6 +22,7 @@ item7:Id:7!x:40!y:17!isCentral:0!w:40!h:1!ItemType:TextItem!Content:   #####   #
 item8:Id:8!x:0!y:22!w:120!h:1!ItemType:TextItem!Content:Copyright @Zhenqun Shen!Background: !isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
 item9:Id:9!x:0!y:24!w:120!h:1!ItemType:TextItem!Content:Yoobee College of Creative Innovation!Background:.!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
 
+## 101 - application main menu ##
 Id:101;Title:MainMenuView;ViewType:MenuView;w:120;h:29;DataSource:a;&
 item101A:Id:1010!x:20!y:3!w:80!h:1!ItemType:TextItem!Content:Please choose a function!Background:-!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;&
 item101B:Id:1011!x:36!y:10!w:48!h:1!ItemType:ButtonItem!Content:Login!Background: !isCentral:0!isFocused:1!isSelected:0!isHidden:0!;&
@@ -29,12 +30,14 @@ item101C:Id:1012!x:36!y:12!w:48!h:1!ItemType:ButtonItem!Content:Register User!Ba
 item101D:Id:1013!x:36!y:14!w:48!h:1!ItemType:ButtonItem!Content:Copyright!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 item101E:Id:1014!x:0!y:20!w:120!h:1!ItemType:TextItem!Content:<Please toggle with TAB and select with Return key>!Background: !isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
 
+## 102 - login ##
 Id:102;Title:LoginView;ViewType:InputView;w:120;h:29;DataSource:a;&
 item102A:Id:1020!x:40!y:12!w:20!h:1!ItemType:TextItem!Content:username!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 item102B:Id:1021!x:40!y:14!w:20!h:1!ItemType:TextItem!Content:password!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
-item102C:Id:1022!x:65!y:12!w:24!h:1!ItemType:TextItem!Content:!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
-item102D:Id:1023!x:65!y:14!w:24!h:1!ItemType:TextItem!Content:!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
-item102E:Id:1024!x:20!y:3!w:80!h:1!ItemType:TextItem!Content:Please input login info!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
+item102C:Id:1022!x:65!y:12!w:24!h:1!ItemType:InputItem!Content:!Background:.!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;&
+item102D:Id:1023!x:65!y:14!w:24!h:1!ItemType:InputItem!Content:!Background:.!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+item102E:Id:1024!x:40!y:17!w:20!h:1!ItemType:ButtonItem!Content:Submit!Background: !isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+item102F:Id:1025!x:20!y:3!w:80!h:1!ItemType:TextItem!Content:Please input login info!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
 
 
 Id:103;Title:RegisterView;ViewType:InputView;w:120;h:29;DataSource:a;&
@@ -61,28 +64,34 @@ item105E:Id:1054!x:0!y:20!w:120!h:1!ItemType:TextItem!Content:<Please toggle wit
 item105F:Id:1055!x:100!y:2!w:16!h:1!ItemType:TextItem!Content:??????????!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 item105G:Id:1056!x:100!y:4!w:16!h:1!ItemType:TextItem!Content:??????????!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;
 
+## 106 - main menu for administrator ##
 Id:106;Title:AdminMenu;ViewType:MenuView;w:120;h:29;DataSource:a;&
 item106A:Id:1060!x:25!y:5!w:70!h:1!ItemType:TextItem!Content:Please choose a function for administrator!Background:-!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;&
 item106B:Id:1061!x:36!y:10!w:48!h:1!ItemType:ButtonItem!Content:List Cars!Background: !isCentral:0!isFocused:1!isSelected:1!isHidden:0!;&
 item106C:Id:1062!x:36!y:12!w:48!h:1!ItemType:ButtonItem!Content:Add a car!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 item106D:Id:1063!x:36!y:14!w:48!h:1!ItemType:ButtonItem!Content:Order Management!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
-item106E:Id:1063!x:36!y:14!w:48!h:1!ItemType:ButtonItem!Content:User Management!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
-item106F:Id:1064!x:0!y:20!w:120!h:1!ItemType:TextItem!Content:<Please toggle with TAB and select with Return key>!Background: !isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
-item106G:Id:1065!x:100!y:2!w:16!h:1!ItemType:TextItem!Content:admin!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
-item106H:Id:1066!x:100!y:4!w:16!h:1!ItemType:TextItem!Content:admin!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;
+item106E:Id:1064!x:36!y:16!w:48!h:1!ItemType:ButtonItem!Content:User Management!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+item106F:Id:1065!x:0!y:20!w:120!h:1!ItemType:TextItem!Content:<Please toggle with TAB and select with Return key>!Background: !isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+item106G:Id:1066!x:100!y:2!w:16!h:1!ItemType:TextItem!Content:admin!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+item106H:Id:1067!x:100!y:4!w:16!h:1!ItemType:TextItem!Content:admin!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;
 
-Id:107;Title:Welcome friend;ViewType:ListView;w:120;h:29;DataSource:a;
+## 107 - Todo - My profile ##
+Id:107;Title:MyProfileView;ViewType:DetailsView;w:120;h:29;DataSource:a;
 
-Id:108;Title:Welcome friend;ViewType:ListView;w:120;h:29;DataSource:a;
+## 108 - Todo - My orders ##
+Id:108;Title:MyOrdersView;ViewType:ListView;w:120;h:29;DataSource:a;
 
-Id:109;Title:Welcome friend;ViewType:ListView;w:120;h:29;DataSource:a;
+## 109 - Todo - Car selection menu - select a car to rent ##
+Id:109;Title:CarSelectionView;ViewType:ListView;w:120;h:29;DataSource:a;
 
-Id:110;Title:Welcome friend;ViewType:ListView;w:120;h:29;DataSource:a;
+## 110 - Todo - Add a car ##
+Id:110;Title:CarAddView;ViewType:InputView;w:120;h:29;DataSource:a;
 
-Id:111;Title:Welcome friend;ViewType:MenuView;w:120;h:29;DataSource:a;&
-item61:Id:601!x:10!y:2!w:30!h:1!ItemType:ButtonItem!Content:Yes or No!Background:/!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
-item62:Id:602!x:10!y:10!w:40!h:1!ItemType:TextItem!Content:The Car!Background:*!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
-item63:Id:603!x:30!y:20!w:50!h:1!ItemType:InputItem!Content:You and me!Background:$!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;
+## 111 - Todo - Car management menu (list all cars) ##
+Id:111;Title:CarListView;ViewType:ListView;w:120;h:29;DataSource:a;&
+item111A:Id:1111!x:10!y:2!w:30!h:1!ItemType:ButtonItem!Content:Yes or No!Background:/!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+item111B:Id:1112!x:10!y:10!w:40!h:1!ItemType:TextItem!Content:The Car!Background:*!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+item111C:Id:1113!x:30!y:20!w:50!h:1!ItemType:InputItem!Content:You and me!Background:$!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;
 
 Id:999;Title:End of definition;ViewType:WelcomeView;w:64;h:24;DataSource:a;
 

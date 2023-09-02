@@ -31,14 +31,14 @@
     <Filter Include="Source Files\YB_Persistors">
       <UniqueIdentifier>{e9209735-53d2-4e76-878f-cadb210d042b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\YB_Views">
-      <UniqueIdentifier>{d032e413-7b0f-4ade-9da5-09c175e3a4b0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\YB_Views">
-      <UniqueIdentifier>{f01030e2-7272-4b79-af04-d4924d9cd5d4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\ApplicationData">
       <UniqueIdentifier>{6b1f093f-974e-4d9c-ba26-c5d9869624b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\YB_ViewModels">
+      <UniqueIdentifier>{d032e413-7b0f-4ade-9da5-09c175e3a4b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\YB_ViewModels">
+      <UniqueIdentifier>{f01030e2-7272-4b79-af04-d4924d9cd5d4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +75,12 @@
     <ClCompile Include="YB_ManagerBasis.cpp">
       <Filter>Source Files\YB_Managers</Filter>
     </ClCompile>
+    <ClCompile Include="YB_CarRentViewModels.cpp">
+      <Filter>Source Files\YB_ViewModels</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_CarRental_LogicFactory.cpp">
+      <Filter>Source Files\YB_ViewModels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="YB_UserManager.h">
@@ -109,6 +115,12 @@
     </ClInclude>
     <ClInclude Include="YB_ManagerBasis.h">
       <Filter>Header Files\YB_Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_CarRentViewModels.h">
+      <Filter>Header Files\YB_ViewModels</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_CarRental_LogicFactory.h">
+      <Filter>Header Files\YB_ViewModels</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

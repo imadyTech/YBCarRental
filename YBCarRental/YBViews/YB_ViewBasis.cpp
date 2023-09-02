@@ -2,7 +2,7 @@
 #include "YB_ViewBasis.h"
 #include "YB_ViewItemBasis.h"  // Include the full definition here
 #include "YB_ViewMessage.h"
-
+#include "YB_Errors.h"
 
 namespace YBConsoleViews {
 	YB_ViewBasis::YB_ViewBasis()
@@ -37,7 +37,7 @@ namespace YBConsoleViews {
 	//{
 	//}
 
-	string*				YB_ViewBasis::Serialize()
+	string* YB_ViewBasis::Serialize()
 	{
 		std::stringstream ss;
 		//Redirect to new function (instead of previous version overrided function)
@@ -50,12 +50,12 @@ namespace YBConsoleViews {
 	{
 		YB_DataBasis::Serialize(strStream);
 		strStream
-			<< "Title:"								<< Title			<< YB_DataBasis::persistentSeparator
-			<< "ViewType:"							<< ViewType			<< YB_DataBasis::persistentSeparator
-			<< "w:"									<< w				<< YB_DataBasis::persistentSeparator
-			<< "h:"									<< h				<< YB_DataBasis::persistentSeparator
-			<< "Source:"							<< Source			<< YB_DataBasis::persistentSeparator
-			<< "GotoView:"							<< GotoView			<< YB_DataBasis::persistentSeparator;
+			<< "Title:" << Title << YB_DataBasis::persistentSeparator
+			<< "ViewType:" << ViewType << YB_DataBasis::persistentSeparator
+			<< "w:" << w << YB_DataBasis::persistentSeparator
+			<< "h:" << h << YB_DataBasis::persistentSeparator
+			<< "Source:" << Source << YB_DataBasis::persistentSeparator
+			<< "GotoView:" << GotoView << YB_DataBasis::persistentSeparator;
 	}
 	void				YB_ViewBasis::Deserialize(string line)
 	{
@@ -65,18 +65,49 @@ namespace YBConsoleViews {
 	{
 		YB_DataBasis::Deserialize(line, separator);
 
-		if (YB_DataBasis::FindValue("Title"))		Title =				*YB_DataBasis::FindValue("Title");
-		if (YB_DataBasis::FindValue("ViewType"))	ViewType =			*YB_DataBasis::FindValue("ViewType");
-		if (YB_DataBasis::FindValue("w"))			w =					std::stoi(*YB_DataBasis::FindValue("w"));
-		if (YB_DataBasis::FindValue("h"))			h =					std::stoi(*YB_DataBasis::FindValue("h"));
-		if (YB_DataBasis::FindValue("Source"))		Source =			*YB_DataBasis::FindValue("Source");
-		if (YB_DataBasis::FindValue("GotoView"))	GotoView =			*YB_DataBasis::FindValue("GotoView");
+		if (YB_DataBasis::FindValue("Title"))		Title = *YB_DataBasis::FindValue("Title");
+		if (YB_DataBasis::FindValue("ViewType"))	ViewType = *YB_DataBasis::FindValue("ViewType");
+		if (YB_DataBasis::FindValue("w"))			w = std::stoi(*YB_DataBasis::FindValue("w"));
+		if (YB_DataBasis::FindValue("h"))			h = std::stoi(*YB_DataBasis::FindValue("h"));
+		if (YB_DataBasis::FindValue("Source"))		Source = *YB_DataBasis::FindValue("Source");
+		if (YB_DataBasis::FindValue("GotoView"))	GotoView = *YB_DataBasis::FindValue("GotoView");
 	}
 
 	/// <summary>
 	/// Scan all viewItems, and merge the grid to viewArray
 	/// </summary>
 	/// <returns></returns>
+	void				YB_ViewBasis::Init() {
+		for (auto& item : this->subItemsList)
+		{
+			if (item->ItemType == "ButtonItem" || item->ItemType == "InputItem" || item->ItemType == "ListItem")
+				focusableItems.push_back(item);
+		}
+	}
+
+	string*				YB_ViewBasis::Bind(string* bindName) {
+		return this->dataSource->Get_PropertyValue(bindName);
+	}
+
+	void				YB_ViewBasis::BindValues() {
+		//scan children viewItems and update the 'Content' variable
+		for (auto& item : this->subItemsList)
+		{
+			try {
+				item->Content = *this->Bind(&item->Bind);
+			}
+			catch (exception e) {
+				YB_BindingError error;
+				error(const_cast<char*>("error in binding values to children items."));
+				throw error;
+			}
+		}
+	}
+
+	void				YB_ViewBasis::ReverseBind() {
+
+	}
+
 	vector<char*>		YB_ViewBasis::Render()
 	{
 		if (viewArray.empty())
@@ -103,9 +134,7 @@ namespace YBConsoleViews {
 
 		return viewArray;
 	}
-	void				YB_ViewBasis::Init_View() {
-		//...Todo
-	}
+
 	void				YB_ViewBasis::Init_Background(char background)
 	{
 		if (!viewArray.empty())
@@ -118,6 +147,7 @@ namespace YBConsoleViews {
 			this->viewArray.push_back(newLine);
 		}
 	}
+
 	void				YB_ViewBasis::Fill_Background(char background)
 	{
 		//fill the view background with a char
@@ -125,6 +155,7 @@ namespace YBConsoleViews {
 			std::memset(this->viewArray[i], background, this->w);
 		}
 	}
+
 	void				YB_ViewBasis::Clear_Background()
 	{
 		//fill the view background with a char
@@ -135,35 +166,42 @@ namespace YBConsoleViews {
 
 	void				YB_ViewBasis::OnKey(int* keycode)
 	{
-		if (*keycode == 9)						//tabKeyCode = 9; Toggle items.
+		if (subItemsList.empty())
+			return;
+		if (focusableItems.empty())									//No item to be operated
+			return;
+		if (currentItemIndex < 0)
+			currentItemIndex = 0;
+		if (*keycode == 9)										//Tab; Toggle items.
 		{
-			if (subItemsList.empty())
-				return;
-			if (currentItemIndex < 0)
-				currentItemIndex = 0;
-			if (subItemsList.size() == 1) {
-				(*subItemsList[currentItemIndex]).isFocused = true;
+			if (focusableItems.size() == 1) {
+				(*focusableItems[currentItemIndex]).isFocused = true;
 				return;
 			}
-			(*subItemsList[currentItemIndex]).isFocused = false;
+			(*focusableItems[currentItemIndex]).isFocused = false;
 			currentItemIndex++;
-			if (currentItemIndex > subItemsList.size() - 1)
+			if (currentItemIndex >= focusableItems.size())
 				currentItemIndex = 0;
-			(*subItemsList[currentItemIndex]).isFocused = true;
+			(*focusableItems[currentItemIndex]).isFocused = true;
 		}
-		if (*keycode == 10)						//Return key;
+		if (*keycode == 10)										//Return key;
 		{
-			(*subItemsList[currentItemIndex]).OnReturn();
+			(*focusableItems[currentItemIndex]).OnReturn();
 		}
-		if (*keycode == 8)						//Backspace key; Previous view.
+		if (*keycode == 8)										//Backspace key; Previous view.
 		{
-			(*subItemsList[currentItemIndex]).OnBackspace();
+			(*focusableItems[currentItemIndex]).OnBackspace();
 		}
-		if ((*keycode >= 65 && *keycode <= 90) || (*keycode >= 48 && *keycode <= 57) || (*keycode >= 97 && *keycode <= 122))		//Alphabet(Upper/Lower) and numbers
+		if (*keycode >= 37 && *keycode <= 40) {					//Lft/Up/Rht/Dw arrow : Intercpted by derived
+		}
+		if ((*keycode >= 65 && *keycode <= 90)					//Alphabet(Upper/Lower) and numbers
+			|| (*keycode >= 48 && *keycode <= 57)
+			|| (*keycode >= 96 && *keycode <= 105))
 		{
-			(*subItemsList[currentItemIndex]).OnKey(keycode);
+			(*focusableItems[currentItemIndex]).OnKey(keycode);		//Pass to active item
 		}
 	}
+
 	void				YB_ViewBasis::OnChildReturn(YB_ViewMessageBasis msg)
 	{
 	}

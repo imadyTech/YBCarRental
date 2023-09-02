@@ -80,8 +80,13 @@ namespace YBConsoleViews {
 	/// CONTROL isHidden/isFocused BEHAVIOUR IN DERIVED.RENDER().
 	/// </summary>
 	/// <returns></returns>
-	vector<char*>				YB_ViewItemBasis::Render()
+	vector<char*>				YB_ViewItemBasis::Render()			//Todo: better to return a pointer
 	{
+		if (this->isFocused)
+			this->Fill_Background(this->Background);
+		else
+			this->Clear_Background();
+
 		// Calculate the position of content
 		const char* content = Content.c_str();
 		size_t newContentLength = strlen(content);

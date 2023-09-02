@@ -1,5 +1,7 @@
 #pragma once
 #include <stdexcept>
+#include <string>
+using namespace std;
 
 namespace YBPersistence
 {
@@ -10,12 +12,24 @@ namespace YBPersistence
 	{
 	public:
 		virtual const char* what() const noexcept {
-			return message;
+			return msg;
+		}
+
+		//With this operator Functor you can:
+		//try {
+		//}
+		//catch (exception e) {
+		//	YB_BindingError error;
+		//	error(const_cast<char*>("custom error"));
+		//	throw error;
+		//}
+		void operator()(char* message)  {
+			YB_ErrorBasis::msg = message;
 		}
 
 	protected:
-		YB_ErrorBasis(const char* message) : message(message) {}
-		const char* message;
+		YB_ErrorBasis(const char* msg) : msg(const_cast<char*> (msg)) {}
+		const char* msg;
 	};
 
 	//------------------------Repository custom error types------------------------
@@ -39,6 +53,12 @@ namespace YBPersistence
 	
 
 	//------------------------Datamodels custom error types------------------------
+	struct YB_DataModelError : YB_ErrorBasis
+	{
+	public:
+		YB_DataModelError() : YB_ErrorBasis("YB_DataModelError") {}
+	};
+
 	struct YB_SerializeError : YB_ErrorBasis
 	{
 	public:
@@ -51,11 +71,26 @@ namespace YBPersistence
 		YB_DeSerializeError() : YB_ErrorBasis("YB_DeSerializeError") {}
 	};
 
+	struct YB_BindingError : YB_ErrorBasis
+	{
+	public:
+		YB_BindingError() : YB_ErrorBasis("YB_BindingError") {}
+	};
+
+	struct YB_ReverseBindingError : YB_ErrorBasis
+	{
+	public:
+		YB_ReverseBindingError( ) : YB_ErrorBasis("YB_ReverseBindingError") {}
+	};
+
+
+
 	struct YB_PersistorError : YB_ErrorBasis
 	{
 	public:
 		YB_PersistorError() : YB_ErrorBasis("YB_PersistorError") {}
 	};	
+
 	struct YB_FactoryError : YB_ErrorBasis
 	{
 	public:
@@ -72,12 +107,6 @@ namespace YBPersistence
 	{
 	public:
 		YB_ViewError() : YB_ErrorBasis("YB_ViewError") {}
-	};
-
-	struct YB_DataModelError : YB_ErrorBasis
-	{
-	public:
-		YB_DataModelError() : YB_ErrorBasis("YB_DataModelError") {}
 	};
 
 }

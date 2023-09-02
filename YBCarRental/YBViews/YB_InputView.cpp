@@ -3,6 +3,7 @@
 
 void YBConsoleViews::YB_InputView::OnKey(int* keycode)
 {
+	YB_ViewBasis::OnKey(keycode);
 }
 
 void YBConsoleViews::YB_InputView::OnChildReturn(YB_ViewMessageBasis msg)

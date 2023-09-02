@@ -78,7 +78,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>E:\YB800ProSE\YBCarRental\YBCarRental\YBViews;E:\YB800ProSE\YBCarRental\YBCarRental\YBPersistence;E:\YB800ProSE\YBCarRental\YBCarRental\YBCarRental;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\YBViews;$(SolutionDir)\YBPersistence;$(SolutionDir)\YBCarRental;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>

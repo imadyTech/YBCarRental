@@ -41,6 +41,7 @@ namespace YBConsoleViews
 		void							Run();
 		void							OnKeyIn(int keycode);
 		void							Goto(int viewId);						//Activate a view
+		void							Goto(const string viewTitle);			//Activate a view by title
 		void							Prev();
 		void							Next();
 		void							Render();								//view contents

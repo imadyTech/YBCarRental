@@ -36,9 +36,9 @@ namespace YBCarTesting
 		}
 		TEST_METHOD(YB_UserDeserielizeTest)
 		{
-			string test = "15;fshen;0;Frank;Shen;666666;10000;user;";
+			string YB_CarRentViewModels = "15;fshen;0;Frank;Shen;666666;10000;user;";
 			YB_User user = YB_User();
-			user.Deserialize(test);
+			user.Deserialize(YB_CarRentViewModels);
 			Assert::AreEqual("Frank", user.FirstName.c_str());
 			Assert::AreEqual("fshen", user.UserName.c_str());
 			Assert::AreEqual(15, user.Id);

@@ -37,10 +37,10 @@ namespace YBConsoleViews
 			return nullptr;
 	}
 
-	YB_ViewBasis*	YB_ViewFactory::GetView(string viewType) {
+	YB_ViewBasis*	YB_ViewFactory::GetView(string viewTitle) {
 		for (auto& iterator : viewPool)
 		{
-			if (iterator.second->ViewType == viewType)
+			if (iterator.second->Title == viewTitle)
 			{
 				return iterator.second;
 			}

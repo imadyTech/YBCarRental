@@ -3,6 +3,11 @@
 
 namespace YBConsoleViews
 {
+	void YB_Window::ConfigLogicFactory(YB_LogicFactory* businessLogic)
+	{
+		this->logicFactory = businessLogic;
+	}
+
 
 	void YB_Window::InitViewFactory(string viewRepo)
 	{
@@ -11,15 +16,14 @@ namespace YBConsoleViews
 		viewFactory->LoadAllViews();
 	}
 
-	void YB_Window::ConfigLogicFactory(YB_LogicFactory* logic)
-	{
-		this->logicFactory = logic;
-	}
-
 	void YB_Window::Init()
 	{
-		currentView = (*viewFactory).GetView(106);					//Load and show Welcome view
-		currentView->ViewReturnCallback = [this]() { Goto(100); };	//*******demo how to use callback
+		currentView = (*viewFactory).GetView("LoginView");					//Load and show Welcome view
+		currentView->ViewReturnCallback = [this]() { Goto(100); };			//*******demo how to use callback
+		//currentView = (*viewFactory).GetView(???);						//Byebye view
+		//currentView->ViewReturnCallback = [this]() { Todo _someCode_exit; };	//quit
+
+		currentView->Init();											
 	}
 
 	void YB_Window::Run()
@@ -28,7 +32,9 @@ namespace YBConsoleViews
 		while (true) {
 			if (_kbhit()) {
 				keycode = _getch();
-				if (keycode == 120) {							//F9, escape the application.
+				if (keycode == 224 || keycode == 0)							//For arrow and Functions keys, must read twice and take the latter value
+					keycode = _getch();		
+				if (keycode == 120) {										//F9, escape the application.
 					break;
 				}
 				else
@@ -40,12 +46,21 @@ namespace YBConsoleViews
 		}
 	}
 
+	/// <summary>
+	/// Cascaded keycode process with the order: window -> derivedView -> viewBasis -> derivedItem -> itemBasis
+	/// </summary>
+	/// <param name="key"></param>
 	void YB_Window::OnKeyIn(int key)
 	{
-		if (key == 9 || key == 10 || key == 8 ||					//tab/return/backspace
-			(key >= 65 && key <= 90) ||							//Alphabet(Upper/Lower) and numbers
-			(key >= 48 && key <= 57) ||
-			(key >= 97 && key <= 122))
+		if (key  == 120){													//F9, Todo
+			Goto("ByeByeView");
+		}
+		//All keys pass to derived view -> modify derived.Onkey() to implement features.
+		if (key == 9 || key == 10 || key == 8	||							//tab/return/backspace
+			(key >= 48 && key <= 57)			||							//numbers
+			(key >= 65 && key <= 90)			||							//Alphabet(Upper) 
+			(key >= 97 && key <= 122)			||							//Alphabet(Lower) 
+			(key >= 37 && key <= 40) )										//Lft/Up/Rht/Dw arrow 
 		{
 			currentView->OnKey(&key);
 		}
@@ -54,7 +69,12 @@ namespace YBConsoleViews
 	void YB_Window::Goto(int viewId)
 	{
 		currentView = (*viewFactory).GetView(viewId);
-		currentView->Init_View();
+		currentView->Init();
+	}
+	void YB_Window::Goto(const string viewTitle)
+	{
+		currentView = viewFactory->GetView(viewTitle);
+		currentView->Init();
 	}
 
 	void YB_Window::Prev()
@@ -64,7 +84,6 @@ namespace YBConsoleViews
 	void YB_Window::Next()
 	{
 	}
-
 
 	void YB_Window::Render()
 	{

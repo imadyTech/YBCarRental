@@ -72,7 +72,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>E:\YB800ProSE\YBCarRental\YBCarRental\YBPersistence;E:\YB800ProSE\YBCarRental\YBCarRental\YBViews;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\YBPersistence;$(SolutionDir)\YBViews;$(ProjectDir);$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -139,6 +139,8 @@
   <ItemGroup>
     <ClCompile Include="YB_Car.cpp" />
     <ClCompile Include="YB_CarManager.cpp" />
+    <ClCompile Include="YB_CarRental_LogicFactory.cpp" />
+    <ClCompile Include="YB_CarRentViewModels.cpp" />
     <ClCompile Include="YB_ManagerBasis.cpp" />
     <ClCompile Include="YB_Rent.cpp" />
     <ClCompile Include="YB_RentManager.cpp" />
@@ -154,6 +156,8 @@
     <ClInclude Include="YB_Car.h" />
     <ClInclude Include="YB_CarManager.h" />
     <ClInclude Include="YB_CarPersistor.h" />
+    <ClInclude Include="YB_CarRental_LogicFactory.h" />
+    <ClInclude Include="YB_CarRentViewModels.h" />
     <ClInclude Include="YB_ManagerBasis.h" />
     <ClInclude Include="YB_Rent.h" />
     <ClInclude Include="YB_RentManager.h" />

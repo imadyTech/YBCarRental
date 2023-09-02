@@ -53,6 +53,7 @@ namespace YBPersistence
 		/// <param name="line"></param>
 		/// <returns></returns>
 		virtual void						Deserialize(std::string line, const char* separator);
+
 		std::string*						FindValue(std::string key)
 		{
 			auto iterator = stringPairsMap.find(key);
@@ -75,7 +76,6 @@ namespace YBPersistence
 			}
 			return results;
 		}
-
 
 		map<std::string, std::string>*		SplitLine(std::string* line, const char* separator)
 		{

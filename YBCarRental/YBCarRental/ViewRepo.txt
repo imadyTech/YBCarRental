@@ -44,8 +44,8 @@ item102F:Id:1025!x:20!y:3!w:80!h:1!ItemType:TextItem!Content:Please input login 
 Id:103;Title:RegisterView;ViewType:InputView;w:120;h:29;Source:YB_UserRegisterVM;&
 item103A:Id:1030!x:40!y:12!w:20!h:1!ItemType:TextItem!Content:username!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 item103B:Id:1031!x:40!y:14!w:20!h:1!ItemType:TextItem!Content:password!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
-item103C:Id:1032!x:65!y:12!w:24!h:1!ItemType:TextItem!Content:!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
-item103D:Id:1033!x:65!y:14!w:24!h:1!ItemType:TextItem!Content:!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+item103C:Id:1032!x:65!y:12!w:24!h:1!ItemType:InputItem!Bind:UserName!Content:!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+item103D:Id:1033!x:65!y:14!w:24!h:1!ItemType:InputItem!Bind:Password!Content:!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
 item103E:Id:1034!x:20!y:3!w:80!h:1!ItemType:TextItem!Content:Create a user accout!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
 
 Id:104;Title:HelpView;ViewType:WelcomeView;w:120;h:29;Source:;&
@@ -56,14 +56,14 @@ item104D:Id:1043!x:10!y:12!w:100!h:1!ItemType:TextItem!Content:## Use Esc to bac
 item104E:Id:1044!x:10!y:13!w:100!h:1!ItemType:TextItem!Content:## alphabets and number to input info!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 item104F:Id:1045!x:10!y:14!w:100!h:1!ItemType:TextItem!Content:## Back arrow to modify some input!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;
 
-Id:105;Title:UserMenu;ViewType:MenuView;w:120;h:29;Source:;&
+Id:105;Title:UserMenu;ViewType:MenuView;w:120;h:29;Source:YB_UserMenuVM;&
 item105A:Id:1050!x:25!y:5!w:70!h:1!ItemType:TextItem!Content:Please choose a function for user!Background:-!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;&
 item105B:Id:1051!x:36!y:10!w:48!h:1!ItemType:ButtonItem!Content:My Profile!Background: !isCentral:0!isFocused:1!isSelected:1!isHidden:0!;&
 item105C:Id:1052!x:36!y:12!w:48!h:1!ItemType:ButtonItem!Content:My Orders!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 item105D:Id:1053!x:36!y:14!w:48!h:1!ItemType:ButtonItem!Content:Rent a car!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 item105E:Id:1054!x:0!y:20!w:120!h:1!ItemType:TextItem!Content:<Please toggle with TAB and select with Return key>!Background: !isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
-item105F:Id:1055!x:100!y:2!w:16!h:1!ItemType:TextItem!Content:??????????!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
-item105G:Id:1056!x:100!y:4!w:16!h:1!ItemType:TextItem!Content:??????????!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;
+item105F:Id:1055!x:100!y:2!w:16!h:1!ItemType:TextItem!Content:??????????!Bind:UserName!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+item105G:Id:1056!x:100!y:4!w:16!h:1!ItemType:TextItem!Content:??????????!Bind:UserRoles!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;
 
 ## 106 - main menu for administrator ##
 Id:106;Title:AdminMenu;ViewType:MenuView;w:120;h:29;Source:;&

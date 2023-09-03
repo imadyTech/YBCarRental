@@ -43,5 +43,12 @@ namespace YBCarRental
 	bool YBCarRental::YB_UserManager::IsAdmin()
 	{
 		return currentUser->UserRoles.find("admin") != std::string::npos;
-	};
+	}
+
+
+	YB_User* YB_UserManager::CurrentUser()
+	{
+		return currentUser;
+	}
+	;
 }

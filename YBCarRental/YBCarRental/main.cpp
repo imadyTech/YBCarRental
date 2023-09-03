@@ -41,6 +41,8 @@ int main()
 	logicFactory->RegisterDataSource(&userVMName, userVM);
 	string regVMName = "YB_UserRegisterVM";
 	logicFactory->RegisterDataSource(&regVMName, regVM);
+	string userMenuVMName = "YB_UserMenuVM";
+	logicFactory->RegisterDataSource(&userMenuVMName, new YB_UserMenuVM(userMgr));
 	
 
 

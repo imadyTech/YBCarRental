@@ -48,6 +48,9 @@ namespace YBCarRental
 		/// <returns></returns>
 		bool IsAdmin();
 
+
+		YB_User* CurrentUser();
+
 	private:
 		YB_User* currentUser;
 	};

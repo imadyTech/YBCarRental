@@ -80,9 +80,22 @@ namespace YBConsoleViews {
 	void				YB_ViewBasis::Init() {
 		for (auto& item : this->subItemsList)
 		{
+			//find and cache the non-static items
 			if (item->ItemType == "ButtonItem" || item->ItemType == "InputItem" || item->ItemType == "ListItem")
 				focusableItems.push_back(item);
-		}
+			//Bind items from data properties
+			if (dataSource && !item->Bind.empty())
+				try {
+				auto valuePtr = dataSource->Get_PropertyValue(&item->Bind);
+				if (valuePtr != nullptr)
+					item->Content = *valuePtr;
+			}
+			catch (exception e)
+			{
+				continue;
+				//throw YB_BindingError();		//won't break the binding process
+			}
+		}	
 	}
 
 	string*				YB_ViewBasis::Bind(string* bindName) {
@@ -214,8 +227,20 @@ namespace YBConsoleViews {
 		}
 	}
 
-	void				YB_ViewBasis::OnChildReturn(YB_ViewMessageBasis* msg)
+	void				YB_ViewBasis::OnChildReturn(YB_ViewMessageBasis* msgPtr)
 	{
-		///implement childReturn behaviour in derived YB_ViewBasis classes
+		if (msgPtr->Message == msgDef_Submit) {
+			map<string, string> bindMap;
+			//find out the viewItems which has 'Bind' tag.
+			for (auto& iterator : this->subItemsList)
+			{
+				if (!iterator->Bind.empty())
+					bindMap.insert(std::make_pair(iterator->Bind, iterator->Content));
+			}
+			if (!bindMap.empty())
+				this->dataSource->onSubmit(&bindMap);
+		}
+		if (msgPtr->Message == msgDef_Yes) {}
+		if (msgPtr->Message == msgDef_No) {}
 	}
 }

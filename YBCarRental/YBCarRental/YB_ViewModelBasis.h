@@ -10,6 +10,7 @@
 #include "YB_ManagerBasis.h"
 #include "YB_Window.h"
 
+
 using namespace YBConsoleViews;
 using namespace std;
 
@@ -18,7 +19,7 @@ class YBConsoleViews::YB_Window;
 
 namespace YBCarRental {
 	template<class TData = YB_DataBasis>
-	class YB_ViewModelBasis : public TData, public YBConsoleViews::YB_DataSource_Interface
+	class YB_ViewModelBasis : /*public TData,*/ public YBConsoleViews::YB_DataSource_Interface
 	{
 	public:
 		YB_ViewModelBasis() {};
@@ -31,6 +32,7 @@ namespace YBCarRental {
 		virtual void					onViewInitiated() {};
 		virtual map<string, string>*	onListInitiated(string* tableHeadNames) { return nullptr; };							//tableheadNames format: Model/Make/Mileage
 		virtual map<string, string>*	onListInitiated(string* tableHeadNames, int pageNum, int size) { return nullptr; };		//Table paging, Todo...
+		virtual void					onInit() {}
 		virtual void					onSubmit(map<string, string>* values) {};
 		virtual void					onContentUpdated(string* bindName, string* newValue) {};
 		virtual void					onItemFocused(string* bindName) {};
@@ -48,13 +50,15 @@ namespace YBCarRental {
 	template<class TData>
 	string*								YB_ViewModelBasis<TData>::Get_PropertyValue(string* bindName)
 	{
-		return this->FindValue(*bindName);
+		//return this->FindValue(*bindName);
+		return nullptr;
 	}
 
 	template<class TData>
 	map<string, string>*				YB_ViewModelBasis<TData>::Get_PropertyValues()
 	{
-		return this->GetAllValues();
+		//return this->GetAllValues();
+		return nullptr;
 	}
 
 	template<class TData>
@@ -72,24 +76,24 @@ namespace YBCarRental {
 		and properties or fields of an object are typically accessed directly through their names known at
 		compile time.*/
 
-		size_t foundPos;
-		size_t endPos;
-		size_t keyLength;
+		//size_t foundPos;
+		//size_t endPos;
+		//size_t keyLength;
 
-		for (const auto& kvp : *values) {
-			std::string keyToReplace = kvp.first;
-			std::string replacementValue = kvp.second;
-			keyLength = keyToReplace.length();
+		//for (const auto& kvp : *values) {
+		//	std::string keyToReplace = kvp.first;
+		//	std::string replacementValue = kvp.second;
+		//	keyLength = keyToReplace.length();
 
-			while ((foundPos = this->serializedString->find(kvp.first)) != std::string::npos) {
-				endPos = this->serializedString->find(';', foundPos);
-				this->serializedString->erase(foundPos + 1 + keyLength, endPos - foundPos - keyLength - 1);
-				this->serializedString->insert(foundPos + 1 + keyLength, replacementValue);
+		//	while ((foundPos = this->serializedString->find(kvp.first)) != std::string::npos) {
+		//		endPos = this->serializedString->find(';', foundPos);
+		//		this->serializedString->erase(foundPos + 1 + keyLength, endPos - foundPos - keyLength - 1);
+		//		this->serializedString->insert(foundPos + 1 + keyLength, replacementValue);
 
-				break;
-			}
-		}
-		this->Deserialize(*this->serializedString);
+		//		break;
+		//	}
+		//}
+		//this->Deserialize(*this->serializedString);
 	}
 
 }

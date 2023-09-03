@@ -18,12 +18,10 @@ namespace YBConsoleViews
 
 	void YB_Window::Init()
 	{
-		currentView = (*viewFactory).GetView("LoginView");					//Load and show Welcome view
-		currentView->ViewReturnCallback = [this]() { Goto(100); };			//*******demo how to use callback
+		Goto("LoginView");														//Load and show Welcome view
+		//currentView->ViewReturnCallback = [this]() { Goto(100); };			//*******demo how to use callback
 		//currentView = (*viewFactory).GetView(???);						//Byebye view
 		//currentView->ViewReturnCallback = [this]() { Todo _someCode_exit; };	//quit
-
-		currentView->Init();
 	}
 
 	void YB_Window::Run()

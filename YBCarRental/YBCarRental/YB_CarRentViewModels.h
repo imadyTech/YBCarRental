@@ -9,6 +9,9 @@ class YBConsoleViews::YB_Window;
 
 
 namespace YBCarRental {
+	/// <summary>
+	/// 102 - LoginView
+	/// </summary>
 	class YB_UserLoginVM : public YB_ViewModelBasis<YB_User>
 	{
 	public:
@@ -30,17 +33,11 @@ namespace YBCarRental {
 				uPsd = pItr->second;
 
 			bool loginResult = dataManagerPtr->UserLogin(uName, uPsd);
-			if (loginResult)
-				windowPtr->Goto("MainMenuView");			//Todo: this shall be view.GotoView
+			if (loginResult && !dataManagerPtr->IsAdmin())
+				windowPtr->Goto("UserMenu");			//Todo: this shall be view.GotoView
+			else if(loginResult && dataManagerPtr->IsAdmin())
+				windowPtr->Goto("AdminMenu");
 		};
-
-		//string* Get_PropertyValue(string* bindNamePtr)										override {};
-
-		//map<string, string>* Get_PropertyValues(string* bindNamePtr)						{
-		//	return this->YB_VMBasis<YB_User>::Get_PropertyValue(bindNamePtr);
-		//};
-		//void					Set_PropertyValue(string* bindNamePtr, string* valuePtr)	override {};
-		//void					Set_PropertyValues(map<string, string>* values)				override {};
 	};
 
 
@@ -52,6 +49,11 @@ namespace YBCarRental {
 		};
 
 		YB_UserManager* dataManagerPtr;
+
+		void					onInit()				override
+		{
+
+		}
 		//string* Get_PropertyValue(string* bindNamePtr)										override {};
 
 		//map<string, string>* Get_PropertyValues(string* bindNamePtr)						{
@@ -61,6 +63,16 @@ namespace YBCarRental {
 		//void					Set_PropertyValues(map<string, string>* values)				override {};
 	};
 
+
+	class YB_UserMenuVM : public YB_ViewModelBasis<YB_User>
+	{
+	public:
+		YB_UserMenuVM(YB_UserManager* managerPtr) {
+			dataManagerPtr = managerPtr;
+		}
+		YB_UserManager* dataManagerPtr;
+
+	};
 
 	//class YB_UserListVM : public YB_ViewModelBasis<YB_User>
 	//{

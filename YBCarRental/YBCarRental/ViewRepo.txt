@@ -36,10 +36,10 @@ item102A:Id:1020!x:40!y:12!w:20!h:1!ItemType:TextItem!Content:username!Backgroun
 item102B:Id:1021!x:40!y:14!w:20!h:1!ItemType:TextItem!Content:password!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 item102C:Id:1022!x:65!y:12!w:24!h:1!ItemType:InputItem!Content:!Background:.!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;&
 item102D:Id:1023!x:65!y:14!w:24!h:1!ItemType:InputItem!Content:!Background:.!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
-item102E:Id:1024!x:40!y:17!w:20!h:1!ItemType:ButtonItem!Content:Submit!Background: !isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+item102E:Id:1024!x:40!y:17!w:20!h:1!ItemType:ButtonItem!Content:Submit!Background:|!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
 item102F:Id:1025!x:20!y:3!w:80!h:1!ItemType:TextItem!Content:Please input login info!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
 
-
+## 103 - Register new user ##
 Id:103;Title:RegisterView;ViewType:InputView;w:120;h:29;DataSource:a;&
 item103A:Id:1030!x:40!y:12!w:20!h:1!ItemType:TextItem!Content:username!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 item103B:Id:1031!x:40!y:14!w:20!h:1!ItemType:TextItem!Content:password!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
@@ -93,5 +93,20 @@ item111A:Id:1111!x:10!y:2!w:30!h:1!ItemType:ButtonItem!Content:Yes or No!Backgro
 item111B:Id:1112!x:10!y:10!w:40!h:1!ItemType:TextItem!Content:The Car!Background:*!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 item111C:Id:1113!x:30!y:20!w:50!h:1!ItemType:InputItem!Content:You and me!Background:$!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;
 
-Id:999;Title:End of definition;ViewType:WelcomeView;w:64;h:24;DataSource:a;
+Id:999;Title:ByeByeView;ViewType:WelcomeView;w:120;h:29;DataSource:a;&
+item9991:Id:9901!x:50!y:07!isCentral:0!w:40!h:1!ItemType:TextItem!Content:     wwwwwwwww!;&
+item9992:Id:9902!x:50!y:08!isCentral:0!w:40!h:1!ItemType:TextItem!Content:     | v   v |               ya!;&
+item9993:Id:9903!x:50!y:09!isCentral:0!w:40!h:1!ItemType:TextItem!Content:     |   v   |            See!;&
+item9994:Id:9904!x:50!y:10!isCentral:0!w:40!h:1!ItemType:TextItem!Content:      \     /!;&
+item9995:Id:9905!x:50!y:11!isCentral:0!w:40!h:1!ItemType:TextItem!Content:        ---       ww!;&
+item9996:Id:9906!x:50!y:12!isCentral:0!w:40!h:1!ItemType:TextItem!Content: ww      hh      i!;&
+item9997:Id:9907!x:50!y:13!isCentral:0!w:40!h:1!ItemType:TextItem!Content:   i   hhhhhh  i!;&
+item9998:Id:9908!x:50!y:14!isCentral:0!w:40!h:1!ItemType:TextItem!Content:    iihhhhhhhhhi!;&
+item9999:Id:9909!x:50!y:15!isCentral:0!w:40!h:1!ItemType:TextItem!Content:        hhhhhhhh!;&
+item999A:Id:9910!x:50!y:16!isCentral:0!w:40!h:1!ItemType:TextItem!Content:         hhh   hhhh!;&
+item999B:Id:9911!x:50!y:17!isCentral:0!w:40!h:1!ItemType:TextItem!Content:         hh      hhh!;&
+item999C:Id:9912!x:50!y:18!isCentral:0!w:40!h:1!ItemType:TextItem!Content:         hhhh!;&
+item999D:Id:9913!x:0!y:22!w:120!h:1!ItemType:TextItem!Content:Designed by @Ann Shen!Background: !isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+item999E:Id:9914!x:0!y:24!w:120!h:1!ItemType:TextItem!Content:Yoobee College of Creative Innovation!Background:.!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
+
 

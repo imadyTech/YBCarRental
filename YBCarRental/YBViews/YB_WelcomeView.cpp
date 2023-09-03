@@ -7,7 +7,7 @@ void YBConsoleViews::YB_WelcomeView::OnKey(int* keycode)
 	}
 }
 
-void YBConsoleViews::YB_WelcomeView::OnChildReturn(YB_ViewMessageBasis msg)
+void YBConsoleViews::YB_WelcomeView::OnChildReturn(YB_ViewMessageBasis* msg)
 {
 }
 

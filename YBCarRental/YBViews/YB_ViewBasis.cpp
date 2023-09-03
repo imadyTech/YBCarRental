@@ -217,7 +217,13 @@ namespace YBConsoleViews {
 		}
 	}
 
-	void				YB_ViewBasis::OnChildReturn(YB_ViewMessageBasis msg)
+	void				YB_ViewBasis::OnChildReturn(YB_ViewMessageBasis* msg)
 	{
+		const std::type_info& intTypeInfo = typeid(msg);
+		auto a = intTypeInfo.name();
+		if (typeid(*msg) == typeid(YB_ButtonSubmitMessage)) {
+			// Handle DerivedClassA-specific behavior
+			std::cout << "Received a DerivedClassA message." << std::endl;
+		}
 	}
 }

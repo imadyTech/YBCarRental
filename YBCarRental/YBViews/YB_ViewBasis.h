@@ -4,6 +4,7 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include <typeinfo>
 #include "YB_ViewMessage.h"
 #include "YB_DataBasis.h"
 #include <functional>
@@ -84,7 +85,7 @@ namespace YBConsoleViews
 		virtual void					BindValues();										//datasource VM -> view: Bind values to viewItems from dataSource.
 		virtual void					ReverseBind();										//view -> datasource VM: Reverse binding to VM (and upate/save)
 		virtual void					OnKey(int* keycode);
-		virtual void					OnChildReturn(YB_ViewMessageBasis msg);
+		virtual void					OnChildReturn(YB_ViewMessageBasis* msg);
 		virtual vector<char*>			Render();
 		void							Init_Background(char background);
 		void							Fill_Background(char background);
@@ -95,9 +96,9 @@ namespace YBConsoleViews
 		vector<YB_ViewItemBasis*>		focusableItems;					//Todo: move this code to basis or Init()
 
 	private:
-		bool							isUpdated = true;
 		YB_DataSource_Interface*		dataSource;
 		vector<char*>					viewArray;
+		bool							isUpdated = true;				//indicator for dirt-Rendering
 		int								currentItemIndex = -1;
 	};
 }

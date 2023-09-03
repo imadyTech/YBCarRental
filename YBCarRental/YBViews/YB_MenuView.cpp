@@ -5,7 +5,7 @@ void YBConsoleViews::YB_MenuView::OnKey(int* keycode)
 	YB_ViewBasis::OnKey(keycode);
 }
 
-void YBConsoleViews::YB_MenuView::OnChildReturn(YB_ViewMessageBasis msg)
+void YBConsoleViews::YB_MenuView::OnChildReturn(YB_ViewMessageBasis* msg)
 {
 }
 

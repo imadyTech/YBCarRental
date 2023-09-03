@@ -1,4 +1,5 @@
 #include "YB_ButtonItem.h"
+#include "YB_ViewMessage.h"
 
 namespace YBConsoleViews
 {
@@ -38,5 +39,8 @@ namespace YBConsoleViews
 	void YBConsoleViews::YB_ButtonItem::OnReturn()
 	{
 		//Jump
+		YB_ButtonSubmitMessage msg;
+		msg(const_cast<char*>("submit"));
+		this->parent->OnChildReturn(&msg);
 	}
 }

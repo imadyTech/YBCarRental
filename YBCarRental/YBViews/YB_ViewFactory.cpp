@@ -83,6 +83,7 @@ namespace YBConsoleViews
 			for (auto& itemIdPiar : itemsDef) {
 				string itemSubString = itemIdPiar.second;
 				YB_ViewItemBasis* child = this->viewItemFactory.CreateViewItem(itemSubString);
+				child->parent = view;
 				view->subItemsList.push_back(child);
 			}
 		}

@@ -12,7 +12,7 @@ namespace YBPersistence
 	{
 	public:
 		virtual const char* what() const noexcept {
-			return msg;
+			return Message;
 		}
 
 		//With this operator Functor you can:
@@ -24,12 +24,12 @@ namespace YBPersistence
 		//	throw error;
 		//}
 		void operator()(char* message)  {
-			YB_ErrorBasis::msg = message;
+			YB_ErrorBasis::Message = message;
 		}
 
 	protected:
-		YB_ErrorBasis(const char* msg) : msg(const_cast<char*> (msg)) {}
-		const char* msg;
+		YB_ErrorBasis(const char* Message) : Message(const_cast<char*> (Message)) {}
+		const char* Message;
 	};
 
 	//------------------------Repository custom error types------------------------

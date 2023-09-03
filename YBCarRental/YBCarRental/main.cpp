@@ -23,20 +23,33 @@ int main()
 	std::filesystem::path currentDir = std::filesystem::current_path();
 
 	YB_UserManager* userMgr		= new YB_UserManager(currentDir.string() + "\\UserRepo.txt");
+	userMgr->LoadAll();
 	YB_CarManager*	carMgr		= new YB_CarManager	(currentDir.string() + "\\CarRepo.txt");
+	carMgr->LoadAll();
 	YB_RentManager* rentMgr		= new YB_RentManager(currentDir.string() + "\\RentRepo.txt");
+	rentMgr->LoadAll();
+
+	YB_Window windowPtr = YB_Window();
+
+	YB_UserLoginVM* userVM = new YB_UserLoginVM(userMgr);
+	userVM->windowPtr = &windowPtr;
+	YB_UserRegisterVM* regVM = new YB_UserRegisterVM(userMgr);
+	regVM->windowPtr = &windowPtr;
 
 	YB_CarRental_LogicFactory* logicFactory = new YB_CarRental_LogicFactory();
-	logicFactory->RegisterDataSource("LoginVM", new YB_UserLoginVM(userMgr));
-	//logicFactory->RegisterDataSource("RegisterVM", new YB_UserRegisterVM(userMgr));
+	string userVMName = "YB_UserLoginVM";
+	logicFactory->RegisterDataSource(&userVMName, userVM);
+	string regVMName = "YB_UserRegisterVM";
+	logicFactory->RegisterDataSource(&regVMName, regVM);
 	
 
-	YB_Window window = YB_Window();
-	window.ConfigLogicFactory(logicFactory);
 
-	window.InitViewFactory(currentDir.string() + "\\ViewRepo.txt");
-	window.Init();
-	window.Run();
+
+	windowPtr.ConfigLogicFactory(logicFactory);
+
+	windowPtr.InitViewFactory(currentDir.string() + "\\ViewRepo.txt");
+	windowPtr.Init();
+	windowPtr.Run();
 
 	cout << "The application quit." << endl;
 	//try/catch wrapping

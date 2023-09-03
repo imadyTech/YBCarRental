@@ -1,3 +1,5 @@
+#define _HAS_STD_BYTE 0
+
 #pragma once
 #include <map>
 #include <string>
@@ -6,8 +8,12 @@
 #include "YB_Rent.h"
 #include "YB_LogicFactory.h"
 #include "YB_ManagerBasis.h"
+#include "YB_Window.h"
 
+using namespace YBConsoleViews;
 using namespace std;
+
+class YBConsoleViews::YB_Window;
 
 
 namespace YBCarRental {
@@ -33,7 +39,9 @@ namespace YBCarRental {
 		virtual void					onYesClicked() {};
 		virtual void					onNoClicked() {};
 
+		YBConsoleViews::YB_Window*		windowPtr = {};
 	protected:
+
 	};
 
 

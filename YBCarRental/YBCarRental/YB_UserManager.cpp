@@ -17,7 +17,7 @@ namespace YBCarRental
 	bool YBCarRental::YB_UserManager::UserLogin(string username, string password)
 	{
 		YB_User* userPtr = this->Get(username);
-		if (userPtr->Password == password)
+		if (userPtr && userPtr->Password == password)
 		{
 			userPtr->LoginStatus = true;
 			this->Update(*userPtr);

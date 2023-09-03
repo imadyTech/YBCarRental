@@ -85,18 +85,18 @@ namespace YBConsoleViews
 		virtual void					BindValues();										//datasource VM -> view: Bind values to viewItems from dataSource.
 		virtual void					ReverseBind();										//view -> datasource VM: Reverse binding to VM (and upate/save)
 		virtual void					OnKey(int* keycode);
-		virtual void					OnChildReturn(YB_ViewMessageBasis* msg);
+		virtual void					OnChildReturn(YB_ViewMessageBasis* Message);
 		virtual vector<char*>			Render();
 		void							Init_Background(char background);
 		void							Fill_Background(char background);
 		void							Clear_Background();
 
 		std::function<void()>			ViewReturnCallback;
+		YB_DataSource_Interface*		dataSource;
 	protected:
 		vector<YB_ViewItemBasis*>		focusableItems;					//Todo: move this code to basis or Init()
 
 	private:
-		YB_DataSource_Interface*		dataSource;
 		vector<char*>					viewArray;
 		bool							isUpdated = true;				//indicator for dirt-Rendering
 		int								currentItemIndex = -1;

@@ -58,7 +58,7 @@ namespace YBConsoleViews
 					keycode = _getch() + 256;							//Arrows
 				}
 				if (keycode1 == -1 && keycode == 17) {					//Ctrl+Q, escape the application.
-					Goto("ByeByeView");
+					Goto("Hello Car Rental");
 					continue;
 				}
 				if (keycode1 == -1 && keycode == 27) continue;			//Esc, rewind view.	
@@ -67,7 +67,7 @@ namespace YBConsoleViews
 			}
 			Render();
 			Output();
-			Sleep(300);
+			Sleep(100);
 		}
 	}
 

@@ -65,7 +65,7 @@ namespace YBConsoleViews {
 		if (YB_DataBasis::FindValue("y"))			y = std::stoi(*YB_DataBasis::FindValue("y"));
 		if (YB_DataBasis::FindValue("w"))			w = std::stoi(*YB_DataBasis::FindValue("w"));
 		if (YB_DataBasis::FindValue("h"))			h = std::stoi(*YB_DataBasis::FindValue("h"));
-		if (YB_DataBasis::FindValue("Bind"))		h = std::stoi(*YB_DataBasis::FindValue("Bind"));
+		if (YB_DataBasis::FindValue("Bind"))		Bind = *YB_DataBasis::FindValue("Bind");
 		if (YB_DataBasis::FindValue("ItemType"))	ItemType = *YB_DataBasis::FindValue("ItemType");
 		if (YB_DataBasis::FindValue("Content"))		Content = *YB_DataBasis::FindValue("Content");
 		if (YB_DataBasis::FindValue("Background"))	Background = *YB_DataBasis::FindValue("Background")->c_str();
@@ -130,14 +130,10 @@ namespace YBConsoleViews {
 			std::memset(YB_ViewItemBasis::viewArray[i], ' ', YB_ViewItemBasis::w);
 		}
 	}
-
-	void						YB_ViewItemBasis::OnKey(int* keycode)
-	{
+	void						YB_ViewItemBasis::OnFocus() {
+		this->isFocused = true;
 	}
-	void						YB_ViewItemBasis::OnReturn()
-	{
-	}
-	void						YB_ViewItemBasis::OnBackspace()
-	{
+	void						YB_ViewItemBasis::OnLostFocus() {
+		this->isFocused = false;
 	}
 }

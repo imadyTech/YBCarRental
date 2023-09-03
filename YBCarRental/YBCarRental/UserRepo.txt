@@ -1,3 +1,3 @@
-15;fshen;0;Frank;Shen;666666;10000;user;
-16;admin;0;Noman;AI;666666;0;user|admin;
-17;superman;0;Super;Man;666666;999;user;
+Id:15;UserName:fshen;LoginStatus:1;FirstName:Frank;FamilyName:Shen;Password:6666;Balance:8888;UserRoles:user;
+Id:16;UserName:admin;LoginStatus:0;FirstName:Noman;FamilyName:AI;Password:6666;Balance:10000;UserRoles:user|admin;
+Id:17;UserName:superman;LoginStatus:0;FirstName:Super;FamilyName:Man;Password:6666;Balance:9999;UserRoles:user;

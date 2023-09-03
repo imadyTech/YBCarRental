@@ -88,11 +88,11 @@ int main()
 	//YB_ViewFactory generate children view items test
 
 	//YB_Window integrated test
-	YB_Window window = YB_Window();
+	YB_Window windowPtr = YB_Window();
 	//window.ConfigLogicFactory(xxxxLogicFactory);
-	window.InitViewFactory("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/ViewRepo.txt");
-	window.Init();
-	window.Run();
+	windowPtr.InitViewFactory("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/ViewRepo.txt");
+	windowPtr.Init();
+	windowPtr.Run();
 
 }
 

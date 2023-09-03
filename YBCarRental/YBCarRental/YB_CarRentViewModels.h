@@ -1,17 +1,38 @@
 #pragma once
 #include "YB_ViewModelBasis.h"
 #include <YB_UserManager.h>
+#include "YB_Window.h"
+using namespace YBConsoleViews;
+
+class YBConsoleViews::YB_Window;
+
 
 
 namespace YBCarRental {
 	class YB_UserLoginVM : public YB_ViewModelBasis<YB_User>
 	{
 	public:
-		YB_UserLoginVM(YB_UserManager* manager) {
-			dataManagerPtr = manager;
+		YB_UserLoginVM(YB_UserManager* managerPtr) {
+			dataManagerPtr = managerPtr;
 		};
 
 		YB_UserManager* dataManagerPtr = {};
+
+		void					onSubmit(map<string, string>* valuesMapPtr)				override
+		{
+			string uName	= "";
+			string uPsd		= "";
+			const auto& nItr = valuesMapPtr->find(const_cast<char*>("UserName"));
+			if (nItr != valuesMapPtr->end())
+				uName = nItr->second;
+			const auto& pItr = valuesMapPtr->find(const_cast<char*>("Password"));
+			if (pItr != valuesMapPtr->end())
+				uPsd = pItr->second;
+
+			bool loginResult = dataManagerPtr->UserLogin(uName, uPsd);
+			if (loginResult)
+				windowPtr->Goto("MainMenuView");			//Todo: this shall be view.GotoView
+		};
 
 		//string* Get_PropertyValue(string* bindNamePtr)										override {};
 
@@ -26,8 +47,8 @@ namespace YBCarRental {
 	class YB_UserRegisterVM : public YB_ViewModelBasis<YB_User>
 	{
 	public:
-		YB_UserRegisterVM(YB_UserManager* manager) {
-			this->dataManagerPtr = manager;
+		YB_UserRegisterVM(YB_UserManager* managerPtr) {
+			this->dataManagerPtr = managerPtr;
 		};
 
 		YB_UserManager* dataManagerPtr;

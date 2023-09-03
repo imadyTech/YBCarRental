@@ -24,10 +24,12 @@ namespace YBConsoleViews
 			{
 				throw YB_FactoryError();
 			}
+			if (!viewPtr->Source.empty())
+				viewPtr->dataSource = logicFactory->FindDataSource(&viewPtr->Source);
 		}
 	}
 
-	YB_ViewBasis*	YB_ViewFactory::GetView(int viewId) {
+	YB_ViewBasis* YB_ViewFactory::GetView(int viewId) {
 		auto iterator = viewPool.find(viewId);
 		if (iterator != viewPool.end())
 		{
@@ -37,7 +39,7 @@ namespace YBConsoleViews
 			return nullptr;
 	}
 
-	YB_ViewBasis*	YB_ViewFactory::GetView(string viewTitle) {
+	YB_ViewBasis* YB_ViewFactory::GetView(string viewTitle) {
 		for (auto& iterator : viewPool)
 		{
 			if (iterator.second->Title == viewTitle)
@@ -48,7 +50,7 @@ namespace YBConsoleViews
 		return nullptr;
 	};
 
-	YB_ViewBasis*	YB_ViewFactory::CreateProduct(const string* serializeString)
+	YB_ViewBasis* YB_ViewFactory::CreateProduct(const string* serializeString)
 	{
 		YB_ViewBasis* basePtr = new YB_ViewBasis();
 		basePtr->Deserialize(*serializeString);
@@ -74,7 +76,7 @@ namespace YBConsoleViews
 		}
 		return nullptr;
 	}
-		
+
 	void			YB_ViewFactory::CreateSubViewitems(YB_ViewBasis* view, const string viewString)
 	{
 		auto itemsDef = (*view).FindValues("item");

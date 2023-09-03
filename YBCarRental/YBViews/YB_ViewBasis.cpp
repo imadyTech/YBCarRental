@@ -3,7 +3,6 @@
 #include "YB_ViewItemBasis.h"  // Include the full definition here
 #include "YB_ViewMessage.h"
 #include "YB_Errors.h"
-#include <Windows.h>
 #include <string>
 namespace YBConsoleViews {
 	YB_ViewBasis::YB_ViewBasis()
@@ -114,7 +113,7 @@ namespace YBConsoleViews {
 			}
 			catch (exception e) {
 				YB_ReverseBindingError error;
-				error(const_cast<char*>(("error in reverse binding values to item:"+ item->Bind).c_str()));
+				error(const_cast<char*>(("error in reverse binding values to item:" + item->Bind).c_str()));
 				throw error;
 			}
 		}
@@ -179,8 +178,6 @@ namespace YBConsoleViews {
 
 	void				YB_ViewBasis::OnKey(int* keycode)
 	{
-		string message = std::string( "ViewBasis: ") + std::to_string(*keycode);
-		OutputDebugStringA(message.c_str());
 		if (subItemsList.empty())
 			return;
 		if (focusableItems.empty())									//No item to be operated
@@ -189,15 +186,15 @@ namespace YBConsoleViews {
 			currentItemIndex = 0;
 		if (*keycode == 9)											//Tab; Toggle items.
 		{
-			if (focusableItems.size() == 1) {
-				(*focusableItems[currentItemIndex]).isFocused = true;
+			if (focusableItems.size() == 1) {						//only 1 item
+				(*focusableItems[currentItemIndex]).OnFocus();
 				return;
 			}
-			(*focusableItems[currentItemIndex]).isFocused = false;
+			(*focusableItems[currentItemIndex]).OnLostFocus();
 			currentItemIndex++;
 			if (currentItemIndex >= focusableItems.size())
 				currentItemIndex = 0;
-			(*focusableItems[currentItemIndex]).isFocused = true;
+			(*focusableItems[currentItemIndex]).OnFocus();
 		}
 		if (*keycode == 13)											//Return key;
 		{
@@ -219,11 +216,6 @@ namespace YBConsoleViews {
 
 	void				YB_ViewBasis::OnChildReturn(YB_ViewMessageBasis* msg)
 	{
-		const std::type_info& intTypeInfo = typeid(msg);
-		auto a = intTypeInfo.name();
-		if (typeid(*msg) == typeid(YB_ButtonSubmitMessage)) {
-			// Handle DerivedClassA-specific behavior
-			std::cout << "Received a DerivedClassA message." << std::endl;
-		}
+		///implement childReturn behaviour in derived YB_ViewBasis classes
 	}
 }

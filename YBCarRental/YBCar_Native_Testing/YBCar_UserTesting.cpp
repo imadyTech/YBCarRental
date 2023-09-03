@@ -36,7 +36,7 @@ namespace YBCarTesting
 		}
 		TEST_METHOD(YB_UserDeserielizeTest)
 		{
-			string YB_ViewModelBasis = "15;fshen;0;Frank;Shen;666666;10000;user;";
+			string YB_ViewModelBasis = "Id:15;UserName:fshen;LoginStatus:0;FirstName:Frank;FamilyName:Shen;Password:666666;Balance:10000;UserRoles:user;";
 			YB_User user = YB_User();
 			user.Deserialize(YB_ViewModelBasis);
 			Assert::AreEqual("Frank", user.FirstName.c_str());
@@ -46,7 +46,7 @@ namespace YBCarTesting
 		}
 		TEST_METHOD(YB_UserSerielizeTest)
 		{
-			string expect = "15;fshen;0;Frank;Shen;666666;10000;user;";
+			string expect = "Id:15;UserName:fshen;LoginStatus:0;FirstName:Frank;FamilyName:Shen;Password:666666;Balance:10000;UserRoles:user;";
 			YB_User user = CreateSimulativeNormalUser();
 			string result = *user.Serialize();
 			cout << result;

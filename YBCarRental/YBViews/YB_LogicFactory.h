@@ -18,7 +18,7 @@ namespace YBConsoleViews {
 		/// </summary>
 		/// <param name="sourceName"></param>
 		/// <param name="service"></param>
-		virtual bool RegisterDataSource(const char* sourceName, YB_DataSource_Interface* service) = 0;
+		virtual bool RegisterDataSource(string* sourceName, YB_DataSource_Interface* service) = 0;
 
 		/// <summary>
 		/// return the service instance found in the service pool
@@ -40,6 +40,6 @@ namespace YBConsoleViews {
 		#pragma endregion
 
 	protected:
-		std::map<std::string*, YB_DataSource_Interface*> serviceInstanceMap;
+		std::map<std::string, YB_DataSource_Interface*> *serviceInstanceMap ;
 	};
 }

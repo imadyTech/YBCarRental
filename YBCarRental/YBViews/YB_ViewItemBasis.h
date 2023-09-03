@@ -60,13 +60,16 @@ namespace YBConsoleViews
 		void							Deserialize(string line);
 		virtual void					Deserialize(string line, const char* separator) override;
 
+		virtual std::vector<char*>		Render();
 		void							Init_Background(char background);
 		void							Fill_Background(char background);
 		void							Clear_Background();
-		virtual void					OnKey(int* keycode);
-		virtual void					OnBackspace();
-		virtual void					OnReturn();
-		virtual std::vector<char*>		Render();
+		virtual void					OnFocus();
+		virtual void					OnLostFocus();
+
+		virtual void					OnBackspace()			{};
+		virtual void					OnReturn()				{};
+		virtual void					OnKey(int* keycode)		{};
 
 		YB_ViewBasis*					parent;
 	protected:

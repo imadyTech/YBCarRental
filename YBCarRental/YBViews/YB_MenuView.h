@@ -14,7 +14,7 @@ namespace YBConsoleViews
 			Init_Background(' ');
 		};
 		void			OnKey(int* keycode)						override;
-		void			OnChildReturn(YB_ViewMessageBasis* msg)	override;
+		void			OnChildReturn(YB_ViewMessageBasis* Message)	override;
 		vector<char*>	Render()								override;
 	};
 }

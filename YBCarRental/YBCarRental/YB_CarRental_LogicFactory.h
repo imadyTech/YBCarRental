@@ -12,6 +12,7 @@ namespace YBCarRental {
 	public:
 		YB_CarRental_LogicFactory() : YB_LogicFactory::YB_LogicFactory()
 		{
+			serviceInstanceMap = new std::map<std::string, YB_DataSource_Interface*>();
 		};
 
 		/// <summary>
@@ -19,7 +20,7 @@ namespace YBCarRental {
 		/// </summary>
 		/// <param name="sourceName"></param>
 		/// <param name="service"></param>
-		bool RegisterDataSource(const char* sourceName, YB_DataSource_Interface* service) override;
+		bool RegisterDataSource(string* sourceName, YB_DataSource_Interface* service) override;
 
 		/// <summary>
 		/// return the service instance found in the service pool

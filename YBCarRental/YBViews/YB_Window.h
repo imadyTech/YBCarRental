@@ -13,7 +13,6 @@
 //#include "YB_ViewItemFactory.h"
 
 using namespace std;
-
 namespace YBConsoleViews
 {
 	class YB_ViewBasis;						//Forward declaration in C++

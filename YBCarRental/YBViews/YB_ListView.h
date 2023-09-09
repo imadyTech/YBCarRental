@@ -14,9 +14,10 @@ namespace YBConsoleViews
 			this->Deserialize(serializeString);
 			Init_Background(' ');
 		};
-		void			OnKey(int* keycode)						override;
-		void			OnChildReturn(YB_ViewMessageBasis* Message)	override;
-		vector<char*>	Render()								override;
+		void			OnKey(int* keycode)															override;
+		void			OnChildReturn(YB_ViewMessageBasis* msgPtr, YB_ViewItemBasis* fromItemPtr)	override;
+		void			OnConfirmReturn(YB_ViewMessageBasis* msgPtr, YB_ViewBasis* fromViewPtr)	override;
+		vector<char*>	Render()																	override;
 	};
 }
 

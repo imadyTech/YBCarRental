@@ -47,6 +47,7 @@ namespace YBConsoleViews {
 			<< "ItemType:"		<< ItemType		<< YB_DataBasis::persistentSeparator
 			<< "Content:"		<< Content		<< YB_DataBasis::persistentSeparator
 			<< "Bind:"			<< Bind			<< YB_DataBasis::persistentSeparator
+			<< "Link:"			<< Link			<< YB_DataBasis::persistentSeparator
 			<< "Background:"	<< Background	<< YB_DataBasis::persistentSeparator
 			<< "isCentral:"		<< isCentral	<< YB_DataBasis::persistentSeparator
 			<< "isFocused:"		<< isFocused	<< YB_DataBasis::persistentSeparator
@@ -66,6 +67,7 @@ namespace YBConsoleViews {
 		if (YB_DataBasis::FindValue("w"))			w = std::stoi(*YB_DataBasis::FindValue("w"));
 		if (YB_DataBasis::FindValue("h"))			h = std::stoi(*YB_DataBasis::FindValue("h"));
 		if (YB_DataBasis::FindValue("Bind"))		Bind = *YB_DataBasis::FindValue("Bind");
+		if (YB_DataBasis::FindValue("Link"))		Link = *YB_DataBasis::FindValue("Link");
 		if (YB_DataBasis::FindValue("ItemType"))	ItemType = *YB_DataBasis::FindValue("ItemType");
 		if (YB_DataBasis::FindValue("Content"))		Content = *YB_DataBasis::FindValue("Content");
 		if (YB_DataBasis::FindValue("Background"))	Background = *YB_DataBasis::FindValue("Background")->c_str();

@@ -18,6 +18,8 @@ using namespace YBPersistence;
 
 namespace YBConsoleViews
 {
+	class YB_Window;
+
 	typedef YBConsoleViews::YB_MenuView			MenuView;
 	typedef YBConsoleViews::YB_WelcomeView		WelcomeView;
 	typedef YBConsoleViews::YB_InputView		InputView;
@@ -46,10 +48,11 @@ namespace YBConsoleViews
 		YB_ViewBasis*					GetView(string viewTitle);
 
 		YB_LogicFactory*				logicFactory;
+		YB_ViewItemFactory				viewItemFactory;
+		YB_Window* windowPtr;
 	private:
 		std::map<int, YB_ViewBasis*>	viewPool;
 		YBPersistence::YB_Repository*	repository;
-		YB_ViewItemFactory				viewItemFactory;
 
 		/// <summary>
 		/// create view in runtime using Factory Design Pattern implementation

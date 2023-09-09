@@ -4,10 +4,10 @@
 
 
 
-bool YBCarRental::YB_CarRental_LogicFactory::RegisterDataSource(string* sourceName, YB_DataSource_Interface* service)
+bool YBCarRental::YB_CarRental_LogicFactory::RegisterDataSource(const string& sourceName, YB_DataSource_Interface* service)
 {
 	try {
-		YB_LogicFactory::serviceInstanceMap->insert(std::make_pair(*sourceName, service));
+		YB_LogicFactory::serviceInstanceMap->insert(std::make_pair(sourceName, service));
 		return true;
 	}
 	catch (exception e)

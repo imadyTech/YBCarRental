@@ -9,6 +9,7 @@
 #include "YB_DataBasis.h"
 #include <functional>
 #include "YB_DataSource_Interface.h"
+//#include "YB_ViewItemFactory.h"
 //#include "YB_ViewItemBasis.h"				// Forward declaration - some c++ specific trap
 
 using namespace std;
@@ -17,6 +18,8 @@ using namespace YBPersistence;
 namespace YBConsoleViews
 {
 	class YB_ViewItemBasis;					// Forward declaration - some c++ specific trap
+	class YB_ViewItemFactory;
+	class YB_Window;
 
 	class YB_ViewBasis : public YBPersistence::YB_DataBasis
 	{
@@ -38,11 +41,20 @@ namespace YBConsoleViews
 				ViewType = other.ViewType;
 				w = other.w;
 				h = other.h;
+				Background = other.Background;
 				Source = other.Source;
 				GotoView = other.GotoView;
+				ConfirmView = other.ConfirmView;
 				subItemsList = other.subItemsList;
-				viewArray = other.viewArray;
+
 				dataSource = other.dataSource;
+				itemFactoryPtr = other.itemFactoryPtr;
+				fromViewPtr = other.fromViewPtr;
+				windowPtr = other.windowPtr;
+
+				viewArray = other.viewArray;
+				isUpdated = other.isUpdated;
+				currentItemIndex = other.currentItemIndex;
 
 
 				// Deep copy of other resources, if any
@@ -65,41 +77,51 @@ namespace YBConsoleViews
 
 		string							ViewType = "";
 		string							Title = "";
-		int								w = 200, h = 32;									//view size
+		int								w = 200, h = 32;
 		char							Background = '.';
 		string							Source="";
 		string							GotoView="";
+		string							ConfirmView = "";
 		vector<YB_ViewItemBasis*>		subItemsList;
 
 		//void AddViewItem(YB_ViewItemBasis item);
 		//void AddViewItems(vector<YB_ViewItemBasis> items);
 
-		virtual string*					Serialize()											override;
-		virtual void					Serialize(std::stringstream& strStream)				override;
+		virtual string*					Serialize()														override;
+		virtual void					Serialize(std::stringstream& strStream)							override;
 		void							Deserialize(string line);
-		virtual void					Deserialize(string line, const char* separator)		override;
+		virtual void					Deserialize(string line, const char* separator)					override;
 		//void Serialize(ofstream* output) override;
 
-		void							Init();												
-		virtual	string*					Bind(string* bindName);								//datasource VM -> view: Bind a value to a viewItem.
-		virtual void					BindValues();										//datasource VM -> view: Bind values to viewItems from dataSource.
-		virtual void					ReverseBind();										//view -> datasource VM: Reverse binding to VM (and upate/save)
+		virtual void					Init();															
+		virtual	string*					Bind(string* bindName);											//datasource VM -> view: Bind a value to a viewItem.
+		virtual void					BindValues();													//datasource VM -> view: Bind values to viewItems from dataSource.
+		virtual void					ReverseBind();													//view -> datasource VM: Reverse binding to VM (and upate/save)
 		virtual void					OnKey(int* keycode);
-		virtual void					OnChildReturn(YB_ViewMessageBasis* Message);
+		virtual void					OnChildReturn	(YB_ViewMessageBasis*		Message, 
+														YB_ViewItemBasis*		fromItemPtr);			//Entry point for internal items
+		virtual void					OnConfirmReturn (YB_ViewMessageBasis*		message, 
+														YB_ViewBasis*			fromViewPtr);			//Entry point between views
 		virtual vector<char*>			Render();
+		virtual void					Exit();
 		void							Init_Background(char background);
 		void							Fill_Background(char background);
 		void							Clear_Background();
 
 		std::function<void()>			ViewReturnCallback;
-		YB_DataSource_Interface*		dataSource;
+		YB_ViewItemFactory*				itemFactoryPtr;													//this could be used for runtime item generation
+		YB_DataSource_Interface*		dataSource;														//the ViewModel served as data source
+		YB_ViewBasis*					fromViewPtr;													//the previous view, so as to carry datasource forward
+		YB_Window*						windowPtr;
 	protected:
-		vector<YB_ViewItemBasis*>		focusableItems;					//Todo: move this code to basis or Init()
+		vector<YB_ViewItemBasis*>		focusableItems;													//Todo: move this code to basis or Init()
+		void							Submit();
 
 	private:
 		vector<char*>					viewArray;
-		bool							isUpdated = true;				//indicator for dirt-Rendering
+		bool							isUpdated = true;												//indicator for dirt-Rendering
 		int								currentItemIndex = -1;
+
 	};
 }
 #endif //YB_ViewBasis_H

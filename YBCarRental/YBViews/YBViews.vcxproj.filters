@@ -108,6 +108,9 @@
     <ClCompile Include="YB_DataSource_Interface.cpp">
       <Filter>Source Files\YB_Logic</Filter>
     </ClCompile>
+    <ClCompile Include="YB_MenuItem.cpp">
+      <Filter>Source Files\YB_ViewItemTemplates</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="YB_Window.h">
@@ -166,6 +169,9 @@
     </ClInclude>
     <ClInclude Include="YBConsoleVIew-Main.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_MenuItem.h">
+      <Filter>Header Files\YB_ViewItemTemplates</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

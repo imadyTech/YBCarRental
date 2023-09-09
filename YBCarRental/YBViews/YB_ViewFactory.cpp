@@ -10,7 +10,9 @@ namespace YBConsoleViews
 
 		for (auto& pairValue : (*this->repository).allRecordLines)
 		{
-			YB_ViewBasis* viewPtr = this->CreateProduct(&(pairValue.second));
+			YB_ViewBasis* viewPtr	= this->CreateProduct(&(pairValue.second));
+			viewPtr->itemFactoryPtr = &this->viewItemFactory;
+			viewPtr->windowPtr		= this->windowPtr;
 			//... Todo
 			//viewPtr->DataSource = (*this->logicFactory).FindDataSource(&viewPtr->DataSourceName);
 
@@ -29,7 +31,7 @@ namespace YBConsoleViews
 		}
 	}
 
-	YB_ViewBasis* YB_ViewFactory::GetView(int viewId) {
+	YB_ViewBasis*	YB_ViewFactory::GetView(int viewId) {
 		auto iterator = viewPool.find(viewId);
 		if (iterator != viewPool.end())
 		{
@@ -39,7 +41,7 @@ namespace YBConsoleViews
 			return nullptr;
 	}
 
-	YB_ViewBasis* YB_ViewFactory::GetView(string viewTitle) {
+	YB_ViewBasis*	YB_ViewFactory::GetView(string viewTitle) {
 		for (auto& iterator : viewPool)
 		{
 			if (iterator.second->Title == viewTitle)
@@ -50,7 +52,7 @@ namespace YBConsoleViews
 		return nullptr;
 	};
 
-	YB_ViewBasis* YB_ViewFactory::CreateProduct(const string* serializeString)
+	YB_ViewBasis*	YB_ViewFactory::CreateProduct(const string* serializeString)
 	{
 		YB_ViewBasis* basePtr = new YB_ViewBasis();
 		basePtr->Deserialize(*serializeString);

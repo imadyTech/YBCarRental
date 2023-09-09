@@ -144,6 +144,7 @@
     <ClCompile Include="YB_ListItem.cpp" />
     <ClCompile Include="YB_ListView.cpp" />
     <ClCompile Include="YB_LogicFactory.cpp" />
+    <ClCompile Include="YB_MenuItem.cpp" />
     <ClCompile Include="YB_MenuView.cpp" />
     <ClCompile Include="YB_TextItem.cpp" />
     <ClCompile Include="YB_ViewBasis.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="YB_ListItem.h" />
     <ClInclude Include="YB_ListView.h" />
     <ClInclude Include="YB_LogicFactory.h" />
+    <ClInclude Include="YB_MenuItem.h" />
     <ClInclude Include="YB_MenuView.h" />
     <ClInclude Include="YB_TextItem.h" />
     <ClInclude Include="YB_ViewBasis.h" />

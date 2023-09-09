@@ -8,6 +8,7 @@ namespace YBConsoleViews
 	static const char* msgDef_Submit	= "SUBMIT";
 	static const char* msgDef_Yes		= "YES";
 	static const char* msgDef_No		= "NO";
+	static const char* msgDef_Menu		= "MENU";
 
 	class YB_ViewMessageBasis
 	{
@@ -25,33 +26,40 @@ namespace YBConsoleViews
 
 
 #pragma region ================= Concrete Messages ==================
-	class YB_ButtonSubmitMessage : public YB_ViewMessageBasis
+	class YB_ButtonSubmitMessage :	public YB_ViewMessageBasis
 	{
 	public:
 		YB_ButtonSubmitMessage() : YB_ViewMessageBasis(msgDef_Submit) {}
 
 	};	
 	
-	class YB_ButtonYesMessage : public YB_ViewMessageBasis
+	class YB_ButtonYesMessage :		public YB_ViewMessageBasis
 	{
 	public:
 		YB_ButtonYesMessage() : YB_ViewMessageBasis(msgDef_Yes) {}
 
 	};
 
-	class YB_ButtonNoMessage : YB_ViewMessageBasis
+	class YB_ButtonNoMessage :		public YB_ViewMessageBasis
 	{
 	public:
 		YB_ButtonNoMessage() : YB_ViewMessageBasis(msgDef_No) {}
 	};
 
-	class YB_ListItemMessage : YB_ViewMessageBasis
+	class YB_MenuItemMessage :		public YB_ViewMessageBasis
+	{
+	public:
+		YB_MenuItemMessage() : YB_ViewMessageBasis(msgDef_Menu) {}
+		YB_MenuItemMessage(const string& link) :YB_ViewMessageBasis(link.c_str()) {}
+	};
+
+	class YB_ListItemMessage :		public YB_ViewMessageBasis
 	{
 	public:
 		int itemId;
 	};
 
-	class YB_InputItemMessage : YB_ViewMessageBasis
+	class YB_InputItemMessage :		public YB_ViewMessageBasis
 	{
 	public:
 

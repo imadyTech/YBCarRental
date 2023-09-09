@@ -29,6 +29,7 @@ namespace YBConsoleViews
 				Content = other.Content;
 				Background = other.Background;
 				Bind = other.Bind;
+				Link = other.Link;
 				isCentral = other.isCentral;
 				isFocused = other.isFocused;
 				isSelected = other.isSelected;
@@ -50,6 +51,7 @@ namespace YBConsoleViews
 		string							Content;
 		char							Background = ' ';
 		string							Bind="";
+		string							Link = "";
 		bool							isCentral = true;
 		bool							isFocused = false;
 		bool							isSelected = false;
@@ -57,7 +59,7 @@ namespace YBConsoleViews
 
 		virtual string*					Serialize() override;
 		virtual void					Serialize(std::stringstream& strStream) override;
-		void							Deserialize(string line);
+		virtual void					Deserialize(string line);
 		virtual void					Deserialize(string line, const char* separator) override;
 
 		virtual std::vector<char*>		Render();

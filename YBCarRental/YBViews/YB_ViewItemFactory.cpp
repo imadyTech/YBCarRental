@@ -11,11 +11,11 @@ namespace YBConsoleViews
 		for (auto& pairValue : (*repository).allRecordLines)
 		{
 			//std::unique_ptr<YB_ViewItemBasis> viewPtr = this->CreateProduct(pairValue.second); //Pass the view serializeString
-			YB_ViewItemBasis* view = this->CreateProduct(&pairValue.second); //Pass the view serializeString
+			YB_ViewItemBasis* viewItemPtr = this->CreateProduct(&pairValue.second); //Pass the view serializeString
 			try
 			{
 				//(*view).Deserialize(pairValue.second);										//deserialize String
-				viewitemPool.insert(std::make_pair(pairValue.first, view));
+				viewitemPool.insert(std::make_pair(pairValue.first, viewItemPtr));
 			}
 			catch (exception e)
 			{
@@ -95,6 +95,9 @@ namespace YBConsoleViews
 		if (type == "ButtonItem")	{ return new ButtonItem(*serializeString); }
 		if (type == "InputItem")	{ return new InputItem(*serializeString); }
 		if (type == "ListItem")		{ return new ListItem(*serializeString); }
+		if (type == "MenuItem")		
+		{ 
+			return new MenuItem(*serializeString); }
 		return &basePtr;
 	}
 
@@ -104,6 +107,7 @@ namespace YBConsoleViews
 		if (type == "ButtonItem")	return std::make_unique<ButtonItem>();
 		if (type == "InputItem")	return std::make_unique<InputItem>();
 		if (type == "ListItem")		return std::make_unique<ListItem>();
+		if (type == "MenuItem")		return std::make_unique<MenuItem>();
 		return nullptr;
 	}
 }

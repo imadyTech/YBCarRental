@@ -4,6 +4,11 @@
 #include "YB_ViewMessage.h"
 #include "YB_Errors.h"
 #include <string>
+#include "YB_Window.h"
+
+
+class YB_Window;
+
 namespace YBConsoleViews {
 	YB_ViewBasis::YB_ViewBasis()
 	{
@@ -50,12 +55,13 @@ namespace YBConsoleViews {
 	{
 		YB_DataBasis::Serialize(strStream);
 		strStream
-			<< "Title:" << Title << YB_DataBasis::persistentSeparator
-			<< "ViewType:" << ViewType << YB_DataBasis::persistentSeparator
-			<< "w:" << w << YB_DataBasis::persistentSeparator
-			<< "h:" << h << YB_DataBasis::persistentSeparator
-			<< "Source:" << Source << YB_DataBasis::persistentSeparator
-			<< "GotoView:" << GotoView << YB_DataBasis::persistentSeparator;
+			<< "Title:"			<< Title			<< YB_DataBasis::persistentSeparator
+			<< "ViewType:"		<< ViewType			<< YB_DataBasis::persistentSeparator
+			<< "w:"				<< w				<< YB_DataBasis::persistentSeparator
+			<< "h:"				<< h				<< YB_DataBasis::persistentSeparator
+			<< "Source:"		<< Source			<< YB_DataBasis::persistentSeparator
+			<< "ConfirmView:"	<< ConfirmView		<< YB_DataBasis::persistentSeparator
+			<< "GotoView:"		<< GotoView			<< YB_DataBasis::persistentSeparator;
 	}
 	void				YB_ViewBasis::Deserialize(string line)
 	{
@@ -65,12 +71,13 @@ namespace YBConsoleViews {
 	{
 		YB_DataBasis::Deserialize(line, separator);
 
-		if (YB_DataBasis::FindValue("Title"))		Title = *YB_DataBasis::FindValue("Title");
-		if (YB_DataBasis::FindValue("ViewType"))	ViewType = *YB_DataBasis::FindValue("ViewType");
-		if (YB_DataBasis::FindValue("w"))			w = std::stoi(*YB_DataBasis::FindValue("w"));
-		if (YB_DataBasis::FindValue("h"))			h = std::stoi(*YB_DataBasis::FindValue("h"));
-		if (YB_DataBasis::FindValue("Source"))		Source = *YB_DataBasis::FindValue("Source");
-		if (YB_DataBasis::FindValue("GotoView"))	GotoView = *YB_DataBasis::FindValue("GotoView");
+		if (YB_DataBasis::FindValue("Title"))			Title = *YB_DataBasis::FindValue("Title");
+		if (YB_DataBasis::FindValue("ViewType"))		ViewType = *YB_DataBasis::FindValue("ViewType");
+		if (YB_DataBasis::FindValue("w"))				w = std::stoi(*YB_DataBasis::FindValue("w"));
+		if (YB_DataBasis::FindValue("h"))				h = std::stoi(*YB_DataBasis::FindValue("h"));
+		if (YB_DataBasis::FindValue("Source"))			Source = *YB_DataBasis::FindValue("Source");
+		if (YB_DataBasis::FindValue("ConfirmView"))		ConfirmView = *YB_DataBasis::FindValue("ConfirmView");
+		if (YB_DataBasis::FindValue("GotoView"))		GotoView = *YB_DataBasis::FindValue("GotoView");
 	}
 
 	/// <summary>
@@ -78,24 +85,32 @@ namespace YBConsoleViews {
 	/// </summary>
 	/// <returns></returns>
 	void				YB_ViewBasis::Init() {
+		//first let datasource initiate
+		if (fromViewPtr && this->dataSource)
+			this->dataSource->onViewInitiated(fromViewPtr->dataSource);
+
 		for (auto& item : this->subItemsList)
 		{
 			//find and cache the non-static items
-			if (item->ItemType == "ButtonItem" || item->ItemType == "InputItem" || item->ItemType == "ListItem")
+			if (item->ItemType == "ButtonItem" || item->ItemType == "InputItem" || item->ItemType == "ListItem" || item->ItemType =="MenuItem")
 				focusableItems.push_back(item);
-			//Bind items from data properties
+			//The basis will try to Bind items from data properties;
+			//Nothing would happen if unsuccessful in binding.
+			//Override the Init in children, if necessary.
 			if (dataSource && !item->Bind.empty())
 				try {
-				auto valuePtr = dataSource->Get_PropertyValue(&item->Bind);
+				//auto valuePtr = dataSource->Get_PropertyValue(&item->Bind);
+				auto valuePtr = this->Bind(&item->Bind);
 				if (valuePtr != nullptr)
 					item->Content = *valuePtr;
+				//item->Content = *this->Bind(&item->Bind);//This has risk of returning nullptr and not handled by try/catch.
 			}
 			catch (exception e)
 			{
 				continue;
 				//throw YB_BindingError();		//won't break the binding process
 			}
-		}	
+		}
 	}
 
 	string*				YB_ViewBasis::Bind(string* bindName) {
@@ -159,6 +174,8 @@ namespace YBConsoleViews {
 
 		return viewArray;
 	}
+
+	void				YB_ViewBasis::Exit() {}
 
 	void				YB_ViewBasis::Init_Background(char background)
 	{
@@ -227,20 +244,26 @@ namespace YBConsoleViews {
 		}
 	}
 
-	void				YB_ViewBasis::OnChildReturn(YB_ViewMessageBasis* msgPtr)
+	void				YB_ViewBasis::OnChildReturn(YB_ViewMessageBasis* msgPtr, YB_ViewItemBasis* fromItemPtr)
 	{
-		if (msgPtr->Message == msgDef_Submit) {
-			map<string, string> bindMap;
+	}
+
+	void				YB_ViewBasis::OnConfirmReturn(YB_ViewMessageBasis* msgPtr, YB_ViewBasis* fromViewPtr)
+	{
+	}
+
+	void				YB_ViewBasis::Submit()
+	{
+			map<string, string> reverseBindMap;
 			//find out the viewItems which has 'Bind' tag.
 			for (auto& iterator : this->subItemsList)
 			{
 				if (!iterator->Bind.empty())
-					bindMap.insert(std::make_pair(iterator->Bind, iterator->Content));
+					reverseBindMap.insert(std::make_pair(iterator->Bind, iterator->Content));
 			}
-			if (!bindMap.empty())
-				this->dataSource->onSubmit(&bindMap);
-		}
-		if (msgPtr->Message == msgDef_Yes) {}
-		if (msgPtr->Message == msgDef_No) {}
+			if (!reverseBindMap.empty())
+				//submit to VM
+				this->dataSource->onSubmit(&reverseBindMap);
+
 	}
 }

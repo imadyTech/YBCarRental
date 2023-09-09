@@ -31,18 +31,11 @@ int main()
 
 	YB_Window windowPtr = YB_Window();
 
-	YB_UserLoginVM* userVM = new YB_UserLoginVM(userMgr);
-	userVM->windowPtr = &windowPtr;
-	YB_UserRegisterVM* regVM = new YB_UserRegisterVM(userMgr);
-	regVM->windowPtr = &windowPtr;
-
 	YB_CarRental_LogicFactory* logicFactory = new YB_CarRental_LogicFactory();
-	string userVMName = "YB_UserLoginVM";
-	logicFactory->RegisterDataSource(&userVMName, userVM);
-	string regVMName = "YB_UserRegisterVM";
-	logicFactory->RegisterDataSource(&regVMName, regVM);
-	string userMenuVMName = "YB_UserMenuVM";
-	logicFactory->RegisterDataSource(&userMenuVMName, new YB_UserMenuVM(userMgr));
+	logicFactory->RegisterDataSource("YB_UserLoginVM", new YB_UserLoginVM(userMgr, &windowPtr));
+	logicFactory->RegisterDataSource("YB_UserRegisterVM", new YB_UserRegisterVM(userMgr, &windowPtr));
+	logicFactory->RegisterDataSource("YB_UserMenuVM", new YB_UserMenuVM(userMgr, &windowPtr));
+	logicFactory->RegisterDataSource("YB_AdminMenuVM", new YB_AdminMenuVM(userMgr, &windowPtr));
 	
 
 

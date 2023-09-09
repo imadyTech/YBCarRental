@@ -6,7 +6,7 @@ void YBConsoleViews::YB_DetailsView::OnKey(int* keycode)
 {
 }
 
-void YBConsoleViews::YB_DetailsView::OnChildReturn(YB_ViewMessageBasis* Message)
+void YBConsoleViews::YB_DetailsView::OnChildReturn(YB_ViewMessageBasis* Message, YB_ViewItemBasis* fromItemPtr)
 {
 }
 

@@ -14,6 +14,17 @@ namespace YBConsoleViews
 			Init_Background(' ');
 		};
 
+		string ButtonType;
+
+		void Deserialize(string line) override
+		{
+			YB_ViewItemBasis::Deserialize(line);
+
+			if (YB_DataBasis::FindValue("ButtonType"))		ButtonType = *YB_DataBasis::FindValue("ButtonType");
+		}
+
+
+
 		void				OnKey(int* keycode)		override;
 		void				OnBackspace()			override;
 		void				OnReturn()				override;

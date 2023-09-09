@@ -38,9 +38,17 @@ namespace YBConsoleViews
 
 	void YBConsoleViews::YB_ButtonItem::OnReturn()
 	{
-		//Jump
-		YB_ButtonSubmitMessage Message;
-		//Message(const_cast<char*>("submit"));
-		this->parent->OnChildReturn(&Message);
+		if (this->ButtonType == "Submit") {
+			YB_ButtonSubmitMessage Message;
+			this->parent->OnChildReturn(&Message, this);
+		}
+		if (this->ButtonType == "Yes") {
+			YB_ButtonYesMessage Message;
+			this->parent->OnChildReturn(&Message, this);
+		}
+		if (this->ButtonType == "No") {
+			YB_ButtonNoMessage Message;
+			this->parent->OnChildReturn(&Message, this);
+		}
 	}
 }

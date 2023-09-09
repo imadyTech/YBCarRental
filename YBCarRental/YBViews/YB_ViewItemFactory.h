@@ -6,6 +6,7 @@
 #include "YB_InputItem.h"
 #include "YB_ListItem.h"
 #include "YB_TextItem.h"
+#include "YB_MenuItem.h"
 #include <YB_Errors.h>
 #include "YB_Repository.h"
 
@@ -18,6 +19,7 @@ namespace YBConsoleViews
 	typedef YBConsoleViews::YB_InputItem		InputItem;
 	typedef YBConsoleViews::YB_ListItem			ListItem;
 	typedef YBConsoleViews::YB_TextItem			TextItem;
+	typedef YBConsoleViews::YB_MenuItem			MenuItem;
 
 
 	class YB_ViewItemFactory

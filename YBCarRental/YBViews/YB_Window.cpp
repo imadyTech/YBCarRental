@@ -12,6 +12,7 @@ namespace YBConsoleViews
 	void YB_Window::InitViewFactory(string viewRepo)
 	{
 		viewFactory = new YB_ViewFactory(viewRepo);
+		viewFactory->windowPtr = this;
 		viewFactory->logicFactory = this->logicFactory;
 		viewFactory->LoadAllViews();
 	}
@@ -86,15 +87,22 @@ namespace YBConsoleViews
 		}
 	}
 
+	void YB_Window::Goto(YB_ViewBasis* viewPtr)
+	{
+		viewPtr->fromViewPtr = currentView;
+		currentView = viewPtr;
+		currentView->Init();
+
+	}
+
 	void YB_Window::Goto(int viewId)
 	{
-		currentView = (*viewFactory).GetView(viewId);
-		currentView->Init();
+		this->Goto( (*viewFactory).GetView(viewId));
 	}
+
 	void YB_Window::Goto(const string viewTitle)
 	{
-		currentView = viewFactory->GetView(viewTitle);
-		currentView->Init();
+		this->Goto( viewFactory->GetView(viewTitle));
 	}
 
 	void YB_Window::Prev()

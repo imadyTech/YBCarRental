@@ -27,7 +27,7 @@ namespace YBConsoleViews {
 	};
 
 
-	string*						YB_ViewItemBasis::Serialize()
+	string* YB_ViewItemBasis::Serialize()
 	{
 		std::stringstream ss;
 		//Redirect to new function (instead of previous version overrided function)
@@ -40,19 +40,19 @@ namespace YBConsoleViews {
 	{
 		YB_DataBasis::Serialize(strStream);
 		strStream
-			<< "x:"				<< x			<< YB_DataBasis::persistentSeparator
-			<< "y:"				<< y			<< YB_DataBasis::persistentSeparator
-			<< "w:"				<< w			<< YB_DataBasis::persistentSeparator
-			<< "h:"				<< h			<< YB_DataBasis::persistentSeparator
-			<< "ItemType:"		<< ItemType		<< YB_DataBasis::persistentSeparator
-			<< "Content:"		<< Content		<< YB_DataBasis::persistentSeparator
-			<< "Bind:"			<< Bind			<< YB_DataBasis::persistentSeparator
-			<< "Link:"			<< Link			<< YB_DataBasis::persistentSeparator
-			<< "Background:"	<< Background	<< YB_DataBasis::persistentSeparator
-			<< "isCentral:"		<< isCentral	<< YB_DataBasis::persistentSeparator
-			<< "isFocused:"		<< isFocused	<< YB_DataBasis::persistentSeparator
-			<< "isSelected:"	<< isSelected	<< YB_DataBasis::persistentSeparator
-			<< "isHidden:"		<< isHidden		<< YB_DataBasis::persistentSeparator;
+			<< "x:" << x << YB_DataBasis::persistentSeparator
+			<< "y:" << y << YB_DataBasis::persistentSeparator
+			<< "w:" << w << YB_DataBasis::persistentSeparator
+			<< "h:" << h << YB_DataBasis::persistentSeparator
+			<< "ItemType:" << ItemType << YB_DataBasis::persistentSeparator
+			<< "Content:" << Content << YB_DataBasis::persistentSeparator
+			<< "Bind:" << Bind << YB_DataBasis::persistentSeparator
+			<< "Link:" << Link << YB_DataBasis::persistentSeparator
+			<< "Background:" << Background << YB_DataBasis::persistentSeparator
+			<< "isCentral:" << isCentral << YB_DataBasis::persistentSeparator
+			<< "isFocused:" << isFocused << YB_DataBasis::persistentSeparator
+			<< "isSelected:" << isSelected << YB_DataBasis::persistentSeparator
+			<< "isHidden:" << isHidden << YB_DataBasis::persistentSeparator;
 	}
 	void						YB_ViewItemBasis::Deserialize(string line)
 	{
@@ -108,6 +108,7 @@ namespace YBConsoleViews {
 		////Unit testing code - to visualize a single item
 		return YB_ViewItemBasis::viewArray;
 	}
+
 	void						YB_ViewItemBasis::Init_Background(char background)
 	{
 		//fill the view background with a char
@@ -118,6 +119,7 @@ namespace YBConsoleViews {
 			YB_ViewItemBasis::viewArray.push_back(newLine);
 		}
 	}
+
 	void						YB_ViewItemBasis::Fill_Background(char background)
 	{
 		//fill the view background with a char
@@ -125,6 +127,7 @@ namespace YBConsoleViews {
 			std::memset(YB_ViewItemBasis::viewArray[i], background, YB_ViewItemBasis::w);
 		}
 	}
+
 	void						YB_ViewItemBasis::Clear_Background()
 	{
 		//fill the view background with a char
@@ -132,9 +135,16 @@ namespace YBConsoleViews {
 			std::memset(YB_ViewItemBasis::viewArray[i], ' ', YB_ViewItemBasis::w);
 		}
 	}
+
+	void						YB_ViewItemBasis::OnBind(string* contents)
+	{
+		if (contents) this->Content = *contents;
+	}
+
 	void						YB_ViewItemBasis::OnFocus() {
 		this->isFocused = true;
 	}
+
 	void						YB_ViewItemBasis::OnLostFocus() {
 		this->isFocused = false;
 	}

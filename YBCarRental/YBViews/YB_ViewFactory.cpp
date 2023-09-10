@@ -81,7 +81,7 @@ namespace YBConsoleViews
 
 	void			YB_ViewFactory::CreateSubViewitems(YB_ViewBasis* view, const string viewString)
 	{
-		auto itemsDef = (*view).FindValues("item");
+		auto itemsDef = (*view).FindValues(CONST_VIEW_ITEM_STARTER);
 		if (!itemsDef.empty())
 		{
 			for (auto& itemIdPiar : itemsDef) {

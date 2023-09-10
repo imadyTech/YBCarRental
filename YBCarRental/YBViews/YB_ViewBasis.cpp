@@ -42,7 +42,7 @@ namespace YBConsoleViews {
 	//{
 	//}
 
-	string*				YB_ViewBasis::Serialize()
+	string* YB_ViewBasis::Serialize()
 	{
 		std::stringstream ss;
 		//Redirect to new function (instead of previous version overrided function)
@@ -55,13 +55,13 @@ namespace YBConsoleViews {
 	{
 		YB_DataBasis::Serialize(strStream);
 		strStream
-			<< "Title:"			<< Title			<< YB_DataBasis::persistentSeparator
-			<< "ViewType:"		<< ViewType			<< YB_DataBasis::persistentSeparator
-			<< "w:"				<< w				<< YB_DataBasis::persistentSeparator
-			<< "h:"				<< h				<< YB_DataBasis::persistentSeparator
-			<< "Source:"		<< Source			<< YB_DataBasis::persistentSeparator
-			<< "ConfirmView:"	<< ConfirmView		<< YB_DataBasis::persistentSeparator
-			<< "GotoView:"		<< GotoView			<< YB_DataBasis::persistentSeparator;
+			<< "Title:" << Title << YB_DataBasis::persistentSeparator
+			<< "ViewType:" << ViewType << YB_DataBasis::persistentSeparator
+			<< "w:" << w << YB_DataBasis::persistentSeparator
+			<< "h:" << h << YB_DataBasis::persistentSeparator
+			<< "Source:" << Source << YB_DataBasis::persistentSeparator
+			<< "ConfirmView:" << ConfirmView << YB_DataBasis::persistentSeparator
+			<< "GotoView:" << GotoView << YB_DataBasis::persistentSeparator;
 	}
 	void				YB_ViewBasis::Deserialize(string line)
 	{
@@ -85,30 +85,28 @@ namespace YBConsoleViews {
 	/// </summary>
 	/// <returns></returns>
 	void				YB_ViewBasis::Init() {
-		//first let datasource initiate
+		//1. first let carry-forwarded datasource initiate
 		if (fromViewPtr && this->dataSource)
-			this->dataSource->onViewInitiated(fromViewPtr->dataSource);
+			this->dataSource->onViewForwarded(fromViewPtr->dataSource);
 
+		//2. Bind all items with tag "Bind"
 		for (auto& item : this->subItemsList)
 		{
-			//find and cache the non-static items
-			if (item->ItemType == "ButtonItem" || item->ItemType == "InputItem" || item->ItemType == "ListItem" || item->ItemType =="MenuItem")
+			//cache the non-static items (which means you can toggle with Tab key)
+			if (item->ItemType == "ButtonItem" || item->ItemType == "InputItem" || item->ItemType == "ListItem" || item->ItemType == "MenuItem")
 				focusableItems.push_back(item);
 			//The basis will try to Bind items from data properties;
 			//Nothing would happen if unsuccessful in binding.
 			//Override the Init in children, if necessary.
 			if (dataSource && !item->Bind.empty())
-				try {
-				//auto valuePtr = dataSource->Get_PropertyValue(&item->Bind);
-				auto valuePtr = this->Bind(&item->Bind);
-				if (valuePtr != nullptr)
-					item->Content = *valuePtr;
-				//item->Content = *this->Bind(&item->Bind);//This has risk of returning nullptr and not handled by try/catch.
+			try {
+				item->OnBind(this->Bind(&item->Bind));
+				//item->Content = *this->Bind(&item->Bind);//This syntax has risk of returning nullptr and not handled by try/catch.
 			}
 			catch (exception e)
 			{
 				continue;
-				//throw YB_BindingError();		//won't break the binding process
+				//throw YB_BindingError();		//don't break the binding process
 			}
 		}
 	}
@@ -153,13 +151,17 @@ namespace YBConsoleViews {
 		if (viewArray.empty())
 			Init_Background(this->Background);
 
+		//Render and merge all viewItems
 		for (auto& iterator : this->subItemsList)
 		{
 			auto posX = iterator->x, posY = iterator->y;
+
+			//1. Render viewItem
 			auto SUB_RECT = iterator->Render();
 			if (SUB_RECT.empty())
 				continue;
 
+			//2. Merge
 			size_t newContentLength = iterator->w;
 			for (const auto& row : SUB_RECT)
 			{
@@ -175,7 +177,9 @@ namespace YBConsoleViews {
 		return viewArray;
 	}
 
-	void				YB_ViewBasis::Exit() {}
+	void				YB_ViewBasis::Exit() 
+	{
+	}
 
 	void				YB_ViewBasis::Init_Background(char background)
 	{
@@ -254,16 +258,16 @@ namespace YBConsoleViews {
 
 	void				YB_ViewBasis::Submit()
 	{
-			map<string, string> reverseBindMap;
-			//find out the viewItems which has 'Bind' tag.
-			for (auto& iterator : this->subItemsList)
-			{
-				if (!iterator->Bind.empty())
-					reverseBindMap.insert(std::make_pair(iterator->Bind, iterator->Content));
-			}
-			if (!reverseBindMap.empty())
-				//submit to VM
-				this->dataSource->onSubmit(&reverseBindMap);
+		map<string, string> reverseBindMap;
+		//find out the viewItems which has 'Bind' tag.
+		for (auto& iterator : this->subItemsList)
+		{
+			if (!iterator->Bind.empty())
+				reverseBindMap.insert(std::make_pair(iterator->Bind, iterator->Content));
+		}
+		if (!reverseBindMap.empty())
+			//submit to VM
+			this->dataSource->onSubmit(&reverseBindMap);
 
 	}
 }

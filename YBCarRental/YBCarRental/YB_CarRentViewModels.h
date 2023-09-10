@@ -1,6 +1,8 @@
 #pragma once
 #include "YB_ViewModelBasis.h"
 #include <YB_UserManager.h>
+#include <YB_CarManager.h>
+#include <YB_RentManager.h>
 #include "YB_Window.h"
 using namespace YBConsoleViews;
 
@@ -9,9 +11,7 @@ class YBConsoleViews::YB_Window;
 
 
 namespace YBCarRental {
-	/// <summary>
 	/// 102 - LoginView
-	/// </summary>
 	class YB_UserLoginVM : public YB_ViewModelBasis<YB_User>
 	{
 	public:
@@ -43,7 +43,7 @@ namespace YBCarRental {
 		};
 	};
 
-
+	//103 - RegisterView
 	class YB_UserRegisterVM : public YB_ViewModelBasis<YB_User>
 	{
 	public:
@@ -67,7 +67,7 @@ namespace YBCarRental {
 		//void					Set_PropertyValues(map<string, string>* values)				override {};
 	};
 
-
+	//105 UserMenu
 	class YB_UserMenuVM : public YB_ViewModelBasis<YB_User>
 	{
 	public:
@@ -77,14 +77,14 @@ namespace YBCarRental {
 		}
 		YB_UserManager* dataManagerPtr;
 
-		void					onViewInitiated(YB_DataSource_Interface* from)			override 
+		void					onViewForwarded(YB_DataSource_Interface* from)			override 
 		{
 			this->principalObject = dataManagerPtr->CurrentUser();
 
 		};
 	};	
 	
-	
+	//106 AdminMenu
 	class YB_AdminMenuVM : public YB_ViewModelBasis<YB_User>
 	{
 	public:
@@ -94,21 +94,29 @@ namespace YBCarRental {
 		}
 		YB_UserManager* dataManagerPtr;
 
-		void					onViewInitiated(YB_DataSource_Interface* from)			override 
+		void					onViewForwarded(YB_DataSource_Interface* from)			override 
 		{
 			this->principalObject = dataManagerPtr->CurrentUser();
 
 		};
 	};
 
-	//class YB_UserListVM : public YB_ViewModelBasis<YB_User>
-	//{
-	//public:
-	//	//YB_UserListVM(YB_ManagerBasis<YB_User>* manager) {
-	//	//	dataManager = manager;
-	//	//}
+	//109 CarSelection ListView
+	class CarSelectionView : public YB_ViewModelBasis<YB_Car>
+	{
+	public:
+		CarSelectionView(YB_CarManager* managerPtr, YBConsoleViews::YB_Window* windowPtr) {
+			dataManagerPtr = managerPtr;
+			this->windowPtr = windowPtr;
+		}
+		YB_CarManager* dataManagerPtr;
 
-	//};
+		string*					Get_PropertyValue(string* bindName)						override
+		{
+			//auto carList = dataManagerPtr->get
+			return nullptr;
+		};
+	};
 
 
 	//class YB_CarVM : public YB_ViewModelBasis<YB_Car>

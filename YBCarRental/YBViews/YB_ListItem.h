@@ -14,10 +14,9 @@ namespace YBConsoleViews
 			Init_Background(' ');
 		};
 
-		void				OnKey(int* keycode) override;
-		void				OnBackspace()			 override;
-		void				OnReturn()			 override;
-		std::vector<char*>	Render()			 override;
+		void				OnBind(string* contents)	override;
+		void				OnReturn()					override;
+		std::vector<char*>	Render()					override;
 
 	};
 

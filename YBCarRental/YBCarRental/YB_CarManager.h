@@ -4,6 +4,8 @@
 
 #include "YB_CarPersistor.h"
 #include "YB_ManagerBasis.h"
+#include "YB_Car.h"
+#include <map>
 
 using namespace std;
 using namespace YBPersistence;
@@ -16,10 +18,12 @@ namespace YBCarRental
 		YB_CarManager() : YB_ManagerBasis<YB_Car>() {};
 		YB_CarManager(string url): YB_ManagerBasis<YB_Car>(url) {};
 
-		static bool AddCar(YB_Car car);
-		static bool DeleteCar(YB_Car car);
-		static bool DeleteCar(int carId);
-		static bool UpdateCar(YB_Car car);
+		bool						AddCar(YB_Car* carPtr);
+		bool						DeleteCar(YB_Car* carPtr);
+		bool						DeleteCar(int carId);
+		bool						UpdateCar(YB_Car* carPtr);
+		YB_Car*						GetCar(int carId);
+		map<int, YB_Car*>*			ListCars();
 	};
 }
 

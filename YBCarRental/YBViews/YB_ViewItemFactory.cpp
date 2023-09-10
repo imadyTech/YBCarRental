@@ -95,9 +95,8 @@ namespace YBConsoleViews
 		if (type == "ButtonItem")	{ return new ButtonItem(*serializeString); }
 		if (type == "InputItem")	{ return new InputItem(*serializeString); }
 		if (type == "ListItem")		{ return new ListItem(*serializeString); }
-		if (type == "MenuItem")		
-		{ 
-			return new MenuItem(*serializeString); }
+		if (type == "ListHead")		{ return new ListHead(*serializeString); }
+		if (type == "MenuItem")		{ return new MenuItem(*serializeString); }
 		return &basePtr;
 	}
 
@@ -107,6 +106,7 @@ namespace YBConsoleViews
 		if (type == "ButtonItem")	return std::make_unique<ButtonItem>();
 		if (type == "InputItem")	return std::make_unique<InputItem>();
 		if (type == "ListItem")		return std::make_unique<ListItem>();
+		if (type == "ListHead")		return std::make_unique<ListHead>();
 		if (type == "MenuItem")		return std::make_unique<MenuItem>();
 		return nullptr;
 	}

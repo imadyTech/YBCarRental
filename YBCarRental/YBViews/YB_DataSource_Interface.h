@@ -21,7 +21,7 @@ namespace YBConsoleViews
 		virtual void							Set_PropertyValue(string* bindNamePtr, string* valuePtr) = 0;
 		virtual void							Set_PropertyValues(map<string, string>* valuesPtr) = 0;
 
-		virtual void							onViewInitiated(YB_DataSource_Interface* from) =0;
+		virtual void							onViewForwarded(YB_DataSource_Interface* from) =0;
 		virtual map<string, string>*			onListInitiated(string* tableHeadNames) =0;								//tableheadNames format: Model/Make/Mileage
 		virtual map<string, string>*			onListInitiated(string* tableHeadNames, int pageNum, int size) =0;		//Table paging, Todo...
 		virtual void							onSubmit(map<string, string>* values) =0;

@@ -57,8 +57,8 @@ namespace YBConsoleViews
 		bool							isSelected = false;
 		bool							isHidden = false;					//if an item is hidden, then the View will ignore it during rendering.
 
-		virtual string*					Serialize() override;
-		virtual void					Serialize(std::stringstream& strStream) override;
+		virtual string*					Serialize()										override;
+		virtual void					Serialize(std::stringstream& strStream)			override;
 		virtual void					Deserialize(string line);
 		virtual void					Deserialize(string line, const char* separator) override;
 
@@ -66,6 +66,7 @@ namespace YBConsoleViews
 		void							Init_Background(char background);
 		void							Fill_Background(char background);
 		void							Clear_Background();
+		virtual void					OnBind(string* contents);
 		virtual void					OnFocus();
 		virtual void					OnLostFocus();
 

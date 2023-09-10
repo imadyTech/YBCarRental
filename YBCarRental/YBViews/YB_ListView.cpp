@@ -4,6 +4,10 @@
 
 class YB_Window;
 
+void YBConsoleViews::YB_ListView::Init()
+{
+}
+
 void YBConsoleViews::YB_ListView::OnKey(int* keycode)
 {
 }

@@ -134,6 +134,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="YB_ListHead.cpp" />
     <ClCompile Include="YB_ButtonItem.cpp" />
     <ClCompile Include="YBConsoleVIew-Main.cpp" />
     <ClCompile Include="YB_DetailsView.cpp" />
@@ -156,6 +157,7 @@
     <ClCompile Include="YB_Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="YB_ListHead.h" />
     <ClInclude Include="YBConsoleVIew-Main.h" />
     <ClInclude Include="YB_ButtonItem.h" />
     <ClInclude Include="YB_DetailsView.h" />

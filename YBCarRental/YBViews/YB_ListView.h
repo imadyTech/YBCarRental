@@ -14,9 +14,21 @@ namespace YBConsoleViews
 			this->Deserialize(serializeString);
 			Init_Background(' ');
 		};
+
+		string			ListHead;
+
+		void			Deserialize(string line)													override
+		{
+			YB_ViewBasis::Deserialize(line);
+
+			if (YB_DataBasis::FindValue("ListHead"))		ListHead = *YB_DataBasis::FindValue("ListHead");
+		}
+
+
+		void			Init()																		override;
 		void			OnKey(int* keycode)															override;
 		void			OnChildReturn(YB_ViewMessageBasis* msgPtr, YB_ViewItemBasis* fromItemPtr)	override;
-		void			OnConfirmReturn(YB_ViewMessageBasis* msgPtr, YB_ViewBasis* fromViewPtr)	override;
+		void			OnConfirmReturn(YB_ViewMessageBasis* msgPtr, YB_ViewBasis* fromViewPtr)		override;
 		vector<char*>	Render()																	override;
 	};
 }

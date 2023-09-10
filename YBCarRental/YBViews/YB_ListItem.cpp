@@ -1,15 +1,14 @@
 #include "YB_ListItem.h"
 
-void YBConsoleViews::YB_ListItem::OnKey(int* keycode)
+void YBConsoleViews::YB_ListItem::OnBind(string* contents)
 {
-}
-
-void YBConsoleViews::YB_ListItem::OnBackspace()
-{
+    this->Content = *contents;
 }
 
 void YBConsoleViews::YB_ListItem::OnReturn()
 {
+    //windowPtr->Goto(xxxx)
+
 }
 
 std::vector<char*> YBConsoleViews::YB_ListItem::Render()

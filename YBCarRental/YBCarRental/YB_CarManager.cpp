@@ -8,20 +8,53 @@ namespace YBCarRental
 	//{
 
 	//}
-	bool YB_CarManager::AddCar(YB_Car car)
+	bool				YB_CarManager::AddCar(YB_Car* carPtr)
 	{
-		return false;
+		auto existingCar = this->Get(carPtr->Id);
+		if (existingCar)
+		{
+			return false; //already exist
+		}
+		return this->Add(*carPtr);
 	}
-	bool YB_CarManager::DeleteCar(YB_Car car)
+
+	bool				YB_CarManager::DeleteCar(YB_Car* carPtr)
 	{
-		return false;
+		auto existingCar = this->Get(carPtr->Id);
+		if (!existingCar)
+		{
+			return false; //car doesn't exist
+		}
+		return this->Delete(carPtr->Id);
 	}
-	bool YB_CarManager::DeleteCar(int carId)
+
+	bool				YB_CarManager::DeleteCar(int carId)
 	{
-		return false;
+		auto existingCar = this->Get(carId);
+		if (!existingCar)
+		{
+			return false; //car doesn't exist
+		}
+		return this->Delete(carId);
 	}
-	bool YB_CarManager::UpdateCar(YB_Car car)
+
+	bool				YB_CarManager::UpdateCar(YB_Car* carPtr)
 	{
-		return false;
+		auto existingCar = this->Get(carPtr->Id);
+		if (!existingCar)
+		{
+			return false; //car doesn't exist
+		}
+		return this->Update(*carPtr);
+	}
+
+	YB_Car*				YB_CarManager::GetCar(int carId)
+	{
+		return this->Get(carId);
+	}
+
+	map<int, YB_Car*>*	YB_CarManager::ListCars()
+	{
+		return YB_ManagerBasis<YB_Car>::GetAll();
 	}
 }

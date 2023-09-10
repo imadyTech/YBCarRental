@@ -118,11 +118,12 @@ namespace YBPersistence
 		char								persistentSeparator = ';';
 	protected:
 		std::string*						serializedString;
-	private:
+
 		/// <summary>
 		/// cached key/value map, pls be cautious when resusing
 		/// </summary>
 		std::map<std::string, std::string>	stringPairsMap;
+	private:
 
 	};
 }

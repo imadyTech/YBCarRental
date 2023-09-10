@@ -39,9 +39,11 @@ namespace YBCarRental
 		/// </summary>
 		/// <param name="id"></param>
 		/// <returns></returns>
-		TData* Get(int id);
-		//overload of Get(int)
-		TData* Get(string username);
+		TData*									Get(int id);
+
+		TData*									Get(string username);
+
+		map<int, TData*>*						GetAll();
 
 		/// <summary>
 		/// Delete an object from memory (will persisted later by Save() command.
@@ -60,7 +62,7 @@ namespace YBCarRental
 		/// <summary>
 		/// The persistor to manage TData objects at lower-layer .
 		/// </summary>
-		YB_PersistorBasis<TData>* persistor;
+		YB_PersistorBasis<TData>*				persistor;
 
 		///dictionary of id:object pair
 		//map<int, TData> dataSet;
@@ -69,7 +71,7 @@ namespace YBCarRental
 	template<class TData>
 	inline void									YB_ManagerBasis<TData>::LoadAll()
 	{
-		persistor->GetAll();
+		persistor->LoadAll();
 	}
 
 	template<class TData>
@@ -84,7 +86,11 @@ namespace YBCarRental
 		return persistor->Get(username);
 	}
 
-
+	template<class TData>
+	map<int, TData*>*							YB_ManagerBasis<TData>::GetAll()
+	{
+		return persistor->GetAll();
+	}
 
 	template<class TData>
 	inline bool									YB_ManagerBasis<TData>::Add(TData data)

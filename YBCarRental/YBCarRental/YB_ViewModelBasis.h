@@ -30,7 +30,7 @@ namespace YBCarRental {
 		virtual map<string, string>*	onListInitiated(string* tableHeadNames) { return nullptr; };							//tableheadNames format: Model/Make/Mileage
 		virtual map<string, string>*	onListInitiated(string* tableHeadNames, int pageNum, int size) { return nullptr; };		//Table paging, Todo...
 		virtual void					onInit()													{};
-		virtual void					onViewInitiated(YB_DataSource_Interface* from)				{};
+		virtual void					onViewForwarded(YB_DataSource_Interface* from)				{};
 		virtual void					onSubmit(map<string, string>* values)						{};
 		virtual void					onContentUpdated(string* bindName, string* newValue)		{};
 		virtual void					onItemFocused(string* bindName)								{};
@@ -39,7 +39,7 @@ namespace YBCarRental {
 		virtual void					onYesClicked()												{};
 		virtual void					onNoClicked()												{};
 
-		YB_Window*						windowPtr;
+		YB_Window*						windowPtr = nullptr;
 		TData*							principalObject = {}; //the principal was introduced to represent the TData for each VM
 	protected:
 

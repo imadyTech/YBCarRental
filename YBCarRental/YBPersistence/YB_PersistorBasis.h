@@ -29,7 +29,7 @@ namespace YBPersistence
 		YB_PersistorBasis(string url) : YB_PersistorBasis() {
 			repositoryURL = url;
 			repository = new YB_Repository(repositoryURL);
-			GetAll();
+			LoadAll();
 		};
 		~YB_PersistorBasis() {
 			delete repository;
@@ -41,7 +41,7 @@ namespace YBPersistence
 		/// <summary>
 		/// Read all records (objects) into memory
 		/// </summary>
-		virtual void				GetAll();
+		virtual void				LoadAll();
 
 		/// <summary>
 		/// Add a data record to the persistent repository
@@ -60,6 +60,8 @@ namespace YBPersistence
 
 		TData*						Get(string username);
 
+		map<int, TData*>*			GetAll();
+
 		/// <summary>
 		/// Delete an object from memory (will persisted later by Save() command.
 		/// </summary>
@@ -76,9 +78,9 @@ namespace YBPersistence
 
 		//Note: for simplicity reason, this dataSet was designed to be exposed as public.
 		//otherwise it should be hidden from direct external access.
-		map<int, TData>				dataSet = {};
 
 	private:
+		map<int, TData>				dataSet = {}; //!!!DO NOT MODIFY THE dataSet to pointers. OR YOU NEED DEVELOP A TDataFactory FOR INSTANCE CREATION.
 		/// <summary>
 		/// The file repository to store data records.
 		/// </summary>
@@ -86,7 +88,7 @@ namespace YBPersistence
 	};
 
 	template<class TData>
-	void							YB_PersistorBasis<TData>::GetAll() //cache to dataSet
+	void							YB_PersistorBasis<TData>::LoadAll() //cache to dataSet
 	{
 		if (!dataSet.empty())
 			//GetAll is invoked in the constructor so there's potential of repeated invocation.
@@ -153,6 +155,15 @@ namespace YBPersistence
 		return this->Get(id);
 	}
 
+	template<class TData>
+	map<int, TData*>*				YB_PersistorBasis<TData>::GetAll()
+	{
+		std::map<int, TData*> tDataPointerMap;
+		for (auto iterator : dataSet) {
+			tDataPointerMap[iterator.first] = &iterator.second;
+		}
+		return &tDataPointerMap;
+	}
 
 	template<class TData>
 	void							YB_PersistorBasis<TData>::Add(TData data)

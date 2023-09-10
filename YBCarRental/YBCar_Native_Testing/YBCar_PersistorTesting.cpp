@@ -13,7 +13,7 @@ namespace YBCarTesting
 		TEST_METHOD(YB_GetAllUser_Test)
 		{
 			YB_PersistorBasis<YB_User> persistor = YB_PersistorBasis<YB_User>("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/UserRepo.txt");
-			persistor.GetAll();
+			persistor.LoadAll();
 
 			for (const auto& item : persistor.dataSet)
 			{

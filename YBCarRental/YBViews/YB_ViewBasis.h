@@ -89,7 +89,7 @@ namespace YBConsoleViews
 
 		virtual string*					Serialize()														override;
 		virtual void					Serialize(std::stringstream& strStream)							override;
-		void							Deserialize(string line);
+		virtual void					Deserialize(string line);
 		virtual void					Deserialize(string line, const char* separator)					override;
 		//void Serialize(ofstream* output) override;
 

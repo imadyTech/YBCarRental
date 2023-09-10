@@ -27,6 +27,12 @@ namespace YBConsoleViews
 	typedef YBConsoleViews::YB_ListView			ListView;
 	typedef YBConsoleViews::YB_DetailsView		DetailsView;
 
+	static const char*	CONST_LIST_HEAD_STARTER			= "<col>";
+	static const char*	CONST_VIEW_ITEM_STARTER			= "<item>";
+	static const size_t	CONST_VIEW_ITEM_STARTER_LENGTH	= string(CONST_VIEW_ITEM_STARTER).length() - 1;
+
+
+
 	class YB_ViewFactory
 	{
 	public:

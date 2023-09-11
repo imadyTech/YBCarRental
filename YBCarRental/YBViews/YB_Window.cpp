@@ -19,7 +19,7 @@ namespace YBConsoleViews
 
 	void YB_Window::Init()
 	{
-		Goto("LoginView");														//Load and show Welcome view
+		Goto("UserMenu");														//Load and show Welcome view
 		//currentView->ViewReturnCallback = [this]() { Goto(100); };			//*******demo how to use callback
 		//currentView = (*viewFactory).GetView(???);						//Byebye view
 		//currentView->ViewReturnCallback = [this]() { Todo _someCode_exit; };	//quit
@@ -45,6 +45,11 @@ namespace YBConsoleViews
 		//========================================================================
 		int keycode, keycode1;
 		while (true) {
+			//Phase 1.
+			if (!currentView->isInitedFlag)	currentView->Init();
+			//Phase 2.
+			if (!currentView->isBindedFlag)	currentView->Bind();
+			//Phase 3. User input
 			if (_kbhit()) {
 				keycode = _getch();
 				keycode1 = -1;
@@ -61,11 +66,18 @@ namespace YBConsoleViews
 					continue;
 				}
 				if (keycode1 == -1 && keycode == 27) continue;			//Esc, rewind view.	
-
 				OnKeyIn(keycode);
 			}
-			Render();
-			Output();
+			//Phase 4. Reverse bind changed viewItems to datasource
+			//if (currentView->isUpdatedFlag)	currentView->ReverseBind();
+			//Phase 5.
+			if (currentView) this->viewGrid = currentView->Render();
+			//Phase 6.
+			system("cls");
+			for (const char* strptr : this->viewGrid) {
+				std::cout << strptr << std::endl;
+			}
+			//Phase 7.
 			Sleep(100);
 		}
 	}
@@ -89,20 +101,21 @@ namespace YBConsoleViews
 
 	void YB_Window::Goto(YB_ViewBasis* viewPtr)
 	{
-		viewPtr->fromViewPtr = currentView;
-		currentView = viewPtr;
-		currentView->Init();
+		if (currentView)
+			currentView->Exit();
 
+		viewPtr->fromViewPtr	= currentView;
+		currentView				= viewPtr;
 	}
 
 	void YB_Window::Goto(int viewId)
 	{
-		this->Goto( (*viewFactory).GetView(viewId));
+		this->Goto((*viewFactory).GetView(viewId));
 	}
 
 	void YB_Window::Goto(const string viewTitle)
 	{
-		this->Goto( viewFactory->GetView(viewTitle));
+		this->Goto(viewFactory->GetView(viewTitle));
 	}
 
 	void YB_Window::Prev()
@@ -111,19 +124,6 @@ namespace YBConsoleViews
 
 	void YB_Window::Next()
 	{
-	}
-
-	void YB_Window::Render()
-	{
-		if (currentView)
-			this->viewGrid = currentView->Render();
-	}
-	void YB_Window::Output()
-	{
-		system("cls");
-		for (const char* strptr : this->viewGrid) {
-			std::cout << strptr << std::endl;
-		}
 	}
 
 }

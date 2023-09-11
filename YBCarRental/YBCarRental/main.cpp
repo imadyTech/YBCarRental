@@ -36,6 +36,8 @@ int main()
 	logicFactory->RegisterDataSource("YB_UserRegisterVM", new YB_UserRegisterVM(userMgr, &windowPtr));
 	logicFactory->RegisterDataSource("YB_UserMenuVM", new YB_UserMenuVM(userMgr, &windowPtr));
 	logicFactory->RegisterDataSource("YB_AdminMenuVM", new YB_AdminMenuVM(userMgr, &windowPtr));
+	logicFactory->RegisterDataSource("YB_CarSelectionVM", new YB_CarSelectionVM(carMgr, &windowPtr));
+	logicFactory->RegisterDataSource("YB_CarRentVM", new YB_CarRentVM(carMgr, &windowPtr));
 	
 
 

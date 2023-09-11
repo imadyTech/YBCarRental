@@ -26,6 +26,7 @@ namespace YBCarRental
 
 	void		YB_Car::Serialize(std::stringstream& strStream)
 	{
+		YB_DataBasis::Serialize(strStream);
 		strStream
 			<< "Make:" << Make << ";"
 			<< "Model:" << Model << ";"

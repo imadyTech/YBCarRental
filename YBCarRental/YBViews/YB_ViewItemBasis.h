@@ -77,6 +77,7 @@ namespace YBConsoleViews
 		YB_ViewBasis*					parent;
 	protected:
 		vector<char*>					viewArray;
+		void							RenderFocus(const char* focusMarker);
 	};
 
 

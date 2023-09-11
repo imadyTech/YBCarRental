@@ -157,6 +157,7 @@
     <ClCompile Include="YB_Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="YB_Global_Header.h" />
     <ClInclude Include="YB_ListHead.h" />
     <ClInclude Include="YBConsoleVIew-Main.h" />
     <ClInclude Include="YB_ButtonItem.h" />

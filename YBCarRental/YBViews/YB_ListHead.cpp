@@ -4,19 +4,17 @@
 
 const char		separator = '|';
 
-void YBConsoleViews::YB_ListHead::OnReturn()
+void YBConsoleViews::YB_ListHead::Deserialize(string contents)
 {
-}
+	YB_ViewItemBasis::Deserialize(contents);
 
-std::vector<char*> YBConsoleViews::YB_ListHead::Render()
-{
-	if (isHidden) {
-		return YB_ViewItemBasis::viewArray;
-	}
 
-	YB_ViewItemBasis::Render();							//for listhead, only the background will be rendered
+	//Todo: this job should be done in Init (need add Init() to viewItems)
+	int	posIndex = 3;
+	char* formattedContent = new char[this->w];
+	std::memset(formattedContent, ' ', w);
+	formattedContent[this->w] = '\0';
 
-	int				posIndex = 3;
 	for (const auto& iterator : this->stringPairsMap)
 	{
 		//Hard protocol, ListHead item start with <col>
@@ -31,16 +29,29 @@ std::vector<char*> YBConsoleViews::YB_ListHead::Render()
 		size_t gridWidth = std::stoi(iterator.second);
 		size_t posX = isCentral ? posIndex + gridWidth / 2 - contentLength / 2 : posIndex;
 		size_t posY = h / 2;
+		//cache for listItem rendering
+		std::pair<string, int>* newPair = new std::pair<string, int>(content, gridWidth);
+		tableRowFormatter->push_back(newPair);
 
 		if (posY <= h)
 		{
 			// Fill head title
-			memcpy(viewArray[posY] + posX, content, contentLength);
+			memcpy(formattedContent + posX, content, contentLength);
 			// Draw table col separator
-			memcpy(viewArray[posY] + posIndex + gridWidth, &separator, 1);
+			memcpy(formattedContent + posIndex + gridWidth, &separator, 1);
 		}
 		// Move to next col
 		posIndex += gridWidth;
 	}
-	return YB_ViewItemBasis::viewArray;
+	this->Content = std::string(formattedContent);
+}
+
+void YBConsoleViews::YB_ListHead::OnReturn()
+{
+}
+
+std::vector<char*> YBConsoleViews::YB_ListHead::Render()
+{
+
+	return YB_ViewItemBasis::Render();
 }

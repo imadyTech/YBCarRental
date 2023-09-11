@@ -36,7 +36,7 @@ namespace YBPersistence
 				try											//99.99% certainty will be the end of a def
 				{
 					int index = extractIndex(cachedline);
-					if (index > 0) {
+					if (index >= 0) {
 						// Add the line to the map using the index as the key
 						allRecordLines[index] = cachedline;
 					}

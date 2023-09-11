@@ -22,10 +22,11 @@ namespace YBCarRental {
 	public:
 		YB_ViewModelBasis() {};
 
-		virtual string*					Get_PropertyValue(string* bindNamePtr)						override;
-		virtual map<string, string>*	Get_PropertyValues()										override;
-		virtual void					Set_PropertyValue(string* bindNamePtr, string* valuePtr)	override;
-		virtual void					Set_PropertyValues(map<string, string>* values)				override;
+		virtual string*					Get_PropertyValue(string* bindNamePtr)										override;
+		virtual void					Get_QuerySingle (int Id, vector<std::pair<string, string>*>& result)	override;
+		virtual void					Get_QueryList(vector<vector<std::pair<string, string>*>*>& result)		override;
+		virtual void					Set_PropertyValue(string* bindNamePtr, string* valuePtr)					override;
+		virtual void					Set_PropertyValues(map<string, string>* values)								override;
 
 		virtual map<string, string>*	onListInitiated(string* tableHeadNames) { return nullptr; };							//tableheadNames format: Model/Make/Mileage
 		virtual map<string, string>*	onListInitiated(string* tableHeadNames, int pageNum, int size) { return nullptr; };		//Table paging, Todo...
@@ -42,6 +43,7 @@ namespace YBCarRental {
 		YB_Window*						windowPtr = nullptr;
 		TData*							principalObject = {}; //the principal was introduced to represent the TData for each VM
 	protected:
+		YB_ManagerBasis<TData>*			dataManagerPtr;
 
 	};
 
@@ -56,23 +58,31 @@ namespace YBCarRental {
 	}
 
 	template<class TData>
-	map<string, string>*				YB_ViewModelBasis<TData>::Get_PropertyValues()
+	inline void							YB_ViewModelBasis<TData>::Get_QuerySingle(int Id, vector<std::pair<string, string>*>& result)
 	{
-		if (principalObject)
-			return principalObject->GetAllValues();
-		else
-			return nullptr;
-
+		if (dataManagerPtr)
+		{
+			auto data = dataManagerPtr->Get(Id);
+			for (auto tupIterator: result)
+			{
+				(*tupIterator).second = *data->FindValue((*tupIterator).first);
+			}
+		}
 	}
 
 	template<class TData>
-	void								YB_ViewModelBasis<TData>::Set_PropertyValue(string* bindName, string* value)
+	inline void							YB_ViewModelBasis<TData>::Get_QueryList(vector<vector<std::pair<string, string>*>*>& result)
+	{
+	}
+
+	template<class TData>
+	inline void							YB_ViewModelBasis<TData>::Set_PropertyValue(string* bindName, string* value)
 	{
 		//Todo: do you really need single property bind?
 	}
 
 	template<class TData>
-	void								YB_ViewModelBasis<TData>::Set_PropertyValues(map<string, string>* values)
+	inline void							YB_ViewModelBasis<TData>::Set_PropertyValues(map<string, string>* values)
 	{
 		/* prompt from chatGPT:
 		In C++, there is no built in support for setting the properties of an object by name at runtime

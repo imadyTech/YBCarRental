@@ -1,4 +1,5 @@
 #pragma once
+#include "YB_Global_Header.h"
 #include "YB_ViewItemBasis.h"
 #include <vector>
 
@@ -14,10 +15,13 @@ namespace YBConsoleViews
 			Init_Background(' ');
 		};
 
-		void				OnBind(string* contents)	override;
-		void				OnReturn()					override;
-		std::vector<char*>	Render()					override;
+		void						OnBind(string* contents)								override;
+		void						OnBind(vector<tuple<string, string, int>*>*);
+		void						OnReturn()												override;
+		std::vector<char*>			Render()												override;
 
+		FORMATED_LIST_VIEW_VALUES*	row = {};
+	private:
 	};
 
 }

@@ -1,14 +1,12 @@
+## Car info ##
 
-
-     hhhhhhhh
-    hh  = =  h
-    hh   v  hh
-     hh    hh
-       hhhh       hh
- hh      hh      hh
-  hh    hhhhhh  hh
-    hhhhhhhhhhhhh hhh
-        hhhhhhhh
-         hhh   hhhh
-         hh      hhh
-         hhhh
+Id:0;Make:Ford;Model:Mustang;Year:2015;Mileage:6666;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:3;DayRentPrice:80;
+Id:1;Make:Benz;Model:GE300;Year:2016;Mileage:5555;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:4;DayRentPrice:200;
+Id:2;Make:Audi;Model:A4 Avant;Year:2018;Mileage:6666;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:3;DayRentPrice:100;
+Id:3;Make:BMW;Model:i118;Year:2020;Mileage:7777;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:3;DayRentPrice:120;
+Id:4;Make:BYD;Model:Atto 3;Year:2023;Mileage:888;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:5;DayRentPrice:150;
+Id:5;Make:Skoda;Model:Octavia;Year:2023;Mileage:888;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:5;DayRentPrice:150;
+Id:6;Make:Toyata;Model:Vitz;Year:2023;Mileage:888;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:5;DayRentPrice:150;
+Id:7;Make:GM;Model:Atto 3;Year:2023;Mileage:888;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:5;DayRentPrice:150;
+Id:8;Make:Hyunddai;Model:Atto 3;Year:2023;Mileage:888;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:5;DayRentPrice:150;
+Id:9;Make:Bentley;Model:V8S;Year:2023;Mileage:888;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:5;DayRentPrice:150;

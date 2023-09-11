@@ -33,8 +33,6 @@ namespace YBConsoleViews
 		void							Goto(const string viewTitle);					//Activate a view by title
 		void							Prev();
 		void							Next();
-		void							Render();										//view contents
-		void							Output();										//to screen
 
 	private:
 		YB_ViewFactory*					viewFactory = new YB_ViewFactory();

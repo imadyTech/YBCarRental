@@ -179,5 +179,8 @@
     <ClInclude Include="YB_ListHead.h">
       <Filter>Header Files\YB_ViewItemTemplates</Filter>
     </ClInclude>
+    <ClInclude Include="YB_Global_Header.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

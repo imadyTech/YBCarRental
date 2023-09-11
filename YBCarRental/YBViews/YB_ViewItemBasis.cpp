@@ -27,7 +27,7 @@ namespace YBConsoleViews {
 	};
 
 
-	string* YB_ViewItemBasis::Serialize()
+	string*						YB_ViewItemBasis::Serialize()
 	{
 		std::stringstream ss;
 		//Redirect to new function (instead of previous version overrided function)
@@ -107,6 +107,18 @@ namespace YBConsoleViews {
 		//}
 		////Unit testing code - to visualize a single item
 		return YB_ViewItemBasis::viewArray;
+	}
+
+	void YB_ViewItemBasis::RenderFocus(const char* focusMarker)
+	{
+		if (isFocused) {
+			size_t posY = h / 2;
+			if (posY <= h)
+			{
+				size_t remainingLength = strlen(viewArray[posY]);
+				memcpy(viewArray[posY], focusMarker, 2);
+			}
+		}
 	}
 
 	void						YB_ViewItemBasis::Init_Background(char background)

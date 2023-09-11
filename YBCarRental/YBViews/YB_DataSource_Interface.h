@@ -17,7 +17,8 @@ namespace YBConsoleViews
 
 		/// ================== These are the interfaces between view elements to viewModel datasource ====================
 		virtual string*							Get_PropertyValue(string* bindNamePtr) = 0;
-		virtual map<string, string>*			Get_PropertyValues() = 0;										
+		virtual void							Get_QuerySingle(int Id, vector<std::pair<string, string>*>&) = 0;
+		virtual void							Get_QueryList(vector<vector<std::pair<string, string>*>*>&) = 0;
 		virtual void							Set_PropertyValue(string* bindNamePtr, string* valuePtr) = 0;
 		virtual void							Set_PropertyValues(map<string, string>* valuesPtr) = 0;
 

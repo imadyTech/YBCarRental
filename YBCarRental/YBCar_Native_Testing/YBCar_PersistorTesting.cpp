@@ -96,7 +96,7 @@ namespace YBCarTesting
 		{
 			YB_PersistorBasis<YB_User> persistor = YB_PersistorBasis<YB_User>("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/UserRepo.txt");
 			//before test, make sure there is a line of record with id=15
-			YB_User * user = persistor.Get("fshen");
+			YB_User * user = persistor.Get(15);
 			string firstName = "Frank", familyName = "Shen";
 			Assert::AreEqual(firstName, (*user).FirstName);
 			Assert::AreEqual(familyName, (*user).FamilyName);

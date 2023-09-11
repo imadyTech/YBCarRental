@@ -42,6 +42,8 @@ namespace YBCarRental
 		/// <returns>True: success; False: error</returns>
 		bool UserLogout();
 
+		YB_User* Get(string username);
+
 		/// <summary>
 		/// Return true/false of whether user currently logged in has the administrative role.
 		/// </summary>

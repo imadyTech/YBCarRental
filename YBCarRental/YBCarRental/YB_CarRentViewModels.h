@@ -20,8 +20,6 @@ namespace YBCarRental {
 			this->windowPtr = windowPtr;
 		};
 
-		YB_UserManager* dataManagerPtr = {};
-
 		void					onSubmit(map<string, string>* valuesMapPtr)				override
 		{
 			string uName	= "";
@@ -33,12 +31,14 @@ namespace YBCarRental {
 			if (pItr != valuesMapPtr->end())
 				uPsd = pItr->second;
 
-			bool loginResult = dataManagerPtr->UserLogin(uName, uPsd);
-			this->principalObject = dataManagerPtr->CurrentUser();
+			auto manager = dynamic_cast<YB_UserManager*>(dataManagerPtr);
 
-			if (loginResult && !dataManagerPtr->IsAdmin())
+			bool loginResult = manager->UserLogin(uName, uPsd);
+			this->principalObject = manager->CurrentUser();
+
+			if (loginResult && !manager->IsAdmin())
 				windowPtr->Goto("UserMenu");			//Todo: this shall be view.GotoView
-			else if(loginResult && dataManagerPtr->IsAdmin())
+			else if(loginResult && manager->IsAdmin())
 				windowPtr->Goto("AdminMenu");
 		};
 	};
@@ -51,20 +51,6 @@ namespace YBCarRental {
 			this->windowPtr = windowPtr;
 			this->dataManagerPtr = managerPtr;
 		};
-
-		YB_UserManager* dataManagerPtr;
-
-		void					onInit()												override
-		{
-
-		}
-		//string* Get_PropertyValue(string* bindNamePtr)										override {};
-
-		//map<string, string>* Get_PropertyValues(string* bindNamePtr)						{
-		//	return this->YB_VMBasis<YB_User>::Get_PropertyValue(bindNamePtr);
-		//};
-		//void					Set_PropertyValue(string* bindNamePtr, string* valuePtr)	override {};
-		//void					Set_PropertyValues(map<string, string>* values)				override {};
 	};
 
 	//105 UserMenu
@@ -75,11 +61,12 @@ namespace YBCarRental {
 			dataManagerPtr = managerPtr;
 			this->windowPtr = windowPtr;
 		}
-		YB_UserManager* dataManagerPtr;
 
 		void					onViewForwarded(YB_DataSource_Interface* from)			override 
 		{
-			this->principalObject = dataManagerPtr->CurrentUser();
+			auto manager = dynamic_cast<YB_UserManager*>(dataManagerPtr);
+
+			this->principalObject = manager->CurrentUser();
 
 		};
 	};	
@@ -92,31 +79,35 @@ namespace YBCarRental {
 			dataManagerPtr = managerPtr;
 			this->windowPtr = windowPtr;
 		}
-		YB_UserManager* dataManagerPtr;
 
 		void					onViewForwarded(YB_DataSource_Interface* from)			override 
 		{
-			this->principalObject = dataManagerPtr->CurrentUser();
+			auto manager = dynamic_cast<YB_UserManager*>(dataManagerPtr);
+			this->principalObject = manager->CurrentUser();
 
 		};
 	};
 
-	//109 CarSelection ListView
-	class CarSelectionView : public YB_ViewModelBasis<YB_Car>
+	//109 CarSelection - ListView
+	class YB_CarSelectionVM : public YB_ViewModelBasis<YB_Car>
 	{
 	public:
-		CarSelectionView(YB_CarManager* managerPtr, YBConsoleViews::YB_Window* windowPtr) {
+		YB_CarSelectionVM(YB_CarManager* managerPtr, YBConsoleViews::YB_Window* windowPtr) {
 			dataManagerPtr = managerPtr;
 			this->windowPtr = windowPtr;
 		}
-		YB_CarManager* dataManagerPtr;
-
-		string*					Get_PropertyValue(string* bindName)						override
-		{
-			//auto carList = dataManagerPtr->get
-			return nullptr;
-		};
 	};
+
+	//112 rent a car - InputView
+	class YB_CarRentVM : public YB_ViewModelBasis<YB_Car>
+	{
+	public:
+		YB_CarRentVM(YB_CarManager* managerPtr, YBConsoleViews::YB_Window* windowPtr) {
+			dataManagerPtr = managerPtr;
+			this->windowPtr = windowPtr;
+		}
+	};
+
 
 
 	//class YB_CarVM : public YB_ViewModelBasis<YB_Car>

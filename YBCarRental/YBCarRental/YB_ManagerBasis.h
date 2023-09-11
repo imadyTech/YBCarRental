@@ -25,44 +25,42 @@ namespace YBCarRental
 		/// <summary>
 		/// Load and instantiate all view definitions from persistence.
 		/// </summary>
-		void									LoadAll();
-	protected:
+		virtual void									LoadAll();
 
 		/// <summary>
 		/// Add a data record to the persistent repository
 		/// </summary>
 		/// <param name="data"></param>
-		bool									Add(TData data);
+		virtual bool									Add(TData data);
 
 		/// <summary>
 		/// Return an object from memory
 		/// </summary>
 		/// <param name="id"></param>
 		/// <returns></returns>
-		TData*									Get(int id);
+		virtual TData*									Get(int id);
 
-		TData*									Get(string username);
-
-		map<int, TData*>*						GetAll();
+		virtual map<int, TData>*						GetAll();
 
 		/// <summary>
 		/// Delete an object from memory (will persisted later by Save() command.
 		/// </summary>
 		/// <param name="id"></param>
 		/// <returns></returns>
-		bool									Delete(int id);
+		virtual bool									Delete(int id);
 
 		/// <summary>
 		/// Update an object from memory (will persisted later by Save() command.
 		/// </summary>
 		/// <param name="data"></param>
 		/// <returns></returns>
-		bool									Update(TData data);
+		virtual bool									Update(TData data);
 
+	protected:
 		/// <summary>
 		/// The persistor to manage TData objects at lower-layer .
 		/// </summary>
-		YB_PersistorBasis<TData>*				persistor;
+		YB_PersistorBasis<TData>*						persistor;
 
 		///dictionary of id:object pair
 		//map<int, TData> dataSet;
@@ -81,13 +79,7 @@ namespace YBCarRental
 	}
 
 	template<class TData>
-	inline TData*								YB_ManagerBasis<TData>::Get(string username)
-	{
-		return persistor->Get(username);
-	}
-
-	template<class TData>
-	map<int, TData*>*							YB_ManagerBasis<TData>::GetAll()
+	map<int, TData>*							YB_ManagerBasis<TData>::GetAll()
 	{
 		return persistor->GetAll();
 	}

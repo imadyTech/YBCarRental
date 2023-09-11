@@ -42,7 +42,7 @@ namespace YBConsoleViews {
 	//{
 	//}
 
-	string* YB_ViewBasis::Serialize()
+	string*				YB_ViewBasis::Serialize()
 	{
 		std::stringstream ss;
 		//Redirect to new function (instead of previous version overrided function)
@@ -81,7 +81,7 @@ namespace YBConsoleViews {
 	}
 
 	/// <summary>
-	/// Scan all viewItems, and merge the grid to viewArray
+	/// Scan all viewItems, pre-loop activities
 	/// </summary>
 	/// <returns></returns>
 	void				YB_ViewBasis::Init() {
@@ -95,40 +95,35 @@ namespace YBConsoleViews {
 			//cache the non-static items (which means you can toggle with Tab key)
 			if (item->ItemType == "ButtonItem" || item->ItemType == "InputItem" || item->ItemType == "ListItem" || item->ItemType == "MenuItem")
 				focusableItems.push_back(item);
+			//cache the items which having data binding behaviour
+			if (!item->Bind.empty())
+				bindableItems.push_back(item);
 			//The basis will try to Bind items from data properties;
 			//Nothing would happen if unsuccessful in binding.
 			//Override the Init in children, if necessary.
-			if (dataSource && !item->Bind.empty())
-			try {
-				item->OnBind(this->Bind(&item->Bind));
-				//item->Content = *this->Bind(&item->Bind);//This syntax has risk of returning nullptr and not handled by try/catch.
-			}
-			catch (exception e)
-			{
-				continue;
-				//throw YB_BindingError();		//don't break the binding process
-			}
 		}
+		this->isInitedFlag = true;
 	}
 
-	string*				YB_ViewBasis::Bind(string* bindName) {
-		return this->dataSource->Get_PropertyValue(bindName);
+	void				YB_ViewBasis::Bind() {
+		if (dataSource && !bindableItems.empty())
+			for (auto& item : this->bindableItems) {
+				{
+					try {
+						item->OnBind(this->dataSource->Get_PropertyValue(&item->Bind));
+						//item->Content = *this->Bind(&item->Bind);//This syntax has risk of returning nullptr and not handled by try/catch.
+					}
+					catch (exception e)
+					{
+						continue;
+						//throw YB_BindingError();		//don't break the binding process
+					}
+				}
+			}
+		this->isBindedFlag = true;
 	}
 
-	void				YB_ViewBasis::BindValues() {
-		//scan children viewItems and update the 'Content' variable
-		for (auto& item : this->subItemsList)
-		{
-			try {
-				item->Content = *this->Bind(&item->Bind);
-			}
-			catch (exception e) {
-				YB_BindingError error;
-				error(const_cast<char*>("error in binding values to children items."));
-				throw error;
-			}
-		}
-	}
+	void				YB_ViewBasis::BindList() {}
 
 	void				YB_ViewBasis::ReverseBind() {
 		//scan children viewItems and update the 'Content' variable
@@ -143,6 +138,21 @@ namespace YBConsoleViews {
 				throw error;
 			}
 		}
+
+	}
+
+	void				YB_ViewBasis::Submit()
+	{
+		map<string, string> reverseBindMap;
+		//find out the viewItems which has 'Bind' tag.
+		for (auto& iterator : this->subItemsList)
+		{
+			if (!iterator->Bind.empty())
+				reverseBindMap.insert(std::make_pair(iterator->Bind, iterator->Content));
+		}
+		if (!reverseBindMap.empty())
+			//submit to VM
+			this->dataSource->onSubmit(&reverseBindMap);
 
 	}
 
@@ -177,8 +187,11 @@ namespace YBConsoleViews {
 		return viewArray;
 	}
 
-	void				YB_ViewBasis::Exit() 
+	void				YB_ViewBasis::Exit()
 	{
+		isInitedFlag	= false;
+		isBindedFlag	= false;
+		isUpdatedFlag	= false;
 	}
 
 	void				YB_ViewBasis::Init_Background(char background)
@@ -254,20 +267,5 @@ namespace YBConsoleViews {
 
 	void				YB_ViewBasis::OnConfirmReturn(YB_ViewMessageBasis* msgPtr, YB_ViewBasis* fromViewPtr)
 	{
-	}
-
-	void				YB_ViewBasis::Submit()
-	{
-		map<string, string> reverseBindMap;
-		//find out the viewItems which has 'Bind' tag.
-		for (auto& iterator : this->subItemsList)
-		{
-			if (!iterator->Bind.empty())
-				reverseBindMap.insert(std::make_pair(iterator->Bind, iterator->Content));
-		}
-		if (!reverseBindMap.empty())
-			//submit to VM
-			this->dataSource->onSubmit(&reverseBindMap);
-
 	}
 }

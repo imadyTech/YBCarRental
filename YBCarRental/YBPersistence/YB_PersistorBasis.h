@@ -58,9 +58,7 @@ namespace YBPersistence
 
 		TData*						Get(int id);
 
-		TData*						Get(string username);
-
-		map<int, TData*>*			GetAll();
+		map<int, TData>*			GetAll();
 
 		/// <summary>
 		/// Delete an object from memory (will persisted later by Save() command.
@@ -79,8 +77,8 @@ namespace YBPersistence
 		//Note: for simplicity reason, this dataSet was designed to be exposed as public.
 		//otherwise it should be hidden from direct external access.
 
-	private:
 		map<int, TData>				dataSet = {}; //!!!DO NOT MODIFY THE dataSet to pointers. OR YOU NEED DEVELOP A TDataFactory FOR INSTANCE CREATION.
+	private:
 		/// <summary>
 		/// The file repository to store data records.
 		/// </summary>
@@ -140,29 +138,16 @@ namespace YBPersistence
 	}
 
 	template<class TData>
-	TData*							YB_PersistorBasis<TData>::Get(string username)
+	map<int, TData>*				YB_PersistorBasis<TData>::GetAll()
 	{
-		int id = -1;
-		for (const auto& entry : dataSet) {
-			//data = entry.second;
-			if (entry.second.UserName == username) {
-				//as the entry was created in the for loop, so it will be destructed after for loop breaks.
-				//int value will be copied so it won't loss.
-				id = entry.second.Id;
-				break;
-			}
-		}
-		return this->Get(id);
-	}
+		//std::map<int, TData*>* tDataPointerMap = new std::map<int, TData*>;
+		//for (auto iterator : dataSet) {
+		//	TData* data = &iterator.second;
+		//	tDataPointerMap->insert(std::make_pair(iterator.first, data));
+		//}
 
-	template<class TData>
-	map<int, TData*>*				YB_PersistorBasis<TData>::GetAll()
-	{
-		std::map<int, TData*> tDataPointerMap;
-		for (auto iterator : dataSet) {
-			tDataPointerMap[iterator.first] = &iterator.second;
-		}
-		return &tDataPointerMap;
+		//return tDataPointerMap;
+		return &dataSet;
 	}
 
 	template<class TData>

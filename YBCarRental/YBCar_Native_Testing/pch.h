@@ -10,6 +10,8 @@
 #include "../YBCarRental/YB_UserManager.h"
 #include "../YBCarRental/YB_UserPersistor.h"
 #include "../YBCarRental/YB_User.h"
+#include "YB_Car.h"
+#include "YB_Rent.h"
 #include "YB_ViewItemBasis.h"
 #include "YB_ViewBasis.h"
 #include "YB_ViewFactory.h"

@@ -11,17 +11,7 @@ namespace YBConsoleViews
 		}
 
 		YB_ViewItemBasis::Render();
-
-		if (isFocused) {
-			const char* content = "->";
-			size_t posY = h / 2;
-
-			if (posY <= h)
-			{
-				size_t remainingLength = strlen(viewArray[posY]);
-				memcpy(viewArray[posY], content, 2);
-			}
-		}
+		YB_ViewItemBasis::RenderFocus("->");
 		return YB_ViewItemBasis::viewArray;
 
 	}

@@ -23,7 +23,8 @@ namespace YBCarRental
 		bool						DeleteCar(int carId);
 		bool						UpdateCar(YB_Car* carPtr);
 		YB_Car*						GetCar(int carId);
-		map<int, YB_Car*>*			ListCars();
+		YB_Car*						GetCarByIndex(int index);
+		map<int, YB_Car>*			ListCars();
 	};
 }
 

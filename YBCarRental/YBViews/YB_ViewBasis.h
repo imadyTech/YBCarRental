@@ -37,24 +37,25 @@ namespace YBConsoleViews
 		// of its members.
 		YB_ViewBasis& operator=(const YB_ViewBasis& other) {
 			if (this != &other) {
-				Title = other.Title;
-				ViewType = other.ViewType;
-				w = other.w;
-				h = other.h;
-				Background = other.Background;
-				Source = other.Source;
-				GotoView = other.GotoView;
-				ConfirmView = other.ConfirmView;
-				subItemsList = other.subItemsList;
+				Title				= other.Title;
+				ViewType			= other.ViewType;
+				w					= other.w;
+				h					= other.h;
+				Background			= other.Background;
+				Source				= other.Source;
+				GotoView			= other.GotoView;
+				ConfirmView			= other.ConfirmView;
+				subItemsList		= other.subItemsList;
 
-				dataSource = other.dataSource;
-				itemFactoryPtr = other.itemFactoryPtr;
-				fromViewPtr = other.fromViewPtr;
-				windowPtr = other.windowPtr;
+				dataSource			= other.dataSource;
+				itemFactoryPtr		= other.itemFactoryPtr;
+				fromViewPtr			= other.fromViewPtr;
+				windowPtr			= other.windowPtr;
 
-				viewArray = other.viewArray;
-				isUpdated = other.isUpdated;
-				currentItemIndex = other.currentItemIndex;
+				viewArray			= other.viewArray;
+				isUpdatedFlag		= other.isUpdatedFlag;
+				isInitedFlag		= other.isInitedFlag;
+				currentItemIndex	= other.currentItemIndex;
 
 
 				// Deep copy of other resources, if any
@@ -94,19 +95,24 @@ namespace YBConsoleViews
 		//void Serialize(ofstream* output) override;
 
 		virtual void					Init();															
-		virtual	string*					Bind(string* bindName);											//datasource VM -> view: Bind a value to a viewItem.
-		virtual void					BindValues();													//datasource VM -> view: Bind values to viewItems from dataSource.
-		virtual void					ReverseBind();													//view -> datasource VM: Reverse binding to VM (and upate/save)
+		virtual	void					Bind();	
+		virtual void					BindList();														//datasource VM -> view: Bind values to viewItems from dataSource.
 		virtual void					OnKey(int* keycode);
+		virtual void					ReverseBind();													//view -> datasource VM: Reverse binding to VM (and upate/save)
+		virtual void					Submit();
+		virtual vector<char*>			Render();
+		virtual void					Exit();
 		virtual void					OnChildReturn	(YB_ViewMessageBasis*		Message, 
 														YB_ViewItemBasis*		fromItemPtr);			//Entry point for internal items
 		virtual void					OnConfirmReturn (YB_ViewMessageBasis*		message, 
 														YB_ViewBasis*			fromViewPtr);			//Entry point between views
-		virtual vector<char*>			Render();
-		virtual void					Exit();
 		void							Init_Background(char background);
 		void							Fill_Background(char background);
 		void							Clear_Background();
+
+		bool							isInitedFlag = false;											//indicator whether initiation completed
+		bool							isBindedFlag = false;											//indicator whether viewItems content has been set
+		bool							isUpdatedFlag = true;											//indicator for dirt-Rendering
 
 		std::function<void()>			ViewReturnCallback;
 		YB_ViewItemFactory*				itemFactoryPtr;													//this could be used for runtime item generation
@@ -114,12 +120,11 @@ namespace YBConsoleViews
 		YB_ViewBasis*					fromViewPtr;													//the previous view, so as to carry datasource forward
 		YB_Window*						windowPtr;
 	protected:
-		vector<YB_ViewItemBasis*>		focusableItems;													//Todo: move this code to basis or Init()
-		void							Submit();
+		vector<YB_ViewItemBasis*>		focusableItems;													//Items affected by Tab key
+		vector<YB_ViewItemBasis*>		bindableItems;													//Items affected by binding behaviour
 
 	private:
 		vector<char*>					viewArray;
-		bool							isUpdated = true;												//indicator for dirt-Rendering
 		int								currentItemIndex = -1;
 
 	};

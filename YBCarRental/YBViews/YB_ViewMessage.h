@@ -9,6 +9,7 @@ namespace YBConsoleViews
 	static const char* msgDef_Yes		= "YES";
 	static const char* msgDef_No		= "NO";
 	static const char* msgDef_Menu		= "MENU";
+	static const char* msgDef_ListItem	= "ListItem";
 
 	class YB_ViewMessageBasis
 	{
@@ -29,33 +30,37 @@ namespace YBConsoleViews
 	class YB_ButtonSubmitMessage :	public YB_ViewMessageBasis
 	{
 	public:
-		YB_ButtonSubmitMessage() : YB_ViewMessageBasis(msgDef_Submit) {}
+		YB_ButtonSubmitMessage()				: YB_ViewMessageBasis(msgDef_Submit) {}
 
 	};	
 	
 	class YB_ButtonYesMessage :		public YB_ViewMessageBasis
 	{
 	public:
-		YB_ButtonYesMessage() : YB_ViewMessageBasis(msgDef_Yes) {}
+		YB_ButtonYesMessage()					: YB_ViewMessageBasis(msgDef_Yes) {}
 
 	};
 
 	class YB_ButtonNoMessage :		public YB_ViewMessageBasis
 	{
 	public:
-		YB_ButtonNoMessage() : YB_ViewMessageBasis(msgDef_No) {}
+		YB_ButtonNoMessage()					: YB_ViewMessageBasis(msgDef_No) {}
 	};
 
 	class YB_MenuItemMessage :		public YB_ViewMessageBasis
 	{
 	public:
-		YB_MenuItemMessage() : YB_ViewMessageBasis(msgDef_Menu) {}
-		YB_MenuItemMessage(const string& link) :YB_ViewMessageBasis(link.c_str()) {}
+		YB_MenuItemMessage()					: YB_ViewMessageBasis(msgDef_Menu) {}
+		YB_MenuItemMessage(const string& link)	: YB_ViewMessageBasis(link.c_str()) {}
 	};
 
 	class YB_ListItemMessage :		public YB_ViewMessageBasis
 	{
 	public:
+		YB_ListItemMessage()					: YB_ViewMessageBasis(msgDef_ListItem) {}
+		YB_ListItemMessage(int id)	: YB_ViewMessageBasis(msgDef_ListItem) {
+			this->itemId = id;
+		}
 		int itemId;
 	};
 

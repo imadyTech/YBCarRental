@@ -8,106 +8,39 @@
 
 #include <iostream>
 #include <filesystem>
-#include "YB_UserManager.h"
-#include "YB_CarManager.h"
-#include "YB_RentManager.h"
 #include "YB_Errors.h"
 #include "YB_Window.h"
 #include "YB_CarRental_LogicFactory.h"
+#include "YB_ManagerFactory.h"
+
 
 using namespace YBCarRental;
 using namespace YBConsoleViews;
 
+
 int main()
 {
-	std::filesystem::path currentDir = std::filesystem::current_path();
+	const std::string		INIT_VIEW = "WelcomeView";
+	const std::string		EXIT_VIEW = "ByeByeView";
+	std::filesystem::path	currentDir = std::filesystem::current_path();
 
-	YB_UserManager* userMgr		= new YB_UserManager(currentDir.string() + "\\UserRepo.txt");
-	userMgr->LoadAll();
-	YB_CarManager*	carMgr		= new YB_CarManager	(currentDir.string() + "\\CarRepo.txt");
-	carMgr->LoadAll();
-	YB_RentManager* rentMgr		= new YB_RentManager(currentDir.string() + "\\RentRepo.txt");
-	rentMgr->LoadAll();
-
-	YB_Window windowPtr = YB_Window();
+	YB_Window				windowPtr = YB_Window();
+	YB_ManagerFactory		managerFactory = YB_ManagerFactory();
 
 	YB_CarRental_LogicFactory* logicFactory = new YB_CarRental_LogicFactory();
-	logicFactory->RegisterDataSource("YB_UserLoginVM", new YB_UserLoginVM(userMgr, &windowPtr));
-	logicFactory->RegisterDataSource("YB_UserRegisterVM", new YB_UserRegisterVM(userMgr, &windowPtr));
-	logicFactory->RegisterDataSource("YB_UserMenuVM", new YB_UserMenuVM(userMgr, &windowPtr));
-	logicFactory->RegisterDataSource("YB_AdminMenuVM", new YB_AdminMenuVM(userMgr, &windowPtr));
-	logicFactory->RegisterDataSource("YB_CarSelectionVM", new YB_CarSelectionVM(carMgr, &windowPtr));
-	logicFactory->RegisterDataSource("YB_CarRentVM", new YB_CarRentVM(carMgr, &windowPtr));
-	
-
-
+	logicFactory->RegisterDataSource("YB_UserLoginVM", new YB_UserLoginVM(YB_ManagerFactory::UserMgr, &windowPtr));
+	logicFactory->RegisterDataSource("YB_UserRegisterVM", new YB_UserRegisterVM(YB_ManagerFactory::UserMgr, &windowPtr));
+	logicFactory->RegisterDataSource("YB_UserMenuVM", new YB_UserMenuVM(YB_ManagerFactory::UserMgr, &windowPtr));
+	logicFactory->RegisterDataSource("YB_AdminMenuVM", new YB_AdminMenuVM(YB_ManagerFactory::UserMgr, &windowPtr));
+	logicFactory->RegisterDataSource("YB_CarSelectionVM", new YB_CarSelectionVM(YB_ManagerFactory::CarMgr, &windowPtr));
+	logicFactory->RegisterDataSource("YB_CarRentVM", new YB_CarRentVM(YB_ManagerFactory::CarMgr, &windowPtr));
 
 	windowPtr.ConfigLogicFactory(logicFactory);
-
 	windowPtr.InitViewFactory(currentDir.string() + "\\ViewRepo.txt");
+	windowPtr.initViewName = INIT_VIEW;
+	windowPtr.exitViewName = EXIT_VIEW;
 	windowPtr.Init();
 	windowPtr.Run();
 
 	cout << "The application quit." << endl;
-	//try/catch wrapping
-		//get key inputs
-		//YB_Windows update / response to key input
-		//viewitem update viewmodel
-		//Managers logic updates driven by viewmodel
-		//Persistence
-	//Loop
-	//while (true)
-	//{
-	//	window.OnKeyIn();
-	//	window.Render();
-	//}
-
-	////Testing the custom YB Errors
-	//try {
-	//	throw YB_RepositoryError();
-	//}
-	//catch (const std::exception& e) {
-	//	std::cerr << "Caught YB customed exception: " << e.what() << std::endl;
-	//}
-
-	//Testing the persistors and how C++ template class and method works.
-	//YB_User user = YB_User();       //OK
-	//YB_PersistorBasis<YB_DataBasis> userPersistor = YB_PersistorBasis<YB_DataBasis>(); //Not tested
-	//YB_PersistorBasis<YB_User> userPersistor = YB_PersistorBasis<YB_User>("This is where the data stored.");  //OK
-	//YBCarRental::YB_UserPersistor userPersistor = YBCarRental::YB_UserPersistor("This is where the user data stored."); //OK
-	//cout << userPersistor.repositoryURL << endl;
-
-	//YBCarRental::YB_UserPersistor userPersistor = YBCarRental::YB_UserPersistor("E:\\YB800ProSE\\YBCarRental\\YBCarRental\\x64\\Debug\\UserDatabase.txt"); //OK
-	//cout << userPersistor.repositoryURL << endl;
-
-	////OK
-	//YB_User user = YB_User();
-	//user.FirstName = "Frank";
-	//user.FamilyName = "Shen";
-	//user.Id = 15;
-	//user.Password = "666666";
-	//user.UserName = "fshen";
-	//user.LoginStatus = false;
-	//user.UserRoles = "user:admin";
-	//user.Balance = 10000;
-	////OK
-
-	//ofstream outputfile("UserRepo.txt");
-	//if (!outputfile.is_open())
-	//{
-	//	cerr << "The file is not opened!" << endl;
-	//}
-	//user.Serialize(&outputfile);
-
-	//YB_Repository repo = YB_Repository("UserRepo.txt");
-	//cout << repo.isReady;
-
-	//YB_PersistorBasis<YB_User> persistor = YB_PersistorBasis<YB_User>("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/UserRepo.txt");
-	//persistor.GetAll();
-	//cout << "END";
-
-	//YB_PersistorBasis<YB_User> persistor = YB_PersistorBasis<YB_User>("E:/YB800ProSE/YBCarRental/YBCarRental/YBCar_Native_Testing/UserRepo.txt");
-	//YB_User* userPtr = persistor.Get("fshen");
-	//cout << userPtr->FirstName << " " << userPtr->FamilyName;
-
 }

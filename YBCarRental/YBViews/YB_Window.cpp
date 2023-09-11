@@ -19,9 +19,10 @@ namespace YBConsoleViews
 
 	void YB_Window::Init()
 	{
-		Goto("UserMenu");														//Load and show Welcome view
+		Goto(this->initViewName);
+
 		//currentView->ViewReturnCallback = [this]() { Goto(100); };			//*******demo how to use callback
-		//currentView = (*viewFactory).GetView(???);						//Byebye view
+		//currentView = (*viewFactory).GetView(???);							//Byebye view
 		//currentView->ViewReturnCallback = [this]() { Todo _someCode_exit; };	//quit
 	}
 
@@ -62,7 +63,7 @@ namespace YBConsoleViews
 					keycode = _getch() + 256;							//Arrows
 				}
 				if (keycode1 == -1 && keycode == 17) {					//Ctrl+Q, escape the application.
-					Goto("Hello Car Rental");
+					Goto(this->exitViewName);
 					continue;
 				}
 				if (keycode1 == -1 && keycode == 27) continue;			//Esc, rewind view.	

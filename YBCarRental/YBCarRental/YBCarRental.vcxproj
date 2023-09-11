@@ -117,7 +117,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>E:\YB800ProSE\YBCarRental\YBCarRental\YBPersistence\x64\Debug;E:\YB800ProSE\YBCarRental\YBCarRental\YBViews\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>YB_Repository;YB_Errors;YB_PersistorBasis;YB_DataBasis;YB_ViewFactory;YB_ViewItemFactory;YB_ViewBasis;YB_ViewItemBasis;YB_ViewMessage;YB_Window;YB_WelcomeView;YB_ListView;YB_DetailsView;YB_DialogView;YB_InputView;YB_MenuView;YB_ButtonItem;YB_InputItem;YB_ListItem;YB_ListHead;YB_TextItem;YB_MenuItem;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>YB_Repository;YB_Errors;YB_PersistorBasis;YB_DataBasis;YB_Global_Header;YB_ViewFactory;YB_ViewItemFactory;YB_ViewBasis;YB_ViewItemBasis;YB_ViewMessage;YB_Window;YB_WelcomeView;YB_ListView;YB_DetailsView;YB_DialogView;YB_InputView;YB_MenuView;YB_ButtonItem;YB_InputItem;YB_ListItem;YB_ListHead;YB_TextItem;YB_MenuItem;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -142,6 +142,7 @@
     <ClCompile Include="YB_CarRental_LogicFactory.cpp" />
     <ClCompile Include="YB_CarRentViewModels.cpp" />
     <ClCompile Include="YB_ManagerBasis.cpp" />
+    <ClCompile Include="YB_ManagerFactory.cpp" />
     <ClCompile Include="YB_Rent.cpp" />
     <ClCompile Include="YB_RentManager.cpp" />
     <ClCompile Include="YB_User.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="YB_CarRental_LogicFactory.h" />
     <ClInclude Include="YB_CarRentViewModels.h" />
     <ClInclude Include="YB_ManagerBasis.h" />
+    <ClInclude Include="YB_ManagerFactory.h" />
     <ClInclude Include="YB_Rent.h" />
     <ClInclude Include="YB_RentManager.h" />
     <ClInclude Include="YB_User.h" />

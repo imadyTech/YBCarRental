@@ -3,14 +3,13 @@
 #include <stack>
 #include <string>
 #include <conio.h>
+#include <functional>
 //#include <iostream>
 //#include <cstdlib>
 #include <windows.h>
 //#include "YB_ViewBasis.h"
 #include "YB_ViewFactory.h"
 #include "YB_LogicFactory.h"
-#include <functional>
-//#include "YB_ViewItemFactory.h"
 
 using namespace std;
 namespace YBConsoleViews
@@ -22,6 +21,10 @@ namespace YBConsoleViews
 		YB_Window() = default;
 
 		void InitViewFactory(string viewRepo);
+
+		string							initViewName="";
+		string							exitViewName="";
+
 
 		void							ConfigLogicFactory(YB_LogicFactory* logic);
 

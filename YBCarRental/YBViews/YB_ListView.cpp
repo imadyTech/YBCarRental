@@ -17,7 +17,8 @@ void				YBConsoleViews::YB_ListView::Init()
 		string tempString = this->ListRowTemplate;
 		//Create a auto-generated Id tag
 		tempString += string("Id:") + to_string(this->Id * 100 + i) + string("!");
-		//Create a auto-generated Bind tag
+		//Create a auto-generated Bind tag 
+		//This scheme is designed for future expansion to implement the paging function
 		tempString += string("Bind:") + to_string(i) + string("!");
 		ListItem* listItemPtr = dynamic_cast<ListItem*>(this->itemFactoryPtr->CreateViewItem(tempString));
 		//Move downward vertical position
@@ -57,10 +58,11 @@ void				YBConsoleViews::YB_ListView::BindList() {
 			formatedValueCarrier->push_back(newPair);
 		}
 		try {
-			int id = std::stoi(viewitem->Bind);
-			//2. formatedValueCarrier get the formated value as vector
-			this->dataSource->Get_QuerySingle(id, *formatedValueCarrier);
-			//3. generate the tuple for listItem content rendering
+			//1. Retrieve the row index from 'Bind' field
+			int rowIndex = std::stoi(viewitem->Bind);
+			//2. query the source one by one. formatedValueCarrier get the formated value as vector.
+			this->dataSource->Get_QuerySingle(rowIndex, *formatedValueCarrier);
+			//3. generate the tuples for listItem content rendering
 			FORMATED_LIST_VIEW_VALUES* row = new FORMATED_LIST_VIEW_VALUES();
 			int i = 0;
 			for (auto valuePair : *formatedValueCarrier)
@@ -87,6 +89,8 @@ void				YBConsoleViews::YB_ListView::OnKey(int* keycode)
 
 void				YBConsoleViews::YB_ListView::OnChildReturn(YB_ViewMessageBasis* msgPtr, YB_ViewItemBasis* fromItemPtr)
 {
+	//Base will raise action of window.Goto() 
+	YB_ViewBasis::OnChildReturn(msgPtr, fromItemPtr);
 }
 
 void				YBConsoleViews::YB_ListView::OnConfirmReturn(YB_ViewMessageBasis* msgPtr, YB_ViewBasis* fromViewPtr)

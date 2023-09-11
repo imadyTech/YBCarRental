@@ -114,7 +114,7 @@ namespace YBConsoleViews
 		bool							isBindedFlag = false;											//indicator whether viewItems content has been set
 		bool							isUpdatedFlag = true;											//indicator for dirt-Rendering
 
-		std::function<void()>			ViewReturnCallback;
+		//std::function<void()>			ViewReturnCallback;												//The callback scheme is not used in this project
 		YB_ViewItemFactory*				itemFactoryPtr;													//this could be used for runtime item generation
 		YB_DataSource_Interface*		dataSource;														//the ViewModel served as data source
 		YB_ViewBasis*					fromViewPtr;													//the previous view, so as to carry datasource forward

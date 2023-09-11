@@ -8,6 +8,7 @@
 #include "YB_LogicFactory.h"
 #include "YB_ManagerBasis.h"
 #include "YB_Window.h"
+#include "YB_Global_Header.h"
 
 using namespace YBConsoleViews;
 using namespace std;
@@ -23,33 +24,42 @@ namespace YBCarRental {
 		YB_ViewModelBasis() {};
 
 		virtual string*					Get_PropertyValue(string* bindNamePtr)										override;
-		virtual void					Get_QuerySingle (int Id, vector<std::pair<string, string>*>& result)	override;
-		virtual void					Get_QueryList(vector<vector<std::pair<string, string>*>*>& result)		override;
+		virtual bool					Get_QuerySingle(int Id, vector<LIST_ITEM_VALUE*>& result)					override;
+		virtual bool					Get_QueryByIndex(int index, vector<LIST_ITEM_VALUE*>& result)				override;
+		virtual void					Get_QueryList(vector<LIST_ITEM_VALUES*>& result)							override;
+		virtual YB_DataBasis*			Get_PrincipalData()															override;
 		virtual void					Set_PropertyValue(string* bindNamePtr, string* valuePtr)					override;
 		virtual void					Set_PropertyValues(map<string, string>* values)								override;
 
-		virtual map<string, string>*	onListInitiated(string* tableHeadNames) { return nullptr; };							//tableheadNames format: Model/Make/Mileage
-		virtual map<string, string>*	onListInitiated(string* tableHeadNames, int pageNum, int size) { return nullptr; };		//Table paging, Todo...
-		virtual void					onInit()													{};
-		virtual void					onViewForwarded(YB_DataSource_Interface* from)				{};
-		virtual void					onSubmit(map<string, string>* values)						{};
-		virtual void					onContentUpdated(string* bindName, string* newValue)		{};
-		virtual void					onItemFocused(string* bindName)								{};
-		virtual void					onItemSelected(string* bindName)							{};
-		virtual	void					onButtonClicked(string* buttonName)							{};
-		virtual void					onYesClicked()												{};
-		virtual void					onNoClicked()												{};
+		virtual map<string, string>* onListInitiated(string* tableHeadNames)										override
+		{
+			return nullptr;
+		};							//tableheadNames format: Model/Make/Mileage
+		virtual map<string, string>* onListInitiated(string* tableHeadNames, int pageNum, int size)					override
+		{
+			return nullptr;
+		};		//Table paging, Todo...
+		virtual void					onInit()																	override {};
+		virtual void					onViewForwarded(YB_DataBasis* fromData)										override {};
+		virtual void					onSubmit(map<string, string>* values)										override {};
+		virtual void					onContentUpdated(string* bindName, string* newValue)						override {};
+		virtual void					onItemFocused(string* bindName)												override {};
+		virtual void					onItemSelected(string* bindName)											override {};
+		virtual	void					onButtonClicked(string* buttonName)											override {};
+		virtual void					onYesClicked()																override {};
+		virtual void					onNoClicked()																override {};
+		virtual void					onOkClicked()																override {};
 
-		YB_Window*						windowPtr = nullptr;
-		TData*							principalObject = {}; //the principal was introduced to represent the TData for each VM
+		YB_Window* windowPtr = nullptr;
+		TData* principalObject = {}; //the principal was introduced to represent the TData for each VM
 	protected:
-		YB_ManagerBasis<TData>*			dataManagerPtr;
+		YB_ManagerBasis<TData>* dataManagerPtr;
 
 	};
 
 
 	template<class TData>
-	string*								YB_ViewModelBasis<TData>::Get_PropertyValue(string* bindName)
+	string* YB_ViewModelBasis<TData>::Get_PropertyValue(string* bindName)
 	{
 		if (principalObject)
 			return principalObject->FindValue(*bindName);
@@ -58,21 +68,55 @@ namespace YBCarRental {
 	}
 
 	template<class TData>
-	inline void							YB_ViewModelBasis<TData>::Get_QuerySingle(int Id, vector<std::pair<string, string>*>& result)
+	inline bool							YB_ViewModelBasis<TData>::Get_QuerySingle(int Id, vector<LIST_ITEM_VALUE*>& result)
 	{
 		if (dataManagerPtr)
 		{
-			auto data = dataManagerPtr->Get(Id);
-			for (auto tupIterator: result)
+			auto* dataPtr = dataManagerPtr->Get(Id);
+			for (auto valueFieldIterator : result)
 			{
-				(*tupIterator).second = *data->FindValue((*tupIterator).first);
+				(*valueFieldIterator).second = *dataPtr->FindValue((*valueFieldIterator).first);
+			}
+			return true;
+		}
+		return false;
+	}
+
+	template<class TData>
+	inline bool							YB_ViewModelBasis<TData>::Get_QueryByIndex(int index, vector<LIST_ITEM_VALUE*>& result)
+	{
+		if (dataManagerPtr)
+		{
+			//get all data :) in a map<int, TData>*
+			auto dataMapPtr = dataManagerPtr->GetAll();
+			if (index >= dataMapPtr->size())
+				return false;
+			int i = 0;
+			//iterate the stupid map :(
+			for (auto& mapIterator : *dataMapPtr)
+			{
+				if (i == index)
+				{
+					for (auto valueFieldIterator : result)
+					{
+						(*valueFieldIterator).second = *mapIterator.second.FindValue(valueFieldIterator->first);
+					}
+					return true;
+				}
+				i++;
 			}
 		}
 	}
 
 	template<class TData>
-	inline void							YB_ViewModelBasis<TData>::Get_QueryList(vector<vector<std::pair<string, string>*>*>& result)
+	inline void							YB_ViewModelBasis<TData>::Get_QueryList(vector<LIST_ITEM_VALUES*>& result)
 	{
+	}
+
+	template<class TData>
+	inline YB_DataBasis* YB_ViewModelBasis<TData>::Get_PrincipalData()
+	{
+		return this->principalObject;
 	}
 
 	template<class TData>

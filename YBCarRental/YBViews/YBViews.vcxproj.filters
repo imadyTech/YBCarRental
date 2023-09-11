@@ -114,6 +114,9 @@
     <ClCompile Include="YB_ListHead.cpp">
       <Filter>Source Files\YB_ViewItemTemplates</Filter>
     </ClCompile>
+    <ClCompile Include="YB_Global_Header.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="YB_Window.h">

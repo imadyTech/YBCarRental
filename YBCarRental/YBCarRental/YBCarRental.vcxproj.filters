@@ -84,6 +84,9 @@
     <ClCompile Include="YB_ViewModelBasis.cpp">
       <Filter>Source Files\YB_ViewModels</Filter>
     </ClCompile>
+    <ClCompile Include="YB_ManagerFactory.cpp">
+      <Filter>Source Files\YB_Managers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="YB_UserManager.h">
@@ -127,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="YB_ViewModelBasis.h">
       <Filter>Header Files\YB_ViewModels</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_ManagerFactory.h">
+      <Filter>Header Files\YB_Managers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

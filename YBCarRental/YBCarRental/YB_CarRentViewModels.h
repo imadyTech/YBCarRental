@@ -4,6 +4,7 @@
 #include <YB_CarManager.h>
 #include <YB_RentManager.h>
 #include "YB_Window.h"
+#include "YB_ManagerFactory.h"
 using namespace YBConsoleViews;
 
 class YBConsoleViews::YB_Window;
@@ -62,7 +63,7 @@ namespace YBCarRental {
 			this->windowPtr = windowPtr;
 		}
 
-		void					onViewForwarded(YB_DataSource_Interface* from)			override 
+		void					onViewForwarded(YB_DataBasis* fromData)		override
 		{
 			auto manager = dynamic_cast<YB_UserManager*>(dataManagerPtr);
 
@@ -80,7 +81,7 @@ namespace YBCarRental {
 			this->windowPtr = windowPtr;
 		}
 
-		void					onViewForwarded(YB_DataSource_Interface* from)			override 
+		void					onViewForwarded(YB_DataBasis* fromData)		override
 		{
 			auto manager = dynamic_cast<YB_UserManager*>(dataManagerPtr);
 			this->principalObject = manager->CurrentUser();
@@ -105,6 +106,19 @@ namespace YBCarRental {
 		YB_CarRentVM(YB_CarManager* managerPtr, YBConsoleViews::YB_Window* windowPtr) {
 			dataManagerPtr = managerPtr;
 			this->windowPtr = windowPtr;
+		}
+		YB_UserManager* userManagerPtr	= YB_ManagerFactory::UserMgr;
+		YB_RentManager* rentManagerPtr	= YB_ManagerFactory::RentMgr;
+
+		void					onViewForwarded(YB_DataBasis* fromData)		override
+		{
+			auto manager = dynamic_cast<YB_UserManager*>(dataManagerPtr);
+			this->principalObject = dynamic_cast<YB_Car*>(fromData);
+
+		};
+		string* Get_PropertyValue(string* bindName) override
+		{
+			return YB_ViewModelBasis::Get_PropertyValue(bindName);
 		}
 	};
 

@@ -86,8 +86,8 @@ namespace YBConsoleViews {
 	/// <returns></returns>
 	void				YB_ViewBasis::Init() {
 		//1. first let carry-forwarded datasource initiate
-		if (fromViewPtr && this->dataSource)
-			this->dataSource->onViewForwarded(fromViewPtr->dataSource);
+		if (fromViewPtr && this->dataSource && fromViewPtr->dataSource)
+			this->dataSource->onViewForwarded(fromViewPtr->dataSource->Get_PrincipalData());
 
 		//2. Bind all items with tag "Bind"
 		for (auto& item : this->subItemsList)
@@ -263,6 +263,17 @@ namespace YBConsoleViews {
 
 	void				YB_ViewBasis::OnChildReturn(YB_ViewMessageBasis* msgPtr, YB_ViewItemBasis* fromItemPtr)
 	{
+		if (fromItemPtr && !fromItemPtr->Link.empty())
+		{
+			try
+			{
+				windowPtr->Goto(fromItemPtr->Link);
+			}
+			catch (exception e)
+			{
+				windowPtr->Goto("ErrorView");
+			}
+		}
 	}
 
 	void				YB_ViewBasis::OnConfirmReturn(YB_ViewMessageBasis* msgPtr, YB_ViewBasis* fromViewPtr)

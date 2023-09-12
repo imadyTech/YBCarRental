@@ -102,8 +102,8 @@ namespace YBConsoleViews
 
 	void YB_Window::Goto(YB_ViewBasis* viewPtr)
 	{
-		if (currentView)
-			currentView->Exit();
+		if (currentView)	currentView->Exit();
+		if (!viewPtr)		viewPtr = viewFactory->GetView(ERROR_VIEW);
 
 		viewPtr->fromViewPtr	= currentView;
 		currentView				= viewPtr;

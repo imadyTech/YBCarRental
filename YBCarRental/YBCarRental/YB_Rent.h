@@ -29,18 +29,17 @@ namespace YBCarRental
 		YB_Rent(int userId, int carId, tm start, int days);
 		~YB_Rent() override;
 
-		int UserId;
-		int CarId;
-		tm RentStart;			//rental start date
-		tm DateOfOrder;			//date placed order
-		int RentDays;			//total days of rental
-		string Status;			//
+		int			UserId;
+		int			CarId;
+		tm			RentStart;						//rental start date
+		tm			DateOfOrder;					//date placed order
+		int			RentDays;						//total days of rental
+		string		Status;							//check YB_Global_Header for definition
 
-		string* Serialize() override;
-		void Serialize(std::stringstream& strStream) override;
-		//void Serialize(ofstream* output) override;
-		void Deserialize(string line);
-		void Deserialize(string line, const char* separator) override;
+		string*		Serialize() override;
+		void		Serialize(std::stringstream& strStream) override;
+		void		Deserialize(string line);
+		void		Deserialize(string line, const char* separator) override;
 
 		//copy assignment operator 
 		YB_Rent& operator=(const YB_Rent& other) {

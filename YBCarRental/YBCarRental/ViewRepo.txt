@@ -1,16 +1,16 @@
-##########################################################################################
-##                   This application builds views with YBML format                     ##
-##                     Copyright Zhenqun Shen 2023, Yoobee College                      ##
-##--------------------------------------------------------------------------------------##
-##  A comment line ends with a '#' but it's ok to have # at begin or middle of the line.##
-##  Empty line are not processed.                                                       ##
-##  For a long, long line, use '&' at end of a line to concat with next line.           ##
-##  !!! Avoid using ':' or ';' as they are special separators; Otherwise I don't know   ##
-##      what happens!                                                                   ##
-##  !!! Use identical integer Id for views and viewItems.                               ##
-##	!!! Hard protocol, ListHead item start with "<col>".                                ##
-##	!!! Hard protocol, viewItem start with "<item>".                                    ##
-##########################################################################################
+###############################################################################################################
+##                   This application builds views with YBML format                                          ##
+##                     Copyright Zhenqun Shen 2023, Yoobee College                                           ##
+##-----------------------------------------------------------------------------------------------------------##
+##  A comment line ends with a '#' but it's ok to have # at begin or middle of the line.                     ##
+##  Empty line are not processed.                                                                            ##
+##  For a long, long line, use '&' at end of a line to concat with next line.                                ##
+##  !!! Avoid using ':' or ';' as they are special separators; Otherwise I don't know                        ##
+##      what happens!                                                                                        ##
+##  !!! Use identical integer Id for views and viewItems.                                                    ##
+##	!!! Hard protocol, ListHead item start with "<col>".                                                     ##
+##	!!! Hard protocol, viewItem start with "<item>".                                                         ##
+###############################################################################################################
 
 ##The first view with greeting only.##
 Id:100;Title:WelcomeView;ViewType:WelcomeView;GotoView:MainMenuView;w:120;h:29;Source:;&
@@ -83,14 +83,14 @@ Id:106;Title:AdminMenu;ViewType:MenuView;w:120;h:29;Source:YB_AdminMenuVM;&
 Id:107;Title:MyProfileView;ViewType:DetailsView;w:120;h:29;Source:;&
 <item>107A:Id:1070!x:20!y:3!w:80!h:1!ItemType:TextItem!Content:My Profile!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
 
-## 108 - Todo - My orders ##
+## 108 - My orders ##
 Id:108;Title:MyOrdersView;ViewType:ListView;w:120;h:29;Source:YB_MyOrdersVM;&
 ListHead:Id:1080!ItemType:ListHead!x:0!y:6!w:120!h:1!<col>Id:8!<col>UserId:12!<col>CarId:15!<col>RentStart:18!<col>DateOfOrder:18!<col>RentDays:15!<col>Status:18!;&
-ListRowCount:6;&
+ListRowCount:8;&
 ListRowTemplate:ItemType:ListItem!Link:OrderDetailsView!x:0!y:8!w:120!h:1!Content:------!isCentral:1!isFocused:0!;&
 <item>108A:Id:1081!x:0!y:5!isCentral:0!w:120!h:1!ItemType:TextItem!Content:----------------------------------------------------------------------------------------------------------------------!;&
 <item>108B:Id:1082!x:0!y:7!isCentral:0!w:120!h:1!ItemType:TextItem!Content:----------------------------------------------------------------------------------------------------------------------!;&
-<item>108C:Id:1083!x:0!y:14!isCentral:0!w:120!h:1!ItemType:TextItem!Content:----------------------------------------------------------------------------------------------------------------------!;&
+<item>108C:Id:1083!x:0!y:16!isCentral:0!w:120!h:1!ItemType:TextItem!Content:----------------------------------------------------------------------------------------------------------------------!;&
 <item>108E:Id:1085!x:20!y:3!w:80!h:1!ItemType:TextItem!Content:My Rental Orders!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
 
 ## 109 - Todo - Car selection list menu - select a car to rent ##
@@ -141,6 +141,37 @@ Id:112;Title:CarRentView;ViewType:InputView;GotoView:UserMenu;ConfirmView:Confir
 <item>112Y:Id:11250!x:20!y:4!w:80!h:1!ItemType:TextItem!Content:Details of car you selected!Background:-!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;
 ##<item>112Z:Id:11227!x:10!y:02!w:100!h:27!ItemType:ButtonItem!Content:Insurfficient Balance!ButtonType:BtnOk!Background:.!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;##
 
+## 113 ------------ Order details ------------ !!! ##
+Id:112;Title:OrderDetailsView;ViewType:DetailsView;GotoView:UserMenu;w:120;h:29;Source:YB_OrderDetailsVM;&
+<item>113Y:Id:11350!x:20!y:4!w:80!h:1!ItemType:TextItem!Content:Details of your order!Background:-!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;&
+<item>113H1:Id:11307!x:36!y:05!w:20!h:1!ItemType:TextItem!Content:Order Id!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>113G1:Id:11306!x:36!y:06!w:20!h:1!ItemType:TextItem!Content:Customer Name!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>113A1:Id:11300!x:36!y:07!w:20!h:1!ItemType:TextItem!Content:Car Info!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>113B1:Id:11301!x:36!y:08!w:20!h:1!ItemType:TextItem!Content:Rent Start!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>113C1:Id:11302!x:36!y:09!w:20!h:1!ItemType:TextItem!Content:Date Of Order!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>113D1:Id:11303!x:36!y:10!w:20!h:1!ItemType:TextItem!Content:Days Rented!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>113E1:Id:11304!x:36!y:11!w:20!h:1!ItemType:TextItem!Content:Order Status!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>113F1:Id:11305!x:36!y:12!w:20!h:1!ItemType:TextItem!Content:Total Cost!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+
+<item>113H2:Id:11317!x:56!y:05!w:20!h:1!ItemType:TextItem!Bind:Id!Content:OrderId!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>113G2:Id:11316!x:56!y:06!w:20!h:1!ItemType:TextItem!Bind:CustomerName!Content:!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>113A2:Id:11310!x:56!y:07!w:20!h:1!ItemType:TextItem!Bind:CarInfo!Content:CarInfo!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>113B2:Id:11311!x:56!y:08!w:20!h:1!ItemType:TextItem!Bind:RentStart!Content:RentStart!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>113C2:Id:11312!x:56!y:09!w:20!h:1!ItemType:TextItem!Bind:DateOfOrder!Content:DateOfOrder!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>113D2:Id:11313!x:56!y:10!w:20!h:1!ItemType:TextItem!Bind:RentDays!Content:RentDays!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>113E2:Id:11314!x:56!y:11!w:20!h:1!ItemType:TextItem!Bind:Status!Content:Status!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>113F2:Id:11315!x:56!y:12!w:20!h:1!ItemType:TextItem!Bind:OrderCost!Content:!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+
+<item>113O:Id:11320!x:80!y:01!w:10!h:1!ItemType:TextItem!Content:UserName!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+<item>113P:Id:11321!x:80!y:02!w:10!h:1!ItemType:TextItem!Content:Balance!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+<item>113R:Id:11322!x:90!y:01!w:24!h:1!ItemType:TextItem!Bind:UserName!Content:??????????!Background:.!isCentral:0!isFocused:1!isSelected:0!isHidden:0!;&
+<item>113S:Id:11323!x:90!y:02!w:24!h:1!ItemType:TextItem!Bind:Balance!Content:??????????!Background:.!isCentral:0!isFocused:1!isSelected:0!isHidden:0!;&
+<item>113T:Id:11324!x:00!y:20!w:120!h:1!ItemType:TextItem!Content:<Please any key to return previous view>!isCentral:1!isFocused:0!isHidden:0!;
+
+##<item>113T:Id:11324!x:35!y:18!w:24!h:1!ItemType:TextItem!Content:Input days to rent!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&##
+##<item>113U:Id:11325!x:60!y:18!w:20!h:1!ItemType:InputItem!Bind:DaysToRent!Content:!Background:.!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;##
+##<item>112X:Id:11226!x:40!y:22!w:20!h:1!ItemType:ButtonItem!Content:Rent!ButtonType:Submit!Background:_!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&##
+####################### ----------   END OF VIEW DEFINITION   ------------ #######################
 
 Id:200;Title:Confirm_CarRentView;ViewType:DialogView;w:120;h:29;Background:.;&
 <item>200A:Id:2001!x:35!y:8!w:20!h:3!ItemType:ButtonItem!Content:YES!ButtonType:BtnYes!Background:.!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;&
@@ -151,22 +182,40 @@ Id:888;Title:CopyrightView;ViewType:WelcomeView;w:120;h:29;Source:;&
 <item>888A:Id:8880!x:0!y:18!w:120!h:1!ItemType:TextItem!Content:Copyright @Zhenqun Shen!Background: !isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
 <item>888E:Id:8881!x:0!y:20!w:120!h:1!ItemType:TextItem!Content:Yoobee College of Creative Innovation!Background:.!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
 
+## 998 - Error ##
+Id:998;Title:ErrorView;ViewType:WelcomeView;w:120;h:29;Source:;&
+<item>9981:Id:99801!x:50!y:07!isCentral:0!w:40!h:1!ItemType:TextItem!Content:     wwwwwwwww!;&
+<item>9982:Id:99802!x:50!y:08!isCentral:0!w:40!h:1!ItemType:TextItem!Content:     | ^   ^ |o              Whoop!;&
+<item>9983:Id:99803!x:50!y:09!isCentral:0!w:40!h:1!ItemType:TextItem!Content:    o|       | o          poop!;&
+<item>9984:Id:99804!x:50!y:10!isCentral:0!w:40!h:1!ItemType:TextItem!Content:    o \  ^  /!;&
+<item>9985:Id:99805!x:50!y:11!isCentral:0!w:40!h:1!ItemType:TextItem!Content:        ---       !;&
+<item>9986:Id:99806!x:50!y:12!isCentral:0!w:40!h:1!ItemType:TextItem!Content: ww      hh      ww!;&
+<item>9987:Id:99807!x:50!y:13!isCentral:0!w:40!h:1!ItemType:TextItem!Content:   i   hhhhhh  i!;&
+<item>9988:Id:99808!x:50!y:14!isCentral:0!w:40!h:1!ItemType:TextItem!Content:    iihhhhhhhhhi!;&
+<item>9989:Id:99809!x:50!y:15!isCentral:0!w:40!h:1!ItemType:TextItem!Content:       hhhhhhhhh!;&
+<item>998A:Id:99810!x:50!y:16!isCentral:0!w:40!h:1!ItemType:TextItem!Content:        hh   hh!;&
+<item>998B:Id:99811!x:50!y:17!isCentral:0!w:40!h:1!ItemType:TextItem!Content:        hh      hh!;&
+<item>998C:Id:99812!x:50!y:18!isCentral:0!w:40!h:1!ItemType:TextItem!Content:       L__      L__!;&
+<item>998D:Id:99813!x:50!y:19!isCentral:0!w:40!h:1!ItemType:TextItem!Content: !;&
+<item>998E:Id:99814!x:50!y:20!isCentral:0!w:40!h:1!ItemType:TextItem!Content: Something goes wrong...!;
+
+
 
 ## 999 - Bye bye ##
 Id:999;Title:ByeByeView;ViewType:WelcomeView;w:120;h:29;Source:;&
-<item>9991:Id:9901!x:50!y:07!isCentral:0!w:40!h:1!ItemType:TextItem!Content:     wwwwwwwww!;&
-<item>9992:Id:9902!x:50!y:08!isCentral:0!w:40!h:1!ItemType:TextItem!Content:     | v   v |               ya!;&
-<item>9993:Id:9903!x:50!y:09!isCentral:0!w:40!h:1!ItemType:TextItem!Content:     |   v   |            See!;&
-<item>9994:Id:9904!x:50!y:10!isCentral:0!w:40!h:1!ItemType:TextItem!Content:      \     /!;&
-<item>9995:Id:9905!x:50!y:11!isCentral:0!w:40!h:1!ItemType:TextItem!Content:        ---       ww!;&
-<item>9996:Id:9906!x:50!y:12!isCentral:0!w:40!h:1!ItemType:TextItem!Content: ww      hh      i!;&
-<item>9997:Id:9907!x:50!y:13!isCentral:0!w:40!h:1!ItemType:TextItem!Content:   i   hhhhhh  i!;&
-<item>9998:Id:9908!x:50!y:14!isCentral:0!w:40!h:1!ItemType:TextItem!Content:    iihhhhhhhhhi!;&
-<item>9999:Id:9909!x:50!y:15!isCentral:0!w:40!h:1!ItemType:TextItem!Content:        hhhhhhhh!;&
-<item>999A:Id:9910!x:50!y:16!isCentral:0!w:40!h:1!ItemType:TextItem!Content:         hhh   hhhh!;&
-<item>999B:Id:9911!x:50!y:17!isCentral:0!w:40!h:1!ItemType:TextItem!Content:         hh      hhh!;&
-<item>999C:Id:9912!x:50!y:18!isCentral:0!w:40!h:1!ItemType:TextItem!Content:         hhhh!;&
-<item>999D:Id:9913!x:0!y:22!w:120!h:1!ItemType:TextItem!Content:Designed by @Ann Shen!Background: !isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
-<item>999E:Id:9914!x:0!y:24!w:120!h:1!ItemType:TextItem!Content:Yoobee College of Creative Innovation!Background:.!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
+<item>9991:Id:99901!x:50!y:07!isCentral:0!w:40!h:1!ItemType:TextItem!Content:     wwwwwwwww!;&
+<item>9992:Id:99902!x:50!y:08!isCentral:0!w:40!h:1!ItemType:TextItem!Content:     | v   v |               ya!;&
+<item>9993:Id:99903!x:50!y:09!isCentral:0!w:40!h:1!ItemType:TextItem!Content:     |   v   |            See!;&
+<item>9994:Id:99904!x:50!y:10!isCentral:0!w:40!h:1!ItemType:TextItem!Content:      \     /!;&
+<item>9995:Id:99905!x:50!y:11!isCentral:0!w:40!h:1!ItemType:TextItem!Content:        ---       ww!;&
+<item>9996:Id:99906!x:50!y:12!isCentral:0!w:40!h:1!ItemType:TextItem!Content: ww      hh      i!;&
+<item>9997:Id:99907!x:50!y:13!isCentral:0!w:40!h:1!ItemType:TextItem!Content:   i   hhhhhh  i!;&
+<item>9998:Id:99908!x:50!y:14!isCentral:0!w:40!h:1!ItemType:TextItem!Content:    iihhhhhhhhhi!;&
+<item>9999:Id:99909!x:50!y:15!isCentral:0!w:40!h:1!ItemType:TextItem!Content:        hhhhhhhh!;&
+<item>999A:Id:99910!x:50!y:16!isCentral:0!w:40!h:1!ItemType:TextItem!Content:         hhh   hhhh!;&
+<item>999B:Id:99911!x:50!y:17!isCentral:0!w:40!h:1!ItemType:TextItem!Content:         hh      hhh!;&
+<item>999C:Id:99912!x:50!y:18!isCentral:0!w:40!h:1!ItemType:TextItem!Content:         hhhh!;&
+<item>999D:Id:99913!x:0!y:22!w:120!h:1!ItemType:TextItem!Content:Designed by @Ann Shen!Background: !isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+<item>999E:Id:99914!x:0!y:24!w:120!h:1!ItemType:TextItem!Content:Yoobee College of Creative Innovation!Background:.!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
 
 

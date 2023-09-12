@@ -14,11 +14,11 @@ class YBConsoleViews::YB_Window;
 
 
 namespace YBCarRental {
-	//112 rent a car - InputView
-	class YB_CarRentVM : public YB_ViewModelBasis<YB_Car>
+	//113 order details - DetailsView
+	class YB_OrderDetailsVM : public YB_ViewModelBasis<YB_Rent>
 	{
 	public:
-		YB_CarRentVM(YB_CarManager* managerPtr, YBConsoleViews::YB_Window* windowPtr) {
+		YB_OrderDetailsVM(YB_RentManager* managerPtr, YBConsoleViews::YB_Window* windowPtr) {
 			dataManagerPtr = managerPtr;
 			this->windowPtr = windowPtr;
 		}
@@ -30,20 +30,33 @@ namespace YBCarRental {
 
 		void					onViewForwarded(YB_DataBasis* fromData)		override
 		{
-			this->principalObject = dynamic_cast<YB_Car*>(fromData);
+			this->principalObject = dynamic_cast<YB_Rent*>(fromData);
 		};
 
 
 		string* Get_PropertyValue(string* bindName) override
 		{
 			string* value = new string();
-			if (*bindName == "UserName")
-			{
+			if (*bindName == "UserName"){
 				*value = userManagerPtr->CurrentUser()->UserName;
 				return value;
 			}
 			if (*bindName == "Balance") {
 				*value = to_string((userManagerPtr->CurrentUser()->Balance));
+				return value;
+			}
+			if (*bindName == "CarInfo") {
+				auto* car = carManagerPtr->GetCar(principalObject->CarId);
+				*value = car->Make + " " + car->Model + " " + to_string( car->Year);
+				return value;
+			}			
+			if (*bindName == "CustomerName"){
+				*value = userManagerPtr->CurrentUser()->FirstName + " " + userManagerPtr->CurrentUser()->FamilyName;
+				return value;
+			}			
+			if (*bindName == "OrderCost"){
+				auto* car = carManagerPtr->GetCar(principalObject->CarId);
+				*value = to_string( principalObject->RentDays * car->DayRentPrice);
 				return value;
 			}
 			return YB_ViewModelBasis::Get_PropertyValue(bindName);

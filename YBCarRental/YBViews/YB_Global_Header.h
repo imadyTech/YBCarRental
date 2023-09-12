@@ -22,4 +22,9 @@ namespace YBConsoleViews {
 	static const char*		Button_Type_No		= "BtnNo";
 	static const char*		Button_Type_Ok		= "BtnOk";
 
+
+	static const std::string		ERROR_VIEW = "ErrorView";
+	static const std::string		INIT_VIEW = "LoginView";
+	static const std::string		EXIT_VIEW = "ByeByeView";
+
 }

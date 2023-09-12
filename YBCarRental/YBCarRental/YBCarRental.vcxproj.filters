@@ -90,6 +90,9 @@
     <ClCompile Include="YB_CarRentVM.cpp">
       <Filter>Source Files\YB_ViewModels</Filter>
     </ClCompile>
+    <ClCompile Include="YB_OrderDetailsVM.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="YB_UserManager.h">
@@ -139,6 +142,9 @@
     </ClInclude>
     <ClInclude Include="YB_CarRentVM.h">
       <Filter>Header Files\YB_ViewModels</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_OrderDetailsVM.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

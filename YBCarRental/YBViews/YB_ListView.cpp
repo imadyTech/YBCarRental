@@ -87,9 +87,9 @@ void				YBConsoleViews::YB_ListView::BindList() {
 			viewitemPtr->OnBind(row);
 		}
 		catch (exception e) {
-			YB_BindingError error;
-			error(const_cast<char*>("error in binding values to children items."));
-			throw error;
+			//YB_BindingError error;
+			//error(const_cast<char*>("error in binding values to children items."));
+			//throw error;
 		}
 	}
 }

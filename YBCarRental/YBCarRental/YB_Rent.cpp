@@ -66,11 +66,13 @@ namespace YBCarRental
 		YB_DataBasis::Deserialize(line, separator);
 
 		//Id = std::stoi((*words)[0]);										//Obsoleted
-		UserId = std::stoi(*YB_DataBasis::FindValue("UserId"));
-		CarId = std::stoi(*YB_DataBasis::FindValue("CarId"));
+		UserId		= std::stoi(*YB_DataBasis::FindValue("UserId"));
+		CarId		= std::stoi(*YB_DataBasis::FindValue("CarId"));
+		RentDays	= std::stoi(*YB_DataBasis::FindValue("RentDays"));
+		Status		= *YB_DataBasis::FindValue("Status");
 		//sscanf(words[3].c_str(), "%Y-%m-%d", &RentStart.tm_year, &RentStart.tm_mon, &RentStart.tm_mday);
 		int year, month, day;
-		const char* rentStart = (*YB_DataBasis::FindValue("RentStart")).c_str();
+		const char* rentStart	= (*YB_DataBasis::FindValue("RentStart")).c_str();
 		if (sscanf_s(rentStart, "%d-%d-%d", &year, &month, &day) == 3) {
 			RentStart.tm_year = year - 1900; // Adjust year by 1900
 			RentStart.tm_mon = month - 1;    // Adjust month by 1

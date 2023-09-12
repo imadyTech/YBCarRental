@@ -1,16 +1,11 @@
 #include "YB_DetailsView.h"
+#include "YB_Window.h"
 
+
+class YB_Window;
 using namespace YBConsoleViews;
 
 void YBConsoleViews::YB_DetailsView::OnKey(int* keycode)
 {
-}
-
-void YBConsoleViews::YB_DetailsView::OnChildReturn(YB_ViewMessageBasis* Message, YB_ViewItemBasis* fromItemPtr)
-{
-}
-
-vector<char*> YBConsoleViews::YB_DetailsView::Render()
-{
-	return YB_ViewBasis::Render();
+	windowPtr->Goto(this->fromViewPtr);
 }

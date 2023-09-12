@@ -273,7 +273,7 @@ namespace YBConsoleViews {
 			}
 			catch (exception e)
 			{
-				windowPtr->Goto("ErrorView");
+				windowPtr->Goto(ERROR_VIEW);
 			}
 		}
 	}

@@ -13,6 +13,7 @@
 #include "YB_ManagerFactory.h"
 #include "YB_CarRental_LogicFactory.h"
 #include "YB_CarRentVM.h"
+#include "YB_OrderDetailsVM.h"
 
 
 using namespace YBCarRental;
@@ -21,8 +22,8 @@ using namespace YBConsoleViews;
 
 int main()
 {
-	const std::string		INIT_VIEW = "LoginView";
-	const std::string		EXIT_VIEW = "ByeByeView";
+	//const std::string		INIT_VIEW = "LoginView";
+	//const std::string		EXIT_VIEW = "ByeByeView";
 	std::filesystem::path	currentDir = std::filesystem::current_path();
 
 	YB_Window				windowPtr = YB_Window();
@@ -36,6 +37,7 @@ int main()
 	logicFactory->RegisterDataSource("YB_CarSelectionVM", new YB_CarSelectionVM(YB_ManagerFactory::CarMgr, &windowPtr));
 	logicFactory->RegisterDataSource("YB_CarRentVM", new YB_CarRentVM(YB_ManagerFactory::CarMgr, &windowPtr));
 	logicFactory->RegisterDataSource("YB_MyOrdersVM", new YB_MyOrdersVM(YB_ManagerFactory::RentMgr, &windowPtr));
+	logicFactory->RegisterDataSource("YB_OrderDetailsVM", new YB_OrderDetailsVM(YB_ManagerFactory::RentMgr, &windowPtr));
 
 	windowPtr.ConfigLogicFactory(logicFactory);
 	windowPtr.InitViewFactory(currentDir.string() + "\\ViewRepo.txt");

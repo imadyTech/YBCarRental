@@ -106,7 +106,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
@@ -126,7 +126,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -141,6 +141,7 @@
     <ClCompile Include="YB_CarManager.cpp" />
     <ClCompile Include="YB_CarRental_LogicFactory.cpp" />
     <ClCompile Include="YB_CarRentViewModels.cpp" />
+    <ClCompile Include="YB_CarRentVM.cpp" />
     <ClCompile Include="YB_ManagerBasis.cpp" />
     <ClCompile Include="YB_ManagerFactory.cpp" />
     <ClCompile Include="YB_Rent.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="YB_CarPersistor.h" />
     <ClInclude Include="YB_CarRental_LogicFactory.h" />
     <ClInclude Include="YB_CarRentViewModels.h" />
+    <ClInclude Include="YB_CarRentVM.h" />
     <ClInclude Include="YB_ManagerBasis.h" />
     <ClInclude Include="YB_ManagerFactory.h" />
     <ClInclude Include="YB_Rent.h" />

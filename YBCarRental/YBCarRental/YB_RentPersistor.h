@@ -14,9 +14,9 @@ namespace YBCarRental
 		//YB_RentPersistor(string repository) : YB_PersistorBasis<YB_Rent>(repository) {};
 
 
-		void ReadAll();
-		void Add(YB_Rent order);
-		YB_Rent Get(int id);
+		void		ReadAll();
+		void		Add(YB_Rent* order);
+		YB_Rent		Get(int id);
 	};
 }
 

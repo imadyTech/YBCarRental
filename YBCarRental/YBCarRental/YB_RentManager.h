@@ -17,11 +17,14 @@ namespace YBCarRental
 		YB_RentManager() : YB_ManagerBasis<YB_Rent>() {};
 		YB_RentManager(string url) : YB_ManagerBasis<YB_Rent>(url) {};
 
-		static bool PlaceOrder(YB_User userId, int carId, tm startDate, int days);
-		static bool ApproveOrder(YB_Rent rentalOrder);
-		static bool RejectOrder(YB_Rent rentalOrder);
-		static bool ApproveOrder(int orderId);
-		static bool RejectOrder(int orderId);
+		bool PlaceOrder(int userId, int carId, tm startDate, int days);
+		bool ApproveOrder(YB_Rent rentalOrder);
+		bool RejectOrder(YB_Rent rentalOrder);
+		bool ApproveOrder(int orderId);
+		bool RejectOrder(int orderId);
+
+	private:
+		int CreateId();
 	};
 }
 

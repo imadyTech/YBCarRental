@@ -84,12 +84,18 @@ Id:107;Title:MyProfileView;ViewType:DetailsView;w:120;h:29;Source:;&
 <item>107A:Id:1070!x:20!y:3!w:80!h:1!ItemType:TextItem!Content:My Profile!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
 
 ## 108 - Todo - My orders ##
-Id:108;Title:MyOrdersView;ViewType:ListView;w:120;h:29;Source:;&
-<item>108A:Id:1080!x:20!y:3!w:80!h:1!ItemType:TextItem!Content:My Rental Orders!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
+Id:108;Title:MyOrdersView;ViewType:ListView;w:120;h:29;Source:YB_MyOrdersVM;&
+ListHead:Id:1080!ItemType:ListHead!x:0!y:6!w:120!h:1!<col>Id:8!<col>UserId:12!<col>CarId:15!<col>RentStart:18!<col>DateOfOrder:18!<col>RentDays:15!<col>Status:18!;&
+ListRowCount:6;&
+ListRowTemplate:ItemType:ListItem!Link:OrderDetailsView!x:0!y:8!w:120!h:1!Content:------!isCentral:1!isFocused:0!;&
+<item>108A:Id:1081!x:0!y:5!isCentral:0!w:120!h:1!ItemType:TextItem!Content:----------------------------------------------------------------------------------------------------------------------!;&
+<item>108B:Id:1082!x:0!y:7!isCentral:0!w:120!h:1!ItemType:TextItem!Content:----------------------------------------------------------------------------------------------------------------------!;&
+<item>108C:Id:1083!x:0!y:14!isCentral:0!w:120!h:1!ItemType:TextItem!Content:----------------------------------------------------------------------------------------------------------------------!;&
+<item>108E:Id:1085!x:20!y:3!w:80!h:1!ItemType:TextItem!Content:My Rental Orders!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
 
 ## 109 - Todo - Car selection list menu - select a car to rent ##
 Id:109;Title:CarSelectionView;ViewType:ListView;w:120;h:29;Source:YB_CarSelectionVM;&
-ListHead:Id:1090!ItemType:ListHead!x:0!y:6!w:120!h:1!<col>Make:15!<col>Model:15!<col>Year:10!<col>Mileage:15!<col>MinRentPeriod:18!<col>MaxRentPeriod:18!<col>DayRentPrice:18!;&
+ListHead:Id:1090!ItemType:ListHead!x:0!y:6!w:120!h:1!<col>Id:8!<col>Make:12!<col>Model:15!<col>Year:8!<col>Mileage:12!<col>MinRentPeriod:18!<col>MaxRentPeriod:18!<col>DayRentPrice:18!;&
 ListRowCount:8;&
 ListRowTemplate:ItemType:ListItem!Link:CarRentView!x:0!y:8!w:120!h:1!Content:Car Info!isCentral:1!isFocused:0!;&
 <item>109A:Id:1091!x:0!y:5!isCentral:0!w:120!h:1!ItemType:TextItem!Content:----------------------------------------------------------------------------------------------------------------------!;&
@@ -108,7 +114,7 @@ Id:111;Title:CarListView;ViewType:ListView;w:120;h:29;Source:;&
 <item>111C:Id:1113!x:30!y:20!w:50!h:1!ItemType:TextItem!Content:You and me!Background:$!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;
 
 ## 112 - Rent a car !!! ##
-Id:112;Title:CarRentView;ViewType:InputView;w:120;h:29;Source:YB_CarRentVM;&
+Id:112;Title:CarRentView;ViewType:InputView;GotoView:UserMenu;ConfirmView:Confirm_CarRentView;w:120;h:29;Source:YB_CarRentVM;&
 <item>112A:Id:11200!x:36!y:06!w:20!h:1!ItemType:TextItem!Content:Make!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 <item>112B:Id:11201!x:36!y:07!w:20!h:1!ItemType:TextItem!Content:Model!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 <item>112C:Id:11202!x:36!y:08!w:20!h:1!ItemType:TextItem!Content:Year!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
@@ -116,19 +122,30 @@ Id:112;Title:CarRentView;ViewType:InputView;w:120;h:29;Source:YB_CarRentVM;&
 <item>112E:Id:11204!x:36!y:10!w:20!h:1!ItemType:TextItem!Content:MinRentPeriod!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 <item>112F:Id:11205!x:36!y:11!w:20!h:1!ItemType:TextItem!Content:MaxRentPeriod!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 <item>112G:Id:11206!x:36!y:12!w:20!h:1!ItemType:TextItem!Content:DayRentPrice!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
-<item>112H:Id:11207!x:56!y:06!w:20!h:1!ItemType:TextItem!Bind:Make!Content:Make!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
-<item>112I:Id:11208!x:56!y:07!w:20!h:1!ItemType:TextItem!Bind:Model!Content:Model!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
-<item>112J:Id:11209!x:56!y:08!w:20!h:1!ItemType:TextItem!Bind:Year!Content:Year!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
-<item>112K:Id:11210!x:56!y:09!w:20!h:1!ItemType:TextItem!Bind:Mileage!Content:Mileage!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
-<item>112L:Id:11211!x:56!y:10!w:20!h:1!ItemType:TextItem!Bind:MinRentPeriod!Content:MinRentPeriod!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
-<item>112M:Id:11212!x:56!y:11!w:20!h:1!ItemType:TextItem!Bind:MaxRentPeriod!Content:MaxRentPeriod!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
-<item>112N:Id:11213!x:56!y:12!w:20!h:1!ItemType:TextItem!Bind:DayRentPrice!Content:DayRentPrice!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>112G1:Id:11207!x:36!y:13!w:20!h:1!ItemType:TextItem!Content:CarId!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>112H:Id:11210!x:56!y:06!w:20!h:1!ItemType:TextItem!Bind:Make!Content:Make!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>112I:Id:11211!x:56!y:07!w:20!h:1!ItemType:TextItem!Bind:Model!Content:Model!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>112J:Id:11212!x:56!y:08!w:20!h:1!ItemType:TextItem!Bind:Year!Content:Year!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>112K:Id:11213!x:56!y:09!w:20!h:1!ItemType:TextItem!Bind:Mileage!Content:Mileage!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>112L:Id:11214!x:56!y:10!w:20!h:1!ItemType:TextItem!Bind:MinRentPeriod!Content:MinRentPeriod!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>112M:Id:11215!x:56!y:11!w:20!h:1!ItemType:TextItem!Bind:MaxRentPeriod!Content:MaxRentPeriod!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>112N:Id:11216!x:56!y:12!w:20!h:1!ItemType:TextItem!Bind:DayRentPrice!Content:DayRentPrice!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>112N1:Id:11217!x:56!y:13!w:20!h:1!ItemType:TextItem!Bind:Id!Content:CarId!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>112O:Id:11220!x:80!y:01!w:10!h:1!ItemType:TextItem!Content:UserName!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+<item>112P:Id:11221!x:80!y:02!w:10!h:1!ItemType:TextItem!Content:Balance!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+<item>112R:Id:11222!x:90!y:01!w:24!h:1!ItemType:TextItem!Bind:UserName!Content:??????????!Background:.!isCentral:0!isFocused:1!isSelected:0!isHidden:0!;&
+<item>112S:Id:11223!x:90!y:02!w:24!h:1!ItemType:TextItem!Bind:Balance!Content:??????????!Background:.!isCentral:0!isFocused:1!isSelected:0!isHidden:0!;&
+<item>112T:Id:11224!x:35!y:18!w:24!h:1!ItemType:TextItem!Content:Input days to rent!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>112U:Id:11225!x:60!y:18!w:20!h:1!ItemType:InputItem!Bind:DaysToRent!Content:!Background:.!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;&
+<item>112X:Id:11226!x:40!y:22!w:20!h:1!ItemType:ButtonItem!Content:Rent!ButtonType:Submit!Background:_!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+<item>112Y:Id:11250!x:20!y:4!w:80!h:1!ItemType:TextItem!Content:Details of car you selected!Background:-!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;
+##<item>112Z:Id:11227!x:10!y:02!w:100!h:27!ItemType:ButtonItem!Content:Insurfficient Balance!ButtonType:BtnOk!Background:.!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;##
 
-<item>112H:Id:11207!x:65!y:12!w:24!h:1!ItemType:InputItem!Bind:UserName!Content:!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
-<item>112I:Id:11208!x:65!y:14!w:24!h:1!ItemType:InputItem!Bind:Password!Content:!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
-<item>112J:Id:11209!x:40!y:17!w:20!h:1!ItemType:ButtonItem!Content:Register!ButtonType:Submit!Background:_!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
-<item>112K:Id:11210!x:20!y:3!w:80!h:1!ItemType:TextItem!Content:Create a user accout!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
 
+Id:200;Title:Confirm_CarRentView;ViewType:DialogView;w:120;h:29;Background:.;&
+<item>200A:Id:2001!x:35!y:8!w:20!h:3!ItemType:ButtonItem!Content:YES!ButtonType:BtnYes!Background:.!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;&
+<item>200B:Id:2002!x:65!y:8!w:20!h:3!ItemType:ButtonItem!Content:NO!ButtonType:BtnNo!Background:.!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+<item>200C:Id:2003!x:20!y:4!w:80!h:1!ItemType:TextItem!Content:Do you confirm the order?!Background:-!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;
 
 Id:888;Title:CopyrightView;ViewType:WelcomeView;w:120;h:29;Source:;&
 <item>888A:Id:8880!x:0!y:18!w:120!h:1!ItemType:TextItem!Content:Copyright @Zhenqun Shen!Background: !isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&

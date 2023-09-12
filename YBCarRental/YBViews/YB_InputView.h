@@ -2,6 +2,7 @@
 #define YB_InputView_H
 
 #include "YB_ViewBasis.h"
+#include "YB_Global_Header.h"
 
 namespace YBConsoleViews
 {
@@ -17,7 +18,7 @@ namespace YBConsoleViews
 
 		void			OnKey(int* keycode)																override;
 		void			OnChildReturn(YB_ViewMessageBasis* msgPtr, YB_ViewItemBasis* fromItemPtr)		override;
-		void			OnConfirmReturn(YB_ViewMessageBasis* msgPtr, YB_ViewBasis* fromViewPtr)		override;
+		void			OnConfirmReturn(YB_ViewMessageBasis* msgPtr, YB_ViewBasis* fromViewPtr)			override;
 		vector<char*>	Render()																		override;
 	};
 }

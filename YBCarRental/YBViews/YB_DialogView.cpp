@@ -14,7 +14,7 @@ void YBConsoleViews::YB_DialogView::OnChildReturn(YB_ViewMessageBasis* msgPtr, Y
 	//Todo: untested
 	//When "yes" or "no" is clicked, viewItem pass in a message, will be forwarded
 	this->fromViewPtr->OnConfirmReturn(msgPtr, this);
-	this->windowPtr->Goto(this->fromViewPtr);
+	//this->windowPtr->Goto(this->fromViewPtr);
 }
 
 vector<char*> YBConsoleViews::YB_DialogView::Render()

@@ -89,6 +89,16 @@ namespace YBCarRental {
 		};
 	};
 
+	//108 My orders - ListView
+	class YB_MyOrdersVM : public YB_ViewModelBasis<YB_Rent>
+	{
+	public:
+		YB_MyOrdersVM (YB_RentManager* managerPtr, YBConsoleViews::YB_Window* windowPtr) {
+			dataManagerPtr = managerPtr;
+			this->windowPtr = windowPtr;
+		}
+	};
+		
 	//109 CarSelection - ListView
 	class YB_CarSelectionVM : public YB_ViewModelBasis<YB_Car>
 	{
@@ -99,28 +109,6 @@ namespace YBCarRental {
 		}
 	};
 
-	//112 rent a car - InputView
-	class YB_CarRentVM : public YB_ViewModelBasis<YB_Car>
-	{
-	public:
-		YB_CarRentVM(YB_CarManager* managerPtr, YBConsoleViews::YB_Window* windowPtr) {
-			dataManagerPtr = managerPtr;
-			this->windowPtr = windowPtr;
-		}
-		YB_UserManager* userManagerPtr	= YB_ManagerFactory::UserMgr;
-		YB_RentManager* rentManagerPtr	= YB_ManagerFactory::RentMgr;
-
-		void					onViewForwarded(YB_DataBasis* fromData)		override
-		{
-			auto manager = dynamic_cast<YB_UserManager*>(dataManagerPtr);
-			this->principalObject = dynamic_cast<YB_Car*>(fromData);
-
-		};
-		string* Get_PropertyValue(string* bindName) override
-		{
-			return YB_ViewModelBasis::Get_PropertyValue(bindName);
-		}
-	};
 
 
 

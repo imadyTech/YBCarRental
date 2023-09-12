@@ -141,17 +141,18 @@ namespace YBConsoleViews {
 
 	}
 
+	//submit is a action-response function not always in loop of YB_View.
 	void				YB_ViewBasis::Submit()
 	{
 		map<string, string> reverseBindMap;
 		//find out the viewItems which has 'Bind' tag.
-		for (auto& iterator : this->subItemsList)
+		for (auto& iterator : this->bindableItems)
 		{
 			if (!iterator->Bind.empty())
 				reverseBindMap.insert(std::make_pair(iterator->Bind, iterator->Content));
 		}
 		if (!reverseBindMap.empty())
-			//submit to VM
+			//notify the VM for submission action
 			this->dataSource->onSubmit(&reverseBindMap);
 
 	}
@@ -176,6 +177,7 @@ namespace YBConsoleViews {
 			for (const auto& row : SUB_RECT)
 			{
 				std::memcpy(viewArray[posY] + posX, row, newContentLength);
+				posY++;
 			}
 		}
 		////Unit testing code - to visualize a single item

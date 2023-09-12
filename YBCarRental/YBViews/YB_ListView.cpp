@@ -11,6 +11,7 @@ void				YBConsoleViews::YB_ListView::Init()
 	this->subItemsList.push_back(item);
 	this->listHeadPtr = dynamic_cast<YB_ListHead*>(item);
 
+	//Todo: move the listItem instantiation to BindList() so avoid empty list items
 	//2. make copies of List Row Template and attach instances to subItemList.
 	for (int i = 0; i < ListRowCount; ++i)
 	{
@@ -50,7 +51,7 @@ void				YBConsoleViews::YB_ListView::BindList() {
 	{
 		if (item->ItemType != "ListItem")	continue;
 
-		auto viewitem = dynamic_cast<YB_ListItem*>(item);
+		auto viewitemPtr = dynamic_cast<YB_ListItem*>(item);
 		LIST_ITEM_VALUES* formatedValueCarrier = new LIST_ITEM_VALUES();
 		for (auto tup : *listHeadPtr->tableRowFormatter)
 		{
@@ -59,20 +60,31 @@ void				YBConsoleViews::YB_ListView::BindList() {
 		}
 		try {
 			//1. Retrieve the row index from 'Bind' field
-			int rowIndex = std::stoi(viewitem->Bind);
-			//2. query the source one by one. formatedValueCarrier get the formated value as vector.
-			this->dataSource->Get_QuerySingle(rowIndex, *formatedValueCarrier);
-			//3. generate the tuples for listItem content rendering
+			int rowIndex = std::stoi(viewitemPtr->Bind);
 			FORMATED_LIST_VIEW_VALUES* row = new FORMATED_LIST_VIEW_VALUES();
+			//2. query the source one by one. formatedValueCarrier get the formated value as vector.
+			bool result = this->dataSource->Get_QueryByIndex(rowIndex, *formatedValueCarrier);
+			//3. generate the tuples for listItem content rendering
 			int i = 0;
 			for (auto valuePair : *formatedValueCarrier)
 			{
 				int width = (*listHeadPtr->tableRowFormatter)[i]->second;
-				FORMATED_LIST_ITEM_VALUE* tuple = new FORMATED_LIST_ITEM_VALUE(valuePair->first, valuePair->second, width);
+				FORMATED_LIST_ITEM_VALUE* tuple;
+
+				if (result)
+				{
+					tuple = new FORMATED_LIST_ITEM_VALUE(valuePair->first, valuePair->second, width);
+				}
+				else
+				{
+					tuple = new FORMATED_LIST_ITEM_VALUE(valuePair->first, "", width);
+				}
 				row->push_back(tuple);
 				i++;
+				//save the Id of the binded data source
+				if (valuePair->first == "Id") viewitemPtr->dataId = std::stoi(valuePair->second);
 			}
-			viewitem->OnBind(row);
+			viewitemPtr->OnBind(row);
 		}
 		catch (exception e) {
 			YB_BindingError error;
@@ -89,6 +101,10 @@ void				YBConsoleViews::YB_ListView::OnKey(int* keycode)
 
 void				YBConsoleViews::YB_ListView::OnChildReturn(YB_ViewMessageBasis* msgPtr, YB_ViewItemBasis* fromItemPtr)
 {
+	//query the selected viewItem to logic data object (car/user/rent) to forward to next view
+	//you need take the data (principalData) by overriding the onViewForwarded(YB_DataBasis*) function.
+	this->dataSource->Get_PrincipalData(dynamic_cast<YB_ListItem*>(fromItemPtr)->dataId);
+
 	//Base will raise action of window.Goto() 
 	YB_ViewBasis::OnChildReturn(msgPtr, fromItemPtr);
 }

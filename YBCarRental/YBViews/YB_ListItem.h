@@ -20,7 +20,13 @@ namespace YBConsoleViews
 		void						OnReturn()												override;
 		std::vector<char*>			Render()												override;
 
+
 		FORMATED_LIST_VIEW_VALUES*	row = {};
+		/// <summary>
+		/// This indicate the Id point to a logic data object. NOT the viewItem Id.
+		/// The value will likely be filled when listItem is binded.
+		/// </summary>
+		int							dataId;
 	private:
 	};
 

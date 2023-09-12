@@ -28,6 +28,7 @@ namespace YBCarRental {
 		virtual bool					Get_QueryByIndex(int index, vector<LIST_ITEM_VALUE*>& result)				override;
 		virtual void					Get_QueryList(vector<LIST_ITEM_VALUES*>& result)							override;
 		virtual YB_DataBasis*			Get_PrincipalData()															override;
+		virtual YB_DataBasis*			Get_PrincipalData(int Id) 													override;
 		virtual void					Set_PropertyValue(string* bindNamePtr, string* valuePtr)					override;
 		virtual void					Set_PropertyValues(map<string, string>* values)								override;
 
@@ -59,7 +60,7 @@ namespace YBCarRental {
 
 
 	template<class TData>
-	string* YB_ViewModelBasis<TData>::Get_PropertyValue(string* bindName)
+	string*								YB_ViewModelBasis<TData>::Get_PropertyValue(string* bindName)
 	{
 		if (principalObject)
 			return principalObject->FindValue(*bindName);
@@ -114,8 +115,15 @@ namespace YBCarRental {
 	}
 
 	template<class TData>
-	inline YB_DataBasis* YB_ViewModelBasis<TData>::Get_PrincipalData()
+	inline YB_DataBasis*				YB_ViewModelBasis<TData>::Get_PrincipalData()
 	{
+		return this->principalObject;
+	}
+
+	template<class TData>
+	inline YB_DataBasis*				YB_ViewModelBasis<TData>::Get_PrincipalData(int Id)
+	{
+		this->principalObject = dataManagerPtr->Get(Id);
 		return this->principalObject;
 	}
 

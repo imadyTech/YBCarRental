@@ -13,6 +13,11 @@ using namespace YBPersistence;
 
 namespace YBCarRental
 {
+	static const char* YB_Rental_Status_Pending		= "pending";
+	static const char* YB_Rental_Status_Approved	= "approved";
+	static const char* YB_Rental_Status_Rejected	= "rejected";
+	static const char* YB_Rental_Status_Completed	= "completed";
+
 	/// <summary>
 	/// The record of a rental order;
 	/// </summary>
@@ -27,6 +32,7 @@ namespace YBCarRental
 		int UserId;
 		int CarId;
 		tm RentStart;			//rental start date
+		tm DateOfOrder;			//date placed order
 		int RentDays;			//total days of rental
 		string Status;			//
 
@@ -42,6 +48,7 @@ namespace YBCarRental
 				UserId = other.UserId;
 				CarId = other.CarId;
 				RentStart = other.RentStart;
+				DateOfOrder = other.DateOfOrder;
 				RentDays = other.RentDays;
 				Status = other.Status;
 				// Call parent class copy assignment operator

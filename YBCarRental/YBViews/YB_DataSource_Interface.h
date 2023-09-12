@@ -27,7 +27,10 @@ namespace YBConsoleViews
 		virtual bool							Get_QueryByIndex(int index, vector<LIST_ITEM_VALUE*>& result) = 0;
 		//???
 		virtual void							Get_QueryList(vector<LIST_ITEM_VALUES*>&) = 0;
+		//return the current principalData only.
 		virtual YB_DataBasis*					Get_PrincipalData() = 0;
+		//query an return an object by the object.Id, AND store the object as principalData at meantime.
+		virtual YB_DataBasis*					Get_PrincipalData(int Id) = 0;
 		virtual void							Set_PropertyValue(string* bindNamePtr, string* valuePtr) = 0;
 		virtual void							Set_PropertyValues(map<string, string>* valuesPtr) = 0;
 

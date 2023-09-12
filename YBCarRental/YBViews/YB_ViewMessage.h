@@ -1,16 +1,11 @@
 #pragma once
 #include <string>
+#include "YB_Global_Header.h"
+
 using namespace std;
 
 namespace YBConsoleViews
 {
-
-	static const char* msgDef_Submit	= "SUBMIT";
-	static const char* msgDef_Yes		= "YES";
-	static const char* msgDef_No		= "NO";
-	static const char* msgDef_Menu		= "MENU";
-	static const char* msgDef_ListItem	= "ListItem";
-
 	class YB_ViewMessageBasis
 	{
 	public:
@@ -30,21 +25,27 @@ namespace YBConsoleViews
 	class YB_ButtonSubmitMessage :	public YB_ViewMessageBasis
 	{
 	public:
-		YB_ButtonSubmitMessage()				: YB_ViewMessageBasis(msgDef_Submit) {}
+		YB_ButtonSubmitMessage()				: YB_ViewMessageBasis(Button_Type_Submit) {}
 
 	};	
 	
 	class YB_ButtonYesMessage :		public YB_ViewMessageBasis
 	{
 	public:
-		YB_ButtonYesMessage()					: YB_ViewMessageBasis(msgDef_Yes) {}
+		YB_ButtonYesMessage()					: YB_ViewMessageBasis(Button_Type_Yes) {}
 
 	};
 
 	class YB_ButtonNoMessage :		public YB_ViewMessageBasis
 	{
 	public:
-		YB_ButtonNoMessage()					: YB_ViewMessageBasis(msgDef_No) {}
+		YB_ButtonNoMessage()					: YB_ViewMessageBasis(Button_Type_No) {}
+	};
+
+	class YB_ButtonOkMessage :		public YB_ViewMessageBasis
+	{
+	public:
+		YB_ButtonOkMessage()					: YB_ViewMessageBasis(Button_Type_Ok) {}
 	};
 
 	class YB_MenuItemMessage :		public YB_ViewMessageBasis

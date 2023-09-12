@@ -122,10 +122,10 @@ namespace YBConsoleViews
 	protected:
 		vector<YB_ViewItemBasis*>		focusableItems;													//Items affected by Tab key
 		vector<YB_ViewItemBasis*>		bindableItems;													//Items affected by binding behaviour
+		int								currentItemIndex = -1;
 
 	private:
 		vector<char*>					viewArray;
-		int								currentItemIndex = -1;
 
 	};
 }

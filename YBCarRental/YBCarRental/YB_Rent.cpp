@@ -42,27 +42,18 @@ namespace YBCarRental
 
 	void			YB_Rent::Serialize(std::stringstream& strStream)
 	{
-		char buffer[32];
+		YB_DataBasis::Serialize(strStream);
+
+		char buffer[20]; strftime(buffer, sizeof(buffer), "%Y-%m-%d", &RentStart);
+		char buffer1[20]; strftime(buffer1, sizeof(buffer1), "%Y-%m-%d", &DateOfOrder);
 		strStream
 			<< "UserId:" << UserId << ";"
 			<< "CarId:" << CarId << ";"
-			<< "RentStart:" << strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", &RentStart) << ";"
+			<< "RentStart:" << buffer << ";"
+			<< "DateOfOrder:" << buffer1<< ";"
 			<< "RentDays:" << RentDays << ";"
 			<< "Status:" << Status << ";";
 	}
-
-	//void YB_Rent::Serialize(ofstream* output)
-	//{
-	//	char buffer[10];
-
-	//	*output << Id << ";"
-	//		<< UserId << ";"
-	//		<< CarId << ";"
-	//		<< strftime(buffer, sizeof(buffer), "%Y-%m-%d", &RentStart) << ";"
-	//		<< RentDays << ";"
-	//		<< Status << ";";
-	//}
-
 
 	void			YB_Rent::Deserialize(string line)
 	{
@@ -79,7 +70,8 @@ namespace YBCarRental
 		CarId = std::stoi(*YB_DataBasis::FindValue("CarId"));
 		//sscanf(words[3].c_str(), "%Y-%m-%d", &RentStart.tm_year, &RentStart.tm_mon, &RentStart.tm_mday);
 		int year, month, day;
-		if (sscanf_s((*YB_DataBasis::FindValue("")).c_str(), "%d-%d-%d", &year, &month, &day) == 3) {
+		const char* rentStart = (*YB_DataBasis::FindValue("RentStart")).c_str();
+		if (sscanf_s(rentStart, "%d-%d-%d", &year, &month, &day) == 3) {
 			RentStart.tm_year = year - 1900; // Adjust year by 1900
 			RentStart.tm_mon = month - 1;    // Adjust month by 1
 			RentStart.tm_mday = day;
@@ -87,8 +79,17 @@ namespace YBCarRental
 		else {
 			throw YB_DeSerializeError();
 		}
-		RentDays = std::stoi(*YB_DataBasis::FindValue("RentDays"));
-		Status = *YB_DataBasis::FindValue("Status");
+		const char* dateOfOrder = (*YB_DataBasis::FindValue("RentStart")).c_str();
+		if (sscanf_s(dateOfOrder, "%d-%d-%d", &year, &month, &day) == 3) {
+			DateOfOrder.tm_year = year - 1900; // Adjust year by 1900
+			DateOfOrder.tm_mon = month - 1;    // Adjust month by 1
+			DateOfOrder.tm_mday = day;
+		}
+		else {
+			throw YB_DeSerializeError();
+		}
+		//RentDays = std::stoi(*YB_DataBasis::FindValue("RentDays"));
+		//Status = *YB_DataBasis::FindValue("Status");
 	};
 
 }

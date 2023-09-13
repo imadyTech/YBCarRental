@@ -85,7 +85,6 @@ namespace YBCarRental {
 		{
 			auto manager = dynamic_cast<YB_UserManager*>(dataManagerPtr);
 			this->principalObject = manager->CurrentUser();
-
 		};
 	};
 
@@ -97,6 +96,8 @@ namespace YBCarRental {
 			dataManagerPtr = managerPtr;
 			this->windowPtr = windowPtr;
 		}
+
+
 	};
 		
 	//109 CarSelection - ListView

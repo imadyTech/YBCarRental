@@ -22,6 +22,9 @@ namespace YBCarRental {
 	{
 	public:
 		YB_ViewModelBasis() {};
+		YB_ViewModelBasis(YBConsoleViews::YB_Window* windowPtr) {
+			this->windowPtr = windowPtr;
+		};
 
 		virtual string*					Get_PropertyValue(string* bindNamePtr)										override;
 		virtual bool					Get_QuerySingle(int Id, vector<LIST_ITEM_VALUE*>& result)					override;

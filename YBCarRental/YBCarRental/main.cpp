@@ -13,6 +13,7 @@
 #include "YB_ManagerFactory.h"
 #include "YB_CarRental_LogicFactory.h"
 #include "YB_CarRentVM.h"
+#include "YB_MyProfileVM.h"
 #include "YB_OrderDetailsVM.h"
 
 
@@ -30,14 +31,15 @@ int main()
 	YB_ManagerFactory		managerFactory = YB_ManagerFactory();
 
 	YB_CarRental_LogicFactory* logicFactory = new YB_CarRental_LogicFactory();
-	logicFactory->RegisterDataSource("YB_UserLoginVM", new YB_UserLoginVM(YB_ManagerFactory::UserMgr, &windowPtr));
-	logicFactory->RegisterDataSource("YB_UserRegisterVM", new YB_UserRegisterVM(YB_ManagerFactory::UserMgr, &windowPtr));
-	logicFactory->RegisterDataSource("YB_UserMenuVM", new YB_UserMenuVM(YB_ManagerFactory::UserMgr, &windowPtr));
-	logicFactory->RegisterDataSource("YB_AdminMenuVM", new YB_AdminMenuVM(YB_ManagerFactory::UserMgr, &windowPtr));
-	logicFactory->RegisterDataSource("YB_CarSelectionVM", new YB_CarSelectionVM(YB_ManagerFactory::CarMgr, &windowPtr));
-	logicFactory->RegisterDataSource("YB_CarRentVM", new YB_CarRentVM(YB_ManagerFactory::CarMgr, &windowPtr));
-	logicFactory->RegisterDataSource("YB_MyOrdersVM", new YB_MyOrdersVM(YB_ManagerFactory::RentMgr, &windowPtr));
-	logicFactory->RegisterDataSource("YB_OrderDetailsVM", new YB_OrderDetailsVM(YB_ManagerFactory::RentMgr, &windowPtr));
+	logicFactory->RegisterDataSource("YB_UserLoginVM",		new YB_UserLoginVM(YB_ManagerFactory::UserMgr, &windowPtr));
+	logicFactory->RegisterDataSource("YB_UserRegisterVM",	new YB_UserRegisterVM(YB_ManagerFactory::UserMgr, &windowPtr));
+	logicFactory->RegisterDataSource("YB_UserMenuVM",		new YB_UserMenuVM(YB_ManagerFactory::UserMgr, &windowPtr));
+	logicFactory->RegisterDataSource("YB_AdminMenuVM",		new YB_AdminMenuVM(YB_ManagerFactory::UserMgr, &windowPtr));
+	logicFactory->RegisterDataSource("YB_CarSelectionVM",	new YB_CarSelectionVM(YB_ManagerFactory::CarMgr, &windowPtr));
+	logicFactory->RegisterDataSource("YB_CarRentVM",		new YB_CarRentVM(YB_ManagerFactory::CarMgr, &windowPtr));
+	logicFactory->RegisterDataSource("YB_MyOrdersVM",		new YB_MyOrdersVM(YB_ManagerFactory::RentMgr, &windowPtr));
+	logicFactory->RegisterDataSource("YB_OrderDetailsVM",	new YB_OrderDetailsVM(&windowPtr));
+	logicFactory->RegisterDataSource("YB_MyProfileVM",		new YB_MyProfileVM(&windowPtr));
 
 	windowPtr.ConfigLogicFactory(logicFactory);
 	windowPtr.InitViewFactory(currentDir.string() + "\\ViewRepo.txt");

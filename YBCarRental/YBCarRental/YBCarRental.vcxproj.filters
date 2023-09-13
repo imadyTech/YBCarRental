@@ -91,7 +91,10 @@
       <Filter>Source Files\YB_ViewModels</Filter>
     </ClCompile>
     <ClCompile Include="YB_OrderDetailsVM.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\YB_ViewModels</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_MyProfileVM.cpp">
+      <Filter>Source Files\YB_ViewModels</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -144,7 +147,10 @@
       <Filter>Header Files\YB_ViewModels</Filter>
     </ClInclude>
     <ClInclude Include="YB_OrderDetailsVM.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\YB_ViewModels</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_MyProfileVM.h">
+      <Filter>Header Files\YB_ViewModels</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

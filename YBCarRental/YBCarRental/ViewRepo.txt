@@ -79,9 +79,28 @@ Id:106;Title:AdminMenu;ViewType:MenuView;w:120;h:29;Source:YB_AdminMenuVM;&
 <item>106G:Id:1066!x:100!y:2!w:16!h:1!ItemType:TextItem!Content:admin!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 <item>106H:Id:1067!x:100!y:4!w:16!h:1!ItemType:TextItem!Content:admin!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;
 
-## 107 - Todo - My profile ##
-Id:107;Title:MyProfileView;ViewType:DetailsView;w:120;h:29;Source:;&
-<item>107A:Id:1070!x:20!y:3!w:80!h:1!ItemType:TextItem!Content:My Profile!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
+## 107 - My profile ##
+Id:107;Title:MyProfileView;ViewType:DetailsView;w:120;h:29;Source:YB_MyProfileVM;&
+<item>107A0:Id:10700!x:10!y:3!w:100!h:1!ItemType:TextItem!Content:My Profile!Background:-!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;&
+
+<item>107A1:Id:10706!x:36!y:05!w:20!h:1!ItemType:TextItem!Content:User Name!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>107B1:Id:10701!x:36!y:06!w:20!h:1!ItemType:TextItem!Content:User Id!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>107C1:Id:10702!x:36!y:07!w:20!h:1!ItemType:TextItem!Content:First Name!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>107D1:Id:10703!x:36!y:08!w:20!h:1!ItemType:TextItem!Content:Family Name!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>107E1:Id:10704!x:36!y:09!w:20!h:1!ItemType:TextItem!Content:User Roles!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>107F1:Id:10705!x:36!y:10!w:20!h:1!ItemType:TextItem!Content:Account Balance!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+
+<item>107A2:Id:10710!x:56!y:05!w:20!h:1!ItemType:TextItem!Bind:UserName!Content:---!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>107B2:Id:10711!x:56!y:06!w:20!h:1!ItemType:TextItem!Bind:Id!Content:---!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>107C2:Id:10712!x:56!y:07!w:20!h:1!ItemType:TextItem!Bind:FirstName!Content:---!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>107D2:Id:10713!x:56!y:08!w:20!h:1!ItemType:TextItem!Bind:FamilyName!Content:---!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>107E2:Id:10714!x:56!y:09!w:20!h:1!ItemType:TextItem!Bind:UserRoles!Content:---!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>107F2:Id:10715!x:56!y:10!w:20!h:1!ItemType:TextItem!Bind:Balance!Content:---!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+
+<item>107E3:Id:10724!x:00!y:20!w:120!h:1!ItemType:TextItem!Content:<Please any key to return previous view>!isCentral:1!isFocused:0!isHidden:0!;
+####################### ----------   END OF VIEW DEFINITION   ------------ #######################
+
+
 
 ## 108 - My orders ##
 Id:108;Title:MyOrdersView;ViewType:ListView;w:120;h:29;Source:YB_MyOrdersVM;&

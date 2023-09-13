@@ -18,10 +18,7 @@ namespace YBCarRental {
 	class YB_OrderDetailsVM : public YB_ViewModelBasis<YB_Rent>
 	{
 	public:
-		YB_OrderDetailsVM(YB_RentManager* managerPtr, YBConsoleViews::YB_Window* windowPtr) {
-			dataManagerPtr = managerPtr;
-			this->windowPtr = windowPtr;
-		}
+		YB_OrderDetailsVM(YBConsoleViews::YB_Window* windowPtr): YB_ViewModelBasis::YB_ViewModelBasis(windowPtr) {}
 
 		YB_UserManager* userManagerPtr	= YB_ManagerFactory::UserMgr;
 		YB_RentManager* rentManagerPtr	= YB_ManagerFactory::RentMgr;

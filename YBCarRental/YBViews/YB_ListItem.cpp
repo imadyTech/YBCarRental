@@ -41,6 +41,7 @@ void YBConsoleViews::YB_ListItem::OnBind(vector<tuple<string, string, int>*>* va
 
 void YBConsoleViews::YB_ListItem::OnReturn()
 {
+	//The Bind contains the index of listItem in the table
 	YB_ListItemMessage* Message = new YB_ListItemMessage(std::stoi(this->Bind));
 	this->parent->OnChildReturn(Message, this);
 }

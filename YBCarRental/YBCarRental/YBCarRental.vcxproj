@@ -137,7 +137,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="YB_CarManageVM.cpp" />
     <ClCompile Include="YB_Car.cpp" />
+    <ClCompile Include="YB_CarAddVM.cpp" />
     <ClCompile Include="YB_CarManager.cpp" />
     <ClCompile Include="YB_CarRental_LogicFactory.cpp" />
     <ClCompile Include="YB_CarRentViewModels.cpp" />
@@ -158,7 +160,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
+    <ClInclude Include="YB_CarManageVM.h" />
     <ClInclude Include="YB_Car.h" />
+    <ClInclude Include="YB_CarAddVM.h" />
     <ClInclude Include="YB_CarManager.h" />
     <ClInclude Include="YB_CarPersistor.h" />
     <ClInclude Include="YB_CarRental_LogicFactory.h" />

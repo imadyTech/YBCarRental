@@ -13,6 +13,8 @@
 #include "YB_ManagerFactory.h"
 #include "YB_CarRental_LogicFactory.h"
 #include "YB_CarRentVM.h"
+#include "YB_CarAddVM.h"
+#include "YB_CarManageVM.h"
 #include "YB_MyProfileVM.h"
 #include "YB_OrderDetailsVM.h"
 
@@ -40,6 +42,11 @@ int main()
 	logicFactory->RegisterDataSource("YB_MyOrdersVM",		new YB_MyOrdersVM(YB_ManagerFactory::RentMgr, &windowPtr));
 	logicFactory->RegisterDataSource("YB_OrderDetailsVM",	new YB_OrderDetailsVM(&windowPtr));
 	logicFactory->RegisterDataSource("YB_MyProfileVM",		new YB_MyProfileVM(&windowPtr));
+	logicFactory->RegisterDataSource("YB_CarAddVM",			new YB_CarAddVM(&windowPtr));//admin
+	logicFactory->RegisterDataSource("YB_CarListVM",		new YB_CarListVM(&windowPtr));//admin listing
+	logicFactory->RegisterDataSource("YB_CarManageVM",		new YB_CarManageVM(&windowPtr));//admin
+	logicFactory->RegisterDataSource("YB_OrderManageVM",	new YB_OrderManageVM(&windowPtr));//admin
+	logicFactory->RegisterDataSource("YB_UserAdminListVM",	new YB_UserAdminListVM(&windowPtr));//admin
 
 	windowPtr.ConfigLogicFactory(logicFactory);
 	windowPtr.InitViewFactory(currentDir.string() + "\\ViewRepo.txt");

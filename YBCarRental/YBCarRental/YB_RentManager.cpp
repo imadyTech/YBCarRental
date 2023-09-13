@@ -18,7 +18,7 @@ namespace YBCarRental
 		order->RentDays		= days;
 		order->DateOfOrder	= *today;
 		order->Status		= YB_Rental_Status_Pending;
-		order->Id			= this->CreateId() + 1;
+		order->Id			= YB_ManagerBasis::CreateIncrementId();
 
 		persistor->Add(*order);
 		return true;
@@ -39,16 +39,4 @@ namespace YBCarRental
 	{
 		return false;
 	}
-	int YB_RentManager::CreateId()
-	{
-		if (!(&persistor->dataSet) || persistor->dataSet.size() == 0)
-			return -1;
-		int max = -1;
-		for (auto& orderIterator : persistor->dataSet)
-		{
-			if (orderIterator.second.Id > max)
-				max = orderIterator.second.Id;
-		}
-		return max;
-	};
 }

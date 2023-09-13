@@ -41,7 +41,7 @@ namespace YBConsoleViews
 			this->parent->OnChildReturn(&Message, this);
 		}
 		if (this->ButtonType == Button_Type_Ok) {
-			YB_ButtonNoMessage Message;
+			YB_ButtonOkMessage Message;
 			this->parent->OnChildReturn(&Message, this);
 		}
 	}

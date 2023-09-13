@@ -72,9 +72,9 @@ Id:105;Title:UserMenu;ViewType:MenuView;w:120;h:29;Source:YB_UserMenuVM;&
 Id:106;Title:AdminMenu;ViewType:MenuView;w:120;h:29;Source:YB_AdminMenuVM;&
 <item>106A:Id:1060!x:25!y:5!w:70!h:1!ItemType:TextItem!Content:Please choose a function for administrator!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
 <item>106B:Id:1061!x:36!y:10!w:48!h:1!ItemType:MenuItem!Content:List Cars!Link:CarListView!Background: !isCentral:0!isFocused:1!isSelected:1!isHidden:0!;&
-<item>106C:Id:1062!x:36!y:12!w:48!h:1!ItemType:MenuItem!Content:Add a car!Link:CarListView!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
-<item>106D:Id:1063!x:36!y:14!w:48!h:1!ItemType:MenuItem!Content:Order Management!Link:CarListView!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
-<item>106E:Id:1064!x:36!y:16!w:48!h:1!ItemType:MenuItem!Content:User Management!Link:CarListView!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>106C:Id:1062!x:36!y:12!w:48!h:1!ItemType:MenuItem!Content:Add a car!Link:CarAddView!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>106D:Id:1063!x:36!y:14!w:48!h:1!ItemType:MenuItem!Content:Order Management!Link:OrderManageView!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>106E:Id:1064!x:36!y:16!w:48!h:1!ItemType:MenuItem!Content:User Management!Link:UserAdminListView!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 <item>106F:Id:1065!x:0!y:20!w:120!h:1!ItemType:TextItem!Content:<Please toggle with TAB and select with Return key>!Background: !isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
 <item>106G:Id:1066!x:100!y:2!w:16!h:1!ItemType:TextItem!Content:admin!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 <item>106H:Id:1067!x:100!y:4!w:16!h:1!ItemType:TextItem!Content:admin!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;
@@ -100,8 +100,6 @@ Id:107;Title:MyProfileView;ViewType:DetailsView;w:120;h:29;Source:YB_MyProfileVM
 <item>107E3:Id:10724!x:00!y:20!w:120!h:1!ItemType:TextItem!Content:<Please any key to return previous view>!isCentral:1!isFocused:0!isHidden:0!;
 ####################### ----------   END OF VIEW DEFINITION   ------------ #######################
 
-
-
 ## 108 - My orders ##
 Id:108;Title:MyOrdersView;ViewType:ListView;w:120;h:29;Source:YB_MyOrdersVM;&
 ListHead:Id:1080!ItemType:ListHead!x:0!y:6!w:120!h:1!<col>Id:8!<col>UserId:12!<col>CarId:15!<col>RentStart:18!<col>DateOfOrder:18!<col>RentDays:15!<col>Status:18!;&
@@ -112,7 +110,7 @@ ListRowTemplate:ItemType:ListItem!Link:OrderDetailsView!x:0!y:8!w:120!h:1!Conten
 <item>108C:Id:1083!x:0!y:16!isCentral:0!w:120!h:1!ItemType:TextItem!Content:----------------------------------------------------------------------------------------------------------------------!;&
 <item>108E:Id:1085!x:20!y:3!w:80!h:1!ItemType:TextItem!Content:My Rental Orders!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
 
-## 109 - Todo - Car selection list menu - select a car to rent ##
+## 109 - Car selection list menu - select a car to rent ##
 Id:109;Title:CarSelectionView;ViewType:ListView;w:120;h:29;Source:YB_CarSelectionVM;&
 ListHead:Id:1090!ItemType:ListHead!x:0!y:6!w:120!h:1!<col>Id:8!<col>Make:12!<col>Model:15!<col>Year:8!<col>Mileage:12!<col>MinRentPeriod:18!<col>MaxRentPeriod:18!<col>DayRentPrice:18!;&
 ListRowCount:8;&
@@ -122,15 +120,39 @@ ListRowTemplate:ItemType:ListItem!Link:CarRentView!x:0!y:8!w:120!h:1!Content:Car
 <item>109C:Id:1093!x:0!y:16!isCentral:0!w:120!h:1!ItemType:TextItem!Content:----------------------------------------------------------------------------------------------------------------------!;&
 <item>109D:Id:1094!x:20!y:3!w:80!h:1!ItemType:TextItem!Content:Rent a car!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
 
-
 ## 110 - Add a car ##
-Id:110;Title:CarAddView;ViewType:InputView;w:120;h:29;Source:;
+Id:110;Title:CarAddView;ViewType:InputView;w:120;h:29;Source:YB_CarAddVM;&
+<item>110A0:Id:11000!x:10!y:3!w:100!h:1!ItemType:TextItem!Content:Adding a new car!Background:-!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;&
+
+<item>110A1:Id:11000!x:32!y:06!w:20!h:1!ItemType:TextItem!Content:Make!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>110B1:Id:11001!x:32!y:07!w:20!h:1!ItemType:TextItem!Content:Model!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>110C1:Id:11002!x:32!y:08!w:20!h:1!ItemType:TextItem!Content:Year!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>110D1:Id:11003!x:32!y:09!w:20!h:1!ItemType:TextItem!Content:Mileage!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>110E1:Id:11004!x:32!y:10!w:20!h:1!ItemType:TextItem!Content:Min Rent Period!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>110F1:Id:11005!x:32!y:11!w:20!h:1!ItemType:TextItem!Content:Max Rent Period!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>110G1:Id:11006!x:32!y:12!w:20!h:1!ItemType:TextItem!Content:Day Rent Price!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+
+<item>110H1:Id:11010!x:56!y:06!w:20!h:1!ItemType:InputItem!Bind:Make!Content:!Background:.!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;&
+<item>110I1:Id:11011!x:56!y:07!w:20!h:1!ItemType:InputItem!Bind:Model!Content:!Background:.!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+<item>110J1:Id:11012!x:56!y:08!w:20!h:1!ItemType:InputItem!Bind:Year!Content:!Background:.!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+<item>110K1:Id:11013!x:56!y:09!w:20!h:1!ItemType:InputItem!Bind:Mileage!Content:!Background:.!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+<item>110L1:Id:11014!x:56!y:10!w:20!h:1!ItemType:InputItem!Bind:MinRentPeriod!Content:!Background:.!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+<item>110M1:Id:11015!x:56!y:11!w:20!h:1!ItemType:InputItem!Bind:MaxRentPeriod!Content:!Background:.!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+<item>110N1:Id:11016!x:56!y:12!w:20!h:1!ItemType:InputItem!Bind:DayRentPrice!Content:!Background:.!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+<item>110T0:Id:11020!x:50!y:17!w:20!h:3!ItemType:ButtonItem!Content:Add!ButtonType:Submit!Background:.!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
+####################### ----------   END OF VIEW DEFINITION   ------------ #######################
+
+
 
 ## 111 - Car management menu (list all cars) ##
-Id:111;Title:CarListView;ViewType:ListView;w:120;h:29;Source:;&
-<item>111A:Id:1111!x:10!y:2!w:30!h:1!ItemType:TextItem!Content:Yes or No!Background:/!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
-<item>111B:Id:1112!x:10!y:10!w:40!h:1!ItemType:TextItem!Content:The Car!Background:*!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
-<item>111C:Id:1113!x:30!y:20!w:50!h:1!ItemType:TextItem!Content:You and me!Background:$!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;
+Id:111;Title:CarListView;ViewType:ListView;w:120;h:29;Source:YB_CarListVM;&
+ListHead:Id:1110!ItemType:ListHead!x:0!y:6!w:120!h:1!<col>Id:8!<col>Make:12!<col>Model:15!<col>Year:8!<col>Mileage:12!<col>MinRentPeriod:18!<col>MaxRentPeriod:18!<col>DayRentPrice:18!;&
+ListRowCount:8;&
+ListRowTemplate:ItemType:ListItem!Link:CarManageView!x:0!y:8!w:120!h:1!Content:!isCentral:1!isFocused:0!;&
+<item>111A:Id:1111!x:0!y:5!isCentral:0!w:120!h:1!ItemType:TextItem!Content:----------------------------------------------------------------------------------------------------------------------!;&
+<item>111B:Id:1112!x:0!y:7!isCentral:0!w:120!h:1!ItemType:TextItem!Content:----------------------------------------------------------------------------------------------------------------------!;&
+<item>111C:Id:1113!x:0!y:16!isCentral:0!w:120!h:1!ItemType:TextItem!Content:----------------------------------------------------------------------------------------------------------------------!;&
+<item>111D:Id:1114!x:20!y:3!w:80!h:1!ItemType:TextItem!Content:Managing Existing Cars!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
 
 ## 112 - Rent a car !!! ##
 Id:112;Title:CarRentView;ViewType:InputView;GotoView:UserMenu;ConfirmView:Confirm_CarRentView;w:120;h:29;Source:YB_CarRentVM;&
@@ -158,7 +180,6 @@ Id:112;Title:CarRentView;ViewType:InputView;GotoView:UserMenu;ConfirmView:Confir
 <item>112U:Id:11225!x:60!y:18!w:20!h:1!ItemType:InputItem!Bind:DaysToRent!Content:!Background:.!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;&
 <item>112X:Id:11226!x:40!y:22!w:20!h:1!ItemType:ButtonItem!Content:Rent!ButtonType:Submit!Background:_!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
 <item>112Y:Id:11250!x:20!y:4!w:80!h:1!ItemType:TextItem!Content:Details of car you selected!Background:-!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;
-##<item>112Z:Id:11227!x:10!y:02!w:100!h:27!ItemType:ButtonItem!Content:Insurfficient Balance!ButtonType:BtnOk!Background:.!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;##
 
 ## 113 ------------ Order details ------------ !!! ##
 Id:112;Title:OrderDetailsView;ViewType:DetailsView;GotoView:UserMenu;w:120;h:29;Source:YB_OrderDetailsVM;&
@@ -171,7 +192,6 @@ Id:112;Title:OrderDetailsView;ViewType:DetailsView;GotoView:UserMenu;w:120;h:29;
 <item>113D1:Id:11303!x:36!y:10!w:20!h:1!ItemType:TextItem!Content:Days Rented!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 <item>113E1:Id:11304!x:36!y:11!w:20!h:1!ItemType:TextItem!Content:Order Status!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 <item>113F1:Id:11305!x:36!y:12!w:20!h:1!ItemType:TextItem!Content:Total Cost!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
-
 <item>113H2:Id:11317!x:56!y:05!w:20!h:1!ItemType:TextItem!Bind:Id!Content:OrderId!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 <item>113G2:Id:11316!x:56!y:06!w:20!h:1!ItemType:TextItem!Bind:CustomerName!Content:!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 <item>113A2:Id:11310!x:56!y:07!w:20!h:1!ItemType:TextItem!Bind:CarInfo!Content:CarInfo!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
@@ -180,7 +200,6 @@ Id:112;Title:OrderDetailsView;ViewType:DetailsView;GotoView:UserMenu;w:120;h:29;
 <item>113D2:Id:11313!x:56!y:10!w:20!h:1!ItemType:TextItem!Bind:RentDays!Content:RentDays!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 <item>113E2:Id:11314!x:56!y:11!w:20!h:1!ItemType:TextItem!Bind:Status!Content:Status!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
 <item>113F2:Id:11315!x:56!y:12!w:20!h:1!ItemType:TextItem!Bind:OrderCost!Content:!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
-
 <item>113O:Id:11320!x:80!y:01!w:10!h:1!ItemType:TextItem!Content:UserName!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
 <item>113P:Id:11321!x:80!y:02!w:10!h:1!ItemType:TextItem!Content:Balance!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
 <item>113R:Id:11322!x:90!y:01!w:24!h:1!ItemType:TextItem!Bind:UserName!Content:??????????!Background:.!isCentral:0!isFocused:1!isSelected:0!isHidden:0!;&
@@ -189,13 +208,63 @@ Id:112;Title:OrderDetailsView;ViewType:DetailsView;GotoView:UserMenu;w:120;h:29;
 
 ##<item>113T:Id:11324!x:35!y:18!w:24!h:1!ItemType:TextItem!Content:Input days to rent!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&##
 ##<item>113U:Id:11325!x:60!y:18!w:20!h:1!ItemType:InputItem!Bind:DaysToRent!Content:!Background:.!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;##
-##<item>112X:Id:11226!x:40!y:22!w:20!h:1!ItemType:ButtonItem!Content:Rent!ButtonType:Submit!Background:_!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&##
+##<item>113X:Id:11226!x:40!y:22!w:20!h:1!ItemType:ButtonItem!Content:Rent!ButtonType:Submit!Background:_!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&##
+####################### ----------   END OF VIEW DEFINITION   ------------ #######################
+
+## 114 - CarManageView - delete or update car info!!! ##
+Id:114;Title:CarManageView;ViewType:InputView;GotoView:AdminMenu;ConfirmView:Confirm_CarUpdateView;w:120;h:29;Source:YB_CarManageVM;&
+<item>114H1:Id:11400!x:36!y:05!w:20!h:1!ItemType:TextItem!Content:CarId!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>114A1:Id:11401!x:36!y:06!w:20!h:1!ItemType:TextItem!Content:Make!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>114B1:Id:11402!x:36!y:07!w:20!h:1!ItemType:TextItem!Content:Model!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>114C1:Id:11403!x:36!y:08!w:20!h:1!ItemType:TextItem!Content:Year!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>114D1:Id:11404!x:36!y:09!w:20!h:1!ItemType:TextItem!Content:Mileage!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>114E1:Id:11405!x:36!y:10!w:20!h:1!ItemType:TextItem!Content:MinRentPeriod!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>114F1:Id:11406!x:36!y:11!w:20!h:1!ItemType:TextItem!Content:MaxRentPeriod!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>114G1:Id:11407!x:36!y:12!w:20!h:1!ItemType:TextItem!Content:DayRentPrice!Background: !isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>114H2:Id:11410!x:56!y:05!w:20!h:1!ItemType:TextItem!Bind:Id!Content:!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>114A2:Id:11411!x:56!y:06!w:20!h:1!ItemType:InputItem!Bind:Make!Content:Make!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>114B2:Id:11412!x:56!y:07!w:20!h:1!ItemType:InputItem!Bind:Model!Content:Model!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>114C2:Id:11413!x:56!y:08!w:20!h:1!ItemType:InputItem!Bind:Year!Content:Year!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>114D2:Id:11414!x:56!y:09!w:20!h:1!ItemType:InputItem!Bind:Mileage!Content:Mileage!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>114E2:Id:11415!x:56!y:10!w:20!h:1!ItemType:InputItem!Bind:MinRentPeriod!Content:MinRentPeriod!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>114F2:Id:11416!x:56!y:11!w:20!h:1!ItemType:InputItem!Bind:MaxRentPeriod!Content:MaxRentPeriod!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>114G2:Id:11417!x:56!y:12!w:20!h:1!ItemType:InputItem!Bind:DayRentPrice!Content:DayRentPrice!Background:.!isCentral:0!isFocused:0!isSelected:0!isHidden:0!;&
+<item>114X:Id:11426!x:36!y:22!w:20!h:3!ItemType:ButtonItem!Content:DELETE!ButtonType:BtnDelete!Background:*!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+<item>114Y:Id:11427!x:64!y:22!w:20!h:3!ItemType:ButtonItem!Content:UPDATE!ButtonType:Submit!Background:.!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+<item>114Z:Id:11450!x:20!y:4!w:80!h:1!ItemType:TextItem!Content:Update the car info or DELETE!Background:-!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;
+####################### ----------   END OF VIEW DEFINITION   ------------ #######################
+
+## 115 - orders Management (Admin feature) ##
+Id:115;Title:OrderManageView;ViewType:ListView;w:120;h:29;Source:YB_OrderManageVM;&
+ListHead:Id:1150!ItemType:ListHead!x:0!y:6!w:120!h:1!<col>Id:8!<col>UserId:12!<col>CarId:15!<col>RentStart:18!<col>DateOfOrder:18!<col>RentDays:15!<col>Status:18!;&
+ListRowCount:8;&
+ListRowTemplate:ItemType:ListItem!Link:OrderAdminView!x:0!y:8!w:120!h:1!Content:------!isCentral:1!isFocused:0!;&
+<item>115A:Id:1151!x:0!y:5!isCentral:0!w:120!h:1!ItemType:TextItem!Content:----------------------------------------------------------------------------------------------------------------------!;&
+<item>115B:Id:1152!x:0!y:7!isCentral:0!w:120!h:1!ItemType:TextItem!Content:----------------------------------------------------------------------------------------------------------------------!;&
+<item>115C:Id:1153!x:0!y:16!isCentral:0!w:120!h:1!ItemType:TextItem!Content:----------------------------------------------------------------------------------------------------------------------!;&
+<item>115E:Id:1155!x:20!y:3!w:80!h:1!ItemType:TextItem!Content:All Rental Orders (admin feature)!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
+####################### ----------   END OF VIEW DEFINITION   ------------ #######################
+
+## 116 - User Management (Admin feature) ##
+Id:116;Title:UserAdminListView;ViewType:ListView;w:120;h:29;Source:YB_UserAdminListVM;&
+ListHead:Id:1160!ItemType:ListHead!x:0!y:6!w:120!h:1!<col>Id:8!<col>Id:12!<col>UserName:15!<col>FirstName:18!<col>FamilyName:18!<col>UserRoles:15!<col>Balance:18!;&
+ListRowCount:8;&
+ListRowTemplate:ItemType:ListItem!Link:UserAdminView!x:0!y:8!w:120!h:1!Content:------!isCentral:1!isFocused:0!;&
+<item>116A:Id:1161!x:0!y:5!isCentral:0!w:120!h:1!ItemType:TextItem!Content:----------------------------------------------------------------------------------------------------------------------!;&
+<item>116B:Id:1162!x:0!y:7!isCentral:0!w:120!h:1!ItemType:TextItem!Content:----------------------------------------------------------------------------------------------------------------------!;&
+<item>116C:Id:1163!x:0!y:16!isCentral:0!w:120!h:1!ItemType:TextItem!Content:----------------------------------------------------------------------------------------------------------------------!;&
+<item>116E:Id:1165!x:20!y:3!w:80!h:1!ItemType:TextItem!Content:Users Management (admin feature)!Background:-!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;
 ####################### ----------   END OF VIEW DEFINITION   ------------ #######################
 
 Id:200;Title:Confirm_CarRentView;ViewType:DialogView;w:120;h:29;Background:.;&
 <item>200A:Id:2001!x:35!y:8!w:20!h:3!ItemType:ButtonItem!Content:YES!ButtonType:BtnYes!Background:.!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;&
 <item>200B:Id:2002!x:65!y:8!w:20!h:3!ItemType:ButtonItem!Content:NO!ButtonType:BtnNo!Background:.!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
 <item>200C:Id:2003!x:20!y:4!w:80!h:1!ItemType:TextItem!Content:Do you confirm the order?!Background:-!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;
+
+Id:201;Title:Confirm_CarUpdateView;ViewType:DialogView;w:120;h:29;Background:.;&
+<item>201A:Id:2011!x:35!y:8!w:20!h:3!ItemType:ButtonItem!Content:YES!ButtonType:BtnYes!Background:.!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;&
+<item>201B:Id:2012!x:65!y:8!w:20!h:3!ItemType:ButtonItem!Content:NO!ButtonType:BtnNo!Background:.!isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&
+<item>201C:Id:2013!x:20!y:4!w:80!h:1!ItemType:TextItem!Content:Do you confirm update the car?!Background:-!isCentral:1!isFocused:1!isSelected:0!isHidden:0!;
 
 Id:888;Title:CopyrightView;ViewType:WelcomeView;w:120;h:29;Source:;&
 <item>888A:Id:8880!x:0!y:18!w:120!h:1!ItemType:TextItem!Content:Copyright @Zhenqun Shen!Background: !isCentral:1!isFocused:0!isSelected:0!isHidden:0!;&

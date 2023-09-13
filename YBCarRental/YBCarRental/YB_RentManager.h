@@ -24,7 +24,6 @@ namespace YBCarRental
 		bool RejectOrder(int orderId);
 
 	private:
-		int CreateId();
 	};
 }
 

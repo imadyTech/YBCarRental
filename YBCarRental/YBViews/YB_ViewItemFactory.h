@@ -47,7 +47,7 @@ namespace YBConsoleViews
 		YB_ViewItemBasis*						GetViewItem(string itemType);
 
 	private:
-		std::map<int, YB_ViewItemBasis*>		viewitemPool;
+		std::map<int, YB_ViewItemBasis*>		viewitemPool = {};
 		YBPersistence::YB_Repository*			repository;
 
 		/// <summary>

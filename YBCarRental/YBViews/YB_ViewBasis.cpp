@@ -42,7 +42,7 @@ namespace YBConsoleViews {
 	//{
 	//}
 
-	string*				YB_ViewBasis::Serialize()
+	string* YB_ViewBasis::Serialize()
 	{
 		std::stringstream ss;
 		//Redirect to new function (instead of previous version overrided function)
@@ -102,6 +102,9 @@ namespace YBConsoleViews {
 			//Nothing would happen if unsuccessful in binding.
 			//Override the Init in children, if necessary.
 		}
+		if (focusableItems.size() > 1 && currentItemIndex < 1)
+			currentItemIndex = 1;
+
 		this->isInitedFlag = true;
 	}
 
@@ -141,6 +144,19 @@ namespace YBConsoleViews {
 
 	}
 
+	void				YB_ViewBasis::SetPrompt(YB_ViewItemBasis* promptPtr)
+	{
+		this->promptBoxItemPtr = promptPtr;
+	}
+
+	void				YB_ViewBasis::PopPrompt(const char* promptPtr, const char* gotoLink)
+	{
+		promptBoxItemPtr->Content = string(promptPtr);
+		promptBoxItemPtr->isHidden = false;
+		promptBoxItemPtr->Link = gotoLink;
+		this->currentItemIndex = 0;
+	}
+
 	//submit is a action-response function not always in loop of YB_View.
 	void				YB_ViewBasis::Submit()
 	{
@@ -162,9 +178,13 @@ namespace YBConsoleViews {
 		if (viewArray.empty())
 			Init_Background(this->Background);
 
+
+
 		//Render and merge all viewItems
 		for (auto& iterator : this->subItemsList)
 		{
+			if (iterator->isHidden)continue;
+
 			auto posX = iterator->x, posY = iterator->y;
 
 			//1. Render viewItem
@@ -180,6 +200,19 @@ namespace YBConsoleViews {
 				posY++;
 			}
 		}
+		//3. Re-Render the prompt item as it's likely at bottom
+		if (!subItemsList[0]->isHidden)
+		{
+			auto posX = subItemsList[0]->x, posY = subItemsList[0]->y;
+			auto SUB_RECT = subItemsList[0]->Render();
+			size_t newContentLength = subItemsList[0]->w;
+			for (const auto& row : SUB_RECT)
+			{
+				std::memcpy(viewArray[posY] + posX, row, newContentLength);
+				posY++;
+			}
+		}
+
 		////Unit testing code - to visualize a single item
 		//	for (const char* strPtr : viewArray) {
 		//		std::cout << strPtr << std::endl;
@@ -191,9 +224,9 @@ namespace YBConsoleViews {
 
 	void				YB_ViewBasis::Exit()
 	{
-		isInitedFlag	= false;
-		isBindedFlag	= false;
-		isUpdatedFlag	= false;
+		isInitedFlag = false;
+		isBindedFlag = false;
+		isUpdatedFlag = false;
 	}
 
 	void				YB_ViewBasis::Init_Background(char background)
@@ -231,18 +264,16 @@ namespace YBConsoleViews {
 			return;
 		if (focusableItems.empty())									//No item to be operated
 			return;
-		if (currentItemIndex < 0)
-			currentItemIndex = 0;
 		if (*keycode == 9)											//Tab; Toggle items.
 		{
-			if (focusableItems.size() == 1) {						//only 1 item
-				(*focusableItems[currentItemIndex]).OnFocus();
+			if (focusableItems.size() <= 1) {						//only 1 item
+				//(*focusableItems[currentItemIndex]).OnFocus();
 				return;
 			}
 			(*focusableItems[currentItemIndex]).OnLostFocus();
 			currentItemIndex++;
 			if (currentItemIndex >= focusableItems.size())
-				currentItemIndex = 0;
+				currentItemIndex = 1;
 			(*focusableItems[currentItemIndex]).OnFocus();
 		}
 		if (*keycode == 13)											//Return key;
@@ -265,6 +296,13 @@ namespace YBConsoleViews {
 
 	void				YB_ViewBasis::OnChildReturn(YB_ViewMessageBasis* msgPtr, YB_ViewItemBasis* fromItemPtr)
 	{
+		if (msgPtr->Message == Button_Type_Ok)
+		{
+			this->promptBoxItemPtr->isHidden = true;
+			this->promptBoxItemPtr->isFocused= false;
+			this->Clear_Background();
+		}
+
 		if (fromItemPtr && !fromItemPtr->Link.empty())
 		{
 			try

@@ -61,6 +61,10 @@ namespace YBCarRental
 		/// The persistor to manage TData objects at lower-layer .
 		/// </summary>
 		YB_PersistorBasis<TData>*						persistor;
+		/// <summary>
+		/// Create unique Id by iterating existing repo
+		/// </summary>
+		int												CreateIncrementId();
 
 		///dictionary of id:object pair
 		//map<int, TData> dataSet;
@@ -120,5 +124,20 @@ namespace YBCarRental
 			throw YB_PersistorError();
 		}
 	}
+
+	template<class TData>
+	inline int									YB_ManagerBasis<TData>::CreateIncrementId()
+	{
+		if (!(&persistor->dataSet) || persistor->dataSet.size() == 0)
+			return -1;
+		int max = -1;
+		for (auto& orderIterator : persistor->dataSet)
+		{
+			if (orderIterator.second.Id > max)
+				max = orderIterator.second.Id;
+		}
+		return max+1;
+	};
+
 }
 #endif // YB_ManagerBasis_H

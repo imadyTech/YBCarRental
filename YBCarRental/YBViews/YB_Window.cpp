@@ -127,4 +127,9 @@ namespace YBConsoleViews
 	{
 	}
 
+	void YB_Window::PopPrompt(const char* promptPtr, const char* gotoLink)
+	{
+		currentView->PopPrompt(promptPtr, gotoLink);
+	}
+
 }

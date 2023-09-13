@@ -110,6 +110,58 @@ namespace YBCarRental {
 		}
 	};
 
+	//111 YB_CarListVM - ListView
+	class YB_CarListVM : public YB_ViewModelBasis<YB_Car>
+	{
+	public:
+		YB_CarListVM(YBConsoleViews::YB_Window* windowPtr) {
+			this->dataManagerPtr = YB_ManagerFactory::CarMgr;
+		}
+
+		//YB_UserManager* userManagerPtr = YB_ManagerFactory::UserMgr;
+		//YB_CarManager* carManagerPtr = YB_ManagerFactory::CarMgr;
+		YB_User* carryForwardedUser;
+		void					onViewForwarded(YB_DataBasis* fromData)		override
+		{
+			carryForwardedUser = dynamic_cast<YB_User*>(fromData);
+		};
+	};	
+	
+	//115 YB_OrderManageVM - ListView
+	class YB_OrderManageVM : public YB_ViewModelBasis<YB_Rent>
+	{
+	public:
+		YB_OrderManageVM(YBConsoleViews::YB_Window* windowPtr) {
+			this->dataManagerPtr = YB_ManagerFactory::RentMgr;
+		}
+
+		//YB_UserManager* userManagerPtr = YB_ManagerFactory::UserMgr;
+		//YB_CarManager* carManagerPtr = YB_ManagerFactory::CarMgr;
+		YB_User* carryForwardedUser;
+
+		void					onViewForwarded(YB_DataBasis* fromData)		override
+		{
+			carryForwardedUser = dynamic_cast<YB_User*>(fromData);
+		};
+	};	
+	
+	//11 YB_UserAdminListVM - ListView
+	class YB_UserAdminListVM : public YB_ViewModelBasis<YB_User>
+	{
+	public:
+		YB_UserAdminListVM(YBConsoleViews::YB_Window* windowPtr) {
+			this->dataManagerPtr = YB_ManagerFactory::UserMgr;
+		}
+
+		//YB_UserManager* userManagerPtr = YB_ManagerFactory::UserMgr;
+		//YB_CarManager* carManagerPtr = YB_ManagerFactory::CarMgr;
+		YB_User* carryForwardedUser;
+
+		void					onViewForwarded(YB_DataBasis* fromData)		override
+		{
+			carryForwardedUser = dynamic_cast<YB_User*>(fromData);
+		};
+	};
 
 
 

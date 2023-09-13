@@ -81,6 +81,12 @@ namespace YBConsoleViews
 
 	void			YB_ViewFactory::CreateSubViewitems(YB_ViewBasis* view, const string viewString)
 	{
+		//create a hidden message box item by default
+		YB_ViewItemBasis* prompt = this->viewItemFactory.CreateViewItem(YBConsoleViews::PROMPT_MESSAGEBOX_VIEW_ITEM);
+		prompt->parent = view;
+		view->subItemsList.push_back(prompt);
+		view->SetPrompt(prompt);
+
 		auto itemsDef = (*view).FindValues(CONST_VIEW_ITEM_STARTER);
 		if (!itemsDef.empty())
 		{

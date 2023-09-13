@@ -7,8 +7,7 @@ class YB_Window;
 
 
 void YBConsoleViews::YB_InputView::OnKey(int* keycode)
-{
-	YB_ViewBasis::OnKey(keycode);
+{	YB_ViewBasis::OnKey(keycode);
 }
 
 void YBConsoleViews::YB_InputView::OnChildReturn(YB_ViewMessageBasis* msgPtr, YB_ViewItemBasis* fromItemPtr)
@@ -18,20 +17,22 @@ void YBConsoleViews::YB_InputView::OnChildReturn(YB_ViewMessageBasis* msgPtr, YB
 	{
 		if (!this->ConfirmView.empty())
 		{
+			//Deffered submission
 			this->windowPtr->Goto(this->ConfirmView);
 		}
 		else
 		{
-			YB_ViewBasis::Submit();
+			//Immediately submission
+			YB_ViewBasis::Submit();	
 		}
 	}
-	//YB_ViewBasis::OnChildReturn(msgPtr, fromItemPtr);
+	YB_ViewBasis::OnChildReturn(msgPtr, fromItemPtr);
 }
 
 void YBConsoleViews::YB_InputView::OnConfirmReturn(YB_ViewMessageBasis* msgPtr, YB_ViewBasis* fromViewPtr)
 {
 	if (msgPtr->Message == Button_Type_Yes) {
-		YB_ViewBasis::Submit();
+		YB_ViewBasis::Submit();	
 		if (!this->GotoView.empty())
 			this->windowPtr->Goto(this->GotoView);
 	}

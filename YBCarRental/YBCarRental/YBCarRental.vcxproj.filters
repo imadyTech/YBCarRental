@@ -96,6 +96,12 @@
     <ClCompile Include="YB_MyProfileVM.cpp">
       <Filter>Source Files\YB_ViewModels</Filter>
     </ClCompile>
+    <ClCompile Include="YB_CarAddVM.cpp">
+      <Filter>Source Files\YB_ViewModels</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_CarManageVM.cpp">
+      <Filter>Source Files\YB_ViewModels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="YB_UserManager.h">
@@ -150,6 +156,12 @@
       <Filter>Header Files\YB_ViewModels</Filter>
     </ClInclude>
     <ClInclude Include="YB_MyProfileVM.h">
+      <Filter>Header Files\YB_ViewModels</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_CarAddVM.h">
+      <Filter>Header Files\YB_ViewModels</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_CarManageVM.h">
       <Filter>Header Files\YB_ViewModels</Filter>
     </ClInclude>
   </ItemGroup>

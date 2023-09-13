@@ -11,6 +11,7 @@ namespace YBCarRental
 		{
 			return false; //already exist
 		}
+		carPtr->Id = this->CreateIncrementId();
 		return this->Add(*carPtr);
 	}
 

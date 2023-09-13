@@ -103,7 +103,8 @@ void				YBConsoleViews::YB_ListView::OnChildReturn(YB_ViewMessageBasis* msgPtr, 
 {
 	//query the selected viewItem to logic data object (car/user/rent) to forward to next view
 	//you need take the data (principalData) by overriding the onViewForwarded(YB_DataBasis*) function.
-	this->dataSource->Get_PrincipalData(dynamic_cast<YB_ListItem*>(fromItemPtr)->dataId);
+	if (this->dataSource)
+		this->dataSource->Get_PrincipalData(dynamic_cast<YB_ListItem*>(fromItemPtr)->dataId);
 
 	//Base will raise action of window.Goto() 
 	YB_ViewBasis::OnChildReturn(msgPtr, fromItemPtr);

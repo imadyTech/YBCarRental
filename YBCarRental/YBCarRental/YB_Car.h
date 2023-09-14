@@ -65,14 +65,14 @@ namespace YBCarRental
 		//copy assignment operator
 		YB_Car& operator = (const YB_Car& other) {
 			if (this != &other) {
-				Make = other.Make;
-				Model = other.Model;
-				Year = other.Year;
-				Mileage = other.Mileage;
-				IsAvailable = other.IsAvailable;
-				MinRentPeriod = other.MinRentPeriod;
-				MaxRentPeriod = other.MaxRentPeriod;
-				DayRentPrice = other.DayRentPrice;
+				Make			= other.Make;
+				Model			= other.Model;
+				Year			= other.Year;
+				Mileage			= other.Mileage;
+				IsAvailable		= other.IsAvailable;
+				MinRentPeriod	= other.MinRentPeriod;
+				MaxRentPeriod	= other.MaxRentPeriod;
+				DayRentPrice	= other.DayRentPrice;
 				// Call parent class copy assignment operator
 				YB_DataBasis::operator=(other);
 			}

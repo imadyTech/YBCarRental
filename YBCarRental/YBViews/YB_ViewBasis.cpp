@@ -42,7 +42,7 @@ namespace YBConsoleViews {
 	//{
 	//}
 
-	string* YB_ViewBasis::Serialize()
+	string*				YB_ViewBasis::Serialize()
 	{
 		std::stringstream ss;
 		//Redirect to new function (instead of previous version overrided function)
@@ -232,6 +232,10 @@ namespace YBConsoleViews {
 		isInitedFlag = false;
 		isBindedFlag = false;
 		isUpdatedFlag = false;
+		//this->subItemsList.clear();
+		this->focusableItems.clear();
+		this->bindableItems.clear();
+		this->currentItemIndex = -1;
 	}
 
 	void				YB_ViewBasis::Init_Background(char background)

@@ -63,14 +63,14 @@ namespace YBCarRental
 		YB_DataBasis::Deserialize(line, separator);
 
 		//Id = std::stoi((*words)[0]);										//Obsoleted
-		Make = *YB_DataBasis::FindValue("Make");
-		Model = *YB_DataBasis::FindValue("Model");
-		Year = std::stoi(*YB_DataBasis::FindValue("Year"));
-		Mileage = std::stoi(*YB_DataBasis::FindValue("Mileage"));
-		IsAvailable = *YB_DataBasis::FindValue("IsAvailable") == "1";
-		MinRentPeriod = std::stoi(*YB_DataBasis::FindValue("MinRentPeriod"));
-		MaxRentPeriod = std::stoi(*YB_DataBasis::FindValue("MaxRentPeriod"));
-		DayRentPrice = std::stod(*YB_DataBasis::FindValue("DayRentPrice"));
+		Make			= *YB_DataBasis::FindValue("Make");
+		Model			= *YB_DataBasis::FindValue("Model");
+		Year			= std::stoi(*YB_DataBasis::FindValue("Year"));
+		Mileage			= std::stoi(*YB_DataBasis::FindValue("Mileage"));
+		IsAvailable		= *YB_DataBasis::FindValue("IsAvailable") == "1";
+		MinRentPeriod	= std::stoi(*YB_DataBasis::FindValue("MinRentPeriod"));
+		MaxRentPeriod	= std::stoi(*YB_DataBasis::FindValue("MaxRentPeriod"));
+		DayRentPrice	= std::stod(*YB_DataBasis::FindValue("DayRentPrice"));
 	};
 
 }

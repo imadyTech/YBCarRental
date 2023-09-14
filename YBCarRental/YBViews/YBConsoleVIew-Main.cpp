@@ -13,7 +13,8 @@
 using namespace YBPersistence;
 using namespace YBConsoleViews;
 
-
+//This main function is only used for YBConsoleView unit testing.
+//implement another main() entrance in your project.
 int main()
 {
 	//View/ViewItem serialize/deserialize unit test

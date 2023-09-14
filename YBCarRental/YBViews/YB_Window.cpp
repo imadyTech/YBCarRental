@@ -63,22 +63,21 @@ namespace YBConsoleViews
 					keycode = _getch() + 256;							//Arrows
 				}
 				if (keycode1 == -1 && keycode == 17) {					//Ctrl+Q, escape the application.
-					Goto(this->exitViewName);
+					this->Goto(this->exitViewName);
 					continue;
 				}
-				if (keycode1 == -1 && keycode == 27) continue;			//Esc, rewind view.	
-				OnKeyIn(keycode);
+				if (keycode1 == -1 && keycode == 27) {					//Esc, rewind view.	
+					this->Back();
+				}
+				this->OnKeyIn(keycode);
 			}
 			//Phase 4. Reverse bind changed viewItems to datasource
 			//if (currentView->isUpdatedFlag)	currentView->ReverseBind();
 			//Phase 5.
-			if (currentView) this->viewGrid = currentView->Render();
-			//Phase 6.
-			system("cls");
-			for (const char* strptr : this->viewGrid) {
-				std::cout << strptr << std::endl;
-			}
-			//Phase 7.
+			if (currentView && currentView->isInitedFlag) this->viewGrid = currentView->Render();
+			//Phase 6. Output
+			this->Output();
+			//Phase 7. adjust this parameter if your computer is too fast or slow
 			Sleep(100);
 		}
 	}
@@ -103,10 +102,13 @@ namespace YBConsoleViews
 	void YB_Window::Goto(YB_ViewBasis* viewPtr)
 	{
 		if (currentView)	currentView->Exit();
+
 		if (!viewPtr)		viewPtr = viewFactory->GetView(ERROR_VIEW);
 
-		viewPtr->fromViewPtr	= currentView;
-		currentView				= viewPtr;
+		viewPtr->fromViewPtr = currentView;
+		currentView = viewPtr;
+
+		this->viewStack.push(currentView);
 	}
 
 	void YB_Window::Goto(int viewId)
@@ -119,12 +121,15 @@ namespace YBConsoleViews
 		this->Goto(viewFactory->GetView(viewTitle));
 	}
 
-	void YB_Window::Prev()
+	void YB_Window::Back()
 	{
-	}
+		if (!this->viewStack.empty() && this->viewStack.size()>1) {
+			this->currentView->Exit();
+			this->viewStack.pop();
+			this->currentView = this->viewStack.top();
+			//this->Goto(viewBack);
 
-	void YB_Window::Next()
-	{
+		}
 	}
 
 	void YB_Window::PopPrompt(const char* promptPtr, const char* gotoLink)
@@ -132,4 +137,11 @@ namespace YBConsoleViews
 		currentView->PopPrompt(promptPtr, gotoLink);
 	}
 
+	void YB_Window::Output()
+	{
+		system("cls");
+		for (const char* strptr : this->viewGrid) {
+			std::cout << strptr << std::endl;
+		}
+	}
 }

@@ -7,5 +7,5 @@ using namespace YBConsoleViews;
 
 void YBConsoleViews::YB_DetailsView::OnKey(int* keycode)
 {
-	windowPtr->Goto(this->fromViewPtr);
+	windowPtr->Goto(this->fromViewPtr->Title);
 }

@@ -31,19 +31,19 @@ namespace YBConsoleViews
 		void							Init();
 		void							Run();
 		void							OnKeyIn(int keycode);
-		void							Goto(YB_ViewBasis* viewPtr);					//Activate a view
 		void							Goto(int viewId);								//Activate a view by id
 		void							Goto(const string viewTitle);					//Activate a view by title
-		void							Prev();
-		void							Next();
+		void							Back();
 		void							PopPrompt(const char* promptPtr, const char* gotoLink);
 
 	private:
+		void							Goto(YB_ViewBasis* viewPtr);					//Activate a view
+		void							Output();
 		YB_ViewFactory*					viewFactory = new YB_ViewFactory();
 		YB_LogicFactory*				logicFactory;
 		YB_ViewBasis*					currentView;
 		stack<YB_ViewBasis*>			viewStack;
-		vector<char*>					viewGrid;
+		vector<char*>					viewGrid;										//Rendering grids
 	};
 
 }

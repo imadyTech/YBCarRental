@@ -26,6 +26,7 @@ namespace YBPersistence
 		strStream <<"Id:" << Id << this->persistentSeparator;
 	}
 
+	//Obsoleted
 	//void YB_DataBasis::Serialize(ofstream* output)
 	//{
 	//}

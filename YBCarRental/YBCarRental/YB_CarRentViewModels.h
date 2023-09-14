@@ -38,9 +38,9 @@ namespace YBCarRental {
 			this->principalObject = manager->CurrentUser();
 
 			if (loginResult && !manager->IsAdmin())
-				windowPtr->Goto("UserMenu");			//Todo: this shall be view.GotoView
+				windowPtr->Goto(USER_MAIN_VIEW);			//Todo: this shall be view.GotoView
 			else if(loginResult && manager->IsAdmin())
-				windowPtr->Goto("AdminMenu");
+				windowPtr->Goto(ADMIN_MAIN_VIEW);
 		};
 	};
 
@@ -118,8 +118,6 @@ namespace YBCarRental {
 			this->dataManagerPtr = YB_ManagerFactory::CarMgr;
 		}
 
-		//YB_UserManager* userManagerPtr = YB_ManagerFactory::UserMgr;
-		//YB_CarManager* carManagerPtr = YB_ManagerFactory::CarMgr;
 		YB_User* carryForwardedUser;
 		void					onViewForwarded(YB_DataBasis* fromData)		override
 		{
@@ -135,8 +133,6 @@ namespace YBCarRental {
 			this->dataManagerPtr = YB_ManagerFactory::RentMgr;
 		}
 
-		//YB_UserManager* userManagerPtr = YB_ManagerFactory::UserMgr;
-		//YB_CarManager* carManagerPtr = YB_ManagerFactory::CarMgr;
 		YB_User* carryForwardedUser;
 
 		void					onViewForwarded(YB_DataBasis* fromData)		override
@@ -145,7 +141,7 @@ namespace YBCarRental {
 		};
 	};	
 	
-	//11 YB_UserAdminListVM - ListView
+	//116 YB_UserAdminListVM - ListView
 	class YB_UserAdminListVM : public YB_ViewModelBasis<YB_User>
 	{
 	public:
@@ -153,14 +149,52 @@ namespace YBCarRental {
 			this->dataManagerPtr = YB_ManagerFactory::UserMgr;
 		}
 
-		//YB_UserManager* userManagerPtr = YB_ManagerFactory::UserMgr;
-		//YB_CarManager* carManagerPtr = YB_ManagerFactory::CarMgr;
 		YB_User* carryForwardedUser;
 
 		void					onViewForwarded(YB_DataBasis* fromData)		override
 		{
 			carryForwardedUser = dynamic_cast<YB_User*>(fromData);
 		};
+	};	
+	
+	//117 YB_CarDeleteListVM- ListView
+	class YB_CarDeleteListVM : public YB_ViewModelBasis<YB_Car>
+	{
+	public:
+		YB_CarDeleteListVM(YBConsoleViews::YB_Window* windowPtr) {
+			this->dataManagerPtr = YB_ManagerFactory::CarMgr;
+		}
+
+		YB_User* carryForwardedUser;
+		void					onViewForwarded(YB_DataBasis* fromData)		override
+		{
+			carryForwardedUser = dynamic_cast<YB_User*>(fromData);
+		};
+	};
+	
+	//118 YB_CarDeleteVm- ListView
+	class YB_CarDeleteVm : public YB_ViewModelBasis<YB_Car>
+	{
+	public:
+		YB_CarDeleteVm (YBConsoleViews::YB_Window* windowPtr) {
+			this->dataManagerPtr = YB_ManagerFactory::CarMgr;
+		}
+
+		void					onViewForwarded(YB_DataBasis* fromData)		override
+		{
+			this->principalObject = dynamic_cast<YB_Car*>(fromData);
+		};
+
+		void					onSubmit(map<string, string>* valuesMapPtr)				override
+		{
+			bool deleteResult = dynamic_cast<YB_CarManager*>( this->dataManagerPtr )->DeleteCar(this->principalObject);
+
+			//if (deleteResult)
+			//	windowPtr->Goto("UserMenu");
+			//else if (deleteResult)
+			//	windowPtr->Goto("AdminMenu");
+		};
+
 	};
 
 

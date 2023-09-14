@@ -164,6 +164,7 @@ namespace YBConsoleViews {
 		//find out the viewItems which has 'Bind' tag.
 		for (auto& iterator : this->bindableItems)
 		{
+			if (iterator->ItemType == VIEWITEM_TYPE_BUTTON && !iterator->isFocused)	continue;		//only bind the active button ()
 			if (!iterator->Bind.empty())
 				reverseBindMap.insert(std::make_pair(iterator->Bind, iterator->Content));
 		}

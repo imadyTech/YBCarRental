@@ -23,20 +23,42 @@ namespace YBCarRental
 		persistor->Add(*order);
 		return true;
 	}
-	bool YB_RentManager::ApproveOrder(YB_Rent rentalOrder)
+	bool YB_RentManager::ApproveOrder(YB_Rent* rentalOrder)
 	{
-		return false;
+		if (!rentalOrder || rentalOrder->Status!= YB_Rental_Status_Pending) return false;
+		try
+		{
+			rentalOrder->Status = YB_Rental_Status_Approved;
+			YB_ManagerBasis::Update(*rentalOrder);
+			return true;
+		}
+		catch (exception e) {
+			return false;
+		}
 	}
-	bool YB_RentManager::RejectOrder(YB_Rent rentalOrder)
+	bool YB_RentManager::RejectOrder(YB_Rent* rentalOrder)
 	{
-		return false;
+		if (!rentalOrder || rentalOrder->Status!= YB_Rental_Status_Pending) return false;
+		try
+		{
+			rentalOrder->Status = YB_Rental_Status_Rejected;
+			YB_ManagerBasis::Update(*rentalOrder);
+			return true;
+		}
+		catch (exception e) {
+			return false;
+		}
 	}
 	bool YB_RentManager::ApproveOrder(int orderId)
 	{
-		return false;
+		auto orderPtr = YB_ManagerBasis::Get(orderId);
+
+		return this->ApproveOrder(orderPtr);
 	}
 	bool YB_RentManager::RejectOrder(int orderId)
 	{
-		return false;
+		auto orderPtr = YB_ManagerBasis::Get(orderId);
+
+		return this->RejectOrder(orderPtr);
 	}
 }

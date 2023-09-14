@@ -18,8 +18,8 @@ namespace YBCarRental
 		YB_RentManager(string url) : YB_ManagerBasis<YB_Rent>(url) {};
 
 		bool PlaceOrder(int userId, int carId, tm startDate, int days);
-		bool ApproveOrder(YB_Rent rentalOrder);
-		bool RejectOrder(YB_Rent rentalOrder);
+		bool ApproveOrder(YB_Rent* rentalOrder);
+		bool RejectOrder(YB_Rent* rentalOrder);
 		bool ApproveOrder(int orderId);
 		bool RejectOrder(int orderId);
 

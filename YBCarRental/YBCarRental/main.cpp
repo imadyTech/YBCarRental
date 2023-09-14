@@ -17,6 +17,7 @@
 #include "YB_CarManageVM.h"
 #include "YB_MyProfileVM.h"
 #include "YB_OrderDetailsVM.h"
+#include "YB_OrderAdminVM.h"
 
 
 using namespace YBCarRental;
@@ -45,7 +46,10 @@ int main()
 	logicFactory->RegisterDataSource("YB_CarAddVM",			new YB_CarAddVM(&windowPtr));//admin
 	logicFactory->RegisterDataSource("YB_CarListVM",		new YB_CarListVM(&windowPtr));//admin listing
 	logicFactory->RegisterDataSource("YB_CarManageVM",		new YB_CarManageVM(&windowPtr));//admin
-	logicFactory->RegisterDataSource("YB_OrderManageVM",	new YB_OrderManageVM(&windowPtr));//admin
+	logicFactory->RegisterDataSource("YB_CarDeleteListVM",	new YB_CarDeleteListVM(&windowPtr));//admin
+	logicFactory->RegisterDataSource("YB_CarDeleteVm",		new YB_CarDeleteVm(&windowPtr));//admin
+	logicFactory->RegisterDataSource("YB_OrderManageVM",	new YB_OrderManageVM(&windowPtr));//admin - list all orders
+	logicFactory->RegisterDataSource("YB_OrderAdminVM",		new YB_OrderAdminVM(&windowPtr));//admin - approve or reject
 	logicFactory->RegisterDataSource("YB_UserAdminListVM",	new YB_UserAdminListVM(&windowPtr));//admin
 
 	windowPtr.ConfigLogicFactory(logicFactory);

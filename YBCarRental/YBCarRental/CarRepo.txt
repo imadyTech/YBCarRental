@@ -1,5 +1,3 @@
-Id:1000;Make:Ford;Model:Mustang;Year:2015;Mileage:6666;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:3;DayRentPrice:80;
-Id:1001;Make:Benz;Model:GE300;Year:2016;Mileage:5555;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:4;DayRentPrice:200;
 Id:1002;Make:Audi;Model:A4 Avant;Year:2018;Mileage:6666;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:3;DayRentPrice:100;
 Id:1003;Make:BMW;Model:i118;Year:2020;Mileage:7777;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:3;DayRentPrice:120;
 Id:1004;Make:BYD;Model:Atto 3;Year:2023;Mileage:888;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:5;DayRentPrice:150;
@@ -9,3 +7,4 @@ Id:1007;Make:GM;Model:Atto 3;Year:2023;Mileage:888;IsAvailable:1;MinRentPeriod:1
 Id:1008;Make:Hyunddai;Model:Atto 3;Year:2023;Mileage:888;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:5;DayRentPrice:150;
 Id:1009;Make:Bentley;Model:V8S;Year:2023;Mileage:888;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:5;DayRentPrice:150;
 Id:1010;Make:Neo;Model:A8;Year:2022;Mileage:1222;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:2;DayRentPrice:100;
+Id:1011;Make:Neo;Model:A8;Year:2022;Mileage:100;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:3;DayRentPrice:200;

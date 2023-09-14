@@ -109,7 +109,7 @@ namespace YBConsoleViews {
 		return YB_ViewItemBasis::viewArray;
 	}
 
-	void YB_ViewItemBasis::RenderFocus(const char* focusMarker)
+	void						YB_ViewItemBasis::RenderFocus(const char* focusMarker)
 	{
 		if (isFocused) {
 			size_t posY = h / 2;

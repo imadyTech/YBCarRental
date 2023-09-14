@@ -147,6 +147,7 @@
     <ClCompile Include="YB_ManagerBasis.cpp" />
     <ClCompile Include="YB_ManagerFactory.cpp" />
     <ClCompile Include="YB_MyProfileVM.cpp" />
+    <ClCompile Include="YB_OrderAdminVM.cpp" />
     <ClCompile Include="YB_OrderDetailsVM.cpp" />
     <ClCompile Include="YB_Rent.cpp" />
     <ClCompile Include="YB_RentManager.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="YB_ManagerBasis.h" />
     <ClInclude Include="YB_ManagerFactory.h" />
     <ClInclude Include="YB_MyProfileVM.h" />
+    <ClInclude Include="YB_OrderAdminVM.h" />
     <ClInclude Include="YB_OrderDetailsVM.h" />
     <ClInclude Include="YB_Rent.h" />
     <ClInclude Include="YB_RentManager.h" />

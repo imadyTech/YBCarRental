@@ -87,7 +87,11 @@ namespace YBConsoleViews {
 	void				YB_ViewBasis::Init() {
 		//1. first let carry-forwarded datasource initiate
 		if (fromViewPtr && this->dataSource && fromViewPtr->dataSource)
+			//comes from a view with datasource
 			this->dataSource->onViewForwarded(fromViewPtr->dataSource->Get_PrincipalData());
+		else if (fromViewPtr && this->dataSource && !fromViewPtr->dataSource)
+			//comes from a view without dataSource
+			this->dataSource->onViewForwarded(nullptr);
 
 		//2. Bind all items with tag "Bind"
 		for (auto& item : this->subItemsList)
@@ -153,7 +157,7 @@ namespace YBConsoleViews {
 	{
 		promptBoxItemPtr->Content = string(promptPtr);
 		promptBoxItemPtr->isHidden = false;
-		promptBoxItemPtr->Link = gotoLink;
+		promptBoxItemPtr->Link = (gotoLink == nullptr) ? "" : gotoLink;
 		this->currentItemIndex = 0;
 	}
 
@@ -300,7 +304,7 @@ namespace YBConsoleViews {
 		if (msgPtr->Message == Button_Type_Ok)
 		{
 			this->promptBoxItemPtr->isHidden = true;
-			this->promptBoxItemPtr->isFocused= false;
+			this->promptBoxItemPtr->isFocused = false;
 			this->Clear_Background();
 		}
 
@@ -319,5 +323,6 @@ namespace YBConsoleViews {
 
 	void				YB_ViewBasis::OnConfirmReturn(YB_ViewMessageBasis* msgPtr, YB_ViewBasis* fromViewPtr)
 	{
+		//Nothing here, you implement in derived if necessary.
 	}
 }

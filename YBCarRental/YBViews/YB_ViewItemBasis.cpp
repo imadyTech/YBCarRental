@@ -150,7 +150,7 @@ namespace YBConsoleViews {
 
 	void						YB_ViewItemBasis::OnBind(string* contents)
 	{
-		if (contents) this->Content = *contents;
+		if (contents!=nullptr) this->Content = *contents;
 	}
 
 	void						YB_ViewItemBasis::OnFocus() {

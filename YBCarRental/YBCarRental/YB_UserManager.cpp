@@ -10,6 +10,7 @@ namespace YBCarRental
 		{
 			return false; //user already exist
 		}
+		user.Id = YB_ManagerBasis::CreateIncrementId();
 		return this->Add(user);
 	}
 
@@ -55,7 +56,17 @@ namespace YBCarRental
 				break;
 			}
 		}
-		return persistor->Get(id);
+		return YB_ManagerBasis::Get(id);
+	}
+
+	YB_User* YB_UserManager::GetUser(int userId)
+	{
+		return YB_ManagerBasis::Get(userId);
+	}
+
+	bool YB_UserManager::UpdateUser(YB_User* userPtr)
+	{
+		return YB_ManagerBasis::Update(*userPtr);
 	}
 
 	YB_User*	YBCarRental::YB_UserManager::CurrentUser()

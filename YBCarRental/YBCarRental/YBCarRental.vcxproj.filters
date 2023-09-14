@@ -103,7 +103,16 @@
       <Filter>Source Files\YB_ViewModels</Filter>
     </ClCompile>
     <ClCompile Include="YB_OrderAdminVM.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\YB_ViewModels</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_UserAdminVM.cpp">
+      <Filter>Source Files\YB_ViewModels</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_UserRegisterVM.cpp">
+      <Filter>Source Files\YB_ViewModels</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_UserLoginVM.cpp">
+      <Filter>Source Files\YB_ViewModels</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -168,7 +177,16 @@
       <Filter>Header Files\YB_ViewModels</Filter>
     </ClInclude>
     <ClInclude Include="YB_OrderAdminVM.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\YB_ViewModels</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_UserAdminVM.h">
+      <Filter>Header Files\YB_ViewModels</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_UserRegisterVM.h">
+      <Filter>Header Files\YB_ViewModels</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_UserLoginVM.h">
+      <Filter>Header Files\YB_ViewModels</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

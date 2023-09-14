@@ -152,11 +152,14 @@
     <ClCompile Include="YB_Rent.cpp" />
     <ClCompile Include="YB_RentManager.cpp" />
     <ClCompile Include="YB_User.cpp" />
+    <ClCompile Include="YB_UserAdminVM.cpp" />
+    <ClCompile Include="YB_UserLoginVM.cpp" />
     <ClCompile Include="YB_UserManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="YB_CarPersistor.cpp" />
     <ClCompile Include="YB_RentPersistor.cpp" />
     <ClCompile Include="YB_UserPersistor.cpp" />
+    <ClCompile Include="YB_UserRegisterVM.cpp" />
     <ClCompile Include="YB_ViewModelBasis.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -177,9 +180,12 @@
     <ClInclude Include="YB_Rent.h" />
     <ClInclude Include="YB_RentManager.h" />
     <ClInclude Include="YB_User.h" />
+    <ClInclude Include="YB_UserAdminVM.h" />
+    <ClInclude Include="YB_UserLoginVM.h" />
     <ClInclude Include="YB_UserManager.h" />
     <ClInclude Include="YB_RentPersistor.h" />
     <ClInclude Include="YB_UserPersistor.h" />
+    <ClInclude Include="YB_UserRegisterVM.h" />
     <ClInclude Include="YB_ViewModelBasis.h" />
   </ItemGroup>
   <ItemGroup>

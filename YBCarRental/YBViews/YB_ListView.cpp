@@ -101,7 +101,7 @@ void				YBConsoleViews::YB_ListView::OnKey(int* keycode)
 
 void				YBConsoleViews::YB_ListView::OnChildReturn(YB_ViewMessageBasis* msgPtr, YB_ViewItemBasis* fromItemPtr)
 {
-	//query the selected viewItem to logic data object (car/user/rent) to forward to next view
+	//query the selected viewItem to logic data object (car/user/rent) to carry forward to next view as the 
 	//you need take the data (principalData) by overriding the onViewForwarded(YB_DataBasis*) function.
 	if (this->dataSource)
 		this->dataSource->Get_PrincipalData(dynamic_cast<YB_ListItem*>(fromItemPtr)->dataId);

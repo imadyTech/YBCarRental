@@ -34,7 +34,7 @@ namespace YBCarRental {
 		};
 
 
-		string* Get_PropertyValue(string* bindName) override
+		string*					Get_PropertyValue(string* bindName) override
 		{
 			string* value = new string();
 			if (*bindName == "UserName")

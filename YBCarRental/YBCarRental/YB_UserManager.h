@@ -44,6 +44,10 @@ namespace YBCarRental
 
 		YB_User* Get(string username);
 
+		YB_User* GetUser(int userId);
+
+		bool UpdateUser(YB_User* userPtr);
+
 		/// <summary>
 		/// Return true/false of whether user currently logged in has the administrative role.
 		/// </summary>

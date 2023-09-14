@@ -12,48 +12,6 @@ class YBConsoleViews::YB_Window;
 
 
 namespace YBCarRental {
-	/// 102 - LoginView
-	class YB_UserLoginVM : public YB_ViewModelBasis<YB_User>
-	{
-	public:
-		YB_UserLoginVM(YB_UserManager* managerPtr, YBConsoleViews::YB_Window* windowPtr) {
-			dataManagerPtr = managerPtr;
-			this->windowPtr = windowPtr;
-		};
-
-		void					onSubmit(map<string, string>* valuesMapPtr)				override
-		{
-			string uName	= "";
-			string uPsd		= "";
-			const auto& nItr = valuesMapPtr->find(const_cast<char*>("UserName"));
-			if (nItr != valuesMapPtr->end())
-				uName = nItr->second;
-			const auto& pItr = valuesMapPtr->find(const_cast<char*>("Password"));
-			if (pItr != valuesMapPtr->end())
-				uPsd = pItr->second;
-
-			auto manager = dynamic_cast<YB_UserManager*>(dataManagerPtr);
-
-			bool loginResult = manager->UserLogin(uName, uPsd);
-			this->principalObject = manager->CurrentUser();
-
-			if (loginResult && !manager->IsAdmin())
-				windowPtr->Goto(USER_MAIN_VIEW);			//Todo: this shall be view.GotoView
-			else if(loginResult && manager->IsAdmin())
-				windowPtr->Goto(ADMIN_MAIN_VIEW);
-		};
-	};
-
-	//103 - RegisterView
-	class YB_UserRegisterVM : public YB_ViewModelBasis<YB_User>
-	{
-	public:
-		YB_UserRegisterVM(YB_UserManager* managerPtr, YBConsoleViews::YB_Window* windowPtr) {
-			this->windowPtr = windowPtr;
-			this->dataManagerPtr = managerPtr;
-		};
-	};
-
 	//105 UserMenu
 	class YB_UserMenuVM : public YB_ViewModelBasis<YB_User>
 	{
@@ -155,6 +113,17 @@ namespace YBCarRental {
 		{
 			carryForwardedUser = dynamic_cast<YB_User*>(fromData);
 		};
+
+		//DO NOT carryForward current principalObject, this confuse with the current user (Admin) of the current view
+		//void					onSubmit(map<string, string>* valuesMapPtr)				override
+		//{
+		//	
+		//	int selectedUserId = -1;
+		//	if (!(*valuesMapPtr)["dataId"].empty())
+		//		selectedUserId = std::stoi((*valuesMapPtr)["dataId"]);
+		//	this->principalObject = dynamic_cast<YB_UserManager*>(dataManagerPtr)->GetUser(selectedUserId);
+		//		
+		//}
 	};	
 	
 	//117 YB_CarDeleteListVM- ListView

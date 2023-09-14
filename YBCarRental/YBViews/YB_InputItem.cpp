@@ -17,8 +17,21 @@ void YBConsoleViews::YB_InputItem::OnBackspace()
 		this->Content.erase(length - 1);
 }
 
+void YBConsoleViews::YB_InputItem::OnBind(string* contents)
+{
+	//DO NOT INVOKE BASE FUNCTION
+	//inputItem allows bind a nullptr content (e.g. register a new user), and differ from other items
+	if (contents != nullptr)
+		this->Content = *contents;
+	else
+		this->Content = "";
+}
+
 void YBConsoleViews::YB_InputItem::OnReturn()
 {
+	//DO NOT DELETE THIS EMPTY FUNCTION
+	//InputItem won't response Return key
+	//Nothing here - Delibrately leave blank code to override base action
 }
 
 std::vector<char*> YBConsoleViews::YB_InputItem::Render()

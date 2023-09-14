@@ -18,6 +18,9 @@
 #include "YB_MyProfileVM.h"
 #include "YB_OrderDetailsVM.h"
 #include "YB_OrderAdminVM.h"
+#include "YB_UserAdminVM.h"
+#include "YB_UserRegisterVM.h"
+#include "YB_UserLoginVM.h"
 
 
 using namespace YBCarRental;
@@ -35,7 +38,7 @@ int main()
 
 	YB_CarRental_LogicFactory* logicFactory = new YB_CarRental_LogicFactory();
 	logicFactory->RegisterDataSource("YB_UserLoginVM",		new YB_UserLoginVM(YB_ManagerFactory::UserMgr, &windowPtr));
-	logicFactory->RegisterDataSource("YB_UserRegisterVM",	new YB_UserRegisterVM(YB_ManagerFactory::UserMgr, &windowPtr));
+	logicFactory->RegisterDataSource("YB_UserRegisterVM",	new YB_UserRegisterVM(&windowPtr));
 	logicFactory->RegisterDataSource("YB_UserMenuVM",		new YB_UserMenuVM(YB_ManagerFactory::UserMgr, &windowPtr));
 	logicFactory->RegisterDataSource("YB_AdminMenuVM",		new YB_AdminMenuVM(YB_ManagerFactory::UserMgr, &windowPtr));
 	logicFactory->RegisterDataSource("YB_CarSelectionVM",	new YB_CarSelectionVM(YB_ManagerFactory::CarMgr, &windowPtr));
@@ -51,6 +54,7 @@ int main()
 	logicFactory->RegisterDataSource("YB_OrderManageVM",	new YB_OrderManageVM(&windowPtr));//admin - list all orders
 	logicFactory->RegisterDataSource("YB_OrderAdminVM",		new YB_OrderAdminVM(&windowPtr));//admin - approve or reject
 	logicFactory->RegisterDataSource("YB_UserAdminListVM",	new YB_UserAdminListVM(&windowPtr));//admin
+	logicFactory->RegisterDataSource("YB_UserAdminVM",		new YB_UserAdminVM(&windowPtr));//admin
 
 	windowPtr.ConfigLogicFactory(logicFactory);
 	windowPtr.InitViewFactory(currentDir.string() + "\\ViewRepo.txt");

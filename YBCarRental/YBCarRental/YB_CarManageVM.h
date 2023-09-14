@@ -22,9 +22,6 @@ namespace YBCarRental {
 		this->dataManagerPtr = YB_ManagerFactory::CarMgr;
 		}
 
-		//YB_UserManager* userManagerPtr = YB_ManagerFactory::UserMgr;
-		//YB_CarManager* carManagerPtr = YB_ManagerFactory::CarMgr;
-
 		void					onViewForwarded(YB_DataBasis* fromData)		override
 		{
 			this->principalObject = dynamic_cast<YB_Car*>(fromData);

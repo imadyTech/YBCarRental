@@ -74,6 +74,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(SolutionDir)\YBPersistence;$(SolutionDir)\YBViews;$(ProjectDir);$(IncludePath)</IncludePath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(ProjectDir);$(SolutionDir)YBViews;$(SolutionDir)YBPersistence;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -116,7 +119,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>E:\YB800ProSE\YBCarRental\YBCarRental\YBPersistence\x64\Debug;E:\YB800ProSE\YBCarRental\YBCarRental\YBViews\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\YBPersistence\x64\Release;$(SolutionDir)\YBViews\x64\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>YB_Repository;YB_Errors;YB_PersistorBasis;YB_DataBasis;YB_Global_Header;YB_ViewFactory;YB_ViewItemFactory;YB_ViewBasis;YB_ViewItemBasis;YB_ViewMessage;YB_Window;YB_WelcomeView;YB_ListView;YB_DetailsView;YB_DialogView;YB_InputView;YB_MenuView;YB_ButtonItem;YB_InputItem;YB_ListItem;YB_ListHead;YB_TextItem;YB_MenuItem;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -128,12 +131,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>YB_Repository;YB_Errors;YB_PersistorBasis;YB_DataBasis;YB_Global_Header;YB_ViewFactory;YB_ViewItemFactory;YB_ViewBasis;YB_ViewItemBasis;YB_ViewMessage;YB_Window;YB_WelcomeView;YB_ListView;YB_DetailsView;YB_DialogView;YB_InputView;YB_MenuView;YB_ButtonItem;YB_InputItem;YB_ListItem;YB_ListHead;YB_TextItem;YB_MenuItem;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)YBViews\x64\Release;$(SolutionDir)YBPersistence\x64\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

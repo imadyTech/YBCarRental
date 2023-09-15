@@ -12,21 +12,6 @@ void YBConsoleViews::YB_InputView::OnKey(int* keycode)
 
 void YBConsoleViews::YB_InputView::OnChildReturn(YB_ViewMessageBasis* msgPtr, YB_ViewItemBasis* fromItemPtr)
 {
-	//Todo: check whether fromItemPtr is Submit type button; currently other item won't raise ChildReturn.
-	if (msgPtr->Message == Button_Type_Submit)
-	{
-		if (!this->ConfirmView.empty())
-		{
-			//Deffered submission
-			this->isKeepStatusFlag = true;					//don't clear status
-			this->windowPtr->Goto(this->ConfirmView);
-		}
-		else
-		{
-			//Immediately submission
-			YB_ViewBasis::Submit();	
-		}
-	}
 	YB_ViewBasis::OnChildReturn(msgPtr, fromItemPtr);
 }
 
@@ -35,8 +20,8 @@ void YBConsoleViews::YB_InputView::OnConfirmReturn(YB_ViewMessageBasis* msgPtr, 
 	if (msgPtr->Message == Button_Type_Yes) {
 		YB_ViewBasis::Submit();	
 		if (!this->GotoView.empty()) {
-			this->windowPtr->Goto(this->GotoView);
 			this->isKeepStatusFlag = false;
+			this->windowPtr->Goto(this->GotoView);
 		}
 	}
 	if (msgPtr->Message == Button_Type_No) {

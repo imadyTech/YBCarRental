@@ -305,8 +305,21 @@ namespace YBConsoleViews {
 
 	void				YB_ViewBasis::OnChildReturn(YB_ViewMessageBasis* msgPtr, YB_ViewItemBasis* fromItemPtr)
 	{
-		if (msgPtr->Message == Button_Type_Ok)
+		//Prompt: not all types of view supports SUBMIT.
+		if (msgPtr->Message == Button_Type_Submit)
 		{
+			if (!this->ConfirmView.empty())	{
+				//Deffered submission
+				this->isKeepStatusFlag = true;					//don't clear status
+				this->windowPtr->Goto(this->ConfirmView);
+			}
+			else {
+				//Immediately submission
+				YB_ViewBasis::Submit();
+			}
+		}
+
+		if (msgPtr->Message == Button_Type_Ok) {
 			this->promptBoxItemPtr->isHidden = true;
 			this->promptBoxItemPtr->isFocused = false;
 			this->Clear_Background();
@@ -314,12 +327,10 @@ namespace YBConsoleViews {
 
 		if (fromItemPtr && !fromItemPtr->Link.empty())
 		{
-			try
-			{
+			try	{
 				windowPtr->Goto(fromItemPtr->Link);
 			}
-			catch (exception e)
-			{
+			catch (exception e)	{
 				windowPtr->Goto(ERROR_VIEW);
 			}
 		}

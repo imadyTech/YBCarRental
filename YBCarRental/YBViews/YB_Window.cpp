@@ -101,7 +101,8 @@ namespace YBConsoleViews
 
 	void YB_Window::Goto(YB_ViewBasis* viewPtr)
 	{
-		if (currentView)	currentView->Exit();
+		if (currentView && !currentView->isKeepStatusFlag)	
+			currentView->Exit();
 
 		if (!viewPtr)		viewPtr = viewFactory->GetView(ERROR_VIEW);
 
@@ -127,8 +128,6 @@ namespace YBConsoleViews
 			this->currentView->Exit();
 			this->viewStack.pop();
 			this->currentView = this->viewStack.top();
-			//this->Goto(viewBack);
-
 		}
 	}
 

@@ -1,4 +1,4 @@
-Id:1002;Make:Audi;Model:A4 Avant;Year:2018;Mileage:6666;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:3;DayRentPrice:100;
+Id:1002;Make:Audi;Model:A4 Avant;Year:2018;Mileage:6666;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:3;DayRentPrice:99;
 Id:1003;Make:BMW;Model:i118;Year:2020;Mileage:7777;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:3;DayRentPrice:120;
 Id:1004;Make:BYD;Model:Atto 3;Year:2023;Mileage:888;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:5;DayRentPrice:150;
 Id:1005;Make:Skoda;Model:Octavia;Year:2023;Mileage:888;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:5;DayRentPrice:150;

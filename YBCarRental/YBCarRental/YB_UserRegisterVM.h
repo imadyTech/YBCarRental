@@ -46,6 +46,25 @@ namespace YBCarRental {
 			{
 				windowPtr->PopPrompt("Some issues in your input. Please check again.", nullptr);
 			}
+
+			//Input verification
+			if (userPtr->UserName.size() > 10 || userPtr->UserName.size() < 3) {
+				windowPtr->PopPrompt("UserName length must between 3 and 10 characters.", nullptr);
+				return;
+			}
+			if (userPtr->FirstName.size() > 12 || userPtr->FirstName.size() < 3) {
+				windowPtr->PopPrompt("First Name length must between 3 and 12 characters..", nullptr);
+				return;
+			}
+			if (userPtr->FamilyName.size() > 12 || userPtr->FamilyName.size() < 3) {
+				windowPtr->PopPrompt("Family Name length must between 3 and 12 characters.", nullptr);
+				return;
+			}
+			if (userPtr->Password.size() > 6 || userPtr->Password.size() < 1) {
+				windowPtr->PopPrompt("Must input a password no more than 6 digits or characters.", nullptr);
+				return;
+			}
+
 			try {
 				if (userManagerPtr->UserRegister(*userPtr)) {
 					windowPtr->PopPrompt("The new user was successfully registered.", MAIN_VIEW.c_str());

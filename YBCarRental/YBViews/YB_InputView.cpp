@@ -18,6 +18,7 @@ void YBConsoleViews::YB_InputView::OnChildReturn(YB_ViewMessageBasis* msgPtr, YB
 		if (!this->ConfirmView.empty())
 		{
 			//Deffered submission
+			this->isKeepStatusFlag = true;					//don't clear status
 			this->windowPtr->Goto(this->ConfirmView);
 		}
 		else
@@ -33,8 +34,10 @@ void YBConsoleViews::YB_InputView::OnConfirmReturn(YB_ViewMessageBasis* msgPtr, 
 {
 	if (msgPtr->Message == Button_Type_Yes) {
 		YB_ViewBasis::Submit();	
-		if (!this->GotoView.empty())
+		if (!this->GotoView.empty()) {
 			this->windowPtr->Goto(this->GotoView);
+			this->isKeepStatusFlag = false;
+		}
 	}
 	if (msgPtr->Message == Button_Type_No) {
 		//Do nothing

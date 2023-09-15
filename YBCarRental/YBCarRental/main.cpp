@@ -12,15 +12,27 @@
 #include "YB_Window.h"
 #include "YB_ManagerFactory.h"
 #include "YB_CarRental_LogicFactory.h"
+//Include ViewModels
+#include "YB_UserMenuVM.h"
+#include "YB_AdminMenuVM.h"
+#include "YB_CarSelectionVM.h"
 #include "YB_CarRentVM.h"
+#include "YB_MyOrdersVM.h"
 #include "YB_CarAddVM.h"
 #include "YB_CarManageVM.h"
+#include "YB_CarListVM.h"
+#include "YB_CarDeleteListVM.h"
+#include "YB_CarDeleteVm.h"
+#include "YB_OrderManageVM.h"
+#include "YB_UserAdminListVM.h"
 #include "YB_MyProfileVM.h"
 #include "YB_OrderDetailsVM.h"
 #include "YB_OrderAdminVM.h"
 #include "YB_UserAdminVM.h"
 #include "YB_UserRegisterVM.h"
 #include "YB_UserLoginVM.h"
+#include "YB_LogOutVM.h"
+//Include ViewModels
 
 
 using namespace YBCarRental;
@@ -36,6 +48,7 @@ int main()
 	YB_Window				windowPtr = YB_Window();
 	YB_ManagerFactory		managerFactory = YB_ManagerFactory();
 
+	//Register viewModels to dataservice factory
 	YB_CarRental_LogicFactory* logicFactory = new YB_CarRental_LogicFactory();
 	logicFactory->RegisterDataSource("YB_UserLoginVM",		new YB_UserLoginVM(YB_ManagerFactory::UserMgr, &windowPtr));
 	logicFactory->RegisterDataSource("YB_UserRegisterVM",	new YB_UserRegisterVM(&windowPtr));
@@ -55,6 +68,7 @@ int main()
 	logicFactory->RegisterDataSource("YB_OrderAdminVM",		new YB_OrderAdminVM(&windowPtr));//admin - approve or reject
 	logicFactory->RegisterDataSource("YB_UserAdminListVM",	new YB_UserAdminListVM(&windowPtr));//admin
 	logicFactory->RegisterDataSource("YB_UserAdminVM",		new YB_UserAdminVM(&windowPtr));//admin
+	logicFactory->RegisterDataSource("YB_LogOutVM",			new YB_LogOutVM(&windowPtr));//admin
 
 	windowPtr.ConfigLogicFactory(logicFactory);
 	windowPtr.InitViewFactory(currentDir.string() + "\\ViewRepo.txt");

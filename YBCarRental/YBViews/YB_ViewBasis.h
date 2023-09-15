@@ -76,13 +76,13 @@ namespace YBConsoleViews
 		//=====================================================================================================================
 		#pragma endregion
 
-		string							ViewType = "";
-		string							Title = "";
+		string							ViewType		= "";
+		string							Title			= "";
 		int								w = 200, h = 32;
-		char							Background = '.';
-		string							Source="";
-		string							GotoView="";
-		string							ConfirmView = "";
+		char							Background		= '.';
+		string							Source			="";
+		string							GotoView		="";
+		string							ConfirmView		= "";
 
 		//void AddViewItem(YB_ViewItemBasis item);
 		//void AddViewItems(vector<YB_ViewItemBasis> items);
@@ -111,12 +111,13 @@ namespace YBConsoleViews
 		void							PopPrompt(const char* promptPtr, const char* gotoLink);
 		void							SetPrompt(YB_ViewItemBasis* promptPtr);
 
-		bool							isInitedFlag	= false;											//indicator whether initiation completed
-		bool							isBindedFlag	= false;											//indicator whether viewItems content has been set
-		bool							isUpdatedFlag	= true;											//indicator for dirt-Rendering
+		bool							isInitedFlag					= false;						//indicator whether initiation completed
+		bool							isBindedFlag					= false;						//indicator whether viewItems content has been set
+		bool							isUpdatedFlag					= true;							//indicator for dirt-Rendering
+		bool							isKeepStatusFlag				= false;						//indicator for keep-status after jumpback to another view
 
 		//std::function<void()>			ViewReturnCallback;												//The callback scheme is not used in this project
-		YB_ViewItemFactory*				itemFactoryPtr	= {};													//this could be used for runtime item generation
+		YB_ViewItemFactory*				itemFactoryPtr					= {};							//this could be used for runtime item generation
 		YB_ViewBasis*					fromViewPtr;													//the previous view, so as to carry datasource forward
 		YB_Window*						windowPtr;
 		YB_DataSource_Interface*		dataSource;														//the ViewModel served as data source
@@ -124,7 +125,7 @@ namespace YBConsoleViews
 	protected:
 		vector<YB_ViewItemBasis*>		focusableItems;													//Items affected by Tab key
 		vector<YB_ViewItemBasis*>		bindableItems;													//Items affected by binding behaviour
-		int								currentItemIndex = -1;
+		int								currentItemIndex				= -1;
 
 	private:
 		vector<char*>					viewArray;

@@ -1,3 +1,6 @@
-Id:15;UserName:fshen;LoginStatus:1;FirstName:Frank;FamilyName:Shen;Password:6666;Balance:8428;UserRoles:user;
+Id:15;UserName:fshen;LoginStatus:0;FirstName:Frank;FamilyName:Shen;Password:6666;Balance:8428;UserRoles:user;
 Id:16;UserName:admin;LoginStatus:1;FirstName:Noman;FamilyName:AI;Password:6666;Balance:10000;UserRoles:user|admin;
 Id:17;UserName:superman;LoginStatus:0;FirstName:Super;FamilyName:Man;Password:6666;Balance:9999;UserRoles:user;
+Id:18;UserName:aaa;LoginStatus:0;FirstName:abcde;FamilyName:shen;Password:6666;Balance:0;UserRoles:user;
+Id:19;UserName:bbb;LoginStatus:0;FirstName:Car;FamilyName:Rental;Password:6666;Balance:0;UserRoles:user;
+Id:20;UserName:ccc;LoginStatus:0;FirstName:abcd;FamilyName:dcba;Password:6666;Balance:0;UserRoles:user;

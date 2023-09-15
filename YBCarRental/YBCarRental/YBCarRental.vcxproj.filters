@@ -75,7 +75,7 @@
     <ClCompile Include="YB_ManagerBasis.cpp">
       <Filter>Source Files\YB_Managers</Filter>
     </ClCompile>
-    <ClCompile Include="YB_CarRentViewModels.cpp">
+    <ClCompile Include="YB_CarDeleteVm.cpp">
       <Filter>Source Files\YB_ViewModels</Filter>
     </ClCompile>
     <ClCompile Include="YB_CarRental_LogicFactory.cpp">
@@ -114,6 +114,33 @@
     <ClCompile Include="YB_UserLoginVM.cpp">
       <Filter>Source Files\YB_ViewModels</Filter>
     </ClCompile>
+    <ClCompile Include="YB_LogOutVM.cpp">
+      <Filter>Source Files\YB_ViewModels</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_UserMenuVM.cpp">
+      <Filter>Source Files\YB_ViewModels</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_AdminMenuVM.cpp">
+      <Filter>Source Files\YB_ViewModels</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_MyOrdersVM.cpp">
+      <Filter>Source Files\YB_ViewModels</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_CarDeleteListVM.cpp">
+      <Filter>Source Files\YB_ViewModels</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_CarListVM.cpp">
+      <Filter>Source Files\YB_ViewModels</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_CarSelectionVM.cpp">
+      <Filter>Source Files\YB_ViewModels</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_OrderManageVM.cpp">
+      <Filter>Source Files\YB_ViewModels</Filter>
+    </ClCompile>
+    <ClCompile Include="YB_UserAdminListVM.cpp">
+      <Filter>Source Files\YB_ViewModels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="YB_UserManager.h">
@@ -149,7 +176,7 @@
     <ClInclude Include="YB_ManagerBasis.h">
       <Filter>Header Files\YB_Managers</Filter>
     </ClInclude>
-    <ClInclude Include="YB_CarRentViewModels.h">
+    <ClInclude Include="YB_CarDeleteVm.h">
       <Filter>Header Files\YB_ViewModels</Filter>
     </ClInclude>
     <ClInclude Include="YB_CarRental_LogicFactory.h">
@@ -186,6 +213,33 @@
       <Filter>Header Files\YB_ViewModels</Filter>
     </ClInclude>
     <ClInclude Include="YB_UserLoginVM.h">
+      <Filter>Header Files\YB_ViewModels</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_LogOutVM.h">
+      <Filter>Header Files\YB_ViewModels</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_UserMenuVM.h">
+      <Filter>Header Files\YB_ViewModels</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_AdminMenuVM.h">
+      <Filter>Header Files\YB_ViewModels</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_CarDeleteListVM.h">
+      <Filter>Header Files\YB_ViewModels</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_CarListVM.h">
+      <Filter>Header Files\YB_ViewModels</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_CarSelectionVM.h">
+      <Filter>Header Files\YB_ViewModels</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_MyOrdersVM.h">
+      <Filter>Header Files\YB_ViewModels</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_OrderManageVM.h">
+      <Filter>Header Files\YB_ViewModels</Filter>
+    </ClInclude>
+    <ClInclude Include="YB_UserAdminListVM.h">
       <Filter>Header Files\YB_ViewModels</Filter>
     </ClInclude>
   </ItemGroup>

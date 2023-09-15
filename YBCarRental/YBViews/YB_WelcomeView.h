@@ -16,9 +16,6 @@ namespace YBConsoleViews
 		};
 
 		void					OnKey(int* keycode)															override;
-		void					OnChildReturn(YB_ViewMessageBasis* Message, YB_ViewItemBasis* fromItemPtr)	override;
-		vector<char*>			Render()																	override;
-
 	};
 }
 

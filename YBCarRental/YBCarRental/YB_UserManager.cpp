@@ -11,6 +11,13 @@ namespace YBCarRental
 			return false; //user already exist
 		}
 		user.Id = YB_ManagerBasis::CreateIncrementId();
+
+		//Since user is created dynamically instead of going over the loading/deserialize process, 
+		//so the valueStringMaps was still un-processed and need
+		//additional manual creation.
+		auto userSerialization = user.Serialize();
+		user.Deserialize(*userSerialization);
+
 		return this->Add(user);
 	}
 

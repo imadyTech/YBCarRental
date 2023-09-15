@@ -1,7 +1,6 @@
 #pragma once
 #include "YB_LogicFactory.h"
 #include "YB_DataSource_Interface.h"
-#include "YB_CarRentViewModels.h"
 using namespace std;
 using namespace YBConsoleViews;
 

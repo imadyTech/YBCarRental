@@ -19,6 +19,7 @@ namespace YBConsoleViews
 
 	void YB_Window::Init()
 	{
+		ios::sync_with_stdio(false);
 		Goto(this->initViewName);
 
 		//currentView->ViewReturnCallback = [this]() { Goto(100); };			//*******demo how to use callback
@@ -78,7 +79,7 @@ namespace YBConsoleViews
 			//Phase 6. Output
 			this->Output();
 			//Phase 7. adjust this parameter if your computer is too fast or slow
-			Sleep(100);
+			Sleep(60);
 		}
 	}
 

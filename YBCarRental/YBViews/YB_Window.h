@@ -4,7 +4,7 @@
 #include <string>
 #include <conio.h>
 #include <functional>
-//#include <iostream>
+#include <iostream>
 //#include <cstdlib>
 #include <windows.h>
 //#include "YB_ViewBasis.h"
@@ -18,7 +18,7 @@ namespace YBConsoleViews
 	class YB_Window
 	{
 	public:
-		YB_Window() = default;
+		YB_Window() {};
 
 		void InitViewFactory(string viewRepo);
 

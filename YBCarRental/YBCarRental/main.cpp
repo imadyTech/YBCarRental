@@ -35,9 +35,9 @@
 //Include ViewModels
 
 
-using namespace YBCarRental;
 using namespace YBConsoleViews;
 
+using namespace YBCarRental;
 
 int main()
 {
@@ -45,37 +45,37 @@ int main()
 	//const std::string		EXIT_VIEW = "ByeByeView";
 	std::filesystem::path	currentDir = std::filesystem::current_path();
 
-	YB_Window				windowPtr = YB_Window();
+	YBConsoleViews::YB_Window*				windowPtr =new YBConsoleViews::YB_Window();
 	YB_ManagerFactory		managerFactory = YB_ManagerFactory();
 
 	//Register viewModels to dataservice factory
 	YB_CarRental_LogicFactory* logicFactory = new YB_CarRental_LogicFactory();
-	logicFactory->RegisterDataSource("YB_UserLoginVM",		new YB_UserLoginVM(YB_ManagerFactory::UserMgr, &windowPtr));
-	logicFactory->RegisterDataSource("YB_UserRegisterVM",	new YB_UserRegisterVM(&windowPtr));
-	logicFactory->RegisterDataSource("YB_UserMenuVM",		new YB_UserMenuVM(YB_ManagerFactory::UserMgr, &windowPtr));
-	logicFactory->RegisterDataSource("YB_AdminMenuVM",		new YB_AdminMenuVM(YB_ManagerFactory::UserMgr, &windowPtr));
-	logicFactory->RegisterDataSource("YB_CarSelectionVM",	new YB_CarSelectionVM(YB_ManagerFactory::CarMgr, &windowPtr));
-	logicFactory->RegisterDataSource("YB_CarRentVM",		new YB_CarRentVM(YB_ManagerFactory::CarMgr, &windowPtr));
-	logicFactory->RegisterDataSource("YB_MyOrdersVM",		new YB_MyOrdersVM(YB_ManagerFactory::RentMgr, &windowPtr));
-	logicFactory->RegisterDataSource("YB_OrderDetailsVM",	new YB_OrderDetailsVM(&windowPtr));
-	logicFactory->RegisterDataSource("YB_MyProfileVM",		new YB_MyProfileVM(&windowPtr));
-	logicFactory->RegisterDataSource("YB_CarAddVM",			new YB_CarAddVM(&windowPtr));//admin
-	logicFactory->RegisterDataSource("YB_CarListVM",		new YB_CarListVM(&windowPtr));//admin listing
-	logicFactory->RegisterDataSource("YB_CarManageVM",		new YB_CarManageVM(&windowPtr));//admin
-	logicFactory->RegisterDataSource("YB_CarDeleteListVM",	new YB_CarDeleteListVM(&windowPtr));//admin
-	logicFactory->RegisterDataSource("YB_CarDeleteVm",		new YB_CarDeleteVm(&windowPtr));//admin
-	logicFactory->RegisterDataSource("YB_OrderManageVM",	new YB_OrderManageVM(&windowPtr));//admin - list all orders
-	logicFactory->RegisterDataSource("YB_OrderAdminVM",		new YB_OrderAdminVM(&windowPtr));//admin - approve or reject
-	logicFactory->RegisterDataSource("YB_UserAdminListVM",	new YB_UserAdminListVM(&windowPtr));//admin
-	logicFactory->RegisterDataSource("YB_UserAdminVM",		new YB_UserAdminVM(&windowPtr));//admin
-	logicFactory->RegisterDataSource("YB_LogOutVM",			new YB_LogOutVM(&windowPtr));//admin
+	logicFactory->RegisterDataSource("YB_UserLoginVM",		new YB_UserLoginVM(YB_ManagerFactory::UserMgr, windowPtr));
+	logicFactory->RegisterDataSource("YB_UserRegisterVM",	new YB_UserRegisterVM(windowPtr));
+	logicFactory->RegisterDataSource("YB_UserMenuVM",		new YB_UserMenuVM(YB_ManagerFactory::UserMgr, windowPtr));
+	logicFactory->RegisterDataSource("YB_AdminMenuVM",		new YB_AdminMenuVM(YB_ManagerFactory::UserMgr, windowPtr));
+	logicFactory->RegisterDataSource("YB_CarSelectionVM",	new YB_CarSelectionVM(YB_ManagerFactory::CarMgr, windowPtr));
+	logicFactory->RegisterDataSource("YB_CarRentVM",		new YB_CarRentVM(YB_ManagerFactory::CarMgr, windowPtr));
+	logicFactory->RegisterDataSource("YB_MyOrdersVM",		new YB_MyOrdersVM(YB_ManagerFactory::RentMgr, windowPtr));
+	logicFactory->RegisterDataSource("YB_OrderDetailsVM",	new YB_OrderDetailsVM(windowPtr));
+	logicFactory->RegisterDataSource("YB_MyProfileVM",		new YB_MyProfileVM(windowPtr));
+	logicFactory->RegisterDataSource("YB_CarAddVM",			new YB_CarAddVM(windowPtr));//admin
+	logicFactory->RegisterDataSource("YB_CarListVM",		new YB_CarListVM(windowPtr));//admin listing
+	logicFactory->RegisterDataSource("YB_CarManageVM",		new YB_CarManageVM(windowPtr));//admin
+	logicFactory->RegisterDataSource("YB_CarDeleteListVM",	new YB_CarDeleteListVM(windowPtr));//admin
+	logicFactory->RegisterDataSource("YB_CarDeleteVm",		new YB_CarDeleteVm(windowPtr));//admin
+	logicFactory->RegisterDataSource("YB_OrderManageVM",	new YB_OrderManageVM(windowPtr));//admin - list all orders
+	logicFactory->RegisterDataSource("YB_OrderAdminVM",		new YB_OrderAdminVM(windowPtr));//admin - approve or reject
+	logicFactory->RegisterDataSource("YB_UserAdminListVM",	new YB_UserAdminListVM(windowPtr));//admin
+	logicFactory->RegisterDataSource("YB_UserAdminVM",		new YB_UserAdminVM(windowPtr));//admin
+	logicFactory->RegisterDataSource("YB_LogOutVM",			new YB_LogOutVM(windowPtr));//admin
 
-	windowPtr.ConfigLogicFactory(logicFactory);
-	windowPtr.InitViewFactory(currentDir.string() + "\\ViewRepo.txt");
-	windowPtr.initViewName = INIT_VIEW;
-	windowPtr.exitViewName = EXIT_VIEW;
-	windowPtr.Init();
-	windowPtr.Run();
+	windowPtr->ConfigLogicFactory(logicFactory);
+	windowPtr->InitViewFactory(currentDir.string() + "\\ViewRepo.txt");
+	windowPtr->initViewName = INIT_VIEW;
+	windowPtr->exitViewName = EXIT_VIEW;
+	windowPtr->Init();
+	windowPtr->Run();
 
 	cout << "The application quit." << endl;
 }

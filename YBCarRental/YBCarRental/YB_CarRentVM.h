@@ -54,9 +54,10 @@ namespace YBCarRental {
 		{
 			int* daysToRent = new int(0);
 			int* carId = new int(0);
-			std::time_t currentTime = std::time(nullptr);
-			tm* startDate = std::localtime(&currentTime);
 
+			time_t rawtime;
+			struct tm* startDate{};
+			localtime_s(startDate, &rawtime);
 
 			string key = "DaysToRent";
 			if (!(*valuesMapPtr)[key].empty())

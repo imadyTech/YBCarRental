@@ -106,9 +106,19 @@ namespace YBConsoleViews {
 			//Nothing would happen if unsuccessful in binding.
 			//Override the Init in children, if necessary.
 		}
+		//3. if more than 1 focusable item, then point to the first one (except the 0 item which is default promptBox
 		if (focusableItems.size() > 1 && currentItemIndex < 1)
+		{
 			currentItemIndex = 1;
+			for (auto item : focusableItems){
+				item->isFocused = false;
+			}
+			focusableItems[currentItemIndex]->isFocused = true;
+		}
 
+
+
+		//5. set flag as initiated
 		this->isInitedFlag = true;
 	}
 
@@ -232,7 +242,6 @@ namespace YBConsoleViews {
 		isInitedFlag = false;
 		isBindedFlag = false;
 		isUpdatedFlag = false;
-		//this->subItemsList.clear();
 		this->focusableItems.clear();
 		this->bindableItems.clear();
 		this->currentItemIndex = -1;

@@ -8,8 +8,10 @@ namespace YBCarRental
 	//}
 	bool YB_RentManager::PlaceOrder(int userId, int carId, tm startDate, int days)
 	{
-		std::time_t currentTime = std::time(nullptr);
-		tm* today				= std::localtime(&currentTime);
+		time_t rawtime;
+		struct tm* today{};
+		localtime_s(today, &rawtime);
+
 
 		YB_Rent* order = new YB_Rent();
 		order->UserId		= userId;

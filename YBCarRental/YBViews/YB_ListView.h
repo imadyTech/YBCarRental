@@ -37,6 +37,7 @@ namespace YBConsoleViews
 		void			OnChildReturn(	YB_ViewMessageBasis* msgPtr, YB_ViewItemBasis* fromItemPtr)	override;
 		void			OnConfirmReturn(YB_ViewMessageBasis* msgPtr, YB_ViewBasis* fromViewPtr)		override;
 		vector<char*>	Render()																	override;
+		void			Exit()																		override;
 	private:
 		YB_ListHead*	listHeadPtr;
 	};

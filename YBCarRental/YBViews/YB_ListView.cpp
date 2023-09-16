@@ -82,7 +82,7 @@ void				YBConsoleViews::YB_ListView::BindList() {
 				row->push_back(tuple);
 				i++;
 				//save the Id of the binded data source
-				if (valuePair->first == "Id") viewitemPtr->dataId = std::stoi(valuePair->second);
+				if (valuePair->first == "Id" && !valuePair->second.empty()) viewitemPtr->dataId = std::stoi(valuePair->second);
 			}
 			viewitemPtr->OnBind(row);
 		}
@@ -90,6 +90,7 @@ void				YBConsoleViews::YB_ListView::BindList() {
 			//YB_BindingError error;
 			//error(const_cast<char*>("error in binding values to children items."));
 			//throw error;
+			bool isError = true;
 		}
 	}
 }
@@ -118,4 +119,22 @@ void				YBConsoleViews::YB_ListView::OnConfirmReturn(YB_ViewMessageBasis* msgPtr
 vector<char*>		YBConsoleViews::YB_ListView::Render()
 {
 	return YB_ViewBasis::Render();
+}
+
+void				YBConsoleViews::YB_ListView::Exit()
+{
+	//Since listItems and ListHead are dynamically generated unlike other static items
+	//need delete to avoid repeat
+	auto itemIterator = subItemsList.begin();
+	while (itemIterator != subItemsList.end()) {
+		if ((*itemIterator)->ItemType == "ListItem"|| (*itemIterator)->ItemType == "ListHead") {
+			itemIterator = subItemsList.erase(itemIterator);
+		}
+		else {
+			++itemIterator;
+		}
+	}
+
+	YB_ViewBasis::Exit();
+
 }

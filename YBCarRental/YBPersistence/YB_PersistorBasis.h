@@ -56,9 +56,9 @@ namespace YBPersistence
 		/// <returns></returns>
 		void						Get(int id, TData* objResult);
 
-		TData*						Get(int id);
+		TData* Get(int id);
 
-		map<int, TData>*			GetAll();
+		map<int, TData>* GetAll();
 
 		/// <summary>
 		/// Delete an object from memory (will persisted later by Save() command.
@@ -82,7 +82,7 @@ namespace YBPersistence
 		/// <summary>
 		/// The file repository to store data records.
 		/// </summary>
-		YB_Repository*				repository;
+		YB_Repository* repository;
 	};
 
 	template<class TData>
@@ -122,7 +122,7 @@ namespace YBPersistence
 	}
 
 	template<class TData>
-	TData*							YB_PersistorBasis<TData>::Get(int id)
+	TData* YB_PersistorBasis<TData>::Get(int id)
 	{
 		auto iterator = dataSet.find(id);
 		//auto iterator = std::find_if(dataSet.begin(), dataSet.end(),
@@ -138,7 +138,7 @@ namespace YBPersistence
 	}
 
 	template<class TData>
-	map<int, TData>*				YB_PersistorBasis<TData>::GetAll()
+	map<int, TData>* YB_PersistorBasis<TData>::GetAll()
 	{
 		//std::map<int, TData*>* tDataPointerMap = new std::map<int, TData*>;
 		//for (auto iterator : dataSet) {
@@ -184,20 +184,19 @@ namespace YBPersistence
 	template<class TData>
 	bool							YB_PersistorBasis<TData>::Update(TData data)
 	{
-		string* line	= data.Serialize();
-		auto item		= dataSet.find(data.Id);
+		string* line = data.Serialize();
+		auto item = dataSet.find(data.Id);
 		if (item == dataSet.end())					//Fail to find the item to update.
 			return false;
 
 		try {
 			repository->UpdateLine(*line);
+			item->second = std::move(data);
+			return true;							//Succeed.
 		}
 		catch (exception e) {
 			return false;							//Persisting failed.
 		}
-
-		item->second = std::move(data);
-		return true;								//Succeed.
 	}
 
 }

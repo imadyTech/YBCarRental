@@ -6,15 +6,17 @@ namespace YBConsoleViews
 	void				YB_ViewItemFactory::LoadAllItems()
 	{
 		if (!(*repository).isReady)
-			throw YB_RepositoryError();			//It is not allowed if never ReadAllLines().
+			//It is not allowed if ReadAllLines() is not executed.
+			throw YB_RepositoryError();			
 
 		for (auto& pairValue : (*repository).allRecordLines)
 		{
-			//std::unique_ptr<YB_ViewItemBasis> viewPtr = this->CreateProduct(pairValue.second); //Pass the view serializeString
+			//Note: std::unique_ptr doesn't work
+			//std::unique_ptr<YB_ViewItemBasis> viewPtr = this->CreateProduct(pairValue.second); 
 			YB_ViewItemBasis* viewItemPtr = this->CreateProduct(&pairValue.second); //Pass the view serializeString
 			try
 			{
-				//(*view).Deserialize(pairValue.second);										//deserialize String
+				//(*view).Deserialize(pairValue.second);										
 				viewitemPool.insert(std::make_pair(pairValue.first, viewItemPtr));
 			}
 			catch (exception e)
@@ -44,11 +46,13 @@ namespace YBConsoleViews
 				}
 				catch (exception e)
 				{
-					throw YB_FactoryError();
+					//throw YB_FactoryError();
+					bool isError = true;
 				}
 			}
 		}
-		return itemPtr;							//Caution: itemPtr's member properties will be emptied after return.
+		//Caution: itemPtr's member properties will be emptied after return.
+		return itemPtr;							
 		//return this->GetViewItem((itemPtr)->Id);	//This works.
 	}
 

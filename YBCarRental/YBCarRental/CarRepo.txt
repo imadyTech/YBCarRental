@@ -4,8 +4,3 @@ Id:1004;Make:BYD;Model:Atto 3;Year:2023;Mileage:888;IsAvailable:1;MinRentPeriod:
 Id:1005;Make:Skoda;Model:Octavia;Year:2023;Mileage:888;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:5;DayRentPrice:150;
 Id:1006;Make:Toyata;Model:Vitz;Year:2023;Mileage:888;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:5;DayRentPrice:150;
 Id:1007;Make:GM;Model:Atto 3;Year:2023;Mileage:888;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:5;DayRentPrice:150;
-Id:1008;Make:Hyunddai;Model:Atto 3;Year:2023;Mileage:888;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:5;DayRentPrice:150;
-Id:1009;Make:Bentley;Model:V8S;Year:2023;Mileage:888;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:5;DayRentPrice:150;
-Id:1010;Make:Neo;Model:A8;Year:2022;Mileage:1222;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:2;DayRentPrice:100;
-Id:1011;Make:Neo;Model:A8;Year:2022;Mileage:100;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:3;DayRentPrice:200;
-Id:1012;Make:AUDI;Model:A4;Year:2018;Mileage:1999;IsAvailable:1;MinRentPeriod:1;MaxRentPeriod:4;DayRentPrice:120;

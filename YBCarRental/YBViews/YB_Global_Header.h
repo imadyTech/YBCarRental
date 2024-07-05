@@ -34,7 +34,7 @@ namespace YBConsoleViews {
 	//if you need retrieve which button is clicked, just use "(*valuesMapPtr)["ButtonContent"]"
 	static const char*				SUBMIT_BINDKEY_BUTTONCONTENT= "ButtonContent";
 
-	static const std::string		INIT_VIEW					= "MainMenuView";
+	static const std::string		INIT_VIEW					= "WelcomeView";
 	static const std::string		EXIT_VIEW					= "ByeByeView";
 	static const std::string		MAIN_VIEW					= "MainMenuView";
 	static const std::string		USER_MAIN_VIEW				= "UserMenu";

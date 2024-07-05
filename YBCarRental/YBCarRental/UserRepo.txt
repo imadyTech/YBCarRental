@@ -4,3 +4,4 @@ Id:17;UserName:superman;LoginStatus:0;FirstName:Super;FamilyName:Man;Password:66
 Id:18;UserName:aaa;LoginStatus:0;FirstName:abcde;FamilyName:shen;Password:6666;Balance:0;UserRoles:user;
 Id:19;UserName:bbb;LoginStatus:0;FirstName:Car;FamilyName:Rental;Password:6666;Balance:0;UserRoles:user;
 Id:20;UserName:ccc;LoginStatus:0;FirstName:abcd;FamilyName:dcba;Password:6666;Balance:0;UserRoles:user;
+Id:21;UserName:imran;LoginStatus:1;FirstName:Imran;FamilyName:Khan;Password:6666;Balance:0;UserRoles:user;

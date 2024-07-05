@@ -48,7 +48,6 @@ namespace YBConsoleViews
 		int								w=100;								//Width of the viewItem.
 		int								h=1;								//Height of the viewItem.
 		string							ItemType;
-		string							Content;
 		char							Background = ' ';
 		string							Bind="";
 		string							Link = "";
@@ -74,6 +73,7 @@ namespace YBConsoleViews
 		virtual void					OnReturn()				{};
 		virtual void					OnKey(int* keycode)		{};
 
+		string							Content;
 		YB_ViewBasis*					parent;
 	protected:
 		vector<char*>					viewArray;

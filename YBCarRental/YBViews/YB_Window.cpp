@@ -20,6 +20,13 @@ namespace YBConsoleViews
 	void YB_Window::Init()
 	{
 		ios::sync_with_stdio(false);
+		HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE); 
+		WORD wr1 = 0x1c;
+		SetConsoleTextAttribute(hOut, wr1);
+		WORD wr2 = FOREGROUND_BLUE | FOREGROUND_INTENSITY;
+		SetConsoleTextAttribute(hOut, wr2);
+
+
 		Goto(this->initViewName);
 
 		//currentView->ViewReturnCallback = [this]() { Goto(100); };			//*******demo how to use callback
